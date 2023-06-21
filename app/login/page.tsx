@@ -5,11 +5,9 @@ import Link from "next/link";
 
 
 export default function Login() {
-    document.title = "Login"
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(null);
 
     const searchParams = new URLSearchParams(location.search);
     const redirect = searchParams.get("Redirect") || null;
@@ -24,9 +22,10 @@ export default function Login() {
         setPassword(event.target.value);
     }
 
+
+
     function handleSubmit(event: any) {
         event.preventDefault();
-        setError(null);
         axios.post(
             process.env.REACT_APP_BACKEND_URL + '/plz',
             `username=${username}&password=${password}`,
@@ -45,24 +44,19 @@ export default function Login() {
                 }
 
             })
-            .catch((error) => {
-                setError(error.response.data.error);
-                showErrorMessageForDuration(15000)
+            .catch(() => {
+                displayErrorMessage()
             });
         console.log(redirect)
     }
 
-    function showErrorMessageForDuration(duration: any) {
+    function displayErrorMessage() {
 
         console.log(username)
 
         /* sets the showErrorMessage to true to show the error messages */
         setShowErrorMessage(true);
 
-        /* sets timeout for the duration input and then sets the showErrorMessage to false */
-        setTimeout(() => {
-            setShowErrorMessage(false);
-        }, duration);
     }
 
     return (
@@ -74,23 +68,29 @@ export default function Login() {
         rounded-lg
         p-3"
         >
-            <form onSubmit={handleSubmit} className="">
+            <form
+                onSubmit={handleSubmit}
+                className="flex flex-col">
+
                 <div className="flex
                 flex-col
-                justify-center">
+                justify-center
+                my-2"
+                >
 
                     <h1 className="
                     text-3xl
                     font-bold
-                    text-center"
+                    text-center
+                    mb-4"
                     >Log in</h1>
 
                     <p>Welcome to OnlyFin, please put your credentials below to start using the website</p>
+
                 </div>
                 <div className="
                 flex
-                flex-col
-                m-2"
+                flex-col"
                 >
                     <input
                         type="email"
@@ -101,7 +101,7 @@ export default function Login() {
                         placeholder="Email"
                         maxLength={50}
                         className="
-                        m-2
+                        my-2
                         p-2
                         rounded-md"
                     />
@@ -114,13 +114,30 @@ export default function Login() {
                         placeholder="Password"
                         maxLength={100}
                         className="
-                        m-2
+                        my-2
                         p-2
                         rounded-md"
-
                     />
                 </div>
-                {error && <div className="">{error}</div>}
+
+                {showErrorMessage && (
+                    <div className="
+                    text-center
+                    text-red-500
+                    font-bold
+                    m-2
+                    text-xl
+                    font-mono"
+                    >
+                        <p>INCORRECT USERNAME OR PASSWORD!</p>
+                    </div>
+                )}
+
+                <div className="
+                items-center
+                flex
+                flex-col"
+                >
                 <button
                     type="submit"
                     className="
@@ -131,26 +148,32 @@ export default function Login() {
                     focus:ring-blue-300
                     font-medium
                     rounded-lg
-                    text-sm px-4
-                    lg:px-5 py-2
+                    text-lg
+                    px-4
+                    lg:px-5
+                    py-2
                     lg:py-2.5
-                    mr-2
+                    m-2
                     dark:bg-blue-600
                     dark:hover:bg-blue-700
                     focus:outline-none
-                    dark:focus:ring-blue-800"
+                    dark:focus:ring-blue-800
+                    w-fit"
                 >
                     Log in
                 </button>
-                <Link href={"../Register"}>
+
+                <Link href={"../register"}
+                className="
+                m-2
+                text-blue-800"
+                >
                     Not a user? Register here.
                 </Link>
-            </form>
-            {showErrorMessage && (
-                <div className="">
-                    <p>Please check if your username or password is correct</p>
+
                 </div>
-            )}
+            </form>
+
         </div>
     );
 }
