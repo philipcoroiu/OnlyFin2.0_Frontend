@@ -28,7 +28,7 @@ export default function Header() {
                 mx-auto
                 max-w-screen-xl"
                 >
-                    <a href="#" className="
+                    <a href="/" className="
                     flex
                     items-center"
                     >
@@ -49,7 +49,7 @@ export default function Header() {
                     flex items-center
                     lg:order-2"
                     >
-                        <a href="#"
+                        <a href="/login"
                            className="
                            text-gray-800
                            dark:text-white
@@ -68,7 +68,7 @@ export default function Header() {
                            focus:outline-none
                            dark:focus:ring-gray-800"
                         >Log in</a>
-                        <a href="#"
+                        <a href="/register"
                            className="
                            text-white
                            bg-blue-700

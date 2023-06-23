@@ -27,7 +27,7 @@ export default function register() {
             })
             .then(response => {
                 //TODO: change this to use router instead
-                window.location.href = '/Login/';
+                window.location.href = '/login/';
             })
             .catch(error => {
                 //TODO: add error handling
