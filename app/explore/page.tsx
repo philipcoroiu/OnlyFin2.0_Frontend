@@ -13,8 +13,8 @@ export default function Explore() {
     return (
         <div>
 
-            <form>
-                <div className="flex">
+            <form >
+                <div className="flex w-full max-w-lg">
                     <label htmlFor="search-dropdown"
                            className="mb-2
                            text-sm
@@ -60,7 +60,7 @@ export default function Explore() {
                     </svg></button>
 
                     <div id="dropdown"
-                         className={`z-10 ${dropdownButtonIsClicked ? "" : "hidden"} bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}>
+                         className={`z-10 ${dropdownButtonIsClicked ? "" : "hidden"} origin-top-right absolute mt-12 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}>
                         <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
                             <li>
                                 <button type="button"
