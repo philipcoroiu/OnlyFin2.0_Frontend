@@ -14,7 +14,7 @@ export default function Explore() {
         <div>
 
             <form >
-                <div className="flex w-full max-w-lg">
+                <div className="flex w-full max-w-lg mt-12 mx-auto" >
                     <label htmlFor="search-dropdown"
                            className="mb-2
                            text-sm
