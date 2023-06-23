@@ -2,12 +2,12 @@
 export default function App() {
     return (
         <main className="">
-            <div className="
-            relative
-            isolate
+            <div className={`
+            ${{/*relative
+            isolate*/}}
             px-6
             pt-14
-            lg:px-8">
+            lg:px-8`}>
                 <div
                     className="
                     absolute
@@ -81,7 +81,7 @@ export default function App() {
                             >
                                 Get started
                             </a>
-                            <a href="#" className="
+                            <a href="explore" className="
                             text-sm
                             font-semibold
                             leading-6
