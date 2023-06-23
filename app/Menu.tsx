@@ -1,6 +1,5 @@
 export default function Menu (props: any) {
-    let menuItems: string[];
-    menuItems = ["Home", "Dashboard", "About", "Contact"]
+    let menuItems: string[] = ["Home", "Dashboard", "About", "Contact"]
     return (
         <div className={` ${props.toggleHamburgerMenu ? "" : "hidden"} justify-between items-center w-full lg:flex lg:w-auto lg:order-1`}
              id="mobile-menu-2">
