@@ -67,7 +67,7 @@ export default function dashboardModuleBoard() {
                     <Tabs></Tabs>
                     <div className="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-5">
                         {tempCharts.map((tempChart) => (
-                            <a key="" href="" className="group">
+                            <a key="" className="group">
                                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                                     <HighchartsReact
                                         containerProps={{style: {height: '100%', weight: '100%'}}}
