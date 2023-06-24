@@ -19,6 +19,15 @@ const tempCharts = [
     {
         id: 5,
     },
+    {
+        id: 6,
+    },
+    {
+        id: 7,
+    },
+    {
+        id: 8,
+    },
 ]
 
 export default function dashboardModuleBoard() {
@@ -49,23 +58,26 @@ export default function dashboardModuleBoard() {
 
     return (
         <div className="">
-            <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-0">
-                <h2 className="text-6xl">Dashboard</h2>
+            <div className="mx-auto mx-20 max-w-full px-4 py-16 sm:px-12 sm:py-20 lg:px-0">
+                <h2 className="text-7xl">Dashboard</h2>
 
-                <div className="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-5">
-                    {tempCharts.map((tempChart) => (
-                        <a key="" href="" className="group">
-                            <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                                <HighchartsReact
-                                    containerProps={{style: {height: '100%', weight: '100%'}}}
-                                    highcharts={Highcharts}
-                                    options={studioChart}
-                                />
-                            </div>
-                        </a>
-                    ))}
+                <div className="px-10 py-10 overflow-y-auto rounded-lg bg-gray-400">
+                    <div className="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-10">
+                        {tempCharts.map((tempChart) => (
+                            <a key="" href="" className="group">
+                                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                                    <HighchartsReact
+                                        containerProps={{style: {height: '100%', weight: '100%'}}}
+                                        highcharts={Highcharts}
+                                        options={studioChart}
+                                    />
+                                </div>
+                            </a>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
+
     )
 }
