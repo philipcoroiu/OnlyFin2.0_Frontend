@@ -38,8 +38,8 @@ export default function StockTabs(props : any) {
                 {tempTabsList.map((tab: {name:number}, index : number) => (
                     <li className="mr-2">
                         <button
-                            className={`${props.activeStockTab === index ? "inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active" : "inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"}`}
-                            onClick={() => props.handleStockTabClick(index)}
+                            className={`${props.activeCategoryTab === index ? "inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active" : "inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"}`}
+                            onClick={() => props.handleCategoryTabClick(index)}
                             aria-current="page">{tab.name}
                         </button>
                     </li>

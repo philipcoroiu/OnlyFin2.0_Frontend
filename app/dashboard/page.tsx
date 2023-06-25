@@ -12,6 +12,11 @@ export default function dashboardModuleBoard() {
 
     function handleStockTabClick(index : number) : void {
         setActiveStockTab(index)
+        setActiveCategoryTab(0)
+    }
+
+    function handleCategoryTabClick(index : number) : void {
+        setActiveCategoryTab(index)
     }
 
     return (
@@ -39,6 +44,7 @@ export default function dashboardModuleBoard() {
                         activeStockTab={activeStockTab}
                         activeCategoryTab={activeCategoryTab}
                         handleStockTabClick={handleStockTabClick}
+                        handleCategoryTabClick={handleCategoryTabClick}
                     ></StockTabs>
 
                     <DashboardModules></DashboardModules>

@@ -71,7 +71,10 @@ export default function StockTabs(props : any) {
             </li>
         </ul>
 
-        <CategoryTabs></CategoryTabs>
+        <CategoryTabs
+            activeCategoryTab={props.activeCategoryTab}
+            handleCategoryTabClick={props.handleCategoryTabClick}
+        ></CategoryTabs>
 
     </div>
 
