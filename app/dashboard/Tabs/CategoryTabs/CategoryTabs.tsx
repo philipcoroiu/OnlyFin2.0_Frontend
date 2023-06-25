@@ -34,12 +34,12 @@ export default function StockTabs(props : any) {
 
             <ul
                 className="flex
-        flex-wrap
-        text-sm
-        font-medium
-        text-center
-        text-gray-500
-        dark:text-gray-400">
+                flex-wrap
+                text-sm
+                font-medium
+                text-center
+                text-gray-500
+                dark:text-gray-400">
 
                 {tempTabsList.map((tab: {name:number}, index : number) => (
                     <li className="mr-2">

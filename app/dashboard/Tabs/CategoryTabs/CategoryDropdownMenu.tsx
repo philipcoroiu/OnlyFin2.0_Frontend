@@ -21,22 +21,17 @@ export default function CategoryDropdownMenu(props : any) {
                 aria-labelledby="dropdownMenuIconHorizontalButton">
                 <li>
                     <a href="#"
-                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Add</a>
                 </li>
                 <li>
                     <a href="#"
-                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</a>
                 </li>
                 <li>
                     <a href="#"
-                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Change Name</a>
                 </li>
             </ul>
-            <div className="py-2">
-                <a href="#"
-                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Separated
-                    link</a>
-            </div>
         </div>
     )
 }
