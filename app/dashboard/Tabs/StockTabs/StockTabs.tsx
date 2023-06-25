@@ -1,7 +1,7 @@
 "use client"
 
 import React, {useState} from "react";
-import DropdownMenu from "@/app/dashboard/Tabs/StockTabs/DropdownMenu";
+import StockDropdownMenu from "@/app/dashboard/Tabs/StockTabs/StockDropdownMenu";
 
 const tempTabsList = [
     {
@@ -23,13 +23,15 @@ const tempTabsList = [
 
 export default function StockTabs(props : any) {
 
-    function handleStockEditButtonClick() {
+    const [dropdownMenuIsActive, setDropdownMenuIsActive] = useState(false);
 
+    function handleEditButtonClick() {
+        setDropdownMenuIsActive(prevState => !prevState)
     }
 
     return (
-    <div>
 
+    <div>
         {
             // ***********//
             // STOCK TABS //
@@ -62,17 +64,43 @@ export default function StockTabs(props : any) {
             }
 
             <li className="mr-2">
-                <button id="dropdownMenuIconHorizontalButton" data-dropdown-toggle="dropdownDotsHorizontal"
-                        className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                        type="button">
+                <button
+                    id="dropdownMenuIconHorizontalButton"
+                    data-dropdown-toggle="dropdownDotsHorizontal"
+                    type="button"
+                    onClick={handleEditButtonClick}
+                    className="inline-flex
+                    items-center
+                    p-2
+                    text-sm
+                    font-medium
+                    text-center
+                    text-gray-900
+                    bg-white
+                    rounded-lg
+                    hover:bg-gray-100
+                    focus:ring-4
+                    focus:outline-none
+                    dark:text-white
+                    focus:ring-gray-50
+                    dark:bg-gray-800
+                    dark:hover:bg-gray-700
+                    dark:focus:ring-gray-600"
+                    >
+
                     <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
                     </svg>
+
                 </button>
                 <div className="z-10">
-                    <DropdownMenu></DropdownMenu>
+
+                    <StockDropdownMenu
+                        dropdownMenuIsActive={dropdownMenuIsActive}
+                    ></StockDropdownMenu>
+
                 </div>
 
             </li>

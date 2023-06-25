@@ -1,9 +1,22 @@
 "use client"
 
-export default function DropdownMenu() {
+export default function StockDropdownMenu(props : any) {
     return(
         <div id="dropdownDotsHorizontal"
-             className="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+             className={`
+             absolute
+             z-10
+             bg-white
+             divide-y
+             divide-gray-200
+             rounded-lg
+             shadow
+             w-44
+             dark:bg-gray-500
+             dark:divide-gray-600
+             ${props.dropdownMenuIsActive ? "" : "hidden"}`}
+        >
+
             <ul className="py-2 text-sm text-gray-700 dark:text-gray-200"
                 aria-labelledby="dropdownMenuIconHorizontalButton">
                 <li>
