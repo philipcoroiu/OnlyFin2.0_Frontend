@@ -32,7 +32,7 @@ const tempCharts = [
 ]
 /////////////////////
 
-export default function DashboardModules() {
+export default function DashboardModules(props : any) {
 
     /////// TEMP ////////
     const [studioChart, setStudioChart] = useState({
