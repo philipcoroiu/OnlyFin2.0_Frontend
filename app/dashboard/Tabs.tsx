@@ -23,7 +23,6 @@ const tempTabsList = [
 
 export default function Tabs(props : any) {
 
-    // ${props.activeStockTab === index ? "" : ""}
 
     return (
     <div>
@@ -43,13 +42,13 @@ export default function Tabs(props : any) {
         text-gray-500
         dark:text-gray-400">
 
-            {tempTabsList.map((tab, index) => (
+            {tempTabsList.map((tab: {name:number}, index : number) => (
                 <li className="mr-2">
-
-                    <Link href={`dashboard/${tab.name}`}
+                    <button
                           className={`${props.activeStockTab === index ? "inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active" : "inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"}`}
+                          onClick={() => props.handleStockTabClick(index)}
                           aria-current="page">{tab.name}
-                    </Link>
+                    </button>
                 </li>
             ))}
 

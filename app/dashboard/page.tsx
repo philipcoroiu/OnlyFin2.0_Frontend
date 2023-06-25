@@ -10,6 +10,10 @@ export default function dashboardModuleBoard() {
     const [activeStockTab, setActiveStockTab] = useState(0);
     const [activeCategoryTab, setActiveCategoryTab] = useState(0);
 
+    function handleStockTabClick(index : number) : void {
+        setActiveStockTab(index)
+    }
+
     return (
         <div className="">
 
@@ -34,6 +38,7 @@ export default function dashboardModuleBoard() {
                     <Tabs
                         activeStockTab={activeStockTab}
                         activeCategoryTab={activeCategoryTab}
+                        handleStockTabClick={handleStockTabClick}
                     ></Tabs>
 
                     <DashboardModules></DashboardModules>
