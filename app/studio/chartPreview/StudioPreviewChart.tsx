@@ -32,7 +32,7 @@ export default function StudioPreviewChart() {
 
 
     return(
-        <div>
+        <div className="rounded">
             <HighchartsReact
                 containerProps={{style: {height: '100%', weight: '100%'}}}
                 highcharts={Highcharts}
