@@ -1,6 +1,6 @@
 "use client"
 import React, {useState} from "react";
-import StockTabs from "./Tabs/StockTabs";
+import TabsContainer from "./Tabs/TabsContainer";
 import DashboardModules from "@/app/dashboard/DashbordModules";
 
 
@@ -40,12 +40,12 @@ export default function dashboardModuleBoard() {
                 rounded-lg
                 bg-gray-700">
 
-                    <StockTabs
+                    <TabsContainer
                         activeStockTab={activeStockTab}
                         activeCategoryTab={activeCategoryTab}
                         handleStockTabClick={handleStockTabClick}
                         handleCategoryTabClick={handleCategoryTabClick}
-                    ></StockTabs>
+                    ></TabsContainer>
 
                     <DashboardModules></DashboardModules>
 

@@ -1,7 +1,6 @@
 "use client"
 
 import React, {useState} from "react";
-import CategoryTabs from "./CategoryTabs"
 
 const tempTabsList = [
     {
@@ -23,6 +22,9 @@ const tempTabsList = [
 
 export default function StockTabs(props : any) {
 
+    function handleStockEditButtonClick() {
+
+    }
 
     return (
     <div>
@@ -51,7 +53,7 @@ export default function StockTabs(props : any) {
                     </button>
                 </li>
             ))}
-
+            
             {
                 // *******************//
                 // EDIT STOCKS BUTTON //
@@ -59,7 +61,7 @@ export default function StockTabs(props : any) {
             }
 
             <li className="mr-2">
-                <a href="#"
+                <button
                    className="inline-block
                    px-4
                    py-3
@@ -67,15 +69,11 @@ export default function StockTabs(props : any) {
                    hover:text-gray-900
                    hover:bg-gray-100
                    dark:hover:bg-gray-800
-                   dark:hover:text-white">...</a>
+                   dark:hover:text-white"
+                   onClick={handleStockEditButtonClick}
+                >...</button>
             </li>
         </ul>
-
-        <CategoryTabs
-            activeCategoryTab={props.activeCategoryTab}
-            handleCategoryTabClick={props.handleCategoryTabClick}
-        ></CategoryTabs>
-
     </div>
 
 )
