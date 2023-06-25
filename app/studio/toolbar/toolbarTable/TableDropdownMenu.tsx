@@ -2,9 +2,9 @@
 
 export default function TableDropdownMenu(props : any) {
     return(
-        <div id="dropdownDotsHorizontal"
+        <div id="dropdownLeft"
              className={`
-             absolute
+             fixed
              z-10
              bg-white
              divide-y
@@ -17,8 +17,7 @@ export default function TableDropdownMenu(props : any) {
              ${props.dropdownMenuIsActive ? "" : "hidden"}`}
         >
 
-            <ul className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                aria-labelledby="dropdownMenuIconHorizontalButton">
+            <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
                 <li>
                     <a href="#"
                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Add</a>

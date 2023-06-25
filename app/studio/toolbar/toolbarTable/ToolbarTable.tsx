@@ -2,6 +2,7 @@
 
 import React, {useState} from "react";
 import TableDropdownMenu from "@/app/studio/toolbar/toolbarTable/TableDropdownMenu";
+import TestTable from "@/app/studio/toolbar/toolbarTable/TestTable";
 
 export default function ToolbarTable() {
 
@@ -130,13 +131,13 @@ export default function ToolbarTable() {
                         }
 
                         <button
-                            id="dropdownMenuIconHorizontalButton"
-                            data-dropdown-toggle="dropdownDotsHorizontal"
+                            id="dropdownLeftButton" data-dropdown-toggle="dropdownLeft" data-dropdown-placement="left"
                             type="button"
                             onClick={handleEditButtonClick}
                             className="inline-flex
                             items-center
                             p-2
+                            mr-20
                             text-sm
                             font-medium
                             text-center
@@ -144,31 +145,24 @@ export default function ToolbarTable() {
                             bg-white
                             rounded-lg
                             hover:bg-gray-100
-                            focus:ring-4
-                            focus:outline-none
                             dark:text-white
-                            focus:ring-gray-50
                             dark:bg-gray-800
                             dark:hover:bg-gray-700
                             dark:focus:ring-gray-600"
                         >
-
-                            <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                            </svg>
+                            remove
 
                         </button>
 
                         <TableDropdownMenu
                             dropdownMenuIsActive={dropdownMenuIsActive}
                         />
-
                     </td>
                 </tr>
                 </tbody>
             </table>
+
+            <TestTable/>
         </div>
     )
 }
