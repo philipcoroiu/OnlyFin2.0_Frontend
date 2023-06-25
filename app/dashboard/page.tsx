@@ -33,6 +33,7 @@ const tempCharts = [
 
 export default function dashboardModuleBoard() {
 
+    /////// TEMP ////////
     const [studioChart, setStudioChart] = useState({
         chart: {
             type: 'bar'
@@ -56,19 +57,61 @@ export default function dashboardModuleBoard() {
             data: [5, 7, 3]
         }]
     });
+    ////////////////
+
+
+    const [activeStockTab, setActiveStockTab] = useState(0);
+    const [activeCategoryTab, setActiveCategoryTab] = useState(0);
 
     return (
         <div className="">
 
-            <div className="mx-auto mx-20 max-w-full px-4 py-16 sm:px-12 sm:py-20 lg:px-0">
+            <div
+                className="mx-auto
+            mx-20
+            max-w-full
+            px-4
+            py-16
+            sm:px-12
+            sm:py-20
+            lg:px-0">
+
                 <h2 className="text-7xl">Dashboard</h2>
 
-                <div className="px-10 py-10 overflow-y-auto rounded-lg bg-gray-700">
-                    <Tabs></Tabs>
-                    <div className="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-5">
+                <div className="px-10
+                py-10
+                overflow-y-auto
+                rounded-lg
+                bg-gray-700">
+
+                    <Tabs
+                        activeStockTab={activeStockTab}
+                        activeCategoryTab={activeCategoryTab}
+                    ></Tabs>
+
+                    <div
+                        className="grid
+                    grid-cols-1
+                    gap-x-6
+                    gap-y-5
+                    sm:grid-cols-2
+                    lg:grid-cols-3
+                    xl:grid-cols-3
+                    xl:gap-x-5">
+
                         {tempCharts.map((tempChart) => (
                             <a key="" className="group">
-                                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+
+                                <div
+                                    className="aspect-h-1
+                                aspect-w-1
+                                w-full
+                                overflow-hidden
+                                rounded-lg
+                                bg-gray-200
+                                xl:aspect-h-8
+                                xl:aspect-w-7">
+
                                     <HighchartsReact
                                         containerProps={{style: {height: '100%', weight: '100%'}}}
                                         highcharts={Highcharts}
