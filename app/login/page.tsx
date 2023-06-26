@@ -2,9 +2,11 @@
 import React, {useState} from "react";
 import axios from 'axios';
 import Link from "next/link";
+import {useRouter} from "next/navigation";
 
 
 export default function Login() {
+    const router = useRouter()
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -22,11 +24,10 @@ export default function Login() {
         setPassword(event.target.value);
     }
 
-
     function handleSubmit(event: any) {
         event.preventDefault();
         axios.post(
-            process.env.REACT_APP_BACKEND_URL + '/plz',
+            "http://localhost:8080/plz",
             `username=${username}&password=${password}`,
             {
                 headers: {
@@ -37,9 +38,9 @@ export default function Login() {
         )
             .then(() => {
                 if (redirect == null) {
-                    document.location.href = '../Feed'
+                    router.push('../Feed')
                 } else {
-                    document.location.href = `../${redirect}`
+                    router.push(`../${redirect}`)
                 }
 
             })
@@ -155,7 +156,7 @@ export default function Login() {
                                     text-xl
                                     font-mono"
                                 >
-                                    <p>INCORRECT USERNAME OR PASSWORD!</p>
+                                    <p>INCORRECT EMAIL OR PASSWORD!</p>
                                 </div>
                             )}
 

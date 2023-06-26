@@ -3,11 +3,13 @@
 import React, {useState} from "react";
 import Link from "next/link";
 import axios from "axios";
+import {useRouter} from "next/navigation";
 
 export default function register() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const router = useRouter();
 
     function handleSubmit(event: any) {
         event.preventDefault()
@@ -26,8 +28,7 @@ export default function register() {
                 withCredentials: true
             })
             .then(response => {
-                //TODO: change this to use router instead
-                window.location.href = '/login/';
+                router.push("/login/")
             })
             .catch(error => {
                 //TODO: add error handling
@@ -128,10 +129,10 @@ export default function register() {
                                 dark:placeholder-gray-300
                                 "
                                        type="email"
-                                       id="username"
-                                       name="username"
-                                       value={username}
-                                       onChange={handleUsernameChange}
+                                       id="email"
+                                       name="email"
+                                       value={email}
+                                       onChange={handleEmailChange}
                                        placeholder="Email"
                                        maxLength={50}
                                 />
