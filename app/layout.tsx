@@ -19,6 +19,7 @@ export default function RootLayout({
       <body className={inter.className}>
       <Header></Header>
 
+      {/*Used for getting the background coloring*/}
       <div
           className="
                     absolute
@@ -45,8 +46,10 @@ export default function RootLayout({
               }}
           />
       </div>
+
       {children}
 
+      {/*Used for getting the background coloring*/}
       <div
           className="
                     absolute
