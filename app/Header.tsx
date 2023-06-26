@@ -39,11 +39,13 @@ export default function Header() {
                     items-center"
                     >
                         <img src="https://flowbite.com/docs/images/logo.svg"
-                             className="mr-3 h-6 sm:h-9"
+                             className="mr-3 h-9"
                              alt="Flowbite Logo"
                         />
                         <span
                             className="
+                            hidden
+                            xsm:block
                             self-center
                             text-xl
                             font-semibold
