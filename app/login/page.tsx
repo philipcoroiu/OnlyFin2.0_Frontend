@@ -85,9 +85,10 @@ export default function Login() {
                         <div>
                             <h1 className="text-xl font-semibold text-gray-800 dark:text-white">Login to your
                                 account</h1>
-                            <p className="text-sm tracking-wide text-gray-600 dark:text-gray-300">Don't have an account?
-                                <a href=""
-                                   className="text-blue-600 transition duration-200 hover:underline dark:text-blue-400"> Signup!</a>
+                            <p className="text-sm tracking-wide text-gray-600 dark:text-gray-300"><span>Don't have an account? </span>
+                                <Link className="text-blue-600 transition duration-200 hover:underline dark:text-blue-400" href={"../register"}>
+                                    Register!
+                                </Link>
                             </p>
                         </div>
 
