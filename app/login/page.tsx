@@ -11,10 +11,6 @@ export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    //todo Denna raden nedanför fungerar ej. Kommenterar ut det tills dess att vi fixar det.
-    // const searchParams = new URLSearchParams(location.search);
-
-    // const redirect = searchParams.get("Redirect") || null;
 
     const [showErrorMessage, setShowErrorMessage] = React.useState(false)
 
@@ -27,7 +23,7 @@ export default function Login() {
     }
 
     function handleSubmit(event: any) {
-        /*event.preventDefault();
+        event.preventDefault();
         axios.post(
             "http://localhost:8080/plz",
             `username=${username}&password=${password}`,
@@ -39,17 +35,12 @@ export default function Login() {
             }
         )
             .then(() => {
-                if (redirect == null) {
-                    router.push('../Feed')
-                } else {
-                    router.push(`../${redirect}`)
-                }
+                router.push('../Feed')
 
             })
             .catch(() => {
                 displayErrorMessage()
             });
-        console.log(redirect)*/
     }
 
     function displayErrorMessage() {
