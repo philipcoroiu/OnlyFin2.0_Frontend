@@ -11,7 +11,7 @@ export default function App() {
                         text-4xl
                         font-bold
                         tracking-tight
-                        text-gray-200
+                        dark:text-gray-200
                         sm:text-6xl">
                         The OnlyFans <br/> of investing
                     </h1>
@@ -19,7 +19,7 @@ export default function App() {
                         mt-6
                         text-lg
                         leading-8
-                        text-gray-300">
+                        dark:text-gray-300">
                         Make money on your stock market analysis
                     </p>
                     <div className="
@@ -31,19 +31,21 @@ export default function App() {
                         <a
                             href="#"
                             className="
-                                rounded-md
-                                bg-indigo-600
-                                px-3.5
-                                py-2.5
-                                text-sm
-                                font-semibold
-                                text-white
-                                shadow-sm
-                                hover:bg-indigo-500
-                                focus-visible:outline
-                                focus-visible:outline-2
-                                focus-visible:outline-offset-2
-                                focus-visible:outline-indigo-600"
+                           text-white
+                           bg-blue-700
+                           hover:bg-blue-800
+                           focus:ring-4
+                           focus:ring-blue-300
+                           font-medium
+                           rounded-lg
+                           text-sm px-4
+                           lg:px-5 py-2
+                           lg:py-2.5
+                           mr-2
+                           dark:bg-blue-600
+                           dark:hover:bg-blue-700
+                           focus:outline-none
+                           dark:focus:ring-blue-800"
                         >
                             Get started
                         </a>
@@ -51,7 +53,7 @@ export default function App() {
                             text-sm
                             font-semibold
                             leading-6
-                            text-gray-300">
+                            dark:text-gray-300">
                             Explore <span aria-hidden="true">→</span>
                         </a>
                     </div>

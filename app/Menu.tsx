@@ -13,8 +13,8 @@ export default function Menu (props: any) {
                            pr-4
                            pl-3
                            text-gray-700
-                           border-b
-                           border-gray-100
+                           border-b-2
+                           border-blue-700/[0.3]
                            hover:bg-gray-50
                            lg:hover:bg-transparent
                            lg:border-0

@@ -13,11 +13,16 @@ export default function Header() {
     return (
         <header>
             <nav className="
-            bg-white
-            border-gray-200
             px-4
             lg:px-6
+
+            border-b-2
+            border-blue-700/[0.7]
+
+            dark:border-b-0
+
             py-2.5
+            bg-gray-100/[0.6]
             dark:bg-gray-800/[0.6]
             "
             >
