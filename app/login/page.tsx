@@ -23,7 +23,6 @@ export default function Login() {
     }
 
 
-
     function handleSubmit(event: any) {
         event.preventDefault();
         axios.post(
@@ -60,120 +59,128 @@ export default function Login() {
     }
 
     return (
-        <div className="flex
+        <div className="
+        flex
+        items-center
         justify-center
-        mx-[5%]
-        mt-5
-        dark:bg-gray-800
-        rounded-lg
-        p-3"
-        >
+        p-12">
             <form
-                onSubmit={handleSubmit}
-                className="flex flex-col">
+                onSubmit={handleSubmit}>
 
-                <div className="flex
-                flex-col
-                justify-center
-                my-2"
-                >
-
-                    <h1 className="
-                    text-3xl
-                    font-bold
-                    text-center
-                    mb-4"
-                    >Log in</h1>
-
-                    <p>Welcome to OnlyFin, please put your credentials below to start using the website</p>
-
-                </div>
                 <div className="
-                flex
-                flex-col"
-                >
-                    <input
-                        type="email"
-                        id="username"
-                        name="username"
-                        value={username}
-                        onChange={handleUsernameChange}
-                        placeholder="Email"
-                        maxLength={50}
-                        className="
-                        my-2
-                        p-2
-                        rounded-md"
-                    />
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        value={password}
-                        onChange={handlePasswordChange}
-                        placeholder="Password"
-                        maxLength={100}
-                        className="
-                        my-2
-                        p-2
-                        rounded-md"
-                    />
-                </div>
+                max-w-xl
+                rounded-3xl
+                bg-gradient-to-b
+                from-sky-300
+                to-purple-500
+                p-px dark:from-gray-800
+                dark:to-transparent">
 
-                {showErrorMessage && (
                     <div className="
-                    text-center
-                    text-red-500
-                    font-bold
-                    m-2
-                    text-xl
-                    font-mono"
-                    >
-                        <p>INCORRECT USERNAME OR PASSWORD!</p>
+                    rounded-[calc(1.5rem-1px)]
+                    bg-white
+                    px-10 p-12
+                    dark:bg-gray-900">
+
+                        <div>
+                            <h1 className="text-xl font-semibold text-gray-800 dark:text-white">Login to your
+                                account</h1>
+                            <p className="text-sm tracking-wide text-gray-600 dark:text-gray-300">Don't have an account?
+                                <a href=""
+                                   className="text-blue-600 transition duration-200 hover:underline dark:text-blue-400"> Signup!</a>
+                            </p>
+                        </div>
+
+                        <div className="mt-8 space-y-6">
+                            <div className="space-y-6">
+                                <input className="w-full
+                                bg-transparent
+                                text-gray-600
+                                dark:text-white
+                                dark:border-gray-700
+                                rounded-md
+                                border
+                                border-gray-300
+                                px-3
+                                py-2
+                                text-sm
+                                placeholder-gray-600
+                                invalid:border-red-500
+                                dark:placeholder-gray-300
+                                "
+                                       type="email"
+                                       id="username"
+                                       name="username"
+                                       value={username}
+                                       onChange={handleUsernameChange}
+                                       placeholder="Email"
+                                       maxLength={50}
+                                />
+
+                                <input className="w-full
+                                bg-transparent
+                                text-gray-600
+                                dark:text-white
+                                dark:border-gray-700
+                                rounded-md
+                                border
+                                border-gray-300
+                                px-3
+                                py-2
+                                text-sm
+                                placeholder-gray-600
+                                invalid:border-red-500
+                                dark:placeholder-gray-300
+
+                                "
+                                       type="password"
+                                       id="password"
+                                       name="password"
+                                       value={password}
+                                       onChange={handlePasswordChange}
+                                       placeholder="Password"
+                                       maxLength={100}
+                                />
+                            </div>
+
+                            {showErrorMessage && (
+                                <div className="
+                                    text-center
+                                    text-red-500
+                                    font-bold
+                                    text-xl
+                                    font-mono"
+                                >
+                                    <p>INCORRECT USERNAME OR PASSWORD!</p>
+                                </div>
+                            )}
+
+                            <button
+                                className="
+                                h-10
+                                px-3
+                                w-full
+                                text-white
+                                text-center
+
+                                bg-blue-700
+                                hover:bg-blue-800
+                                focus:ring-4
+                                focus:ring-blue-300
+                                font-medium
+                                rounded-lg
+                                text-lg
+                                dark:bg-blue-600
+                                dark:hover:bg-blue-700
+                                focus:outline-none
+                                dark:focus:ring-blue-800
+                                ">
+                                Login
+                            </button>
+                        </div>
                     </div>
-                )}
-
-                <div className="
-                items-center
-                flex
-                flex-col"
-                >
-                <button
-                    type="submit"
-                    className="
-                    text-white
-                    bg-blue-700
-                    hover:bg-blue-800
-                    focus:ring-4
-                    focus:ring-blue-300
-                    font-medium
-                    rounded-lg
-                    text-lg
-                    px-4
-                    lg:px-5
-                    py-2
-                    lg:py-2.5
-                    m-2
-                    dark:bg-blue-600
-                    dark:hover:bg-blue-700
-                    focus:outline-none
-                    dark:focus:ring-blue-800
-                    w-fit"
-                >
-                    Log in
-                </button>
-
-                <Link href={"../register"}
-                className="
-                m-2
-                text-blue-800"
-                >
-                    Not a user? Register here.
-                </Link>
-
                 </div>
             </form>
-
         </div>
     );
 }
