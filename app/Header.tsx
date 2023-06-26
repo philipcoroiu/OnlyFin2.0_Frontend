@@ -18,7 +18,8 @@ export default function Header() {
             px-4
             lg:px-6
             py-2.5
-            dark:bg-gray-800"
+            dark:bg-gray-800/[0.6]
+            "
             >
                 <div className="
                 flex
