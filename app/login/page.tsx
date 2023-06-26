@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import axios from 'axios';
 import Link from "next/link";
 import {useRouter} from "next/navigation";
+import {ApiCalls} from "@/app/utilities/ApiCalls";
 
 
 export default function Login() {
@@ -24,24 +25,34 @@ export default function Login() {
 
     function handleSubmit(event: any) {
         event.preventDefault();
-        axios.post(
-            "http://localhost:8080/plz",
-            `username=${username}&password=${password}`,
-            {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                withCredentials: true,
-            }
-        )
-            .then(() => {
-                router.push('../Feed')
+        ApiCalls.postLoginPlz(username,password)
+            .then((response) => {
+                if (response){
+                    router.push('../feed')
+                }else {
+                    displayErrorMessage()
+                }
 
             })
             .catch(() => {
                 displayErrorMessage()
             });
     }
+
+    /*
+  *
+  * event.preventDefault();
+      ApiCalls.postLoginPlz(username,password)
+          .then(() => {
+              //router.push('../Feed')
+
+          })
+          .catch(() => {
+              displayErrorMessage()
+          });
+  *
+  * */
+
 
     function displayErrorMessage() {
 

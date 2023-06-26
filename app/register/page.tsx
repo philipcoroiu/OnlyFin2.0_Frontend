@@ -28,7 +28,7 @@ export default function register() {
                 withCredentials: true
             })
             .then(response => {
-                router.push("/login/")
+                //router.push("/login/")
             })
             .catch(error => {
                 //TODO: add error handling
