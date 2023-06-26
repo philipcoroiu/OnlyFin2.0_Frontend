@@ -2,6 +2,8 @@ import axios from 'axios';
 import {promises} from "dns";
 
 
+
+// Class containing the items needed to register a new user n
 class UserDTO {
     private email: String
     private username: String
@@ -17,7 +19,7 @@ function handleError(error: any) {
     console.log('There was an error in the API call ', error)
 }
 
-class ApiCalls{
+export class ApiCalls{
 
     public async postRegisterNewUser(userDTO: UserDTO ) : Promise<boolean> {
         let registerSuccess : boolean = false;
