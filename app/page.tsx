@@ -1,8 +1,6 @@
 export default function App() {
     return (
-        <main className="">
-
-            <div className="
+            <main className="
                 mx-auto
                 max-w-2xl
                 py-32
@@ -58,8 +56,6 @@ export default function App() {
                         </a>
                     </div>
                 </div>
-            </div>
-
-        </main>
+            </main>
     )
 }

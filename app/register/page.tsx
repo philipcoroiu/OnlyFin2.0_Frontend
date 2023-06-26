@@ -50,10 +50,13 @@ export default function register() {
     //TODO: change dark mode text input to be a readable color
     return (
         <div className="
-        flex
-        items-center
-        justify-center
-        p-12">
+        mx-auto
+        max-w-2xl
+        py-32
+        sm:py-48
+        lg:py-56
+        p-12
+        ">
             <form
                 onSubmit={handleSubmit}>
 
