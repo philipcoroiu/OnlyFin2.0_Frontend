@@ -1,32 +1,28 @@
 import axios from 'axios';
-import {promises} from "dns";
 
+//TODO test this class and the endpoints in it
 
-
-// Class containing the items needed to register a new user n
-class UserDTO {
-    private email: String
-    private username: String
-    private password: String
-    constructor(email: String, username: String, password : String ) {
-        this.email = email
-        this.username = username
-        this.password = password
-    }
-}
-
+//Error handling (currently only displays the error?)
 function handleError(error: any) {
     console.log('There was an error in the API call ', error)
 }
 
+
+//to use this class in other classes write
+// import {ApiCalls} from "@/app/utilities/ApiCalls";
+// and to call functions write ApiCalls.{function name}
+
 export class ApiCalls{
 
-    public async postRegisterNewUser(userDTO: UserDTO ) : Promise<boolean> {
+    //Static function is created for each endpoint from the backend
+    public static async postRegisterNewUser(email: String, username: String, password: String ) : Promise<boolean> {
         let registerSuccess : boolean = false;
 
         await axios.post("http://localhost:8080/users/register",
             {
-                userDTO
+                email: email,
+                username: username,
+                password: password
             },
             {
                 headers: {
@@ -44,14 +40,12 @@ export class ApiCalls{
         return registerSuccess
     }
 
-    public async postLoginPlz(email : String, password : String) : Promise<boolean>{
+    public static async postLoginPlz(username : String, password : String) : Promise<boolean>{
         let loginSuccess : boolean = false;
 
         await axios.post("http://localhost:8080/plz",
-            {
-                email : email,
-                password : password
-            },
+            `username=${username}&password=${password}`
+            ,
             {
                 headers: {
                     'Content-Type': 'application/json'
@@ -68,6 +62,53 @@ export class ApiCalls{
 
         return loginSuccess
     }
+
+    public static async findAll() : Promise<any>{
+        await axios.get("http://localhost:8080/users/search/all", {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
+        })
+        .then((response) => {
+            return response;
+        })
+        .catch(error => {
+            handleError(error)
+        })
+    }
+
+    public static async findByUserName(username : String) : Promise<any>{
+        await axios.get(`http://localhost:8080/users/username?username=${username}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
+        })
+        .then((response) => {
+            return response;
+        })
+        .catch(error => {
+            handleError(error)
+        })
+    }
+
+    public static async searchByUserName(username : String) : Promise<any>{
+        await axios.get(`http://localhost:8080/users/search/username?username=${username}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
+        })
+        .then((response) => {
+            return response;
+        })
+        .catch(error => {
+            handleError(error)
+        })
+    }
+
+    //Add more endpoints here
 }
 
 
