@@ -14,7 +14,7 @@ export default function Explore() {
         <div className="flex  justify-center">
 
             <form className="m-4">
-                <div className="flex w-full max-w-xl mt-12 border-2 border-amber-800
+                <div className="flex w-full max-w-xl mt-12 
                 shadow-xl shadow-gray-600/[0.3] rounded-lg
                 dark:shadow-none
 
