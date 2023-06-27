@@ -1,6 +1,6 @@
 "use client"
 import {useState} from "react";
-import Menu from "@/app/Menu";
+import Menu from "@/app/components/Menu";
 
 export default function Header() {
 
