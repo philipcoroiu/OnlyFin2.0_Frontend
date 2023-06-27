@@ -1,12 +1,13 @@
-export default function Menu (props: any) {
+export default function Menu(props: any) {
     let menuItems: string[] = ["Home", "Dashboard", "About", "Contact"]
     return (
-        <div className={` ${props.toggleHamburgerMenu ? "" : "hidden"} justify-between items-center w-full lg:flex lg:w-auto lg:order-1`}
-             id="mobile-menu-2">
+        <div
+            className={` ${props.toggleHamburgerMenu ? "" : "hidden"} justify-between items-center w-full lg:flex lg:w-auto lg:order-1`}
+            id="mobile-menu-2">
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                 {menuItems.map((name, index) => (
                     <li key={index}>
-                        <a href={name==="Home" ? "/" :name.toLowerCase()}
+                        <a href={name === "Home" ? "/" : name.toLowerCase()}
                            className="
                            block
                            py-2
