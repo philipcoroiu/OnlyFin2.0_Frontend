@@ -17,6 +17,7 @@ export default function App() {
                     </h1>
                     <p className="
                         mt-6
+                        mx-4
                         text-lg
                         leading-8
                         dark:text-gray-300">
@@ -25,9 +26,11 @@ export default function App() {
                     <div className="
                         mt-10
                         flex
+                        flex-col
+                        xsm:flex-row
                         items-center
                         justify-center
-                        gap-x-6">
+                        gap-6">
                         <a
                             href="#"
                             className="
