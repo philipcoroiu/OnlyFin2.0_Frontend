@@ -16,7 +16,7 @@ export default function Explore() {
         <SearchDropDownMenu
             menuItems={menuItems}
             dropdownButtonIsClicked = {dropdownButtonIsClicked}
-            setDropdownButtonIsClicked = {setDropdownButtonIsClicked}
+            handleDropdownClick = {handleDropdownClick}
         ></SearchDropDownMenu>
     )
 }
