@@ -1,6 +1,7 @@
 "use client"
 
-export default function StartField() {
+export default function StartField(props : any) {
+
     return (
         <div>
             {
@@ -20,6 +21,7 @@ export default function StartField() {
 
                 <input type="text"
                        id="default-input"
+                       onChange={props.handleChartTitleChange}
                        className="bg-gray-50
                        border
                        border-gray-300
