@@ -21,6 +21,20 @@ export default function ToolbarTable() {
         setSpreadsheetData(prevData => prevData.map(row => row.slice(0, -1)));
     }
 
+    function handleAddRowClick() {
+        const newRow = new Array(spreadsheetData[0].length).fill({ value: "" });
+        setSpreadsheetData(prevData => [...prevData, newRow]);
+    }
+
+    function handleRemoveRowClick() {
+        setSpreadsheetData(prevData => {
+            const newData = [...prevData];
+            newData.pop();
+            return newData;
+        });
+    }
+
+
 
     function printNewData() {
         console.log(spreadsheetData);
@@ -90,6 +104,7 @@ export default function ToolbarTable() {
             </button>
 
             <button type="button"
+                    onClick={handleAddRowClick}
                     className="
                     py-2.5
                     px-5
@@ -116,6 +131,7 @@ export default function ToolbarTable() {
             </button>
 
             <button type="button"
+                    onClick={handleRemoveRowClick}
                     className="
                     py-2.5
                     px-5
