@@ -34,12 +34,6 @@ export default function ToolbarTable() {
         });
     }
 
-
-
-    function printNewData() {
-        console.log(spreadsheetData);
-    }
-
     return (
         <div>
 
@@ -164,7 +158,6 @@ export default function ToolbarTable() {
             }
 
             <Spreadsheet data={spreadsheetData} onChange={handleSpreadsheetChange} />
-            <button onClick={printNewData}>print new data</button>
         </div>
     );
 }

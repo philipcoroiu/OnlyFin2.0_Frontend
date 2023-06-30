@@ -17,15 +17,34 @@ export default function DashboardPage() {
 
     return(
         <div>
-            <div className="h-screen flex justify-center items-center p-4">
+            <div className="h-screen
+            flex
+            justify-center
+            items-center
+            p-4">
 
-                <div className="flex-1 mx-2 bg-gray-700 rounded shadow-lg p-4 h-full overflow-auto">
+                <div className="flex-1
+                mx-2
+                bg-gray-700
+                rounded
+                shadow-lg
+                p-4
+                h-full
+                overflow-auto">
                     <StudioPreviewChart
                         chartTitle={chartTitle}
                     />
                 </div>
 
-                <div className="flex-1 mx-2 bg-gray-700 rounded shadow-lg p-4 h-full overflow-auto">
+                <div className="flex-1
+                mx-2
+                bg-gray-700
+                rounded
+                shadow-lg
+                p-4
+                h-full
+                overflow-auto">
+
                     <Toolbar
                         handleChartTitleChange={handleChartTitleChange}
                     />

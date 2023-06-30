@@ -56,7 +56,6 @@ export default function StudioPreviewChart(props : any) {
                 highcharts={Highcharts}
                 options={studioChart}
             />
-            <div>{props.chartTitle}</div>
         </div>
     )
 }
