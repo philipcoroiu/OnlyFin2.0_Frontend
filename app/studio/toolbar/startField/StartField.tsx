@@ -21,6 +21,7 @@ export default function StartField(props : any) {
 
                 <input type="text"
                        id="default-input"
+                       maxLength="60"
                        onChange={props.handleChartTitleChange}
                        className="bg-gray-50
                        border
