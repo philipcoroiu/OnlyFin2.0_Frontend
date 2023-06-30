@@ -11,6 +11,11 @@ export default function StudioPreviewChart(props : any) {
         handleChartTitleChange(props.chartTitle)
     }, [props.chartTitle]);
 
+    useEffect(() => {
+        console.log(props.chartType)
+        handleChartTypeChange(props.chartType)
+    }, [props.chartType])
+
     function handleChartTitleChange(newChartTitle : string) {
 
         setStudioChart(prevState => {
@@ -24,10 +29,21 @@ export default function StudioPreviewChart(props : any) {
         })
     }
 
+    function handleChartTypeChange(newChartType : string) {
+
+        setStudioChart((prevChart) => ({
+            ...prevChart,
+            chart: {
+                ...prevChart.chart,
+                type: newChartType,
+            },
+        }));
+    }
+
 
     const [studioChart, setStudioChart] = useState({
         chart: {
-            type: 'bar'
+            type: props.chartType
         },
         title: {
             text: props.chartTitle

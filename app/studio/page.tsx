@@ -7,10 +7,14 @@ import {useState} from "react";
 export default function DashboardPage() {
 
     const [chartTitle, setChartTitle] = useState("Chart Title")
+    const [chartType, setChartType] = useState("column")
 
     function handleChartTitleChange(event : React.ChangeEvent<HTMLInputElement>) {
         setChartTitle(event.target.value)
-        console.log("new value is:" , event.target.value)
+    }
+
+    function handleChartSelectChange(event : any) {
+        setChartType(event.target.value)
     }
 
 
@@ -33,6 +37,7 @@ export default function DashboardPage() {
                 overflow-auto">
                     <StudioPreviewChart
                         chartTitle={chartTitle}
+                        chartType={chartType}
                     />
                 </div>
 
@@ -47,6 +52,7 @@ export default function DashboardPage() {
 
                     <Toolbar
                         handleChartTitleChange={handleChartTitleChange}
+                        handleChartSelectChange={handleChartSelectChange}
                     />
                 </div>
             </div>

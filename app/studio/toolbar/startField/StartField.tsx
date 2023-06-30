@@ -51,6 +51,7 @@ export default function StartField(props : any) {
                 an option</label>
 
             <select id="charts"
+                    onChange={props.handleChartSelectChange}
                     className="
                     bg-gray-50
                     border
@@ -70,10 +71,9 @@ export default function StartField(props : any) {
                     dark:focus:border-blue-500">
 
                 <option selected>Choose a chart</option>
-                <option value="BAR">Bar</option>
-                <option value="COL">Column</option>
-                <option value="PIE">Pie</option>
-                <option value="LINE">Line</option>
+                <option value="bar">Bar</option>
+                <option value="column">Column</option>
+                <option value="line">Line</option>
             </select>
         </div>
     )

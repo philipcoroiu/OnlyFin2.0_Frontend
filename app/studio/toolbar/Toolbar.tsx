@@ -9,6 +9,7 @@ export default function Toolbar(props : any) {
         <div>
             <StartField
                 handleChartTitleChange={props.handleChartTitleChange}
+                handleChartSelectChange={props.handleChartSelectChange}
             />
             <ToolbarTable/>
         </div>
