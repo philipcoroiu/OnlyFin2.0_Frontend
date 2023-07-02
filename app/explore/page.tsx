@@ -3,6 +3,7 @@
 import {useEffect, useState} from "react";
 import SearchDropDownMenu from "@/app/explore/components/SearchDropDownMenu";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
+import SearchResult from "@/app/explore/components/SearchResult";
 
 export default function Explore() {
 
@@ -31,11 +32,13 @@ export default function Explore() {
     }
 
     return (
-        <SearchDropDownMenu
-            menuItems={menuItems}
-            dropdownButtonIsClicked = {dropdownButtonIsClicked}
-            handleDropdownClick = {handleDropdownClick}
-
-        ></SearchDropDownMenu>
+        <div>
+            <SearchDropDownMenu
+                menuItems={menuItems}
+                dropdownButtonIsClicked = {dropdownButtonIsClicked}
+                handleDropdownClick = {handleDropdownClick}
+            ></SearchDropDownMenu>
+            <SearchResult/>
+        </div>
     )
 }
