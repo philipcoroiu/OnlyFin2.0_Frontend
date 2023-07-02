@@ -5,58 +5,25 @@ export default function SearchResult() {
 
     return(
         <div className="mx-auto my-10 px-4 sm:px-6 lg:px-20">
-
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div>
-                    <img className="h-auto max-w-full rounded-lg"
-                         src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt=""/>
+                <div className="bg-gray-200 rounded-lg p-4">
+                    <h3 className="text-xl font-bold">Card 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
-                <div>
-                    <img className="h-auto max-w-full rounded-lg"
-                         src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt=""/>
+                <div className="bg-gray-200 rounded-lg p-4">
+                    <h3 className="text-xl font-bold">Card 2</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
-                <div>
-                    <img className="h-auto max-w-full rounded-lg"
-                         src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt=""/>
+                <div className="bg-gray-200 rounded-lg p-4">
+                    <h3 className="text-xl font-bold">Card 3</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
-                <div>
-                    <img className="h-auto max-w-full rounded-lg"
-                         src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt=""/>
-                </div>
-                <div>
-                    <img className="h-auto max-w-full rounded-lg"
-                         src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt=""/>
-                </div>
-                <div>
-                    <img className="h-auto max-w-full rounded-lg"
-                         src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt=""/>
-                </div>
-                <div>
-                    <img className="h-auto max-w-full rounded-lg"
-                         src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-6.jpg" alt=""/>
-                </div>
-                <div>
-                    <img className="h-auto max-w-full rounded-lg"
-                         src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-7.jpg" alt=""/>
-                </div>
-                <div>
-                    <img className="h-auto max-w-full rounded-lg"
-                         src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-8.jpg" alt=""/>
-                </div>
-                <div>
-                    <img className="h-auto max-w-full rounded-lg"
-                         src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-9.jpg" alt=""/>
-                </div>
-                <div>
-                    <img className="h-auto max-w-full rounded-lg"
-                         src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-10.jpg" alt=""/>
-                </div>
-                <div>
-                    <img className="h-auto max-w-full rounded-lg"
-                         src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg" alt=""/>
+                <div className="bg-gray-200 rounded-lg p-4">
+                    <h3 className="text-xl font-bold">Card 4</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
             </div>
-
         </div>
+
     )
 }
