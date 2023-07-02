@@ -1,6 +1,14 @@
 "use client"
 
+import {useState} from "react";
+
 export default function StartField(props : any) {
+
+    const [stockIsSelected, setStockIsSelected] = useState(false);
+
+    function handleStockSelect(event : any) {
+        console.log("handleStockSelect: " ,event.target.value)
+    }
 
     return (
         <div>
@@ -51,6 +59,7 @@ export default function StartField(props : any) {
                 a stock</label>
 
             <select id="stocks"
+                    onChange={handleStockSelect}
                     className="
                     bg-gray-50
                     border
@@ -101,7 +110,9 @@ export default function StartField(props : any) {
                     dark:placeholder-gray-400
                     dark:text-white
                     ark:focus:ring-blue-500
-                    dark:focus:border-blue-500">
+                    dark:focus:border-blue-500"
+                    disabled={!stockIsSelected}
+            >
 
                 <option selected>Category</option>
                 <option value="bar">Bar</option>
