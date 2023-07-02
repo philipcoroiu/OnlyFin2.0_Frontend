@@ -16,5 +16,7 @@ module.exports = {
         'xsm': '395px'},
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio')
+  ],
 }
