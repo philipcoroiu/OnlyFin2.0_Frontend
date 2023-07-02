@@ -123,6 +123,20 @@ export class ApiCalls{
             })
     }
 
+    public static async searchAllUsers(): Promise<any> {
+        try {
+            const response = await axios.get(`http://localhost:8080/users/search/all`, {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
+            })
+            return response.data;
+        } catch(error) {
+            handleError(error)
+        }
+    }
+
     //Add more endpoints here
 }
 

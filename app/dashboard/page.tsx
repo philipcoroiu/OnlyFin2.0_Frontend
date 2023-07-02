@@ -7,7 +7,7 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 
 
 export default function dashboardModuleBoard() {
-    
+
     const [activeStockTab, setActiveStockTab] = useState(0);
     const [activeCategoryTab, setActiveCategoryTab] = useState(0);
 
