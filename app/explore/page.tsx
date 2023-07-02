@@ -7,20 +7,21 @@ import SearchResult from "@/app/explore/components/SearchResult";
 
 export default function Explore() {
 
-    const [searchData, setSearchData] = useState();
+    const [searchResult, setSearchResult] = useState();
 
     useEffect(() => {
         async function fetchData() {
             try {
                 const data = await ApiCalls.searchAllUsers();
-                console.log(data);
+                setSearchResult(data);
+                console.log(data[0].username);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         }
 
         fetchData();
-    })
+    }, [])
 
 
 
@@ -37,8 +38,10 @@ export default function Explore() {
                 menuItems={menuItems}
                 dropdownButtonIsClicked = {dropdownButtonIsClicked}
                 handleDropdownClick = {handleDropdownClick}
-            ></SearchDropDownMenu>
-            <SearchResult/>
+            />
+            <SearchResult
+                searchResult={searchResult}
+            />
         </div>
     )
 }
