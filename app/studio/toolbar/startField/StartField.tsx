@@ -7,7 +7,7 @@ export default function StartField(props : any) {
     const [stockIsSelected, setStockIsSelected] = useState(false);
 
     function handleStockSelect(event : any) {
-        console.log("handleStockSelect: " ,event.target.value)
+        console.log("handleStockSelect: ",event.target.value)
     }
 
     return (
@@ -29,6 +29,7 @@ export default function StartField(props : any) {
 
                 <input type="text"
                        id="default-input"
+                       placeholder="Untitled Chart"
                        maxLength={60}
                        onChange={props.handleChartTitleChange}
                        className="bg-gray-50

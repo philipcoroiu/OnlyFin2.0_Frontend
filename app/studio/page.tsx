@@ -6,7 +6,7 @@ import {useState} from "react";
 
 export default function DashboardPage() {
 
-    const [chartTitle, setChartTitle] = useState("Chart Title")
+    const [chartTitle, setChartTitle] = useState("Untitled Chart")
     const [chartType, setChartType] = useState("column")
 
     function handleChartTitleChange(event : React.ChangeEvent<HTMLInputElement>) {
