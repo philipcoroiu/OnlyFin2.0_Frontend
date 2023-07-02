@@ -2,11 +2,12 @@
 import React, {useState} from "react";
 import TabsContainer from "./Tabs/TabsContainer";
 import DashboardModules from "@/app/dashboard/DashbordModules";
+import {ApiCalls} from "@/app/utilities/ApiCalls";
 
 
 
 export default function dashboardModuleBoard() {
-
+    
     const [activeStockTab, setActiveStockTab] = useState(0);
     const [activeCategoryTab, setActiveCategoryTab] = useState(0);
 

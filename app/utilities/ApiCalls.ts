@@ -108,6 +108,21 @@ export class ApiCalls{
         })
     }
 
+    public static async whoAmI(): Promise<any> {
+        await axios.get(`http://localhost:8080/users/whoami`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true
+        })
+            .then((response) => {
+                return response;
+            })
+            .catch(error => {
+                handleError(error)
+            })
+    }
+
     //Add more endpoints here
 }
 
