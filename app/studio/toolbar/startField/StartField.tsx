@@ -60,6 +60,7 @@ export default function StartField(props : any) {
 
             <select id="stocks"
                     onChange={handleStockSelect}
+                    defaultValue="stock"
                     className="
                     bg-gray-50
                     border
@@ -78,7 +79,7 @@ export default function StartField(props : any) {
                     ark:focus:ring-blue-500
                     dark:focus:border-blue-500">
 
-                <option selected>Stock</option>
+                <option value="stock">Stock</option>
                 <option value="bar">Bar</option>
                 <option value="column">Column</option>
                 <option value="line">Line</option>
@@ -94,6 +95,7 @@ export default function StartField(props : any) {
                 a category</label>
 
             <select id="stocks"
+                    defaultValue="Category"
                     className="
                     bg-gray-50
                     border
@@ -114,7 +116,7 @@ export default function StartField(props : any) {
                     disabled={!stockIsSelected}
             >
 
-                <option selected>Category</option>
+                <option value="category">Category</option>
                 <option value="bar">Bar</option>
                 <option value="column">Column</option>
                 <option value="line">Line</option>
@@ -132,6 +134,7 @@ export default function StartField(props : any) {
 
             <select id="charts"
                     onChange={props.handleChartSelectChange}
+                    defaultValue="default"
                     className="
                     bg-gray-50
                     border
@@ -150,7 +153,7 @@ export default function StartField(props : any) {
                     ark:focus:ring-blue-500
                     dark:focus:border-blue-500">
 
-                <option selected>Choose a chart</option>
+                <option value="default">Choose a chart</option>
                 <option value="bar">Bar</option>
                 <option value="column">Column</option>
                 <option value="line">Line</option>
