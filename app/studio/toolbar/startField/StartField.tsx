@@ -7,7 +7,13 @@ export default function StartField(props : any) {
     const [stockIsSelected, setStockIsSelected] = useState(false);
 
     function handleStockSelect(event : any) {
-        console.log("handleStockSelect: ",event.target.value)
+        const selectedStockValue = event.target.value;
+
+        if(selectedStockValue === "stock") {
+            setStockIsSelected(false)
+        } else {
+            setStockIsSelected(true)
+        }
     }
 
     return (
