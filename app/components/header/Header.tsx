@@ -1,5 +1,5 @@
 "use client"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Menu from "@/app/components/Menu";
 import LoggedOutButtons from "@/app/components/header/headerComponents/LoggedOutButtons";
 import LoggedInButtons from "@/app/components/header/headerComponents/LoggedInButtons";
@@ -8,12 +8,12 @@ export default function Header() {
 
     const [toggleHamburgerMenu, setToggleHamburgerMenu] = useState(false)
 
+    useEffect(() => {
+
+    }, [])
+
     function ToggleHamburgerMenu(){
         setToggleHamburgerMenu(oldValue => !oldValue)
-    }
-
-    function isLoggedIn() {
-
     }
 
     return (

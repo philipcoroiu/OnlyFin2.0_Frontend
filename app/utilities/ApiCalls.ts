@@ -1,4 +1,5 @@
-import axios from 'axios';
+import axios, {AxiosError} from 'axios';
+
 
 //TODO test this class and the endpoints in it
 
@@ -109,19 +110,23 @@ export class ApiCalls{
     }
 
     public static async whoAmI(): Promise<any> {
-        await axios.get(`http://localhost:8080/users/whoami`, {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            withCredentials: true
-        })
-            .then((response) => {
-                return response;
-            })
-            .catch(error => {
-                handleError(error)
-            })
+        try {
+            const response = await axios.get(`http://localhost:8080/users/whoami`, {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
+            });
+            return response;
+        } catch (error) {
+            if ((error as AxiosError).response?.status === 402) {
+                return { error: 'Not logged in' };
+            } else {
+                handleError(error);
+            }
+        }
     }
+
 
     public static async searchAllUsers(): Promise<any> {
         try {
