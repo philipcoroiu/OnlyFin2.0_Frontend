@@ -1,5 +1,7 @@
 "use client"
 
+import Avatar from "@/app/components/Avatar";
+
 
 export default function SearchResult(props : any) {
 
@@ -7,9 +9,10 @@ export default function SearchResult(props : any) {
         if (props.searchResult) {
             return props.searchResult.map((data: any, index: number) => {
                 return (
-                    <div key={index} className="bg-gray-200 rounded-lg p-4">
-                        <h3 className="text-xl font-bold">Card 4</h3>
-                        <p>{props.searchResult[index].username}</p>
+                    <div key={index} className="bg-gray-700 rounded-lg p-4">
+                        <Avatar/>
+                        <h3 className="text-xl font-bold">{props.searchResult[index].username}</h3>
+                        <p></p>
                     </div>
                 );
             });
