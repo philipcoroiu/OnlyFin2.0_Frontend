@@ -1,6 +1,5 @@
 "use client"
 
-import Avatar from "@/app/components/Avatar";
 import LoadingAnimation from "@/app/components/LoadingAnimation";
 import SearchProfile from "@/app/explore/components/searchProfile/SearchProfile";
 

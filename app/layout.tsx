@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Header from "@/app/components/Header";
+import Header from "@/app/components/header/Header";
 import BgBlurLower from "@/app/components/BgBlurLower";
 import BgBlurUpper from "@/app/components/BgBlurUpper";
 
