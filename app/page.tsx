@@ -1,29 +1,29 @@
 export default function App() {
     return (
-            <main className="
+        <main className="
                 mx-auto
                 max-w-2xl
                 py-32
                 sm:py-48
                 lg:py-56">
-                <div className="text-center">
-                    <h1 className="
+            <div className="text-center">
+                <h1 className="
                         text-4xl
                         font-bold
                         tracking-tight
                         dark:text-gray-200
                         sm:text-6xl">
-                        The OnlyFans <br/> of investing
-                    </h1>
-                    <p className="
+                    The OnlyFans <br/> of investing
+                </h1>
+                <p className="
                         mt-6
                         mx-4
                         text-lg
                         leading-8
                         dark:text-gray-300">
-                        Make money on your stock market analysis
-                    </p>
-                    <div className="
+                    Make money on your stock market analysis
+                </p>
+                <div className="
                         mt-10
                         flex
                         flex-col
@@ -31,9 +31,9 @@ export default function App() {
                         items-center
                         justify-center
                         gap-6">
-                        <a
-                            href="#"
-                            className="
+                    <a
+                        href="register"
+                        className="
                            text-white
                            bg-blue-700
                            hover:bg-blue-800
@@ -49,18 +49,18 @@ export default function App() {
                            dark:hover:bg-blue-700
                            focus:outline-none
                            dark:focus:ring-blue-800"
-                        >
-                            Get started
-                        </a>
-                        <a href="explore" className="
+                    >
+                        Get started
+                    </a>
+                    <a href="explore" className="
                             text-sm
                             font-semibold
                             leading-6
                             dark:text-gray-300">
-                            Explore <span aria-hidden="true">→</span>
-                        </a>
-                    </div>
+                        Explore <span aria-hidden="true">→</span>
+                    </a>
                 </div>
-            </main>
+            </div>
+        </main>
     )
 }
