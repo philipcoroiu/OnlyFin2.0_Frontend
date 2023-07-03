@@ -3,13 +3,13 @@
 
 export default function SearchResult(props : any) {
 
-    function searchResult() {
+    function renderSearchResult() {
         if (props.searchResult) {
             return props.searchResult.map((data: any, index: number) => {
                 return (
                     <div key={index} className="bg-gray-200 rounded-lg p-4">
                         <h3 className="text-xl font-bold">Card 4</h3>
-                        <p></p>
+                        <p>{props.searchResult[index].username}</p>
                     </div>
                 );
             });
@@ -38,7 +38,7 @@ export default function SearchResult(props : any) {
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
 
-                {searchResult()}
+                {renderSearchResult()}
 
             </div>
         </div>
