@@ -1,9 +1,11 @@
 "use client"
 
+import Link from "next/link";
+
 export default function LoggedOutButtons() {
     return (
         <div>
-            <a href="/login"
+            <Link href="/login"
                className="
                            text-gray-800
                            dark:text-white
@@ -21,8 +23,8 @@ export default function LoggedOutButtons() {
                            dark:hover:bg-gray-700
                            focus:outline-none
                            dark:focus:ring-gray-800"
-            >Log in</a>
-            <a href="/register"
+            >Log in</Link>
+            <Link href="/register"
                className="
                            text-white
                            bg-blue-700
@@ -41,7 +43,7 @@ export default function LoggedOutButtons() {
                            dark:focus:ring-blue-800"
             >
                 Get started
-            </a>
+            </Link>
         </div>
     )
 }

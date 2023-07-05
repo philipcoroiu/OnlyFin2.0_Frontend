@@ -1,17 +1,18 @@
 "use client"
 
 import Avatar from "@/app/components/Avatar";
+import Link from "next/link";
 
 export default function LoggedInButtons(props : any) {
     return (
         <div className="flex items-center">
-            <a href="/" className="flex items-center">
+            <Link href="/" className="flex items-center">
                 <div className="mr-1">
                     <Avatar/>
                 </div>
                 <p className="ml-2">{props.username}</p>
-            </a>
-            <a href="/login"
+            </Link>
+            <Link href="/login"
                className="
                            text-gray-800
                            dark:text-white
@@ -30,7 +31,7 @@ export default function LoggedInButtons(props : any) {
                            focus:outline-none
                            dark:focus:ring-gray-800
                            ml-5"
-            >Log out</a>
+            >Log out</Link>
         </div>
     )
 }

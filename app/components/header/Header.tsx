@@ -4,10 +4,12 @@ import Menu from "@/app/components/Menu";
 import LoggedOutButtons from "@/app/components/header/headerComponents/LoggedOutButtons";
 import LoggedInButtons from "@/app/components/header/headerComponents/LoggedInButtons";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
+import Link from "next/link";
 
 export default function Header() {
 
     const [toggleHamburgerMenu, setToggleHamburgerMenu] = useState(false)
+
     const [username, setUsername] = useState();
 
     useEffect(() => {
@@ -21,6 +23,8 @@ export default function Header() {
                 }
             })
     }, [])
+
+
 
     function ToggleHamburgerMenu(){
         setToggleHamburgerMenu(oldValue => !oldValue)
@@ -50,7 +54,7 @@ export default function Header() {
                 mx-auto
                 max-w-screen-xl"
                 >
-                    <a href="/" className="
+                    <Link href="/" className="
                     flex
                     items-center"
                     >
@@ -68,7 +72,7 @@ export default function Header() {
                             whitespace-nowrap
                             dark:text-white"
                         >OnlyFin</span>
-                    </a>
+                    </Link>
                     <div className="
                     flex items-center
                     lg:order-2"
