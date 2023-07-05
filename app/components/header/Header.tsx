@@ -1,10 +1,30 @@
 "use client"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Menu from "@/app/components/Menu";
+import LoggedOutButtons from "@/app/components/header/headerComponents/LoggedOutButtons";
+import LoggedInButtons from "@/app/components/header/headerComponents/LoggedInButtons";
+import {ApiCalls} from "@/app/utilities/ApiCalls";
+import Link from "next/link";
 
 export default function Header() {
 
     const [toggleHamburgerMenu, setToggleHamburgerMenu] = useState(false)
+
+    const [username, setUsername] = useState();
+
+    useEffect(() => {
+        ApiCalls.whoAmI()
+            .then((response) => {
+                if(response.error === '204') {
+                    console.log("User not logged in")
+                } else {
+                    console.log("whoAmI response.data: ",response.data)
+                    setUsername(response.data)
+                }
+            })
+    }, [])
+
+
 
     function ToggleHamburgerMenu(){
         setToggleHamburgerMenu(oldValue => !oldValue)
@@ -34,7 +54,7 @@ export default function Header() {
                 mx-auto
                 max-w-screen-xl"
                 >
-                    <a href="/" className="
+                    <Link href="/" className="
                     flex
                     items-center"
                     >
@@ -52,50 +72,13 @@ export default function Header() {
                             whitespace-nowrap
                             dark:text-white"
                         >OnlyFin</span>
-                    </a>
+                    </Link>
                     <div className="
                     flex items-center
                     lg:order-2"
                     >
-                        <a href="/login"
-                           className="
-                           text-gray-800
-                           dark:text-white
-                           hover:bg-gray-50
-                           focus:ring-4
-                           focus:ring-gray-300
-                           font-medium
-                           rounded-lg
-                           text-sm
-                           px-4
-                           lg:px-5
-                           py-2
-                           lg:py-2.5
-                           mr-2
-                           dark:hover:bg-gray-700
-                           focus:outline-none
-                           dark:focus:ring-gray-800"
-                        >Log in</a>
-                        <a href="/register"
-                           className="
-                           text-white
-                           bg-blue-700
-                           hover:bg-blue-800
-                           focus:ring-4
-                           focus:ring-blue-300
-                           font-medium
-                           rounded-lg
-                           text-sm px-4
-                           lg:px-5 py-2
-                           lg:py-2.5
-                           mr-2
-                           dark:bg-blue-600
-                           dark:hover:bg-blue-700
-                           focus:outline-none
-                           dark:focus:ring-blue-800"
-                        >
-                            Get started
-                        </a>
+                        {username ? (<LoggedInButtons username={username}/>) : (<LoggedOutButtons/>)}
+
                         <button onClick={ToggleHamburgerMenu}
                                 data-collapse-toggle="mobile-menu-2"
                                 type="button"

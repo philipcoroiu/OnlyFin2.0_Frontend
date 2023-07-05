@@ -7,7 +7,7 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 
 
 export default function dashboardModuleBoard() {
-    
+
     const [activeStockTab, setActiveStockTab] = useState(0);
     const [activeCategoryTab, setActiveCategoryTab] = useState(0);
 
@@ -32,8 +32,6 @@ export default function dashboardModuleBoard() {
             sm:px-12
             sm:py-20
             lg:px-0">
-
-                <h2 className="text-7xl">Dashboard</h2>
 
                 <div className="px-10
                 py-10

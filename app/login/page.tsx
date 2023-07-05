@@ -12,7 +12,6 @@ export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-
     const [showErrorMessage, setShowErrorMessage] = React.useState(false)
 
     function handleUsernameChange(event: any) {
@@ -28,7 +27,7 @@ export default function Login() {
         ApiCalls.postLoginPlz(username,password)
             .then((response) => {
                 if (response){
-                    router.push('../feed')
+                    window.location.href = '../dashboard'
                 }else {
                     displayErrorMessage()
                 }

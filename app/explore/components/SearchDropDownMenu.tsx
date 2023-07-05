@@ -100,7 +100,7 @@ export default function SearchDropDownMenu(props: any) {
                                dark:text-white
                                dark:focus:border-blue-500
                                "
-                               placeholder="Search Mockups, Logos, Design Templates..." required/>
+                               placeholder="Explore..." required/>
 
                     </div>
                     <button type="submit"

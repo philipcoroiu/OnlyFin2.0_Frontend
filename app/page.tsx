@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function App() {
     return (
         <main className="
@@ -31,8 +33,9 @@ export default function App() {
                         items-center
                         justify-center
                         gap-6">
-                    <a
-                        href="register"
+
+                    <Link
+                        href="/register"
                         className="
                            text-white
                            bg-blue-700
@@ -48,17 +51,16 @@ export default function App() {
                            dark:bg-blue-600
                            dark:hover:bg-blue-700
                            focus:outline-none
-                           dark:focus:ring-blue-800"
-                    >
+                           dark:focus:ring-blue-800">
                         Get started
-                    </a>
-                    <a href="explore" className="
+                    </Link>
+                    <Link href="explore" className="
                             text-sm
                             font-semibold
                             leading-6
                             dark:text-gray-300">
                         Explore <span aria-hidden="true">→</span>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </main>

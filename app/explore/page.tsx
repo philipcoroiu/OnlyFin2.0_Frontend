@@ -1,22 +1,47 @@
 "use client"
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import SearchDropDownMenu from "@/app/explore/components/SearchDropDownMenu";
+import {ApiCalls} from "@/app/utilities/ApiCalls";
+import SearchResult from "@/app/explore/components/SearchResult";
 
 export default function Explore() {
 
+    const [searchResult, setSearchResult] = useState();
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const data = await ApiCalls.searchAllUsers();
+                setSearchResult(data);
+                console.log(data[0].username);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+        fetchData();
+    }, [])
+
+
+
     const [dropdownButtonIsClicked, setDropdownButtonIsClicked] = useState(false);
-    let menuItems: string[] = ["Mockups", "Templates", "Design", "Logos"]
+    let menuItems: string[] = ["Users", "Stocks"]
 
     function handleDropdownClick() {
         setDropdownButtonIsClicked(oldValue => !oldValue);
     }
 
     return (
-        <SearchDropDownMenu
-            menuItems={menuItems}
-            dropdownButtonIsClicked = {dropdownButtonIsClicked}
-            handleDropdownClick = {handleDropdownClick}
-        ></SearchDropDownMenu>
+        <div>
+            <SearchDropDownMenu
+                menuItems={menuItems}
+                dropdownButtonIsClicked = {dropdownButtonIsClicked}
+                handleDropdownClick = {handleDropdownClick}
+            />
+            <SearchResult
+                searchResult={searchResult}
+            />
+        </div>
     )
 }
