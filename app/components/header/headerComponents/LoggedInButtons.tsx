@@ -4,6 +4,9 @@ import Avatar from "@/app/components/Avatar";
 import Link from "next/link";
 
 export default function LoggedInButtons(props : any) {
+
+
+
     return (
         <div className="flex items-center">
             <Link href="/" className="flex items-center">

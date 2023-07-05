@@ -142,6 +142,14 @@ export class ApiCalls{
         }
     }
 
+    public static async LogOut() {
+        try {
+
+        } catch(error) {
+
+        }
+    }
+
     //Add more endpoints here
 }
 
