@@ -117,13 +117,13 @@ export class ApiCalls{
                 },
                 withCredentials: true
             });
-            return response;
-        } catch (error) {
-            if ((error as AxiosError).response?.status === 402) {
-                return { error: 'Not logged in' };
+            if(response.status === 204) {
+                return { error: '204' }
             } else {
-                handleError(error);
+                return response;
             }
+        } catch (error) {
+            handleError(error);
         }
     }
 

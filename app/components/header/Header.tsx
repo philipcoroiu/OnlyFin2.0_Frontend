@@ -3,13 +3,23 @@ import {useEffect, useState} from "react";
 import Menu from "@/app/components/Menu";
 import LoggedOutButtons from "@/app/components/header/headerComponents/LoggedOutButtons";
 import LoggedInButtons from "@/app/components/header/headerComponents/LoggedInButtons";
+import {ApiCalls} from "@/app/utilities/ApiCalls";
 
 export default function Header() {
 
     const [toggleHamburgerMenu, setToggleHamburgerMenu] = useState(false)
+    const [username, setUsername] = useState();
 
     useEffect(() => {
-
+        const response = ApiCalls.whoAmI()
+            .then((response) => {
+                if(response.error === '204') {
+                    console.log("User not logged in")
+                } else {
+                    console.log("whoAmI response.data: ",response.data)
+                    setUsername(response.data)
+                }
+            })
     }, [])
 
     function ToggleHamburgerMenu(){
@@ -63,7 +73,7 @@ export default function Header() {
                     flex items-center
                     lg:order-2"
                     >
-                        <LoggedInButtons/>
+                        {username ? (<LoggedInButtons username={username}/>) : (<LoggedOutButtons/>)}
 
                         <button onClick={ToggleHamburgerMenu}
                                 data-collapse-toggle="mobile-menu-2"

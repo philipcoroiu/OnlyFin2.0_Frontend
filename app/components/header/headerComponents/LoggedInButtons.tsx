@@ -2,14 +2,14 @@
 
 import Avatar from "@/app/components/Avatar";
 
-export default function LoggedInButtons() {
+export default function LoggedInButtons(props : any) {
     return (
         <div className="flex items-center">
             <a href="/" className="flex items-center">
                 <div className="mr-1">
                     <Avatar/>
                 </div>
-                <p className="ml-2">Username</p>
+                <p className="ml-2">{props.username}</p>
             </a>
             <a href="/login"
                className="
