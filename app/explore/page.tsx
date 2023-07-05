@@ -26,7 +26,7 @@ export default function Explore() {
 
 
     const [dropdownButtonIsClicked, setDropdownButtonIsClicked] = useState(false);
-    let menuItems: string[] = ["Mockups", "Templates", "Design", "Logos"]
+    let menuItems: string[] = ["Users", "Stocks"]
 
     function handleDropdownClick() {
         setDropdownButtonIsClicked(oldValue => !oldValue);

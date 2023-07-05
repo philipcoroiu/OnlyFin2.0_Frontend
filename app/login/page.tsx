@@ -27,7 +27,7 @@ export default function Login() {
         ApiCalls.postLoginPlz(username,password)
             .then((response) => {
                 if (response){
-                    router.push('../feed')
+                    router.push('../dashboard')
                 }else {
                     displayErrorMessage()
                 }

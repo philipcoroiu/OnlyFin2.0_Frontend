@@ -33,8 +33,6 @@ export default function dashboardModuleBoard() {
             sm:py-20
             lg:px-0">
 
-                <h2 className="text-7xl">Dashboard</h2>
-
                 <div className="px-10
                 py-10
                 overflow-y-auto

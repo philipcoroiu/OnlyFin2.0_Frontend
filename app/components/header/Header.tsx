@@ -13,7 +13,7 @@ export default function Header() {
     const [username, setUsername] = useState();
 
     useEffect(() => {
-        const response = ApiCalls.whoAmI()
+        ApiCalls.whoAmI()
             .then((response) => {
                 if(response.error === '204') {
                     console.log("User not logged in")
@@ -23,6 +23,10 @@ export default function Header() {
                 }
             })
     }, [])
+
+    function logOut() {
+        setUsername(undefined)
+    }
 
 
 
@@ -77,7 +81,11 @@ export default function Header() {
                     flex items-center
                     lg:order-2"
                     >
-                        {username ? (<LoggedInButtons username={username}/>) : (<LoggedOutButtons/>)}
+                        {username ? (<LoggedInButtons
+                            username={username}
+                            logOut={logOut}/>)
+                            :
+                            (<LoggedOutButtons/>)}
 
                         <button onClick={ToggleHamburgerMenu}
                                 data-collapse-toggle="mobile-menu-2"

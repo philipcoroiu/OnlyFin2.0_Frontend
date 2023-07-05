@@ -3,7 +3,6 @@
 import Avatar from "@/app/components/Avatar";
 import Link from "next/link";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
-import {router} from "next/client";
 import {useRouter} from "next/navigation";
 
 export default function LoggedInButtons(props : any) {
@@ -12,7 +11,12 @@ export default function LoggedInButtons(props : any) {
 
     function logOut() {
         ApiCalls.logOut()
-            .then(() => router.push("/"))
+            .then(() => {
+                router.push("/")
+
+                //TODO: Fixa felhantering
+                props.logOut()
+            })
     }
 
     return (
