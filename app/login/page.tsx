@@ -27,7 +27,7 @@ export default function Login() {
         ApiCalls.postLoginPlz(username,password)
             .then((response) => {
                 if (response){
-                    router.push('../dashboard')
+                    window.location.href = '../dashboard'
                 }else {
                     displayErrorMessage()
                 }

@@ -24,10 +24,6 @@ export default function Header() {
             })
     }, [])
 
-    function logOut() {
-        setUsername(undefined)
-    }
-
 
 
     function ToggleHamburgerMenu(){
@@ -81,11 +77,7 @@ export default function Header() {
                     flex items-center
                     lg:order-2"
                     >
-                        {username ? (<LoggedInButtons
-                            username={username}
-                            logOut={logOut}/>)
-                            :
-                            (<LoggedOutButtons/>)}
+                        {username ? (<LoggedInButtons username={username}/>) : (<LoggedOutButtons/>)}
 
                         <button onClick={ToggleHamburgerMenu}
                                 data-collapse-toggle="mobile-menu-2"

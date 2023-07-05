@@ -12,10 +12,7 @@ export default function LoggedInButtons(props : any) {
     function logOut() {
         ApiCalls.logOut()
             .then(() => {
-                router.push("/")
-
-                //TODO: Fixa felhantering
-                props.logOut()
+                window.location.href = "/"
             })
     }
 
