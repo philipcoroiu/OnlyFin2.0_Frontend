@@ -2,10 +2,18 @@
 
 import Avatar from "@/app/components/Avatar";
 import Link from "next/link";
+import {ApiCalls} from "@/app/utilities/ApiCalls";
+import {router} from "next/client";
+import {useRouter} from "next/navigation";
 
 export default function LoggedInButtons(props : any) {
 
+    const router = useRouter();
 
+    function logOut() {
+        ApiCalls.logOut()
+            .then(() => router.push("/"))
+    }
 
     return (
         <div className="flex items-center">
@@ -15,7 +23,7 @@ export default function LoggedInButtons(props : any) {
                 </div>
                 <p className="ml-2">{props.username}</p>
             </Link>
-            <Link href="/login"
+            <button onClick={logOut}
                className="
                            text-gray-800
                            dark:text-white
@@ -34,7 +42,7 @@ export default function LoggedInButtons(props : any) {
                            focus:outline-none
                            dark:focus:ring-gray-800
                            ml-5"
-            >Log out</Link>
+            >Log out</button>
         </div>
     )
 }

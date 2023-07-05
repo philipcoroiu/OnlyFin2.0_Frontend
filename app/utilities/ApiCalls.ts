@@ -142,9 +142,11 @@ export class ApiCalls{
         }
     }
 
-    public static async LogOut() {
+    public static async logOut() {
         try {
-
+            await axios.post(`http://localhost:8080/logout`, {
+                withCredentials: true
+            })
         } catch(error) {
 
         }

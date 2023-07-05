@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export default function Menu(props: any) {
-    let menuItems: string[] = ["Home", "Dashboard", "About", "Contact"]
+    let menuItems: string[] = ["Home", "Dashboard", "Studio", "Explore"]
     return (
         <div
             className={` ${props.toggleHamburgerMenu ? "" : "hidden"} justify-between items-center w-full lg:flex lg:w-auto lg:order-1`}
