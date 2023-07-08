@@ -11,11 +11,13 @@ export default function register() {
     const [password, setPassword] = useState('');
     const router = useRouter();
 
+    /**
+     * TODO: move API call to ApiCalls.ts
+     */
     function handleSubmit(event: any) {
         event.preventDefault()
 
-        //TODO: change to .env variable instead of hardcoded value
-        axios.post("http://localhost:8080/users/register",
+        axios.post(process.env.NEXT_PUBLIC_BACKEND+"/users/register",
             {
                 email: email,
                 username: username,
@@ -28,7 +30,7 @@ export default function register() {
                 withCredentials: true
             })
             .then(response => {
-                //router.push("/login/")
+                router.push("/login/")
             })
             .catch(error => {
                 //TODO: add error handling
