@@ -1,4 +1,4 @@
-import axios, {AxiosError} from 'axios';
+import axios, {AxiosError, AxiosResponse} from 'axios';
 
 //Error handling (currently only displays the error?)
 function handleError(error: any) {
@@ -152,6 +152,22 @@ export class ApiCalls {
     }
 
     //Add more endpoints here
+
+    public static async subscribe(username : string): Promise<AxiosResponse> {
+        return axios.put(
+            process.env.NEXT_PUBLIC_BACKEND + `/subscriptions/add?targetUsername=${username}`,
+            {},
+            {withCredentials: true}
+        )
+    }
+
+    public static async unsubscribe(username : string) : Promise<AxiosResponse>  {
+        return axios.delete(
+            process.env.NEXT_PUBLIC_BACKEND + `/subscriptions/remove?targetUsername=${username}`,
+            {withCredentials: true}
+        )
+    }
+
 }
 
 
