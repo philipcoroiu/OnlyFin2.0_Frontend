@@ -4,14 +4,16 @@ import LoadingAnimation from "@/app/components/LoadingAnimation";
 import SearchProfile from "@/app/explore/components/searchProfile/SearchProfile";
 
 
-export default function SearchResult({searchResult} : any) {
+export default function SearchResult({searchResult}: any) {
 
     function renderSearchResult() {
         return (
-            searchResult.map((data: any, index: number) => {
+            searchResult.map((data: any) => {
                 return (
                     <SearchProfile
-                        username={searchResult[index].username}
+                        key={data.id}
+                        username={data.username}
+                        isSubscribed={data.isSubscribed}
                     />
                 );
             })

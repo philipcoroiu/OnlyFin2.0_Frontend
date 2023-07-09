@@ -14,7 +14,7 @@ export default function Explore() {
             try {
                 const data = await ApiCalls.searchAllUsers();
                 setSearchResult(data);
-                console.log(data[0].username);
+                //console.log(data[0].username);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }

@@ -1,8 +1,46 @@
 "use client"
 
 import Avatar from "@/app/components/Avatar";
+import {useState} from "react";
+import {useRouter} from "next/navigation";
+import {ApiCalls} from "@/app/utilities/ApiCalls";
 
-export default function SearchProfile({username} : any) {
+export default function SearchProfile({username, isSubscribed}: any) {
+    const [subscribed, setSubscribed] = useState(isSubscribed);
+    const router = useRouter()
+
+    function handleSubscribeButtonClick() {
+        if (!subscribed) {
+            subscribe()
+        } else {
+            unsubscribe()
+        }
+    }
+
+    function subscribe() {
+        ApiCalls.subscribe(username)
+            .then(response => {
+                setSubscribed(true)
+            })
+            .catch(error => {
+                if (error.response.status === 401) {
+                    router.push("/login")
+                }
+            })
+    }
+
+    function unsubscribe() {
+        ApiCalls.unsubscribe(username)
+            .then(response => {
+                setSubscribed(false)
+            })
+            .catch(error => {
+                if (error.response.status === 401) {
+                    router.push("/login")
+                }
+            })
+    }
+
     return (
         <div
             className="bg-gray-700 rounded-lg p-4">
@@ -12,6 +50,7 @@ export default function SearchProfile({username} : any) {
             </h3>
 
             <button
+                onClick={handleSubscribeButtonClick}
                 type="button"
                 className="text-white
                            bg-blue-700
@@ -29,7 +68,7 @@ export default function SearchProfile({username} : any) {
                            dark:hover:bg-blue-700
                            focus:outline-none
                            dark:focus:ring-blue-800">
-                Subscribe
+                {subscribed ? "UNSUBSCRIBE" : "SUBSCRIBE"}
             </button>
         </div>
     )
