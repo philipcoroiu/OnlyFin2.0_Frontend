@@ -1,13 +1,12 @@
 "use client"
 import React, {useState} from "react";
-import axios from 'axios';
 import Link from "next/link";
-import {useRouter} from "next/navigation";
+import {useSearchParams} from "next/navigation";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 
-
 export default function Login() {
-    const router = useRouter()
+    const searchParams = useSearchParams()
+    const redirectParam = searchParams.get("redirect")
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -26,9 +25,14 @@ export default function Login() {
         event.preventDefault();
         ApiCalls.postLoginPlz(username,password)
             .then((response) => {
-                if (response){
-                    window.location.href = '../dashboard'
-                }else {
+                if (response) {
+                    if (redirectParam) {
+                        window.location.href = `../${redirectParam}`
+                    }
+                    else {
+                        window.location.href = '../dashboard'
+                    }
+                } else {
                     displayErrorMessage()
                 }
 
