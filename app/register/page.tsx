@@ -2,30 +2,20 @@
 
 import React, {useState} from "react";
 import Link from "next/link";
-import axios from "axios";
 import {useRouter} from "next/navigation";
+import {ApiCalls} from "@/app/utilities/ApiCalls";
 
 export default function register() {
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const router = useRouter();
+
+    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     function handleSubmit(event: any) {
         event.preventDefault()
 
-        axios.post(process.env.NEXT_PUBLIC_BACKEND+"/users/register",
-            {
-                email: email,
-                username: username,
-                password: password
-            },
-            {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                withCredentials: true
-            })
+        ApiCalls.registerNewUser(email, username, password)
             .then(response => {
                 router.push("/login/")
             })

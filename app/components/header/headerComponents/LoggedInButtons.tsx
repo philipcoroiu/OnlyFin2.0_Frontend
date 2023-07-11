@@ -14,6 +14,11 @@ export default function LoggedInButtons(props : any) {
             .then(() => {
                 window.location.href = "/"
             })
+            .catch(error => {
+                if (error.response.status === 401) {
+                    window.location.href = "/"
+                }
+            })
     }
 
     return (

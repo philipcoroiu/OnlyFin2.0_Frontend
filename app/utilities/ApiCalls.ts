@@ -1,9 +1,13 @@
-import axios, {AxiosError, AxiosResponse} from 'axios';
+import axios, {AxiosResponse} from 'axios';
 
 //Error handling (currently only displays the error?)
 function handleError(error: any) {
     console.log('There was an error in the API call ', error)
 }
+
+const axiosInstance = axios.create({
+    baseURL: process.env.NEXT_PUBLIC_BACKEND,
+})
 
 /**
  * To use this class write import {ApiCalls} from "@/app/utilities/ApiCalls";
@@ -13,10 +17,61 @@ function handleError(error: any) {
  */
 export class ApiCalls {
 
-    //Static function is created for each endpoint from the backend
-    public static async registerNewUser(email: String, username: String, password: String): Promise<AxiosResponse> {
-        return axios.post(
-            process.env.NEXT_PUBLIC_BACKEND + "/users/register",
+    /*
+     ********************************
+     *                              *
+     * ---   SPRING ENDPOINTS   --- *
+     *                              *
+     ********************************
+     */
+
+    public static async postLoginPlz(username: string, password: string): Promise<AxiosResponse> {
+        return axiosInstance.post(
+            "/plz",
+            `username=${username}&password=${password}`,
+            {
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                withCredentials: true
+            }
+        )
+    }
+
+    public static async logOut(): Promise<AxiosResponse> {
+        return axiosInstance.post(
+            "/logout",
+            {},
+            {withCredentials: true}
+        )
+    }
+
+    /*
+     ********************************
+     *                              *
+     * ---   /users ENDPOINTS   --- *
+     *                              *
+     ********************************
+     */
+
+    public static async fetchAboutMe(targetUsername: string): Promise<AxiosResponse> {
+        return axiosInstance.get(
+            `/users/about-me?targetUsername=${targetUsername}`,
+            {}
+        );
+    }
+
+    public static async changePassword(oldPassword: string, newPassword: string): Promise<AxiosResponse> {
+        return axiosInstance.post(
+            "/users/password-change",
+            {
+                oldPassword: oldPassword,
+                newPassword: newPassword},
+            {withCredentials: true}
+        )
+    }
+
+    public static async registerNewUser(email: string, username: string, password: string): Promise<AxiosResponse> {
+        return axiosInstance.post(
+            "/users/register",
             {
                 email: email,
                 username: username,
@@ -29,20 +84,9 @@ export class ApiCalls {
         )
     }
 
-    public static async postLoginPlz(username: String, password: String): Promise<AxiosResponse> {
-        return axios.post(
-            process.env.NEXT_PUBLIC_BACKEND + "/plz",
-            `username=${username}&password=${password}`,
-            {
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                withCredentials: true
-            }
-        )
-    }
-
     public static async fetchAllUsers(): Promise<AxiosResponse> {
-        return axios.get(
-            process.env.NEXT_PUBLIC_BACKEND + "/users/search/all",
+        return axiosInstance.get(
+            "/users/search/all",
             {
                 headers: {'Content-Type': 'application/json'},
                 withCredentials: true
@@ -50,9 +94,9 @@ export class ApiCalls {
         )
     }
 
-    public static async getUser(username: String): Promise<AxiosResponse> {
-        return axios.get(
-            process.env.NEXT_PUBLIC_BACKEND + `/users/username?username=${username}`,
+    public static async searchByUsername(username: string): Promise<AxiosResponse> {
+        return axiosInstance.get(
+            `/users/search/username?username=${username}`,
             {
                 headers: {'Content-Type': 'application/json'},
                 withCredentials: true
@@ -60,9 +104,17 @@ export class ApiCalls {
         )
     }
 
-    public static async searchByUsername(username: String): Promise<AxiosResponse> {
-        return axios.get(
-            process.env.NEXT_PUBLIC_BACKEND + `/users/search/username?username=${username}`,
+    public static async updateAboutMe(newAboutMe: string) {
+        return axiosInstance.put(
+            "/users/update-about-me",
+            {newAboutMe: newAboutMe},
+            {withCredentials: true}
+        )
+    }
+
+    public static async getUser(username: string): Promise<AxiosResponse> {
+        return axiosInstance.get(
+            `/users/username?username=${username}`,
             {
                 headers: {'Content-Type': 'application/json'},
                 withCredentials: true
@@ -71,8 +123,8 @@ export class ApiCalls {
     }
 
     public static async whoAmI(): Promise<AxiosResponse> {
-        return axios.get(
-            process.env.NEXT_PUBLIC_BACKEND + "/users/whoami",
+        return axiosInstance.get(
+            "/users/whoami",
             {
                 headers: {'Content-Type': 'application/json'},
                 withCredentials: true
@@ -80,26 +132,87 @@ export class ApiCalls {
         )
     }
 
-    public static async logOut(): Promise<AxiosResponse> {
-        return axios.post(
-            process.env.NEXT_PUBLIC_BACKEND + "/logout",
+    /*
+     ********************************
+     *                              *
+     * ---  /stocks ENDPOINTS   --- *
+     *                              *
+     ********************************
+     */
+
+    public static async getAllStocks() {
+        return axiosInstance.get(
+            "/stocks/all",
+            {},
+        )
+    }
+
+    public static async findStocksByName(name: string) {
+        return axiosInstance.get(
+            `/stocks/search?name=${name}`,
+        )
+    }
+
+    /*
+     ********************************
+     *                              *
+     *---/subscriptions ENDPOINTS---*
+     *                              *
+     ********************************
+     */
+
+    public static async subscribe(username: string): Promise<AxiosResponse> {
+        return axiosInstance.put(
+            `/subscriptions/add?targetUsername=${username}`,
             {},
             {withCredentials: true}
         )
     }
 
-    public static async subscribe(username: string): Promise<AxiosResponse> {
-        return axios.put(
-            process.env.NEXT_PUBLIC_BACKEND + `/subscriptions/add?targetUsername=${username}`,
-            {},
+    public static async checkSubscription(targetUsername: string): Promise<AxiosResponse> {
+        return axiosInstance.get(
+            `/subscriptions/check?targetUsername=${targetUsername}`,
+            {withCredentials: true}
+        )
+    }
+
+    public static async getSubscriptionList(): Promise<AxiosResponse> {
+        return axiosInstance.get(
+            "/subscriptions/list",
             {withCredentials: true}
         )
     }
 
     public static async unsubscribe(username: string): Promise<AxiosResponse> {
-        return axios.delete(
-            process.env.NEXT_PUBLIC_BACKEND + `/subscriptions/remove?targetUsername=${username}`,
+        return axiosInstance.delete(
+            `/subscriptions/remove?targetUsername=${username}`,
             {withCredentials: true}
+        )
+    }
+
+    /*
+     ********************************
+     *                              *
+     *---    /dash ENDPOINTS     ---*
+     *                              *
+     ********************************
+     */
+
+    //TODO: Add /dash endpoints here
+    
+
+    /*
+     ********************************
+     *                              *
+     *---   /search ENDPOINTS    ---*
+     *                              *
+     ********************************
+     */
+
+    public static async findAnalystsThatCoverStock(targetStockId: number): Promise<AxiosResponse> {
+        return axiosInstance.get(
+            `/search/covers-stock?targetStockId=${targetStockId}`,
+            {}
         )
     }
 
