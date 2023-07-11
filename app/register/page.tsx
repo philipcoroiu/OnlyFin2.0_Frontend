@@ -11,9 +11,6 @@ export default function register() {
     const [password, setPassword] = useState('');
     const router = useRouter();
 
-    /**
-     * TODO: move API call to ApiCalls.ts
-     */
     function handleSubmit(event: any) {
         event.preventDefault()
 
@@ -33,8 +30,7 @@ export default function register() {
                 router.push("/login/")
             })
             .catch(error => {
-                //TODO: add error handling
-                console.log("[ERROR] register.handleSubmit():" + error)
+                console.log("[register:page.tsx] register.handleSubmit():" + error)
             });
     }
 

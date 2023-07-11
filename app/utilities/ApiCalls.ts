@@ -14,146 +14,81 @@ function handleError(error: any) {
 export class ApiCalls {
 
     //Static function is created for each endpoint from the backend
-    public static async postRegisterNewUser(email: String, username: String, password: String ) : Promise<boolean> {
-        let registerSuccess : boolean = false;
-
-        await axios.post(process.env.NEXT_PUBLIC_BACKEND+"/users/register",
+    public static async registerNewUser(email: String, username: String, password: String): Promise<AxiosResponse> {
+        return axios.post(
+            process.env.NEXT_PUBLIC_BACKEND + "/users/register",
             {
                 email: email,
                 username: username,
                 password: password
             },
             {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: {'Content-Type': 'application/json'},
                 withCredentials: true
-            })
-            .then(response => {
-                registerSuccess = true
-            })
-            .catch(error => {
-                handleError(error)
             }
-        );
-        return registerSuccess
+        )
     }
 
-    public static async postLoginPlz(username : String, password : String) : Promise<boolean>{
-        let loginSuccess : boolean = false;
-
-        await axios.post(process.env.NEXT_PUBLIC_BACKEND+"/plz",
-            `username=${username}&password=${password}`
-            ,
+    public static async postLoginPlz(username: String, password: String): Promise<AxiosResponse> {
+        return axios.post(
+            process.env.NEXT_PUBLIC_BACKEND + "/plz",
+            `username=${username}&password=${password}`,
             {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 withCredentials: true
-            })
-            .then(response => {
-                loginSuccess = true
-            })
-            .catch(error => {
-                    handleError(error)
-                }
-            );
-
-        return loginSuccess
-    }
-
-    public static async findAll() : Promise<any>{
-        await axios.get(process.env.NEXT_PUBLIC_BACKEND+"/users/search/all", {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            withCredentials: true
-        })
-        .then((response) => {
-            return response;
-        })
-        .catch(error => {
-            handleError(error)
-        })
-    }
-
-    public static async findByUserName(username : String) : Promise<any>{
-        await axios.get(process.env.NEXT_PUBLIC_BACKEND+`/users/username?username=${username}`, {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            withCredentials: true
-        })
-        .then((response) => {
-            return response;
-        })
-        .catch(error => {
-            handleError(error)
-        })
-    }
-
-    public static async searchByUserName(username : String) : Promise<any>{
-        await axios.get(process.env.NEXT_PUBLIC_BACKEND+`/users/search/username?username=${username}`, {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            withCredentials: true
-        })
-        .then((response) => {
-            return response;
-        })
-        .catch(error => {
-            handleError(error)
-        })
-    }
-
-    public static async whoAmI(): Promise<any> {
-        try {
-            const response = await axios.get(process.env.NEXT_PUBLIC_BACKEND+"/users/whoami", {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                withCredentials: true
-            });
-            if(response.status === 204) {
-                return { error: '204' }
-            } else {
-                return response;
             }
-        } catch (error) {
-            handleError(error);
-        }
+        )
     }
 
-    public static async searchAllUsers(): Promise<any> {
-        try {
-            const response = await axios.get(process.env.NEXT_PUBLIC_BACKEND+"/users/search/all", {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+    public static async fetchAllUsers(): Promise<AxiosResponse> {
+        return axios.get(
+            process.env.NEXT_PUBLIC_BACKEND + "/users/search/all",
+            {
+                headers: {'Content-Type': 'application/json'},
                 withCredentials: true
-            })
-            return response.data;
-        } catch(error) {
-            handleError(error)
-        }
+            }
+        )
     }
 
-    public static async logOut() {
-        try {
-            await axios.post(process.env.NEXT_PUBLIC_BACKEND+"/logout",
-                {},
-                {
+    public static async getUser(username: String): Promise<AxiosResponse> {
+        return axios.get(
+            process.env.NEXT_PUBLIC_BACKEND + `/users/username?username=${username}`,
+            {
+                headers: {'Content-Type': 'application/json'},
                 withCredentials: true
-            })
-        } catch(error) {
-
-        }
+            }
+        )
     }
 
-    //Add more endpoints here
+    public static async searchByUsername(username: String): Promise<AxiosResponse> {
+        return axios.get(
+            process.env.NEXT_PUBLIC_BACKEND + `/users/search/username?username=${username}`,
+            {
+                headers: {'Content-Type': 'application/json'},
+                withCredentials: true
+            }
+        )
+    }
 
-    public static async subscribe(username : string): Promise<AxiosResponse> {
+    public static async whoAmI(): Promise<AxiosResponse> {
+        return axios.get(
+            process.env.NEXT_PUBLIC_BACKEND + "/users/whoami",
+            {
+                headers: {'Content-Type': 'application/json'},
+                withCredentials: true
+            }
+        )
+    }
+
+    public static async logOut(): Promise<AxiosResponse> {
+        return axios.post(
+            process.env.NEXT_PUBLIC_BACKEND + "/logout",
+            {},
+            {withCredentials: true}
+        )
+    }
+
+    public static async subscribe(username: string): Promise<AxiosResponse> {
         return axios.put(
             process.env.NEXT_PUBLIC_BACKEND + `/subscriptions/add?targetUsername=${username}`,
             {},
@@ -161,7 +96,7 @@ export class ApiCalls {
         )
     }
 
-    public static async unsubscribe(username : string) : Promise<AxiosResponse>  {
+    public static async unsubscribe(username: string): Promise<AxiosResponse> {
         return axios.delete(
             process.env.NEXT_PUBLIC_BACKEND + `/subscriptions/remove?targetUsername=${username}`,
             {withCredentials: true}
@@ -169,5 +104,3 @@ export class ApiCalls {
     }
 
 }
-
-

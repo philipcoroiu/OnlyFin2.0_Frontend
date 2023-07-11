@@ -15,16 +15,14 @@ export default function Header() {
     useEffect(() => {
         ApiCalls.whoAmI()
             .then((response) => {
-                if(response.error === '204') {
+                if (response.status === 204) {
                     console.log("User not logged in")
                 } else {
-                    console.log("whoAmI response.data: ",response.data)
+                    console.log("whoAmI response.data: ", response.data)
                     setUsername(response.data)
                 }
             })
     }, [])
-
-
 
     function ToggleHamburgerMenu(){
         setToggleHamburgerMenu(oldValue => !oldValue)

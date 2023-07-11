@@ -7,26 +7,20 @@ import SearchResult from "@/app/explore/components/SearchResult";
 
 export default function Explore() {
 
+    const [dropdownButtonIsClicked, setDropdownButtonIsClicked] = useState(false);
+    const menuItems: string[] = ["Users", "Stocks"]
+
     const [searchResult, setSearchResult] = useState();
 
     useEffect(() => {
-        async function fetchData() {
-            try {
-                const data = await ApiCalls.searchAllUsers();
-                setSearchResult(data);
-                //console.log(data[0].username);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        }
-
-        fetchData();
+        ApiCalls.fetchAllUsers()
+            .then((response) => {
+                setSearchResult(response.data)
+            })
+            .catch(error => {
+                console.log("[explore:page.tsx] error fetching data: " + error)
+            })
     }, [])
-
-
-
-    const [dropdownButtonIsClicked, setDropdownButtonIsClicked] = useState(false);
-    let menuItems: string[] = ["Users", "Stocks"]
 
     function handleDropdownClick() {
         setDropdownButtonIsClicked(oldValue => !oldValue);
