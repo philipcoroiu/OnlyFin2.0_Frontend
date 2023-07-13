@@ -22,6 +22,9 @@ export default function Header() {
                     setUsername(response.data)
                 }
             })
+            .catch((error) => {
+                console.log("[Header]: could not reach server: " + error)
+            })
     }, [])
 
     function ToggleHamburgerMenu(){
