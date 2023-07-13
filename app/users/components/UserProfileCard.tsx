@@ -13,7 +13,7 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
  * TODO: FIX (MAYBE) CURSED CSS, add user not found error
  */
 export default function UserProfileCard({username}: any) {
-    const [user, setUser] = useState<OnlyfinProfileSubInfoAboutMe>()
+    const [user, setUser] = useState<OnlyfinProfileExtended>()
     const [subscribed, setSubscribed] = useState<boolean>()
 
     const router = useRouter()
@@ -21,7 +21,7 @@ export default function UserProfileCard({username}: any) {
     useEffect(() => {
         ApiCalls.getUser(username)
             .then((response) => {
-                const data: OnlyfinProfileSubInfoAboutMe = response.data
+                const data: OnlyfinProfileExtended = response.data
 
                 setUser(data)
                 setSubscribed(data.isSubscribed)
@@ -66,8 +66,12 @@ export default function UserProfileCard({username}: any) {
 
     function renderUserProfile() {
         return (
-            <div className={"bg-gray-700 rounded-lg p-7 m-7 w-1/2"}>
-                <Avatar />
+            <div className={user?.self ?
+                //Easter egg when viewing your own profile
+                "animate-[spin_1s_ease-in-out_1] bg-gray-700 rounded-lg p-7 m-7 w-1/2" :
+                "bg-gray-700 rounded-lg p-7 m-7 w-1/2"}>
+
+                <Avatar/>
 
                 <div className={"text-3xl font-bold py-3"}>
                     {username}

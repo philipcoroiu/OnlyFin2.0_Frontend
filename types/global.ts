@@ -19,9 +19,10 @@ type OnlyfinProfileSubInfo = {
     isSubscribed: boolean
 }
 
-type OnlyfinProfileSubInfoAboutMe = {
+type OnlyfinProfileExtended = {
     id: number,
     username: string,
     isSubscribed: boolean,
-    aboutMe: string
+    aboutMe: string,
+    self: boolean
 }
