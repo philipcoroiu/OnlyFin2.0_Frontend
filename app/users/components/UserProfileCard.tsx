@@ -47,7 +47,7 @@ export default function UserProfileCard({username}: any) {
             })
             .catch(error => {
                 if (error.response.status === 401) {
-                    router.push("/login")
+                    router.push("/login?redirect=users/" + username)
                 }
             })
     }
@@ -59,7 +59,7 @@ export default function UserProfileCard({username}: any) {
             })
             .catch(error => {
                 if (error.response.status === 401) {
-                    router.push("/login")
+                    router.push("/login?redirect=users/" + username)
                 }
             })
     }

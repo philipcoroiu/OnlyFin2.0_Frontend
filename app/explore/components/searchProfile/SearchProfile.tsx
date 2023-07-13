@@ -25,7 +25,7 @@ export default function SearchProfile({username, isSubscribed}: any) {
             })
             .catch(error => {
                 if (error.response.status === 401) {
-                    router.push("/login")
+                    router.push("/login?redirect=explore")
                 }
             })
     }
@@ -37,7 +37,7 @@ export default function SearchProfile({username, isSubscribed}: any) {
             })
             .catch(error => {
                 if (error.response.status === 401) {
-                    router.push("/login")
+                    router.push("/login?redirect=explore")
                 }
             })
     }
