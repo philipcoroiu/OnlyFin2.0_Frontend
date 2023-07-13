@@ -5,6 +5,7 @@ export default function Page({params}: { params: { username: string } }) {
         //TODO: FIX (MAYBE) CURSED CSS
         <div className={"justify-center flex"}>
             <UserProfileCard
+                key={params.username}
                 username={params.username}
             />
         </div>

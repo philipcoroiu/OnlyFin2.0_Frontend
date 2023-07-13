@@ -4,6 +4,7 @@ import Avatar from "@/app/components/Avatar";
 import {useState} from "react";
 import {useRouter} from "next/navigation";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
+import Link from "next/link";
 
 export default function SearchProfile({username, isSubscribed}: any) {
     const [subscribed, setSubscribed] = useState(isSubscribed);
@@ -42,12 +43,12 @@ export default function SearchProfile({username, isSubscribed}: any) {
     }
 
     return (
-        <div
-            className="bg-gray-700 rounded-lg p-4">
+        <div className="bg-gray-700 rounded-lg p-4">
             <Avatar/>
-            <h3 className="text-xl font-bold">
-                {username}
-            </h3>
+
+            <div className="text-xl font-bold">
+                <Link href={"/users/" + username}>{username}</Link>
+            </div>
 
             <button
                 onClick={handleSubscribeButtonClick}
