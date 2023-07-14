@@ -26,3 +26,11 @@ type OnlyfinProfileExtended = {
     aboutMe: string,
     self: boolean
 }
+
+type OnlyfinReview = {
+    id: number,
+    reviewText: string,
+    target: OnlyfinProfile,
+    author: OnlyfinProfile,
+    isAuthor: boolean
+}
