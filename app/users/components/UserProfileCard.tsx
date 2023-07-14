@@ -69,7 +69,7 @@ export default function UserProfileCard({username}: any) {
             <div className={user?.self ?
                 //Easter egg when viewing your own profile
                 "animate-[spin_1s_ease-in-out_1] bg-gray-700 rounded-lg p-7 m-7 w-1/2" :
-                "bg-gray-700 rounded-lg p-7 m-7 w-1/2"}>
+                "bg-gray-50 rounded-lg p-7 m-7 w-1/2 dark:bg-gray-700"}>
 
                 <Avatar/>
 
@@ -110,7 +110,7 @@ export default function UserProfileCard({username}: any) {
 
     function renderLoading() {
         return (
-            <div className={"bg-gray-700 rounded-lg p-7 m-7 w-1/2 animate-pulse"}>
+            <div className={"bg-gray-50 rounded-lg p-7 m-7 w-1/2 animate-pulse dark:bg-gray-700"}>
                 <Avatar/>
 
                 <div className={"text-3xl font-bold py-3"}>
