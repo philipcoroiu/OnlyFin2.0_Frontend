@@ -68,7 +68,7 @@ export default function UserProfileCard({username}: any) {
         return (
             <div className={user?.self ?
                 //Easter egg when viewing your own profile
-                "animate-[spin_1s_ease-in-out_1] bg-gray-700 rounded-lg p-7 m-7 w-1/2" :
+                "animate-[spin_1s_ease-in-out_1] bg-gray-50 rounded-lg p-7 m-7 w-1/2 dark:bg-gray-700" :
                 "bg-gray-50 rounded-lg p-7 m-7 w-1/2 dark:bg-gray-700"}>
 
                 <Avatar/>
@@ -101,7 +101,7 @@ export default function UserProfileCard({username}: any) {
                     {subscribed ? "UNSUBSCRIBE" : "SUBSCRIBE"}
                 </button>
 
-                <div>
+                <div className={"text-center"}>
                     {user?.aboutMe}
                 </div>
             </div>
