@@ -310,4 +310,34 @@ export class ApiCalls {
         )
     }
 
+    /*
+     ********************************
+     *                              *
+     *---   /reviews ENDPOINTS   ---*
+     *                              *
+     ********************************
+     */
+
+    public static async pushReview(targetUsername: string, reviewText: string): Promise<AxiosResponse> {
+        return axiosInstance.put(
+            "/reviews/push",
+            {targetUsername, reviewText},
+            {withCredentials: true}
+        )
+    }
+
+    public static async deleteReview(targetUsername: string): Promise<AxiosResponse> {
+        return axiosInstance.delete(
+            `/reviews/delete?targetUsername=${targetUsername}`,
+            {withCredentials: true}
+        )
+    }
+
+    public static async getReviews(targetUsername: string): Promise<AxiosResponse> {
+        return axiosInstance.get(
+            `/reviews/get?targetUsername=${targetUsername}`,
+            {withCredentials: true},
+        )
+    }
+
 }
