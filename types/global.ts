@@ -1,13 +1,3 @@
-type OnlyfinModule = {
-    targetCategoryId: number,
-    height: number,
-    width: number,
-    xAxis: number,
-    yAxis: number,
-    type: string,
-    content: JSON
-}
-
 type OnlyfinProfile = {
     id: number,
     username: string
@@ -46,3 +36,22 @@ type OnlyfinUserStock = {
     stock: OnlyfinStock
 }
 
+type OnlyfinUserStockTab = {
+    userStockId: number,
+    categories: OnlyfinUserCategoryTab[]
+}
+
+type OnlyfinUserCategoryTab = {
+    userCategoryId: number,
+    modules: OnlyfinModule[]
+}
+
+type OnlyfinModule = {
+    targetCategoryId: number,
+    height: number,
+    width: number,
+    xAxis: number,
+    yAxis: number,
+    type: string,
+    content: JSON
+}
