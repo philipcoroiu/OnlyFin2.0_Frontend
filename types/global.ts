@@ -34,3 +34,15 @@ type OnlyfinReview = {
     author: OnlyfinProfile,
     isAuthor: boolean
 }
+
+type OnlyfinStock = {
+    id: number,
+    name: string,
+    ticker: string
+}
+
+type OnlyfinUserStock = {
+    id: number,
+    stock: OnlyfinStock
+}
+
