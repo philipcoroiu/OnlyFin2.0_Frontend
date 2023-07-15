@@ -7,7 +7,6 @@ export default function Feed() {
         <div className="
             flex
             flex-raw
-            items-center
             h-screen
             scroll-auto
         ">
@@ -144,18 +143,73 @@ export default function Feed() {
             </div>
 
             <div className="
-                ml-5
-                bg-red-300
-                h-full
+                fixed
+                right-1
+                m-2
+                h-5/6
+                w-1/6
+                bg-gray-100
+                rounded
+                drop-shadow-lg
+                flex
+                flex-col
+                items-center
             ">
-                <h1>Subscriptions</h1>
-                <div className="flex">
+                <h1 className="
+                text-center
+                    w-full
+                    m-2
+                    border-b
+                    border-b-gray-300
+                ">Subscriptions</h1>
+                <div className="
+                    w-full
+                ">
                     <div className="
-                        w-5
-                        h-5
-                        bg-blue-300
-                    "></div>
-                    <button>Default name</button>
+                        flex
+                        w-full
+                        my-5
+                        ml-2
+                    ">
+                        <div className="
+                            w-7
+                            h-7
+                            mr-2
+                            bg-blue-300
+                            rounded-full
+                        "></div>
+                        <button>Mai Co</button>
+                    </div>
+                    <div className="
+                        flex
+                        w-full
+                        my-5
+                        ml-2
+                    ">
+                        <div className="
+                            w-7
+                            h-7
+                            mr-2
+                            bg-blue-400
+                            rounded-full
+                        "></div>
+                        <button>Ces Lon</button>
+                    </div>
+                    <div className="
+                        flex
+                        w-full
+                        my-5
+                        ml-2
+                    ">
+                        <div className="
+                            w-7
+                            h-7
+                            mr-2
+                            bg-blue-500
+                            rounded-full
+                        "></div>
+                        <button>Ngbro Der</button>
+                    </div>
                 </div>
             </div>
         </div>
