@@ -23,7 +23,7 @@ export default function LoggedInButtons(props : any) {
 
     return (
         <div className="flex items-center">
-            <Link href="/" className="flex items-center">
+            <Link href="/me" className="flex items-center">
                 <div className="mr-1">
                     <Avatar/>
                 </div>
