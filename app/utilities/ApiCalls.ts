@@ -342,7 +342,7 @@ export class ApiCalls {
 
     public static async getMyReview(targetUsername: string): Promise<AxiosResponse> {
         return axiosInstance.get(
-            "/reviews/my-review",
+            `/reviews/my-review?targetUsername=${targetUsername}`,
             {withCredentials: true}
         )
     }
