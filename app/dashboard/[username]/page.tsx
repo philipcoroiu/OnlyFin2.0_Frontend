@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import TabsContainer from "../Tabs/TabsContainer";
 import DashboardModules from "@/app/dashboard/DashbordModules";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
+import Link from "next/link";
 
 
 
@@ -52,7 +53,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
                         handleCategoryTabClick={handleCategoryTabClick}
                     ></TabsContainer>
 
-                    <p>{params.username}</p>
+                    <Link href={"/users/" + params.username}>{params.username}</Link>
 
                     <DashboardModules></DashboardModules>
 
