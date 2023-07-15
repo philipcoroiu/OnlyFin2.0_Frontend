@@ -26,6 +26,7 @@ export default function TabsContainer(props : any) {
             <CategoryTabs
                 activeCategoryTab={props.activeCategoryTab}
                 handleCategoryTabClick={props.handleCategoryTabClick}
+                userCategoryArray={props.userCategoryArray}
             ></CategoryTabs>
 
 

@@ -13,15 +13,26 @@ export default function dashboardModuleBoard({params}: { params: { username: str
     const [activeCategoryTab, setActiveCategoryTab] = useState(0);
 
     const [userStockArray , setUserStockArray] = useState();
+    const [userCategoryArray, setUserCategoryArray] = useState();
 
     useEffect(() => {
         ApiCalls.fetchTargetUsersStocks(params.username)
             .then((response) => {
                 console.log("userStockArray: ", response.data)
                 setUserStockArray(response.data)
+                getUserCategoryTabs(response.data[0].id)
             })
             .catch((error) => console.log("fetchTargetUsersStocks error: " , error))
     }, [])
+
+    function getUserCategoryTabs(userStockID : number) {
+        ApiCalls.fetchCategoriesAndModulesUnderUserStock(userStockID)
+            .then((response) => {
+                setUserCategoryArray(response.data.categories)
+                console.log(response.data.categories)
+            })
+            .catch((error) => console.log("fetchCategoriesAndModulesUnderUserStock error ", error))
+    }
 
     function handleStockTabClick(index : number) : void {
         setActiveStockTab(index)
@@ -54,6 +65,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
                     <TabsContainer
                         activeStockTab={activeStockTab}
                         userStockArray={userStockArray}
+                        userCategoryArray={userCategoryArray}
                         activeCategoryTab={activeCategoryTab}
                         handleStockTabClick={handleStockTabClick}
                         handleCategoryTabClick={handleCategoryTabClick}
