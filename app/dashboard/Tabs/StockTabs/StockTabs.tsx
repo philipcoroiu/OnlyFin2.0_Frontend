@@ -43,6 +43,18 @@ export default function StockTabs(props : any) {
         )
     }
 
+    function renderLoadingTabs() {
+        return(
+            <li className="mr-2">
+                <div className="inline-flex space-x-2">
+                    <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
+                    <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
+                    <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
+                </div>
+            </li>
+        )
+    }
+
     return (
 
     <div>
@@ -62,7 +74,7 @@ export default function StockTabs(props : any) {
         dark:text-gray-400">
 
 
-            {props.userStockArray ? renderStockTabs() : <div>loading</div>}
+            {props.userStockArray ? renderStockTabs() : renderLoadingTabs()}
 
             {
                 // *******************//
