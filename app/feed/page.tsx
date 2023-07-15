@@ -1,7 +1,14 @@
 "use client"
 
+import {useState} from "react";
+
 export default function Feed() {
 
+    const [showComments, setShowComments] = useState(false)
+
+    function manageComments() {
+        setShowComments(!showComments);
+    }
 
     return (
         <div className="
@@ -77,7 +84,8 @@ export default function Feed() {
                         hover:bg-blue-600
                         hover:rounded-3xl
                         hover:text-white
-                        ">Comment 228</button>
+                        "
+                        onClick>Comment 228</button>
                         <button className="
                         px-4
                         m-1
