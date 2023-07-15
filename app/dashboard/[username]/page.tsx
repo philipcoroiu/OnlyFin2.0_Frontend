@@ -1,15 +1,21 @@
 "use client"
-import React, {useState} from "react";
-import TabsContainer from "./Tabs/TabsContainer";
+import React, {useEffect, useState} from "react";
+import TabsContainer from "../Tabs/TabsContainer";
 import DashboardModules from "@/app/dashboard/DashbordModules";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 
 
 
-export default function dashboardModuleBoard() {
+export default function dashboardModuleBoard({params}: { params: { username: string } }) {
 
     const [activeStockTab, setActiveStockTab] = useState(0);
     const [activeCategoryTab, setActiveCategoryTab] = useState(0);
+
+    useEffect(() => {
+        ApiCalls.fetchTargetUsersStocks(params.username)
+            .then((response) => console.log(response.data))
+            .catch((error) => console.log("fetchTargetUsersStocks error: " , error))
+    }, [])
 
     function handleStockTabClick(index : number) : void {
         setActiveStockTab(index)
@@ -45,6 +51,8 @@ export default function dashboardModuleBoard() {
                         handleStockTabClick={handleStockTabClick}
                         handleCategoryTabClick={handleCategoryTabClick}
                     ></TabsContainer>
+
+                    <p>{params.username}</p>
 
                     <DashboardModules></DashboardModules>
 
