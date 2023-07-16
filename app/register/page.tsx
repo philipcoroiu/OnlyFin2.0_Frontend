@@ -8,20 +8,79 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 export default function register() {
     const router = useRouter();
 
-    const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [repeatPassword, setRepeatPassword] = useState('');
+
+    // Error handling:
+    const [showErrorMessage, setShowErrorMessage] = React.useState(false)
+    const [errorMessage, setErrorMessage] = React.useState('')
+    const [errorType, setErrorType] = React.useState('')
+    const [loading, setLoading] = React.useState(false)
 
     function handleSubmit(event: any) {
         event.preventDefault()
 
+        if (username.length === 0) {
+            setShowErrorMessage(true);
+            setErrorMessage("Missing username");
+            setErrorType('username');
+            return null;
+        }
+        if (email.length === 0) {
+            setShowErrorMessage(true);
+            setErrorMessage("Missing email");
+            setErrorType('email');
+            return null;
+        }
+
+        if (!checkPassword()) {
+            setErrorType('password');
+            return null;
+        }
+
+        setShowErrorMessage(false);
+        setErrorMessage('');
+        setErrorType('');
+
+        setLoading(true);
         ApiCalls.registerNewUser(email, username, password)
             .then(response => {
                 router.push("/login/")
             })
             .catch(error => {
-                console.log("[register:page.tsx] register.handleSubmit():" + error)
+                setShowErrorMessage(true);
+                if (error.response){
+                    switch (error.response.data){
+                        case "Username is already taken!" : setErrorType('username');
+                            break;
+                        case "Email is already taken!" : setErrorType('email');
+                            break;
+                        default: setErrorType('');
+                    }
+                    setErrorMessage(error.response.data);
+                    setLoading(false);
+                }
             });
+    }
+
+    function checkPassword() {
+        // Check if password is longer than 8 characters.
+
+        if (password.length < 8) {
+            setShowErrorMessage(true);
+            setErrorMessage("Password must contain at least 8 characters");
+            return null;
+        }
+
+        if (password !== repeatPassword) {
+            setShowErrorMessage(true);
+            setErrorMessage("Password does not match");
+            return null;
+        }
+        return true;
+
     }
 
     function handleEmailChange(event: any) {
@@ -34,6 +93,10 @@ export default function register() {
 
     function handlePasswordChange(event: any) {
         setPassword(event.target.value)
+    }
+
+    function handleRepeatPasswordChange(event: any) {
+        setRepeatPassword(event.target.value)
     }
 
     //TODO: change dark mode text input to be a readable color
@@ -71,21 +134,23 @@ export default function register() {
                     <div className="mt-8 space-y-6">
                         <div className="space-y-6">
 
-                            <input className="w-full
+                            {/*Username*/}
+
+                            <input className={`w-full
                                 bg-transparent
                                 text-gray-600
                                 dark:text-white
-                                dark:border-gray-700
                                 rounded-md
                                 border
-                                border-gray-300
                                 px-3
                                 py-2
                                 text-sm
                                 placeholder-gray-600
                                 invalid:border-red-500
                                 dark:placeholder-gray-300
-                                "
+                                ${errorType === "username" ? "border-red-500" : "dark:border-gray-700 border-gray-300"}
+                                `}
+
                                    type="text"
                                    id="username"
                                    name="username"
@@ -95,22 +160,22 @@ export default function register() {
                                    maxLength={50}
                             />
 
+                            {/*Email*/}
 
-                            <input className="w-full
+                            <input className={`w-full
                                 bg-transparent
                                 text-gray-600
                                 dark:text-white
-                                dark:border-gray-700
                                 rounded-md
                                 border
-                                border-gray-300
                                 px-3
                                 py-2
                                 text-sm
                                 placeholder-gray-600
                                 invalid:border-red-500
                                 dark:placeholder-gray-300
-                                "
+                                ${errorType === "email" ? "border-red-500" : "dark:border-gray-700 border-gray-300"}
+                                `}
                                    type="email"
                                    id="email"
                                    name="email"
@@ -120,22 +185,23 @@ export default function register() {
                                    maxLength={50}
                             />
 
-                            <input className="w-full
+                            {/*Password*/}
+
+                            <input className={`w-full
                                 bg-transparent
                                 text-gray-600
                                 dark:text-white
-                                dark:border-gray-700
                                 rounded-md
                                 border
-                                border-gray-300
                                 px-3
                                 py-2
                                 text-sm
                                 placeholder-gray-600
                                 invalid:border-red-500
                                 dark:placeholder-gray-300
+                                ${errorType === "password" ? "border-red-500" : "dark:border-gray-700 border-gray-300"}
+                                `}
 
-                                "
                                    type="password"
                                    id="password"
                                    name="password"
@@ -144,7 +210,61 @@ export default function register() {
                                    placeholder="Password"
                                    maxLength={100}
                             />
+
+
+                            {/*Repeat Password*/}
+
+                            <input className={`w-full
+                                bg-transparent
+                                text-gray-600
+                                dark:text-white
+                                rounded-md
+                                border
+                                px-3
+                                py-2
+                                text-sm
+                                placeholder-gray-600
+                                invalid:border-red-500
+                                dark:placeholder-gray-300
+                                ${errorType === "password" ? "border-red-500" : "dark:border-gray-700 border-gray-300"}
+                                `}
+
+                                   type="password"
+                                   id="repeatPassword"
+                                   name="repeatPassword"
+                                   value={repeatPassword}
+                                   onChange={handleRepeatPasswordChange}
+                                   placeholder="Repeat Password"
+                                   maxLength={100}
+                            />
                         </div>
+
+                        {/*Error message*/}
+
+                        {showErrorMessage && (
+                            <div className="
+                                    text-center
+                                    text-red-500
+                                    font-bold
+                                    font-mono"
+                            >
+                                <p>{errorMessage}</p>
+                            </div>
+                        )}
+
+                        {/*Loading animation*/}
+
+                        {loading && <div className="flex justify-center">
+                            <div
+                                className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                                role="status">
+                                <span
+                                    className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+                                >Loading...</span
+                                >
+                            </div>
+                        </div>}
+
 
                         <button
                             className="
