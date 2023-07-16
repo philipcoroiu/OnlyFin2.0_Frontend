@@ -5,6 +5,7 @@ import DashboardModules from "@/app/dashboard/DashbordModules";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import Link from "next/link";
 import StockEditModal from "@/app/dashboard/Tabs/StockTabs/StockEditModal";
+import CategoryEditModal from "@/app/dashboard/Tabs/CategoryTabs/CategoryEditModal";
 
 
 
@@ -17,6 +18,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
     const [userCategoryArray, setUserCategoryArray] = useState();
 
     const [stockEditButtonIsActive, setStockEditButtonIsActive] = useState(false);
+    const [categoryEditButtonIsActive, setCategoryEditButtonIsActive] = useState(false);
 
     useEffect(() => {
         ApiCalls.fetchTargetUsersStocks(params.username)
@@ -54,6 +56,10 @@ export default function dashboardModuleBoard({params}: { params: { username: str
         setStockEditButtonIsActive(prevState => !prevState)
     }
 
+    function handleCategoryEditButtonClick() {
+        setCategoryEditButtonIsActive(prevState => !prevState)
+    }
+
     return (
         <>
 
@@ -62,6 +68,11 @@ export default function dashboardModuleBoard({params}: { params: { username: str
                 stockEditButtonIsActive={stockEditButtonIsActive}
                 handleStockEditButtonClick={handleStockEditButtonClick}
             ></StockEditModal>
+
+            <CategoryEditModal
+                categoryEditButtonIsActive={categoryEditButtonIsActive}
+                handleCategoryEditButtonClick={handleCategoryEditButtonClick}
+            ></CategoryEditModal>
 
             <div className="">
 
@@ -89,6 +100,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
                             handleStockTabClick={handleStockTabClick}
                             handleCategoryTabClick={handleCategoryTabClick}
                             handleStockEditButtonClick={handleStockEditButtonClick}
+                            handleCategoryEditButtonClick={handleCategoryEditButtonClick}
                         ></TabsContainer>
 
                         <Link href={"/users/" + params.username}>{params.username}</Link>

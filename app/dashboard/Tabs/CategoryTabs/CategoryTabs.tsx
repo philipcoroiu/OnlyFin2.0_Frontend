@@ -18,8 +18,14 @@ const tempTabsList = [
 
 export default function StockTabs(props : any) {
 
+    //*********//
+    // Remove? //
+    //*********//
     const [dropdownMenuIsActive, setDropdownMenuIsActive] = useState(false);
 
+    //*********//
+    // Remove? //
+    //*********//
     function handleEditButtonClick() {
         setDropdownMenuIsActive(prevState => !prevState)
     }
@@ -81,7 +87,7 @@ export default function StockTabs(props : any) {
                         id="dropdownMenuIconHorizontalButton"
                         data-dropdown-toggle="dropdownDotsHorizontal"
                         type="button"
-                        onClick={handleEditButtonClick}
+                        onClick={props.handleCategoryEditButtonClick}
                         className="inline-flex
                     items-center
                     p-2
@@ -110,9 +116,11 @@ export default function StockTabs(props : any) {
                     </button>
                     <div className="z-10">
 
-                        <CategoryDropdownMenu
-                            dropdownMenuIsActive={dropdownMenuIsActive}
-                        ></CategoryDropdownMenu>
+                        {/*
+                            <CategoryDropdownMenu
+                                dropdownMenuIsActive={dropdownMenuIsActive}
+                            ></CategoryDropdownMenu>
+                         */}
 
                     </div>
                 </li>
