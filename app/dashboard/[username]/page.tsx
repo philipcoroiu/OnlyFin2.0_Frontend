@@ -60,6 +60,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
 
             <StockEditModal
                 stockEditButtonIsActive={stockEditButtonIsActive}
+                handleStockEditButtonClick={handleStockEditButtonClick}
             ></StockEditModal>
 
             <div className="">
