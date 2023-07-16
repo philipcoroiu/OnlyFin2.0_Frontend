@@ -10,7 +10,7 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
  *
  * This component produces a profile card of a user. It fetches subscription status & "about me" text automagically
  *
- * TODO: FIX (MAYBE) CURSED CSS, add user not found error
+ * TODO: Add user not found error message (HTTP 404 response in getUser() api call)
  */
 export default function UserProfileCard({username}: any) {
     const [user, setUser] = useState<OnlyfinProfileExtended>()
@@ -27,7 +27,7 @@ export default function UserProfileCard({username}: any) {
                 setSubscribed(data.isSubscribed)
             })
             .catch(error => {
-                console.log("[UserProfileCard]: error: " + error)
+                console.log("[UserProfileCard.useEffect()]: " + error)
 
             })
     }, [])
@@ -48,6 +48,8 @@ export default function UserProfileCard({username}: any) {
             .catch(error => {
                 if (error.response.status === 401) {
                     router.push("/login?redirect=users/" + username)
+                } else {
+                    console.log("[UserProfileCard.subscribe]: " + error)
                 }
             })
     }
@@ -60,6 +62,8 @@ export default function UserProfileCard({username}: any) {
             .catch(error => {
                 if (error.response.status === 401) {
                     router.push("/login?redirect=users/" + username)
+                } else {
+                    console.log("[UserProfileCard.unsubscribe]: " + error)
                 }
             })
     }
@@ -68,8 +72,21 @@ export default function UserProfileCard({username}: any) {
         return (
             <div className={user?.self ?
                 //Easter egg when viewing your own profile
-                "animate-[spin_1s_ease-in-out_1] bg-gray-50 rounded-lg p-7 m-7 w-1/2 dark:bg-gray-700" :
-                "bg-gray-50 rounded-lg p-7 m-7 w-1/2 dark:bg-gray-700"}>
+                `animate-[spin_1s_ease-in-out_1]
+                bg-gray-50
+                rounded-lg
+                p-7
+                m-7
+                w-1/2
+                dark:bg-gray-700`
+                :
+                `bg-gray-50 
+                rounded-lg 
+                p-7 
+                m-7
+                w-1/2
+                dark:bg-gray-700`}
+            >
 
                 <Avatar/>
 
@@ -110,7 +127,15 @@ export default function UserProfileCard({username}: any) {
 
     function renderLoading() {
         return (
-            <div className={"bg-gray-50 rounded-lg p-7 m-7 w-1/2 animate-pulse dark:bg-gray-700"}>
+            <div className={`
+                bg-gray-50
+                rounded-lg
+                p-7
+                m-7
+                w-1/2
+                animate-pulse
+                dark:bg-gray-700`}
+            >
                 <Avatar/>
 
                 <div className={"text-3xl font-bold py-3"}>

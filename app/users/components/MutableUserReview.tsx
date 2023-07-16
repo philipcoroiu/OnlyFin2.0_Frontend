@@ -22,6 +22,8 @@ export default function MutableUserReview({targetUsername}: any) {
             .catch(error => {
                 if (error.response.status === 404) {
                     setNoReviewExists(true)
+                } else {
+                    console.log("[MutableUserReview.getMyReview()]: " + error)
                 }
             })
     }
@@ -37,7 +39,7 @@ export default function MutableUserReview({targetUsername}: any) {
                 getMyReview()
             })
             .catch(error => {
-                console.log("[EditableUserReview.handleSubmit]: " + error)
+                console.log("[EditableUserReview.handleSubmit()]: " + error)
             })
     }
 
@@ -68,19 +70,23 @@ export default function MutableUserReview({targetUsername}: any) {
                            dark:hover:bg-blue-700
                            focus:outline-none
                            dark:focus:ring-blue-800"
-                           onClick={handleSubmit}>Post review</button>
+                        onClick={handleSubmit}>Post review
+                </button>
             </>
         )
     }
 
     function renderReviewPostExists() {
         if (ownReview) {
-            return <UserReviewCard id={ownReview.id}
-                                   reviewText={ownReview.reviewText}
-                                   target={ownReview.target}
-                                   author={ownReview.author}
-                                   isAuthor={ownReview.isAuthor}
-            />
+            return (
+                <UserReviewCard
+                    id={ownReview.id}
+                    reviewText={ownReview.reviewText}
+                    target={ownReview.target}
+                    author={ownReview.author}
+                    isAuthor={ownReview.isAuthor}
+                />
+            )
         }
     }
 

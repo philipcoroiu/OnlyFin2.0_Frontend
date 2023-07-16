@@ -1,6 +1,7 @@
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import Avatar from "@/app/components/Avatar";
 import Link from "next/link";
+import {useState} from "react";
 
 export default function UserReviewCard(review: OnlyfinReview) {
 
@@ -10,7 +11,7 @@ export default function UserReviewCard(review: OnlyfinReview) {
                 document.location.reload()
             })
             .catch(error => {
-                console.log("[UserReviewCard.handleDelete]: " + error)
+                console.log("[UserReviewCard.handleDelete()]: " + error)
             })
     }
 
@@ -18,30 +19,30 @@ export default function UserReviewCard(review: OnlyfinReview) {
         <>
             {review.isAuthor ?
                 <div className={`
-                    bg-gray-50 
-                    rounded-lg 
-                    p-7 
-                    m-7 
-                    w-full 
-                    dark:bg-gray-700`}
+                        bg-gray-50 
+                        rounded-lg 
+                        p-7 
+                        m-7 
+                        w-full 
+                        dark:bg-gray-700`}
                 >
                     <button onClick={handleDelete} className={`
-                           py-2 
-                           text-white
-                           bg-blue-700
-                           hover:bg-blue-800
-                           focus:ring-4
-                           focus:ring-blue-300
-                           font-medium
-                           rounded-lg
-                           text-sm
-                           px-5
-                           mr-2
-                           mb-2
-                           dark:bg-blue-600
-                           dark:hover:bg-blue-700
-                           focus:outline-none
-                           dark:focus:ring-blue-800"`}
+                            py-2 
+                            text-white
+                            bg-blue-700
+                            hover:bg-blue-800
+                            focus:ring-4
+                            focus:ring-blue-300
+                            font-medium
+                            rounded-lg
+                            text-sm
+                            px-5
+                            mr-2
+                            mb-2
+                            dark:bg-blue-600
+                            dark:hover:bg-blue-700
+                            focus:outline-none
+                            dark:focus:ring-blue-800"`}
                     >
                         DELETE REVIEW
                     </button>
@@ -57,7 +58,13 @@ export default function UserReviewCard(review: OnlyfinReview) {
                     <div>{review.reviewText}</div>
                 </div>
                 :
-                <div className={`bg-gray-50 rounded-lg p-7 m-7 dark:bg-gray-700`}>
+                <div className={`
+                        bg-gray-50 
+                        rounded-lg
+                        p-7
+                        m-7
+                        dark:bg-gray-700`}
+                >
                     <Link href={`/users/${review.author.username}`}>
                         <Avatar/>
                     </Link>
