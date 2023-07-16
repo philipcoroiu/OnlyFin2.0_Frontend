@@ -14,7 +14,7 @@ export default function Login() {
     const [showErrorMessage, setShowErrorMessage] = React.useState(false)
 
     function handleUsernameChange(event: any) {
-        setUsername(event.target.value);
+        setUsername(event.target.value.toLowerCase());
     }
 
     function handlePasswordChange(event: any) {

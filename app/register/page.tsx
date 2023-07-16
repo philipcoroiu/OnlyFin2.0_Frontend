@@ -25,11 +25,11 @@ export default function register() {
     }
 
     function handleEmailChange(event: any) {
-        setEmail(event.target.value)
+        setEmail(event.target.value.toLowerCase())
     }
 
     function handleUsernameChange(event: any) {
-        setUsername(event.target.value)
+        setUsername(event.target.value.toLowerCase())
     }
 
     function handlePasswordChange(event: any) {
