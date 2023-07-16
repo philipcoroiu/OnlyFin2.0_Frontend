@@ -86,6 +86,17 @@ export default function DashboardModules(props : any) {
         )
     }
 
+    function renderLoadingAnimation() {
+        return (
+            <>
+                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 animate-pulse"></div>
+                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 animate-pulse"></div>
+                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 animate-pulse"></div>
+            </>
+        );
+    }
+
+
 
     return(
         <div
@@ -98,10 +109,7 @@ export default function DashboardModules(props : any) {
                     xl:grid-cols-3
                     xl:gap-x-5">
 
-
-            {props.userCategoryArray ? renderModules() : <div>Loading</div>}
-
-
+            {props.userCategoryArray ? renderModules() : renderLoadingAnimation()}
 
         </div>
     )
