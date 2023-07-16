@@ -19,6 +19,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
         ApiCalls.fetchTargetUsersStocks(params.username)
             .then((response) => {
                 console.log("userStockArray: ", response.data)
+                console.log("fetchTargetUsersStocks, stock id: ", response.data[0].id)
                 setUserStockArray(response.data)
                 getUserCategoryTabs(response.data[0].id)
             })
@@ -26,6 +27,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
     }, [])
 
     function getUserCategoryTabs(userStockID : number) {
+        console.log("userStockID: ", userStockID)
         ApiCalls.fetchCategoriesAndModulesUnderUserStock(userStockID)
             .then((response) => {
                 setUserCategoryArray(response.data.categories)
@@ -34,10 +36,10 @@ export default function dashboardModuleBoard({params}: { params: { username: str
             .catch((error) => console.log("fetchCategoriesAndModulesUnderUserStock error ", error))
     }
 
-    function handleStockTabClick(index : number) : void {
+    function handleStockTabClick(index : number, stockId : number) : void {
         setActiveStockTab(index)
         setActiveCategoryTab(0)
-        getUserCategoryTabs(index)
+        getUserCategoryTabs(stockId)
     }
 
     function handleCategoryTabClick(index : number) : void {
