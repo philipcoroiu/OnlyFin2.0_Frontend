@@ -6,7 +6,25 @@ export default function StockEditModal(props : any) {
 
             {/* !--Main Modal --! */}
             <div id="crypto-modal" aria-hidden="false"
-                 className="fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-y-auto md:inset-0 max-h-full flex items-center justify-center h-screen">
+                 className=
+                 {`fixed
+                 top-0
+                 left-0
+                 right-0
+                 z-50
+                 w-full
+                 p-4
+                 overflow-y-auto
+                 md:inset-0
+                 max-h-full
+                 flex
+                 items-center
+                 justify-center
+                 h-screen
+                 bg-black
+                 bg-opacity-50
+                 ${props.stockEditButtonIsActive? "" : "hidden"}`}>
+
                 <div className="relative w-full max-w-md max-h-full">
 
                     {/* Modal Content */}

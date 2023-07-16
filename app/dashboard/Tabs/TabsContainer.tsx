@@ -21,12 +21,14 @@ export default function TabsContainer(props : any) {
                 activeStockTab={props.activeStockTab}
                 handleStockTabClick={props.handleStockTabClick}
                 userStockArray={props.userStockArray}
+                handleStockEditButtonClick={props.handleStockEditButtonClick}
             ></StockTabs>
 
             <CategoryTabs
                 activeCategoryTab={props.activeCategoryTab}
                 handleCategoryTabClick={props.handleCategoryTabClick}
                 userCategoryArray={props.userCategoryArray}
+
             ></CategoryTabs>
 
 

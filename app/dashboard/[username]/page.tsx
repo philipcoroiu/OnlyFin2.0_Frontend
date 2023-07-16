@@ -16,6 +16,8 @@ export default function dashboardModuleBoard({params}: { params: { username: str
     const [userStockArray , setUserStockArray] = useState();
     const [userCategoryArray, setUserCategoryArray] = useState();
 
+    const [stockEditButtonIsActive, setStockEditButtonIsActive] = useState(false);
+
     useEffect(() => {
         ApiCalls.fetchTargetUsersStocks(params.username)
             .then((response) => {
@@ -48,11 +50,17 @@ export default function dashboardModuleBoard({params}: { params: { username: str
         setActiveCategoryTab(index)
     }
 
+    function handleStockEditButtonClick() {
+        setStockEditButtonIsActive(prevState => !prevState)
+    }
+
     return (
         <>
 
 
-            <StockEditModal></StockEditModal>
+            <StockEditModal
+                stockEditButtonIsActive={stockEditButtonIsActive}
+            ></StockEditModal>
 
             <div className="">
 
@@ -79,6 +87,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
                             activeCategoryTab={activeCategoryTab}
                             handleStockTabClick={handleStockTabClick}
                             handleCategoryTabClick={handleCategoryTabClick}
+                            handleStockEditButtonClick={handleStockEditButtonClick}
                         ></TabsContainer>
 
                         <Link href={"/users/" + params.username}>{params.username}</Link>
@@ -87,8 +96,6 @@ export default function dashboardModuleBoard({params}: { params: { username: str
                             userCategoryArray={userCategoryArray}
                             activeCategoryTab={activeCategoryTab}
                         ></DashboardModules>
-
-
 
                     </div>
                 </div>
