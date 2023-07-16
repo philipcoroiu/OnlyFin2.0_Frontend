@@ -2,6 +2,7 @@
 
 import React, {useState} from "react";
 import StockDropdownMenu from "@/app/dashboard/Tabs/StockTabs/StockDropdownMenu";
+import StockEditModal from "@/app/dashboard/Tabs/StockTabs/StockEditModal";
 
 const tempTabsList = [
     {
@@ -117,9 +118,11 @@ export default function StockTabs(props : any) {
                 </button>
                 <div className="z-10">
 
-                    <StockDropdownMenu
+
+                    {/* <StockDropdownMenu
                         dropdownMenuIsActive={dropdownMenuIsActive}
-                    ></StockDropdownMenu>
+                    ></StockDropdownMenu> */}
+
 
                 </div>
 

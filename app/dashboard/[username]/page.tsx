@@ -4,6 +4,7 @@ import TabsContainer from "../Tabs/TabsContainer";
 import DashboardModules from "@/app/dashboard/DashbordModules";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import Link from "next/link";
+import StockEditModal from "@/app/dashboard/Tabs/StockTabs/StockEditModal";
 
 
 
@@ -48,43 +49,51 @@ export default function dashboardModuleBoard({params}: { params: { username: str
     }
 
     return (
-        <div className="">
+        <>
 
-            <div
-                className="mx-auto
-            mx-20
-            max-w-full
-            px-4
-            py-16
-            sm:px-12
-            sm:py-20
-            lg:px-0">
 
-                <div className="px-10
-                py-10
-                overflow-y-auto
-                rounded-lg
-                bg-gray-700">
+            <StockEditModal></StockEditModal>
 
-                    <TabsContainer
-                        activeStockTab={activeStockTab}
-                        userStockArray={userStockArray}
-                        userCategoryArray={userCategoryArray}
-                        activeCategoryTab={activeCategoryTab}
-                        handleStockTabClick={handleStockTabClick}
-                        handleCategoryTabClick={handleCategoryTabClick}
-                    ></TabsContainer>
+            <div className="">
 
-                    <Link href={"/users/" + params.username}>{params.username}</Link>
+                <div
+                    className="mx-auto
+                mx-20
+                max-w-full
+                px-4
+                py-16
+                sm:px-12
+                sm:py-20
+                lg:px-0">
 
-                    <DashboardModules
-                        userCategoryArray={userCategoryArray}
-                        activeCategoryTab={activeCategoryTab}
-                    ></DashboardModules>
+                    <div className="px-10
+                    py-10
+                    overflow-y-auto
+                    rounded-lg
+                    bg-gray-700">
 
+                        <TabsContainer
+                            activeStockTab={activeStockTab}
+                            userStockArray={userStockArray}
+                            userCategoryArray={userCategoryArray}
+                            activeCategoryTab={activeCategoryTab}
+                            handleStockTabClick={handleStockTabClick}
+                            handleCategoryTabClick={handleCategoryTabClick}
+                        ></TabsContainer>
+
+                        <Link href={"/users/" + params.username}>{params.username}</Link>
+
+                        <DashboardModules
+                            userCategoryArray={userCategoryArray}
+                            activeCategoryTab={activeCategoryTab}
+                        ></DashboardModules>
+
+
+
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
 
     )
 }
