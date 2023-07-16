@@ -43,6 +43,7 @@ type OnlyfinUserStockTab = {
 
 type OnlyfinUserCategoryTab = {
     userCategoryId: number,
+    categoryName: string
     modules: OnlyfinModule[]
 }
 
