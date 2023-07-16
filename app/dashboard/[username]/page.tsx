@@ -38,6 +38,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
 
     function handleStockTabClick(index : number, stockId : number) : void {
         setActiveStockTab(index)
+        setUserCategoryArray(undefined) // *** Is this a scuffed way of making the loading animation appear? *** //
         setActiveCategoryTab(0)
         getUserCategoryTabs(stockId)
     }
@@ -76,7 +77,10 @@ export default function dashboardModuleBoard({params}: { params: { username: str
 
                     <Link href={"/users/" + params.username}>{params.username}</Link>
 
-                    <DashboardModules></DashboardModules>
+                    <DashboardModules
+                        userCategoryArray={userCategoryArray}
+                        activeCategoryTab={activeCategoryTab}
+                    ></DashboardModules>
 
                 </div>
             </div>
