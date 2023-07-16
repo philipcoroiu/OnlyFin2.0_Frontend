@@ -26,15 +26,27 @@ export default function StockTabs(props : any) {
 
     function renderCategoryTabs() {
         return(
-            props.userCategoryArray.map((category:OnlyfinUserStockTab, index : number) => (
+            props.userCategoryArray.map((category:OnlyfinUserCategoryTab, index : number) => (
                 <li className="mr-2">
                     <button
-                        className={`${props.activeStockTab === index ? "inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active" : "inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"}`}
-                        onClick={() => props.handleStockTabClick(index)}
+                        className={`${props.activeCategoryTab === index ? "inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active" : "inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"}`}
+                        onClick={() => props.handleCategoryTabClick(index)}
                         aria-current="page">{category.userCategoryId}
                     </button>
                 </li>
             ))
+        )
+    }
+
+    function renderLoadingTabs() {
+        return(
+            <li className="mr-2">
+                <div className="inline-flex space-x-2">
+                    <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
+                    <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
+                    <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
+                </div>
+            </li>
         )
     }
 
@@ -56,7 +68,7 @@ export default function StockTabs(props : any) {
                 text-gray-500
                 dark:text-gray-400">
 
-                {props.userCategoryArray ? renderCategoryTabs() : <div>Loading</div>}
+                {props.userCategoryArray ? renderCategoryTabs() : renderLoadingTabs()}
 
                 {
                     // ***********************//

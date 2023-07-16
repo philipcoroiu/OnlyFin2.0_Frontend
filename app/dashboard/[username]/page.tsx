@@ -29,7 +29,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
         ApiCalls.fetchCategoriesAndModulesUnderUserStock(userStockID)
             .then((response) => {
                 setUserCategoryArray(response.data.categories)
-                console.log(response.data.categories)
+                console.log("getUserCategoryTabs: ", response.data.categories)
             })
             .catch((error) => console.log("fetchCategoriesAndModulesUnderUserStock error ", error))
     }
@@ -37,6 +37,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
     function handleStockTabClick(index : number) : void {
         setActiveStockTab(index)
         setActiveCategoryTab(0)
+        getUserCategoryTabs(index)
     }
 
     function handleCategoryTabClick(index : number) : void {
