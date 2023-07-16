@@ -72,8 +72,8 @@ export default function DashboardModules(props : any) {
                     xl:grid-cols-3
                     xl:gap-x-5">
 
-            {tempCharts.map((tempChart) => (
-                <a key="" className="group">
+            {tempCharts.map((tempChart, index) => (
+                <a key={index} className="group">
 
                     <div
                         className="aspect-h-1
