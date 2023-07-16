@@ -60,19 +60,9 @@ export default function DashboardModules(props : any) {
     });
     /////////////////////
 
-
-    return(
-        <div
-            className="grid
-                    grid-cols-1
-                    gap-x-6
-                    gap-y-5
-                    sm:grid-cols-2
-                    lg:grid-cols-3
-                    xl:grid-cols-3
-                    xl:gap-x-5">
-
-            {tempCharts.map((tempChart, index) => (
+    function renderModules() {
+        return(
+            props.userCategoryArray[props.activeCategoryTab].modules.map((module : OnlyfinModule, index:number) => (
                 <a key={index} className="group">
 
                     <div
@@ -88,11 +78,31 @@ export default function DashboardModules(props : any) {
                         <HighchartsReact
                             containerProps={{style: {height: '100%', weight: '100%'}}}
                             highcharts={Highcharts}
-                            options={studioChart}
+                            options={module.content}
                         />
                     </div>
                 </a>
-            ))}
+            ))
+        )
+    }
+
+
+    return(
+        <div
+            className="grid
+                    grid-cols-1
+                    gap-x-6
+                    gap-y-5
+                    sm:grid-cols-2
+                    lg:grid-cols-3
+                    xl:grid-cols-3
+                    xl:gap-x-5">
+
+
+            {props.userCategoryArray ? renderModules() : <div>Loading</div>}
+
+
+
         </div>
     )
 }
