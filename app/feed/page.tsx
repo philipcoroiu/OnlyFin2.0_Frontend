@@ -85,7 +85,7 @@ export default function Feed() {
                         hover:rounded-3xl
                         hover:text-white
                         "
-                        onClick>Comment 228</button>
+                        >Comment 228</button>
                         <button className="
                         px-4
                         m-1

@@ -28,7 +28,7 @@ export default function Page() {
     }, [])
 
     return (
-        <div className={"text-center justify-center flex"}>
+        <div className={""}>
             {username ?
                 <MyProfile
                     username={username}
