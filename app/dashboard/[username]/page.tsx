@@ -20,20 +20,27 @@ export default function dashboardModuleBoard({params}: { params: { username: str
     const [stockEditButtonIsActive, setStockEditButtonIsActive] = useState(false);
     const [categoryEditButtonIsActive, setCategoryEditButtonIsActive] = useState(false);
 
+    const [userStockID, setUserStockID] = useState();
+
     useEffect(() => {
+        loadStockTab()
+    }, [])
+
+    function loadStockTab() {
         ApiCalls.fetchTargetUsersStocks(params.username)
             .then((response) => {
                 console.log("userStockArray: ", response.data)
                 console.log("fetchTargetUsersStocks, stock id: ", response.data[0].id)
                 setUserStockArray(response.data)
+                setUserStockID(response.data[0].id)
                 getUserCategoryTabs(response.data[0].id)
             })
             .catch((error) => console.log("fetchTargetUsersStocks error: " , error))
-    }, [])
+    }
 
-    function getUserCategoryTabs(userStockID : number) {
-        console.log("userStockID: ", userStockID)
-        ApiCalls.fetchCategoriesAndModulesUnderUserStock(userStockID)
+    function getUserCategoryTabs(userStockIDInput : number) {
+        console.log("userStockID: ", userStockIDInput)
+        ApiCalls.fetchCategoriesAndModulesUnderUserStock(userStockIDInput)
             .then((response) => {
                 setUserCategoryArray(response.data.categories)
                 console.log("getUserCategoryTabs: ", response.data.categories)
@@ -43,7 +50,6 @@ export default function dashboardModuleBoard({params}: { params: { username: str
 
     function handleStockTabClick(index : number, stockId : number) : void {
         setActiveStockTab(index)
-        setUserCategoryArray(undefined) // *** Is this a scuffed way of making the loading animation appear? *** //
         setActiveCategoryTab(0)
         getUserCategoryTabs(stockId)
     }
@@ -58,6 +64,14 @@ export default function dashboardModuleBoard({params}: { params: { username: str
 
     function handleCategoryEditButtonClick() {
         setCategoryEditButtonIsActive(prevState => !prevState)
+    }
+
+
+    {/*
+        function refreshCategoryTabs() {
+            getUserCategoryTabs(userStockID)
+        }
+     */
     }
 
     return (
@@ -101,6 +115,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
                             handleCategoryTabClick={handleCategoryTabClick}
                             handleStockEditButtonClick={handleStockEditButtonClick}
                             handleCategoryEditButtonClick={handleCategoryEditButtonClick}
+
                         ></TabsContainer>
 
                         <Link href={"/users/" + params.username}>{params.username}</Link>
