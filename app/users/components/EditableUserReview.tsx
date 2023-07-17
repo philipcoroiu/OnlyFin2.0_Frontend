@@ -43,6 +43,7 @@ export default function EditableUserReview({targetUsername}: any) {
             })
     }
 
+    //TODO: Make input box less shit
     function renderReviewNoPostExists() {
         return (
             <>

@@ -12,7 +12,7 @@ export default function Page({params}: { params: { username: string } }) {
                     username={params.username}
                 />
             </div>
-            <div className={"justify-center flex w-1/2 mx-auto"}>
+            <div className={"justify-center flex"}>
                 <EditableUserReview
                     targetUsername={params.username}
                 />
