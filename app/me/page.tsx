@@ -32,13 +32,17 @@ export default function Page() {
         <div className={""}>
             {username ?
                 <>
-                    <MyProfile
-                        username={username}
-                    />
+                    <div className={""}>
+                        <MyProfile
+                            username={username}
+                        />
+                    </div>
 
-                    <UserReviews
-                        targetUsername={username}
-                    />
+                    <div className={"flex-wrap justify-center py-7"}>
+                        <UserReviews
+                            targetUsername={username}
+                        />
+                    </div>
                 </>
                 :
                 <></>
