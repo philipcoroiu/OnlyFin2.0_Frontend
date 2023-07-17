@@ -50,7 +50,7 @@ export default function MyProfile({username}: any) {
             ></div>
             <div className="
                     w-4/5
-                    h-52
+
                     flex
                     flex-col
                     "
