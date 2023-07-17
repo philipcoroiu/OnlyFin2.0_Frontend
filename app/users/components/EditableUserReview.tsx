@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import UserReviewCard from "@/app/users/components/UserReviewCard";
 
-export default function MutableUserReview({targetUsername}: any) {
+export default function EditableUserReview({targetUsername}: any) {
     const [ownReview, setOwnReview] = useState<OnlyfinReview>()
     const [noReviewExists, setNoReviewExists] = useState<boolean>(false)
 
