@@ -5,26 +5,37 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 
 export default function MyProfile({username}: any) {
 
-    const [edit, setEdit] = useState(false)
-
-    const[aboutMe, setAboutMe] = useState("")
+    const [aboutMe, setAboutMe] = useState<string>("")
+    const [edit, setEdit] = useState<boolean>(false)
 
     useEffect(() => {
-        ApiCalls.fetchAboutMe(username).then(response => setAboutMe(response.data))
-    },[])
+        ApiCalls.fetchAboutMe(username)
+            .then(response => {
+                setAboutMe(response.data)
+            })
+            .catch(error => {
+                console.log("[me/MyProfile.useEffect()]: " + error)
+            })
+    }, [])
 
-    function changeEdit () {
+    function changeEdit() {
         setEdit(!edit)
     }
 
-    function setText (event : any) : void {
-        console.log(event.target.value)
+    function setText(event: any): void {
         setAboutMe(event.target.value)
     }
 
-    function updateBio(){
+    function updateBio(event: any) {
+        event.preventDefault()
+
         ApiCalls.updateAboutMe(aboutMe)
-        changeEdit()
+            .then(response => {
+                changeEdit()
+            })
+            .catch(error => {
+                console.log("[me/MyProfile.updateBio()]: " + error)
+            })
     }
 
     return (
@@ -57,7 +68,7 @@ export default function MyProfile({username}: any) {
                                               className="w-full h-5 text-base px-0 text-sm text-gray-900 bg-white border-0 outline-none dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
                                               onChange={setText}
                                               value={aboutMe}
-                                              placeholder="Write a bio..." ></textarea>
+                                              placeholder="Write a bio..."></textarea>
                                 </div>
                                 <div
                                     className="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
@@ -76,8 +87,8 @@ export default function MyProfile({username}: any) {
                     <div>
                         <p className=" w-5/6 ml-8 mt-2">{aboutMe}</p>
                         <button
-                                className="inline-flex items-center ml-8 mt-5 py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
-                                onClick={changeEdit}
+                            className="inline-flex items-center ml-8 mt-5 py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
+                            onClick={changeEdit}
                         >
                             Edit bio
                         </button>

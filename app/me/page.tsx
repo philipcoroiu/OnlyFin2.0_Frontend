@@ -28,7 +28,7 @@ export default function Page() {
     }, [])
 
     return (
-        <div className={""}>
+        <>
             {username ?
                 <MyProfile
                     username={username}
@@ -36,6 +36,6 @@ export default function Page() {
                 :
                 <></>
             }
-        </div>
+        </>
     )
 }
