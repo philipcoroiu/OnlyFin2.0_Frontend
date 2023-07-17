@@ -9,12 +9,22 @@ export default function MyProfile({username}: any) {
 
     const[aboutMe, setAboutMe] = useState("")
 
+    useEffect(() => {
+        ApiCalls.fetchAboutMe(username).then(response => setAboutMe(response.data))
+    },[])
+
     function changeEdit () {
         setEdit(!edit)
     }
 
-    function setText (event : any) {
+    function setText (event : any) : void {
+        console.log(event.target.value)
         setAboutMe(event.target.value)
+    }
+
+    function updateBio(){
+        ApiCalls.updateAboutMe(aboutMe)
+        changeEdit()
     }
 
     return (
@@ -46,15 +56,15 @@ export default function MyProfile({username}: any) {
                                     <label htmlFor="comment" className="sr-only">Your comment</label>
                                     <textarea id="comment"
                                               className="w-full px-0 text-sm text-gray-900 bg-white border-0 outline-none dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+                                              onChange={setText}
                                               value={aboutMe}
-                                              onSubmit={setText(value)}
                                               placeholder="Write a bio..." ></textarea>
                                 </div>
                                 <div
                                     className="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
                                     <button type="submit"
                                             className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
-                                            onClick={changeEdit}
+                                            onClick={updateBio}
                                     >
                                         Save bio
                                     </button>
@@ -65,7 +75,7 @@ export default function MyProfile({username}: any) {
                     </div>
                     :
                     <div>
-                        <p className="bg-red-300 w-5/6 ml-5">here will be bio</p>
+                        <p className="bg-red-300 w-5/6 ml-5">{aboutMe}</p>
                         <button
                                 className="inline-flex items-center ml-5 mt-5 py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
                                 onClick={changeEdit}
