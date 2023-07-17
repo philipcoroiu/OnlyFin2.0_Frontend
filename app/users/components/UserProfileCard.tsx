@@ -49,7 +49,7 @@ export default function UserProfileCard({username}: any) {
                 if (error.response.status === 401) {
                     router.push("/login?redirect=users/" + username)
                 } else {
-                    console.log("[UserProfileCard.subscribe]: " + error)
+                    console.log("[UserProfileCard.subscribe()]: " + error)
                 }
             })
     }
@@ -63,7 +63,7 @@ export default function UserProfileCard({username}: any) {
                 if (error.response.status === 401) {
                     router.push("/login?redirect=users/" + username)
                 } else {
-                    console.log("[UserProfileCard.unsubscribe]: " + error)
+                    console.log("[UserProfileCard.unsubscribe()]: " + error)
                 }
             })
     }

@@ -1,7 +1,6 @@
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import Avatar from "@/app/components/Avatar";
 import Link from "next/link";
-import {useState} from "react";
 
 export default function UserReviewCard(review: OnlyfinReview) {
 

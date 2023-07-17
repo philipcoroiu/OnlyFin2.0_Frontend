@@ -20,7 +20,7 @@ export default function MutableUserReview({targetUsername}: any) {
                 setOwnReview(fetchedReview)
             })
             .catch(error => {
-                if (error.response.status === 404) {
+                if (error.response?.status === 404) {
                     setNoReviewExists(true)
                 } else {
                     console.log("[MutableUserReview.getMyReview()]: " + error)

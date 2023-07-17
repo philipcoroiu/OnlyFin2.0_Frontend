@@ -22,7 +22,7 @@ export default function UserReviews({targetUsername}: any) {
                 }
             })
             .catch(error => {
-                console.log("[UserReviews] error:" + error)
+                console.log("[UserReviews.useEffect()]" + error)
             })
     }, [])
 
