@@ -38,16 +38,15 @@ export default function MyProfile({username}: any) {
                 mt-5"
             ></div>
             <div className="
-                    bg-yellow-300
                     w-4/5
                     h-52
                     flex
                     flex-col
                     "
             >
-                <h1 className="text-xl font-bold m-5 mt-10 bg-white">{username}</h1>
+                <h1 className="text-xl font-bold m-5 mt-10 ">{username}</h1>
                 {edit ?
-                    <div className="bg-red-300">
+                    <div>
 
                         <form>
                             <div
@@ -55,7 +54,7 @@ export default function MyProfile({username}: any) {
                                 <div className="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
                                     <label htmlFor="comment" className="sr-only">Your comment</label>
                                     <textarea id="comment"
-                                              className="w-full px-0 text-sm text-gray-900 bg-white border-0 outline-none dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+                                              className="w-full h-5 text-base px-0 text-sm text-gray-900 bg-white border-0 outline-none dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
                                               onChange={setText}
                                               value={aboutMe}
                                               placeholder="Write a bio..." ></textarea>
@@ -75,9 +74,9 @@ export default function MyProfile({username}: any) {
                     </div>
                     :
                     <div>
-                        <p className="bg-red-300 w-5/6 ml-5">{aboutMe}</p>
+                        <p className=" w-5/6 ml-8 mt-2">{aboutMe}</p>
                         <button
-                                className="inline-flex items-center ml-5 mt-5 py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
+                                className="inline-flex items-center ml-8 mt-5 py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
                                 onClick={changeEdit}
                         >
                             Edit bio
