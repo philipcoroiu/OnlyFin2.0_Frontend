@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import MyProfile from "@/app/me/components/MyProfile";
 import {useRouter} from "next/navigation";
+import UserReviews from "@/app/users/components/UserReviews";
 
 export default function Page() {
 
@@ -28,14 +29,20 @@ export default function Page() {
     }, [])
 
     return (
-        <>
+        <div className={""}>
             {username ?
-                <MyProfile
-                    username={username}
-                />
+                <>
+                    <MyProfile
+                        username={username}
+                    />
+
+                    <UserReviews
+                        targetUsername={username}
+                    />
+                </>
                 :
                 <></>
             }
-        </>
+        </div>
     )
 }
