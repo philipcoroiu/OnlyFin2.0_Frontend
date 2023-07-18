@@ -1,4 +1,5 @@
 "use client"
+
 import React, {useState} from "react";
 import Link from "next/link";
 import {useSearchParams} from "next/navigation";
@@ -8,58 +9,41 @@ export default function Login() {
     const searchParams = useSearchParams()
     const redirectParam = searchParams.get("redirect")
 
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const [showErrorMessage, setShowErrorMessage] = React.useState(false)
 
-    function handleUsernameChange(event: any) {
-        setUsername(event.target.value.toLowerCase());
+    function handleEmailChange(event: any) {
+        setEmail(event.target.value.toLowerCase());
     }
 
     function handlePasswordChange(event: any) {
         setPassword(event.target.value);
     }
 
-    function handleSubmit(event: any) {
-        event.preventDefault();
-        ApiCalls.postLoginPlz(username,password)
-            .then((response) => {
+    /**
+     * window.location.href is used here instead of Router.push() on purpose.
+     * This is used to trigger a re-render of the Header component to get the version with the logged-in buttons.
+     */
+    function handleSubmit() {
+        ApiCalls.postLoginPlz(email, password)
+            .then(response => {
                 if (response) {
-                    if (redirectParam) {
-                        window.location.href = `../${redirectParam}`
-                    }
-                    else {
-                        window.location.href = '../dashboard'
-                    }
-                } else {
+                    window.location.href = redirectParam ? `/${redirectParam}` : '/dashboard'
+                }
+                else {
                     displayErrorMessage()
                 }
-
             })
-            .catch(() => {
+            .catch(error => {
                 displayErrorMessage()
-            });
+            })
     }
-
-    /*
-  *
-  * event.preventDefault();
-      ApiCalls.postLoginPlz(username,password)
-          .then(() => {
-              //router.push('../Feed')
-
-          })
-          .catch(() => {
-              displayErrorMessage()
-          });
-  *
-  * */
-
 
     function displayErrorMessage() {
 
-        console.log(username)
+        console.log(email)
 
         /* sets the showErrorMessage to true to show the error messages */
         setShowErrorMessage(true);
@@ -68,100 +52,94 @@ export default function Login() {
 
     return (
         <div className="
-        mx-auto
-        max-w-2xl
-        py-32
-        sm:py-48
-        lg:py-56
-        p-12
-        ">
-            <form
-                onSubmit={handleSubmit}>
-                <div className="
+            mx-auto
+            max-w-2xl
+            py-32
+            sm:py-48
+            lg:py-56
+            p-12">
+            <div className="
                     rounded-[calc(1.5rem-1px)]
                     border-2
                     border-blue-900
                     bg-white
                     px-10 p-12
                     dark:bg-gray-900">
+                <div>
+                    <h1 className="text-xl font-semibold text-gray-800 dark:text-white">
+                        Login to your account
+                    </h1>
+                    <p className="text-sm tracking-wide text-gray-600 dark:text-gray-300">
+                        <span>Don't have an account? </span>
+                        <Link className="text-blue-600 transition duration-200 hover:underline dark:text-blue-400"
+                              href={"/register"}>
+                            Register!
+                        </Link>
+                    </p>
+                </div>
 
-                    <div>
-                        <h1 className="text-xl font-semibold text-gray-800 dark:text-white">Login to your
-                            account</h1>
-                        <p className="text-sm tracking-wide text-gray-600 dark:text-gray-300"><span>Don't have an account? </span>
-                            <Link className="text-blue-600 transition duration-200 hover:underline dark:text-blue-400"
-                                  href={"../register"}>
-                                Register!
-                            </Link>
-                        </p>
+                <div className="mt-8 space-y-6">
+                    <div className="space-y-6">
+                        <input className="
+                                w-full
+                                bg-transparent
+                                text-gray-600
+                                dark:text-white
+                                dark:border-gray-700
+                                rounded-md
+                                border
+                                border-gray-300
+                                px-3
+                                py-2
+                                text-sm
+                                placeholder-gray-600
+                                invalid:border-red-500
+                                dark:placeholder-gray-300"
+                               type="email"
+                               value={email}
+                               onChange={handleEmailChange}
+                               placeholder="Email"
+                               maxLength={50}
+                        />
+
+                        <input className="
+                                w-full
+                                bg-transparent
+                                text-gray-600
+                                dark:text-white
+                                dark:border-gray-700
+                                rounded-md
+                                border
+                                border-gray-300
+                                px-3
+                                py-2
+                                text-sm
+                                placeholder-gray-600
+                                invalid:border-red-500
+                                dark:placeholder-gray-300"
+                               type="password"
+                               value={password}
+                               onChange={handlePasswordChange}
+                               placeholder="Password"
+                               maxLength={100}
+                        />
                     </div>
 
-                    <div className="mt-8 space-y-6">
-                        <div className="space-y-6">
-                            <input className="w-full
-                                bg-transparent
-                                text-gray-600
-                                dark:text-white
-                                dark:border-gray-700
-                                rounded-md
-                                border
-                                border-gray-300
-                                px-3
-                                py-2
-                                text-sm
-                                placeholder-gray-600
-                                invalid:border-red-500
-                                dark:placeholder-gray-300
-                                "
-                                   type="email"
-                                   id="username"
-                                   name="username"
-                                   value={username}
-                                   onChange={handleUsernameChange}
-                                   placeholder="Email"
-                                   maxLength={50}
-                            />
-
-                            <input className="w-full
-                                bg-transparent
-                                text-gray-600
-                                dark:text-white
-                                dark:border-gray-700
-                                rounded-md
-                                border
-                                border-gray-300
-                                px-3
-                                py-2
-                                text-sm
-                                placeholder-gray-600
-                                invalid:border-red-500
-                                dark:placeholder-gray-300
-
-                                "
-                                   type="password"
-                                   id="password"
-                                   name="password"
-                                   value={password}
-                                   onChange={handlePasswordChange}
-                                   placeholder="Password"
-                                   maxLength={100}
-                            />
-                        </div>
-
-                        {showErrorMessage && (
-                            <div className="
+                    {showErrorMessage && (
+                        <div className="
                                     text-center
                                     text-red-500
                                     font-bold
                                     text-xl
                                     font-mono"
-                            >
-                                <p>INCORRECT EMAIL OR PASSWORD!</p>
-                            </div>
-                        )}
+                        >
+                            <p>INCORRECT EMAIL OR PASSWORD!</p>
+                        </div>
+                    )}
 
-                        <button
-                            className="
+                    <button
+                        onClick={handleSubmit}
+                        className="
                                 h-10
                                 px-3
                                 w-full
@@ -178,13 +156,12 @@ export default function Login() {
                                 dark:bg-blue-600
                                 dark:hover:bg-blue-700
                                 focus:outline-none
-                                dark:focus:ring-blue-800
-                                ">
-                            Login
-                        </button>
-                    </div>
+                                dark:focus:ring-blue-800"
+                    >
+                        Login
+                    </button>
                 </div>
-            </form>
+            </div>
         </div>
-    );
+    )
 }

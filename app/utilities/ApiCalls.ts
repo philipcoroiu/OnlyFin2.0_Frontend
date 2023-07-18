@@ -23,10 +23,10 @@ export class ApiCalls {
      ********************************
      */
 
-    public static async postLoginPlz(username: string, password: string): Promise<AxiosResponse> {
+    public static async postLoginPlz(email: string, password: string): Promise<AxiosResponse> {
         return axiosInstance.post(
             "/plz",
-            `username=${username}&password=${password}`,
+            `username=${email}&password=${password}`,
             {
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 withCredentials: true
