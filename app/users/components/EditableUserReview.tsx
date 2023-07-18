@@ -43,41 +43,50 @@ export default function EditableUserReview({targetUsername}: any) {
             })
     }
 
-    //TODO: Make input box less shit
-    function renderReviewNoPostExists() {
+    //TODO: row & cols in textarea sucks. plz fix
+    function renderReviewInputBox() {
         return (
             <>
-                <input className={"text-black"}
-                       type="text"
-                       value={userReviewText}
-                       onChange={handleInputChange}
-                       placeholder="Write your review..."
-                />
-                <button className="
-                           bg-blue-600
+                <div className="border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+
+                    <div className="px-4 py-3 bg-white rounded-t-lg dark:bg-gray-800">
+                            <textarea className="text-gray-900 bg-white border-none dark:bg-gray-800 dark:text-white dark:placeholder-gray-400"
+                                      placeholder="Write a review..."
+                                      rows={7}
+                                      cols={60}
+                                      required
+                                      onChange={handleInputChange}>
+                            </textarea>
+                    </div>
+
+                    <button
+                        onClick={handleSubmit}
+                        type="button"
+                        className="
                            text-white
-                           m-2
-                           hover:bg-blue-800
-                           focus:ring-4
-                           focus:ring-blue-300
+                           bg-blue-700
                            font-medium
                            rounded-lg
                            text-sm
-                           px-5
-                           py-2.5
-                           mr-2
-                           mb-2
+                           m-2
+                           p-4
+                           hover:bg-blue-800
+                           focus:ring-4
+                           focus:ring-blue-300
+                           focus:outline-none
                            dark:bg-blue-600
                            dark:hover:bg-blue-700
-                           focus:outline-none
                            dark:focus:ring-blue-800"
-                        onClick={handleSubmit}>Post review
-                </button>
+                    >
+                        Post review
+                    </button>
+
+                </div>
             </>
         )
     }
 
-    function renderReviewPostExists() {
+    function renderReviewPost() {
         if (ownReview) {
             return (
                 <UserReviewCard
@@ -97,8 +106,8 @@ export default function EditableUserReview({targetUsername}: any) {
 
     return (
         <>
-            {ownReview ? renderReviewPostExists() : renderNothing()}
-            {noReviewExists ? renderReviewNoPostExists() : renderNothing()}
+            {ownReview ? renderReviewPost() : renderNothing()}
+            {noReviewExists ? renderReviewInputBox() : renderNothing()}
         </>
     )
 }
