@@ -20,7 +20,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
     const [stockEditButtonIsActive, setStockEditButtonIsActive] = useState(false);
     const [categoryEditButtonIsActive, setCategoryEditButtonIsActive] = useState(false);
 
-    const [userStockID, setUserStockID] = useState();
+    const [currentUserStockId , setCurrentUserStockId ] = useState<number>();
 
     useEffect(() => {
         loadStockTab()
@@ -32,7 +32,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
                 console.log("userStockArray: ", response.data)
                 console.log("fetchTargetUsersStocks, stock id: ", response.data[0].id)
                 setUserStockArray(response.data)
-                setUserStockID(response.data[0].id)
+                setCurrentUserStockId(response.data[0].id)
                 getUserCategoryTabs(response.data[0].id)
             })
             .catch((error) => console.log("fetchTargetUsersStocks error: " , error))
@@ -51,6 +51,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
     function handleStockTabClick(index : number, stockId : number) : void {
         setActiveStockTab(index)
         setActiveCategoryTab(0)
+        setCurrentUserStockId(stockId)
         getUserCategoryTabs(stockId)
     }
 
@@ -66,6 +67,15 @@ export default function dashboardModuleBoard({params}: { params: { username: str
         setCategoryEditButtonIsActive(prevState => !prevState)
     }
 
+    {/******************
+     * Modal Functions *
+     *******************/}
+
+
+    {/* TODO: Move this function to a modal container component instead! */}
+    function handleAddCategoryModalClick() {
+        console.log(`You clicked on "New Category" `)
+    }
 
     {/*
         function refreshCategoryTabs() {
@@ -86,6 +96,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
             <CategoryEditModal
                 categoryEditButtonIsActive={categoryEditButtonIsActive}
                 handleCategoryEditButtonClick={handleCategoryEditButtonClick}
+                handleAddCategoryModalClick={handleAddCategoryModalClick}
             ></CategoryEditModal>
 
             <div className="">
@@ -115,6 +126,8 @@ export default function dashboardModuleBoard({params}: { params: { username: str
                             handleCategoryTabClick={handleCategoryTabClick}
                             handleStockEditButtonClick={handleStockEditButtonClick}
                             handleCategoryEditButtonClick={handleCategoryEditButtonClick}
+
+                            initialUserStockId={currentUserStockId}
 
                         ></TabsContainer>
 

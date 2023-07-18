@@ -30,6 +30,7 @@ export default function CategoryEditModal(props : any) {
                 (<AddCategoryModal
                     categoryEditButtonIsActive={props.categoryEditButtonIsActive}
                     handleExitButtonClick={handleSecondaryModalExitButtonPress}
+                    handleAddCategoryModalClick={props.handleAddCategoryModalClick}
                 />)
             : (<div>Insert</div>)
             }

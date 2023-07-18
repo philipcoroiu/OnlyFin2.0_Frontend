@@ -77,7 +77,7 @@ export default function AddCategoryModal(props : any) {
                                             text-gray-900
                                             lg:text-xl
                                             dark:text-white">
-                                
+
                                 Name your category
                             </h3>
                         </div>
@@ -87,7 +87,9 @@ export default function AddCategoryModal(props : any) {
                         <div className="p-6">
                             <ul className="my-4 space-y-3">
                                 <li>
-                                    <form>
+                                    <form
+                                    onSubmit={props.handleAddCategoryModalClick}
+                                        >
                                         <div>
                                             <input
                                                 type="text"
