@@ -62,7 +62,7 @@ export default function DashboardModules(props : any) {
 
     function renderModules() {
         return(
-            props.userCategoryArray[props.activeCategoryTab].modules.map((module : OnlyfinModule, index:number) => (
+            props.userCategoryArray[props.activeCategoryTab].modules.map((module : any, index:number) => (
                 <a key={index} className="group">
 
                     <div

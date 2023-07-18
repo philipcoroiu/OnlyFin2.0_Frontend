@@ -58,21 +58,21 @@ export default function PrimaryModal(props : any) {
                                 <li>
                                     <button
                                        onClick={props.handleAddCategoryButtonPress}
-                                       className="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                       className="flex w-full items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                                         <span className="flex-1 ml-3 whitespace-nowrap">Add Category</span>
                                     </button>
                                 </li>
                                 <li>
-                                    <a href="#"
-                                       className="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                    <button
+                                       className="flex w-full items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                                         <span className="flex-1 ml-3 whitespace-nowrap">Remove Selected Category</span>
-                                    </a>
+                                    </button>
                                 </li>
                                 <li>
-                                    <a href="#"
-                                       className="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                    <button
+                                       className="flex w-full items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                                         <span className="flex-1 ml-3 whitespace-nowrap">Change name</span>
-                                    </a>
+                                    </button>
                                 </li>
                             </ul>
                         </div>
