@@ -18,7 +18,7 @@ export default function Explore() {
                 setSearchResult(response.data)
             })
             .catch(error => {
-                console.log("[explore:page.tsx] error fetching data: " + error)
+                console.log("[explore/page.tsx] error fetching data: " + error)
             })
     }, [])
 

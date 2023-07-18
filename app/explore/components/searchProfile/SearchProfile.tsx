@@ -43,7 +43,7 @@ export default function SearchProfile({username, isSubscribed}: any) {
     }
 
     return (
-        <div className="bg-gray-700 rounded-lg p-4">
+        <div className="bg-gray-50 rounded-lg p-4 dark:bg-gray-700">
             <Avatar/>
 
             <div className="text-xl font-bold">
