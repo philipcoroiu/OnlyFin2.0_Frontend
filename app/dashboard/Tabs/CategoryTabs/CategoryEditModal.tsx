@@ -10,6 +10,7 @@ export default function CategoryEditModal(props : any) {
     const [typeOfModalActive, setTypeOfModalActive] = useState("PRIMARY MODAL");
 
     function handleAddCategoryButtonPress() {
+        console.log("You pressed add category button")
         setTypeOfModalActive("ADD CATEGORY MODAL")
     }
 

@@ -1,5 +1,5 @@
 "use client"
-import React, {useEffect, useState} from "react";
+import React, {FormEvent, useEffect, useState} from "react";
 import TabsContainer from "../Tabs/TabsContainer";
 import DashboardModules from "@/app/dashboard/DashbordModules";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
@@ -73,8 +73,10 @@ export default function dashboardModuleBoard({params}: { params: { username: str
 
 
     {/* TODO: Move this function to a modal container component instead! */}
-    function handleAddCategoryModalClick() {
-        console.log(`You clicked on "New Category" `)
+    function handleAddCategoryModalClick(event : FormEvent<HTMLFormElement>, addCategoryInputName : string) {
+        //event.preventDefault();
+        console.log(`You clicked on "New Category" with text: `, addCategoryInputName)
+        //ApiCalls.addCategory()
     }
 
     {/*

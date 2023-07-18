@@ -1,7 +1,16 @@
 "use client"
 
 
+import {useState} from "react";
+
 export default function AddCategoryModal(props : any) {
+
+    const [categoryName, setCategoryName] = useState<string>();
+
+    function handleInputChange(categoryNameInput : string) {
+        setCategoryName(categoryNameInput)
+    }
+
     return(
         <>
             {/* !--Main Modal --! */}
@@ -88,14 +97,16 @@ export default function AddCategoryModal(props : any) {
                             <ul className="my-4 space-y-3">
                                 <li>
                                     <form
-                                    onSubmit={props.handleAddCategoryModalClick}
-                                        >
+                                        onSubmit={(event) => props.handleAddCategoryModalClick(event, categoryName)}
+                                    >
                                         <div>
                                             <input
                                                 type="text"
                                                 name="category name"
                                                 id="category name"
                                                 placeholder="Category name"
+                                                onChange={(event) => handleInputChange(event.target.value)}
+
                                                 className="bg-gray-50
                                                     border
                                                     border-gray-300
@@ -131,7 +142,6 @@ export default function AddCategoryModal(props : any) {
                                                     dark:focus:ring-blue-800
                                                     my-5">Submit
                                         </button>
-
                                     </form>
                                 </li>
                             </ul>
