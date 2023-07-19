@@ -35,7 +35,8 @@ export default function UserProfileCard({username}: any) {
     function handleSubscribeButtonClick() {
         if (!subscribed) {
             subscribe()
-        } else {
+        }
+        else {
             unsubscribe()
         }
     }

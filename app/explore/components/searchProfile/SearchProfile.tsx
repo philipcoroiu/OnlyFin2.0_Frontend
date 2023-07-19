@@ -44,7 +44,9 @@ export default function SearchProfile({username, isSubscribed}: any) {
 
     return (
         <div className="bg-gray-50 rounded-lg p-4 dark:bg-gray-700">
-            <Avatar/>
+            <Avatar
+                link={`/users/${username}`}
+            />
 
             <div className="text-xl font-bold">
                 <Link href={"/users/" + username}>{username}</Link>

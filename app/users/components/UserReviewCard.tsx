@@ -14,18 +14,17 @@ export default function UserReviewCard(review: OnlyfinReview) {
             })
     }
 
-    return (
-        <>
-            {review.isAuthor ?
-                <div className={`
+    function renderEditableView() {
+        return (
+            <div className={`
                         bg-gray-50 
                         rounded-lg 
                         p-7 
                         m-7 
                         w-full 
                         dark:bg-gray-700`}
-                >
-                    <button onClick={handleDelete} className={`
+            >
+                <button onClick={handleDelete} className={`
                             py-2 
                             text-white
                             bg-blue-700
@@ -42,39 +41,48 @@ export default function UserReviewCard(review: OnlyfinReview) {
                             dark:hover:bg-blue-700
                             focus:outline-none
                             dark:focus:ring-blue-800"`}
-                    >
-                        DELETE REVIEW
-                    </button>
+                >
+                    DELETE REVIEW
+                </button>
 
-                    <Link href={"/me"}>
-                        <Avatar/>
-                    </Link>
+                <Avatar
+                    link={"/me"}
+                />
 
-                    <Link className={"text-2xl font-bold"} href={"/me"}>
-                        YOU
-                    </Link>
-
-                    <div>{review.reviewText}</div>
+                <div className={"text-2xl font-bold"}>
+                    YOU
                 </div>
-                :
-                <div className={`
+
+                <div>{review.reviewText}</div>
+            </div>
+        )
+    }
+
+    function renderReadOnlyView() {
+        return (
+            <div className={`
                         bg-gray-50 
                         rounded-lg
                         p-7
                         m-7
                         dark:bg-gray-700`}
-                >
-                    <Link href={`/users/${review.author.username}`}>
-                        <Avatar/>
-                    </Link>
+            >
+                <Avatar
+                    link={`/users/${review.author.username}`}
+                />
 
-                    <Link className={"text-2xl font-bold py-2"} href={`/users/${review.author.username}`}>
-                        {review.author.username}
-                    </Link>
+                <Link className={"text-2xl font-bold py-2"} href={`/users/${review.author.username}`}>
+                    {review.author.username}
+                </Link>
 
-                    <div>{review.reviewText}</div>
-                </div>
-            }
+                <div>{review.reviewText}</div>
+            </div>
+        )
+    }
+
+    return (
+        <>
+            {review.isAuthor ? renderEditableView() : renderReadOnlyView()}
         </>
     )
 }

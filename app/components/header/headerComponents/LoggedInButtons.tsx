@@ -5,7 +5,7 @@ import Link from "next/link";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import {useRouter} from "next/navigation";
 
-export default function LoggedInButtons(props : any) {
+export default function LoggedInButtons(props: any) {
 
     const router = useRouter();
 
@@ -23,14 +23,14 @@ export default function LoggedInButtons(props : any) {
 
     return (
         <div className="flex items-center">
-            <Link href="/me" className="flex items-center">
-                <div className="mr-1">
-                    <Avatar/>
-                </div>
-                <p className="ml-2">{props.username}</p>
-            </Link>
+            <div className="mr-1">
+                <Avatar
+                    link={"/me"}
+                />
+            </div>
+            <p className="ml-2">{props.username}</p>
             <button onClick={logOut}
-               className="
+                    className="
                            text-gray-800
                            dark:text-white
                            hover:bg-gray-50
@@ -48,7 +48,8 @@ export default function LoggedInButtons(props : any) {
                            focus:outline-none
                            dark:focus:ring-gray-800
                            ml-5"
-            >Log out</button>
+            >Log out
+            </button>
         </div>
     )
 }

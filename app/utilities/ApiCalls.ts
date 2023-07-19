@@ -1,10 +1,5 @@
 import axios, {AxiosResponse} from 'axios';
 
-//Error handling (currently only displays the error?)
-function handleError(error: any) {
-    console.log('There was an error in the API call ', error)
-}
-
 const axiosInstance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_BACKEND,
 })
@@ -54,7 +49,7 @@ export class ApiCalls {
         return axiosInstance.get(
             `/users/about-me?targetUsername=${targetUsername}`,
             {}
-        );
+        )
     }
 
     public static async changePassword(oldPassword: string, newPassword: string): Promise<AxiosResponse> {
@@ -142,13 +137,14 @@ export class ApiCalls {
     public static async getAllStocks(): Promise<AxiosResponse> {
         return axiosInstance.get(
             "/stocks/all",
-            {},
+            {}
         )
     }
 
     public static async findStocksByName(name: string): Promise<AxiosResponse> {
         return axiosInstance.get(
             `/stocks/search?name=${name}`,
+            {}
         )
     }
 
