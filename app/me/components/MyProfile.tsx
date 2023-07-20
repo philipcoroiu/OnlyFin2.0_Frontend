@@ -40,27 +40,29 @@ export default function MyProfile({username}: any) {
 
     return (
         <div className={`
+                        mx-auto
+                        my-6
                         bg-gray-50 
                         rounded-lg 
                         p-7 
-                        w-full 
+                        w-3/4
                         dark:bg-gray-700
                         flex
-                        justify-center`}
+                        flex-col
+                        items-center`}
         >
             {/*flex items-center flex-wrap justify-center bg-blue-950*/}
 
 
-            <div className="w-40 h-40">
+            <div className="w-40 h-40 mb-4">
                 <Avatar/>
             </div>
 
             <div className="
                     flex
                     flex-col
-                    h-full
                     w-60
-                    bg-blue-800
+                    bg-blue-950
                     "
             >
 
@@ -70,7 +72,6 @@ export default function MyProfile({username}: any) {
                     flex
                     flex-col
                     justify-between
-                    h-full
                     ">
                         <h1 className="text-xl font-bold my-1">{username}</h1>
 
