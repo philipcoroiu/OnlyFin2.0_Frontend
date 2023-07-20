@@ -7,8 +7,6 @@ import Link from "next/link";
 import StockEditModal from "@/app/dashboard/Tabs/StockTabs/StockEditModal";
 import CategoryEditModal from "@/app/dashboard/Tabs/CategoryTabs/CategoryEditModal";
 
-
-
 export default function dashboardModuleBoard() {
 
     const [whoAmI, setWhoAmI] = useState<String>();
@@ -80,17 +78,15 @@ export default function dashboardModuleBoard() {
 
     {/* TODO: Move this function to a modal container component instead! */}
     function handleAddCategoryModalClick(event : FormEvent<HTMLFormElement>, addCategoryInputName : string) {
-        event.preventDefault();
+        //event.preventDefault();
         console.log(`You clicked on "New Category" with text: `, addCategoryInputName)
-        //ApiCalls.addCategory(currentUserStockId, addCategoryInputName)
+        ApiCalls.addCategory(currentUserStockId, addCategoryInputName)
     }
 
-    {/*
-        function refreshCategoryTabs() {
-            getUserCategoryTabs(userStockID)
-        }
-     */
+    function removeSelectedCategory() {
+        ApiCalls.deleteCategory(3)
     }
+
 
     return (
         <>
@@ -105,6 +101,7 @@ export default function dashboardModuleBoard() {
                 categoryEditButtonIsActive={categoryEditButtonIsActive}
                 handleCategoryEditButtonClick={handleCategoryEditButtonClick}
                 handleAddCategoryModalClick={handleAddCategoryModalClick}
+                removeSelectedCategory={removeSelectedCategory}
             ></CategoryEditModal>
 
             <div className="">
@@ -150,6 +147,5 @@ export default function dashboardModuleBoard() {
                 </div>
             </div>
         </>
-
     )
 }

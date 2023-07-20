@@ -26,6 +26,7 @@ export default function CategoryEditModal(props : any) {
                     categoryEditButtonIsActive={props.categoryEditButtonIsActive}
                     handleAddCategoryButtonPress={handleAddCategoryButtonPress}
                     handleCategoryEditButtonClick={props.handleCategoryEditButtonClick}
+                    removeSelectedCategory={props.removeSelectedCategory}
                 />)
             : typeOfModalActive === "ADD CATEGORY MODAL" ?
                 (<AddCategoryModal
