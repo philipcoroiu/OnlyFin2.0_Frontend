@@ -63,6 +63,13 @@ export class ApiCalls {
         )
     }
 
+    public static async getProfilePicture(targetUsername: string): Promise<AxiosResponse> {
+        return axiosInstance.get(
+            `/users/profile-picture?targetUsername=${targetUsername}`,
+            {}
+        )
+    }
+
     public static async registerNewUser(email: string, username: string, password: string): Promise<AxiosResponse> {
         return axiosInstance.post(
             "/users/register",
@@ -102,6 +109,14 @@ export class ApiCalls {
         return axiosInstance.put(
             "/users/update-about-me",
             {newAboutMe: newAboutMe},
+            {withCredentials: true}
+        )
+    }
+
+    public static async updateProfilePicture(profilePictureId: number): Promise<AxiosResponse> {
+        return axiosInstance.put(
+            "/users/update-profile-picture",
+            {profilePictureId: profilePictureId},
             {withCredentials: true}
         )
     }
