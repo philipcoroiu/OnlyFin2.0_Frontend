@@ -1,6 +1,6 @@
 "use client"
 import React, {FormEvent, useEffect, useState} from "react";
-import TabsContainer from "../Tabs/TabsContainer";
+import TabsContainer from "./Tabs/TabsContainer";
 import DashboardModules from "@/app/dashboard/DashbordModules";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import Link from "next/link";
@@ -9,7 +9,9 @@ import CategoryEditModal from "@/app/dashboard/Tabs/CategoryTabs/CategoryEditMod
 
 
 
-export default function dashboardModuleBoard({params}: { params: { username: string } }) {
+export default function dashboardModuleBoard() {
+
+    const [whoAmI, setWhoAmI] = useState<String>();
 
     const [activeStockTab, setActiveStockTab] = useState(0);
     const [activeCategoryTab, setActiveCategoryTab] = useState(0);
@@ -23,11 +25,15 @@ export default function dashboardModuleBoard({params}: { params: { username: str
     const [currentUserStockId  , setCurrentUserStockId ] = useState<number>(0);
 
     useEffect(() => {
-        loadStockTab()
+        ApiCalls.whoAmI()
+            .then((response) => {
+                setWhoAmI(response.data)
+                loadStockTab(response.data)
+            })
     }, [])
 
-    function loadStockTab() {
-        ApiCalls.fetchTargetUsersStocks(params.username)
+    function loadStockTab(username : string) {
+        ApiCalls.fetchTargetUsersStocks(username)
             .then((response) => {
                 console.log("userStockArray: ", response.data)
                 console.log("fetchTargetUsersStocks, stock id: ", response.data[0].id)
@@ -133,7 +139,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
 
                         ></TabsContainer>
 
-                        <Link href={"/users/" + params.username}>{params.username}</Link>
+                        <Link href={"/users/" + whoAmI}>{whoAmI}</Link>
 
                         <DashboardModules
                             userCategoryArray={userCategoryArray}
