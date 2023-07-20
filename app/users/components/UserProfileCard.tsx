@@ -91,9 +91,9 @@ export default function UserProfileCard({username}: any) {
 
                 <Avatar/>
 
-                <div className={"text-3xl font-bold py-3"}>
+                <h2 className={"text-3xl font-bold py-3"}>
                     {username}
-                </div>
+                </h2>
 
                 <button
                     onClick={handleSubscribeButtonClick}
@@ -109,7 +109,6 @@ export default function UserProfileCard({username}: any) {
                            text-sm
                            px-5
                            py-2.5
-                           mr-2
                            mb-2
                            dark:bg-blue-600
                            dark:hover:bg-blue-700
@@ -119,9 +118,9 @@ export default function UserProfileCard({username}: any) {
                     {subscribed ? "UNSUBSCRIBE" : "SUBSCRIBE"}
                 </button>
 
-                <div className={"text-center"}>
+                <p className={"text-center"}>
                     {user?.aboutMe}
-                </div>
+                </p>
             </div>
         )
     }
