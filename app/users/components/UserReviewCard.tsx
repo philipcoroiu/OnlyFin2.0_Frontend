@@ -46,9 +46,9 @@ export default function UserReviewCard(review: OnlyfinReview) {
                     DELETE REVIEW
                 </button>
 
-                <Avatar
-                    link={"/me"}
-                />
+                <div className="w-20 h-20">
+                    <Avatar/>
+                </div>
 
                 <div className={"text-2xl font-bold"}>
                     YOU
@@ -68,9 +68,14 @@ export default function UserReviewCard(review: OnlyfinReview) {
                         m-7
                         dark:bg-gray-700`}
             >
-                <Avatar
-                    link={`/users/${review.author.username}`}
-                />
+
+                <div className="w-40 h-40">
+                    <Link href={`/users/${review.author.username}`}>
+                        <Avatar/>
+
+                    </Link>
+                </div>
+
 
                 <Link className={"text-2xl font-bold py-2"} href={`/users/${review.author.username}`}>
                     {review.author.username}
