@@ -28,7 +28,11 @@ export default function LoggedInButtons(props: any) {
                     link={"/me"}
                 />
             </div>
-            <p className="ml-2">{props.username}</p>
+            <p className="ml-2">
+                <Link href={"/me"}>
+                    {props.username}
+                </Link>
+            </p>
             <button onClick={logOut}
                     className="
                            text-gray-800
