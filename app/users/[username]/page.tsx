@@ -6,18 +6,18 @@ export default function Page({params}: { params: { username: string } }) {
     return (
         //TODO: FIX CURSED CSS in components and add error handling
         <div className={""}>
-            <div className={"justify-center flex"}>
+            <div className={"justify-center flex lg:w-1/2 mx-auto px-7 py-7"}>
                 <UserProfileCard
                     key={params.username}
                     username={params.username}
                 />
             </div>
-            <div className={"justify-center flex w-1/2 mx-auto"}>
+            <div className={"justify-center flex lg:w-1/2 mx-auto px-7"}>
                 <EditableUserReview
                     targetUsername={params.username}
                 />
             </div>
-            <div className={"justify-center flex-wrap w-1/2 mx-auto py-5"}>
+            <div className={"justify-center flex-wrap lg:w-1/2 mx-auto py-5"}>
                 <UserReviews
                     targetUsername={params.username}
                 />

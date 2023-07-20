@@ -77,15 +77,13 @@ export default function UserProfileCard({username}: any) {
                 bg-gray-50
                 rounded-lg
                 p-7
-                m-7
-                w-1/2
+                w-full
                 dark:bg-gray-700`
                 :
                 `bg-gray-50 
                 rounded-lg 
                 p-7 
-                m-7
-                w-1/2
+                w-full
                 dark:bg-gray-700`}
             >
 

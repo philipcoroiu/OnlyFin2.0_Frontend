@@ -20,7 +20,8 @@ export default function UserReviewCard(review: OnlyfinReview) {
                         bg-gray-50 
                         rounded-lg 
                         p-7 
-                        m-7 
+                        mb-4
+                        md:mx-3
                         w-full 
                         dark:bg-gray-700`}
             >
