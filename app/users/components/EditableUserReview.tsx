@@ -42,18 +42,15 @@ export default function EditableUserReview({targetUsername}: any) {
                 console.log("[EditableUserReview.handleSubmit()]: " + error)
             })
     }
-
-    //TODO: row & cols in textarea sucks. plz fix
+    
     function renderReviewInputBox() {
         return (
             <>
-                <div className="border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+                <div className="border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 w-full">
 
                     <div className="px-4 py-3 bg-white rounded-t-lg dark:bg-gray-800">
-                            <textarea className="text-gray-900 bg-white border-none dark:bg-gray-800 dark:text-white dark:placeholder-gray-400"
+                            <textarea className="text-gray-900 bg-white border-none dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 w-full"
                                       placeholder="Write a review..."
-                                      rows={7}
-                                      cols={60}
                                       required
                                       onChange={handleInputChange}>
                             </textarea>
