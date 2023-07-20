@@ -53,7 +53,7 @@ export default function UserReviewCard(review: OnlyfinReview) {
                     YOU
                 </div>
 
-                <div>{review.reviewText}</div>
+                <p className={"break-words"}>{review.reviewText}</p>
             </div>
         )
     }
@@ -75,7 +75,7 @@ export default function UserReviewCard(review: OnlyfinReview) {
                     {review.author.username}
                 </Link>
 
-                <div>{review.reviewText}</div>
+                <p className={"break-words"}>{review.reviewText}</p>
             </div>
         )
     }
