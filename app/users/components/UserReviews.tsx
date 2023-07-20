@@ -43,7 +43,7 @@ export default function UserReviews({targetUsername}: any) {
 
     function renderNoReviewsFound() {
         return (
-            <div>NO REVIEWS BY OTHER USERS FOUND...</div>
+            <p className={"text-center"}>NO REVIEWS BY OTHER USERS FOUND...</p>
         )
     }
 
