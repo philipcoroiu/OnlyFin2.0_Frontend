@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export default function Menu(props: any) {
-    const menuItems: string[] = ["Home", "Dashboard", "Studio", "Explore"]
+    const menuItems: string[] = ["Dashboard", "Studio", "Explore", "Settings"]
 
     return (
         <div
