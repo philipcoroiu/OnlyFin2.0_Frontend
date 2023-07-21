@@ -9,7 +9,7 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 export default function test() {
 
     useEffect(() => {
-      ApiCalls.findAnalystsThatCoverStock(1)
+      ApiCalls.updateProfilePicture(2)
           .then((response) => {
               console.log(response.data)
       })

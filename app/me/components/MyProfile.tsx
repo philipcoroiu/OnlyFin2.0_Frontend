@@ -56,7 +56,9 @@ export default function MyProfile({username}: any) {
 
 
             <div className="w-24 h-24 mb-4">
-                <Avatar/>
+                <Avatar
+                    username={username}
+                />
             </div>
 
             <div className="

@@ -91,7 +91,9 @@ export default function UserProfileCard({username}: any) {
             >
                 <div>
                 <div className="w-40 h-40">
-                    <Avatar/>
+                    <Avatar
+                        username={username}
+                    />
                 </div>
 
                 <h2 className={"text-3xl font-bold py-3"}>
@@ -140,7 +142,9 @@ export default function UserProfileCard({username}: any) {
                 dark:bg-gray-700`}
             >
                 <div className="w-40 h-40">
-                    <Avatar/>
+                    <Avatar
+                        username={username}
+                    />
                 </div>
 
                 <div className={"text-3xl font-bold py-3"}>

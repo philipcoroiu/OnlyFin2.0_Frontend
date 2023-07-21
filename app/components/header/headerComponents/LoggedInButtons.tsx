@@ -6,6 +6,7 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 import {useRouter} from "next/navigation";
 
 export default function LoggedInButtons(props: any) {
+    const username: string = props.username
 
     const router = useRouter();
 
@@ -26,12 +27,14 @@ export default function LoggedInButtons(props: any) {
             {/*<div className="mr-1 w-10 h-10 bg-pink-800">*/}
 
             <Link href={"/me"} className="w-10 h-10">
-                <Avatar/>
+                <Avatar
+                    username={username}
+                />
             </Link>
 
             <p className="ml-2">
                 <Link href={"/me"}>
-                    {props.username}
+                    {username}
                 </Link>
             </p>
             <button onClick={logOut}

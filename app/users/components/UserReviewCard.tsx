@@ -49,7 +49,9 @@ export default function UserReviewCard(review: OnlyfinReview) {
                 <div className="flex justify-start items-center mb-4 flex-wrap">
                     <div className="w-20 h-20 mr-4">
                         <Link href={`/me`}>
-                            <Avatar/>
+                            <Avatar
+                                username={review.author.username}
+                            />
                         </Link>
                     </div>
 
@@ -78,7 +80,9 @@ export default function UserReviewCard(review: OnlyfinReview) {
                 <div className="flex justify-start items-center mb-4 flex-wrap">
                     <div className="w-20 h-20 mr-4">
                         <Link href={`/users/${review.author.username}`}>
-                            <Avatar/>
+                            <Avatar
+                                username={review.author.username}
+                            />
                         </Link>
                     </div>
 

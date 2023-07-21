@@ -7,7 +7,8 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 import Link from "next/link";
 
 export default function SearchProfile({username, isSubscribed}: any) {
-    const [subscribed, setSubscribed] = useState(isSubscribed);
+    const [subscribed, setSubscribed] = useState(isSubscribed)
+
     const router = useRouter()
 
     function handleSubscribeButtonClick() {
@@ -46,7 +47,9 @@ export default function SearchProfile({username, isSubscribed}: any) {
         <div className="bg-gray-50 rounded-lg p-4 dark:bg-gray-700">
             <div className="w-20 h-20">
                 <Link href={"/users/" + username}>
-                    <Avatar/>
+                    <Avatar
+                        username={username}
+                    />
                 </Link>
             </div>
 
