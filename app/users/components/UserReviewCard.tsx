@@ -46,12 +46,17 @@ export default function UserReviewCard(review: OnlyfinReview) {
                     DELETE REVIEW
                 </button>
 
-                <div className="w-20 h-20">
-                    <Avatar/>
-                </div>
+                <div className="flex justify-start items-center mb-4 flex-wrap">
+                    <div className="w-20 h-20 mr-4">
+                        <Link href={`/me`}>
+                            <Avatar/>
+                        </Link>
+                    </div>
 
-                <div className={"text-2xl font-bold"}>
-                    YOU
+                    <Link className={"text-2xl font-bold py-2"} href={`/me`}>
+                        YOU
+                    </Link>
+
                 </div>
 
                 <p className={"break-words"}>{review.reviewText}</p>
@@ -63,23 +68,25 @@ export default function UserReviewCard(review: OnlyfinReview) {
         return (
             <div className={`
                         bg-gray-50 
-                        rounded-lg
-                        p-7
-                        m-7
+                        rounded-lg 
+                        p-7 
+                        mb-4
+                        md:mx-3
+                        w-full 
                         dark:bg-gray-700`}
             >
+                <div className="flex justify-start items-center mb-4 flex-wrap">
+                    <div className="w-20 h-20 mr-4">
+                        <Link href={`/users/${review.author.username}`}>
+                            <Avatar/>
+                        </Link>
+                    </div>
 
-                <div className="w-40 h-40">
-                    <Link href={`/users/${review.author.username}`}>
-                        <Avatar/>
 
+                    <Link className={"text-2xl font-bold py-2"} href={`/users/${review.author.username}`}>
+                        {review.author.username}
                     </Link>
                 </div>
-
-
-                <Link className={"text-2xl font-bold py-2"} href={`/users/${review.author.username}`}>
-                    {review.author.username}
-                </Link>
 
                 <p className={"break-words"}>{review.reviewText}</p>
             </div>
