@@ -1,14 +1,15 @@
 import Link from "next/link";
 
 export default function Menu(props: any) {
-    let menuItems: string[] = ["Home", "Dashboard", "Studio", "Explore"]
+    const menuItems: string[] = ["Home", "Dashboard", "Studio", "Explore"]
+
     return (
         <div
             className={` ${props.toggleHamburgerMenu ? "" : "hidden"} justify-between items-center w-full lg:flex lg:w-auto lg:order-1`}
             id="mobile-menu-2">
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                {menuItems.map((name, index) => (
-                    <li key={index}>
+                {menuItems.map((name: string) => (
+                    <li key={name}>
                         <Link href={name === "Home" ? "/" : "/" + name.toLowerCase()}
                            className="
                            block
@@ -27,7 +28,11 @@ export default function Menu(props: any) {
                            dark:hover:bg-gray-700
                            dark:hover:text-white
                            lg:dark:hover:bg-transparent
-                           dark:border-gray-700">{name}</Link>
+                           dark:border-gray-700"
+                              onClick={() => {props.setToggleHamburgerMenu(false)}}
+                        >
+                            {name}
+                        </Link>
                     </li>
                 ))}
 

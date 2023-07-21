@@ -120,7 +120,7 @@ export default function Header() {
                     {/*
                     Mobile hamburger menu
                     */}
-                    <Menu toggleHamburgerMenu={toggleHamburgerMenu}></Menu>
+                    <Menu toggleHamburgerMenu={toggleHamburgerMenu} setToggleHamburgerMenu={setToggleHamburgerMenu}></Menu>
                 </div>
             </nav>
         </header>
