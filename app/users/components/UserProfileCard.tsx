@@ -143,7 +143,7 @@ export default function UserProfileCard({username}: any) {
             >
                 <div className="w-40 h-40">
                     <Avatar
-                        username={username}
+
                     />
                 </div>
 

@@ -34,7 +34,7 @@ export default function Avatar(props: any) {
 
     return (
         <>
-            {renderProfilePicture()}
+            {profilePictureId ? renderProfilePicture() : <img src={`/Avatars/avatar-0.svg`} alt="Profile picture"></img>}
         </>
     )
 }
