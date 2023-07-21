@@ -21,6 +21,7 @@ export default function dashboardModuleBoard() {
     const [categoryEditButtonIsActive, setCategoryEditButtonIsActive] = useState(false);
 
     const [currentUserStockId  , setCurrentUserStockId ] = useState<number>(0);
+    const [currentUserCategoryId, setCurrentUserCategoryId] = useState<number>(0);
 
     useEffect(() => {
         ApiCalls.whoAmI()
@@ -33,11 +34,13 @@ export default function dashboardModuleBoard() {
     function loadStockTab(username : string) {
         ApiCalls.fetchTargetUsersStocks(username)
             .then((response) => {
-                console.log("userStockArray: ", response.data)
-                console.log("fetchTargetUsersStocks, stock id: ", response.data[0].id)
                 setUserStockArray(response.data)
                 setCurrentUserStockId(response.data[0].id)
                 getUserCategoryTabs(response.data[0].id)
+
+                //TODO: Delete console.log
+                console.log("userStockArray: ", response.data)
+                console.log("fetchTargetUsersStocks, stock id: ", response.data[0].id)
             })
             .catch((error) => console.log("fetchTargetUsersStocks error: " , error))
     }
@@ -47,7 +50,11 @@ export default function dashboardModuleBoard() {
         ApiCalls.fetchCategoriesAndModulesUnderUserStock(userStockIDInput)
             .then((response) => {
                 setUserCategoryArray(response.data.categories)
+                setCurrentUserCategoryId(response.data.categories[0].userCategoryId)
+
+                //TODO: Delete console.log
                 console.log("getUserCategoryTabs: ", response.data.categories)
+                console.log("currentCategoryId: ", response.data.categories[0].userCategoryId)
             })
             .catch((error) => console.log("fetchCategoriesAndModulesUnderUserStock error ", error))
     }
@@ -59,8 +66,12 @@ export default function dashboardModuleBoard() {
         getUserCategoryTabs(stockId)
     }
 
-    function handleCategoryTabClick(index : number) : void {
+    function handleCategoryTabClick(index : number, categoryId : number) : void {
         setActiveCategoryTab(index)
+        setCurrentUserCategoryId(categoryId)
+
+        //TODO: Delete console.log
+        console.log("Current category id: ", categoryId)
     }
 
     function handleStockEditButtonClick() {
@@ -84,7 +95,11 @@ export default function dashboardModuleBoard() {
     }
 
     function removeSelectedCategory() {
-        ApiCalls.deleteCategory(3)
+        ApiCalls.deleteCategory(currentUserCategoryId)
+    }
+
+    function handleChangeCategoryNameModalClick(event : FormEvent<HTMLFormElement>, changeCategoryNameInput : string) {
+        ApiCalls.updateCategoryName(currentUserCategoryId, changeCategoryNameInput)
     }
 
 
@@ -102,6 +117,7 @@ export default function dashboardModuleBoard() {
                 handleCategoryEditButtonClick={handleCategoryEditButtonClick}
                 handleAddCategoryModalClick={handleAddCategoryModalClick}
                 removeSelectedCategory={removeSelectedCategory}
+                handleChangeCategoryNameModalClick={handleChangeCategoryNameModalClick}
             ></CategoryEditModal>
 
             <div className="">

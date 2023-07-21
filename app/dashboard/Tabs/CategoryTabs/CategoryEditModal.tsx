@@ -45,6 +45,7 @@ export default function CategoryEditModal(props: any) {
                     <ChangeCategoryNameModal
                         categoryEditButtonIsActive={props.categoryEditButtonIsActive}
                         handleExitButtonClick={handleSecondaryModalExitButtonPress}
+                        handleChangeCategoryNameModalClick={props.handleChangeCategoryNameModalClick}
                     />
                 ) : (
                     <div></div>

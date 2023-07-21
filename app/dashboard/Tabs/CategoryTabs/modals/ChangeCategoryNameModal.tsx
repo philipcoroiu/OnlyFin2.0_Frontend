@@ -96,7 +96,7 @@ export default function ChangeCategoryNameModal(props : any) {
                             <ul className="my-4 space-y-3">
                                 <li>
                                     <form
-                                        onSubmit={(event) => props.handleAddCategoryModalClick(event, newCategoryName)}
+                                        onSubmit={(event) => props.handleChangeCategoryNameModalClick(event, newCategoryName)}
                                     >
                                         <div>
                                             <input
