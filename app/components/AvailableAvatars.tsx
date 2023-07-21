@@ -1,9 +1,11 @@
 "use client"
 
 import {ApiCalls} from "@/app/utilities/ApiCalls";
+import {useRouter} from "next/navigation";
 
 //TODO: scrap this cursed code for a proper settings page
 export default function AvailableAvatars() {
+    const router = useRouter()
 
     function chooseAvatar(avatarId: number) {
         ApiCalls.updateProfilePicture(avatarId)
@@ -11,7 +13,12 @@ export default function AvailableAvatars() {
                 document.location.reload()
             })
             .catch(error => {
-                console.log("[app/AvailableAvatars.renderAllAvatars()]: " + error)
+                if (error.response.status === 401) {
+                    router.push("/login?redirect=settings")
+                }
+                else {
+                    console.log("[app/AvailableAvatars.renderAllAvatars()]: " + error)
+                }
             })
     }
 
