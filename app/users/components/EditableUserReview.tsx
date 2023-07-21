@@ -9,7 +9,7 @@ export default function EditableUserReview({targetUsername}: any) {
     const [noReviewExists, setNoReviewExists] = useState<boolean>(false)
 
     const [userReviewText, setUserReviewText] = useState<string>("")
-    const [maxCharacter, setMaxCharacter] = useState(5000)
+    const [maxCharacter, setMaxCharacter] = useState<number>(2500)
 
     useEffect(getMyReview, [])
 
@@ -31,7 +31,7 @@ export default function EditableUserReview({targetUsername}: any) {
 
     function handleInputChange(event: any) {
         setUserReviewText(event.target.value)
-        setMaxCharacter(5000 - event.target.value.length)
+        setMaxCharacter(2500 - event.target.value.length)
     }
 
     function handleSubmit() {
@@ -51,9 +51,9 @@ export default function EditableUserReview({targetUsername}: any) {
                 <div className="border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 w-full">
 
                     <div className="px-4 py-3 bg-white rounded-t-lg dark:bg-gray-800 flex flex-col">
-                            <textarea className="text-gray-900 bg-white border-none dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 w-full"
+                            <textarea className="outline-none text-gray-900 bg-white border-none dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 w-full"
                                       placeholder="Write a review..."
-                                      maxLength={5000}
+                                      maxLength={2500}
                                       required
                                       onChange={handleInputChange}>
                             </textarea>

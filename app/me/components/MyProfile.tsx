@@ -2,36 +2,39 @@
 
 import {useEffect, useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
+import Avatar from "@/app/components/Avatar";
 
 export default function MyProfile({username}: any) {
 
-    const [aboutMe, setAboutMe] = useState<string>("")
-    const [edit, setEdit] = useState<boolean>(false)
+    const [aboutMeText, setAboutMeText] = useState<string>("")
+    const [maxCharacter, setMaxCharacter] = useState<number>(2500)
+
+    const [editView, setEdit] = useState<boolean>(false)
 
     useEffect(() => {
         ApiCalls.fetchAboutMe(username)
             .then(response => {
-                setAboutMe(response.data)
+                setAboutMeText(response.data)
             })
             .catch(error => {
                 console.log("[me/MyProfile.useEffect()]: " + error)
             })
     }, [])
 
-    function changeEdit() {
-        setEdit(!edit)
+    function toggleEdit() {
+        setEdit(!editView)
     }
 
     function setText(event: any): void {
-        setAboutMe(event.target.value)
+        setMaxCharacter(2500 - event.target.value.length)
+
+        setAboutMeText(event.target.value)
     }
 
-    function updateBio(event: any) {
-        event.preventDefault()
-
-        ApiCalls.updateAboutMe(aboutMe)
+    function updateBio() {
+        ApiCalls.updateAboutMe(aboutMeText)
             .then(response => {
-                changeEdit()
+                toggleEdit()
             })
             .catch(error => {
                 console.log("[me/MyProfile.updateBio()]: " + error)
@@ -39,63 +42,122 @@ export default function MyProfile({username}: any) {
     }
 
     return (
-        <div className="flex">
-            <div className="
-                rounded-full
-                w-36
-                h-36
-                bg-blue-600
-                ml-5
-                mt-5"
-            ></div>
-            <div className="
-                    w-4/5
+        <div className={`lg:w-3/4
+                        mx-auto
+                        bg-gray-50 
+                        rounded-lg 
+                        p-7 
+                        dark:bg-gray-700
+                        flex
+                        flex-col
+                        items-center`}
+        >
+            {/*flex items-center flex-wrap justify-center bg-blue-950*/}
 
+
+            <div className="w-24 h-24 mb-4">
+                <Avatar/>
+            </div>
+
+            <div className="
                     flex
                     flex-col
+                    w-full
+                    h-full
                     "
             >
-                <h1 className="text-xl font-bold m-5 mt-10 ">{username}</h1>
-                {edit ?
-                    <div>
 
-                        <form>
-                            <div
-                                className="w-4/5 ml-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
-                                <div className="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
-                                    <label htmlFor="comment" className="sr-only">Your comment</label>
-                                    <textarea id="comment"
-                                              className="w-full h-5 text-base px-0 text-sm text-gray-900 bg-white border-0 outline-none dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
-                                              onChange={setText}
-                                              value={aboutMe}
-                                              placeholder="Write a bio..."></textarea>
-                                </div>
-                                <div
-                                    className="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
-                                    <button type="submit"
-                                            className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
-                                            onClick={updateBio}
-                                    >
-                                        Save bio
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                {!editView ?
+                    // Viewing mode
+                    <div className="
+                    flex
+                    flex-col
+                    justify-between
+                    w-full
+                    ">
+                        <h1 className="text-xl font-bold my-1 break-words text-center">{username}</h1>
 
-                    </div>
-                    :
-                    <div>
-                        <p className=" w-5/6 ml-8 mt-2">{aboutMe}</p>
+                        <p className="my-1 break-words ">{aboutMeText}</p>
+
+
                         <button
-                            className="inline-flex items-center ml-8 mt-5 py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
-                            onClick={changeEdit}
+                            className="
+                           self-center
+                           text-white
+                           bg-blue-700
+                           hover:bg-blue-800
+                           focus:ring-4
+                           focus:ring-blue-300
+                           font-medium
+                           rounded-lg
+                           text-sm px-4
+                           lg:px-5 py-2
+                           lg:py-2.5
+                           dark:bg-blue-600
+                           dark:hover:bg-blue-700
+                           focus:outline-none
+                           dark:focus:ring-blue-800
+                           max-w-xl
+                           "
+                            onClick={toggleEdit}
                         >
                             Edit bio
                         </button>
                     </div>
+
+                    :
+                    // Edit mode
+
+                    <>
+                        <h1 className="text-xl font-bold my-1 break-words text-center">{username}</h1>
+
+                        <div
+                            className="border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 w-full">
+
+                            <div
+                                className="px-4 py-3 bg-white rounded-t-lg dark:bg-gray-800 flex flex-col max-h-screen">
+                            <textarea id={"textarea-hack"}
+                                      className="w-full h-32 outline-none text-gray-900 bg-white border-none dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 "
+                                      placeholder="Write a bio..."
+                                      maxLength={2500}
+                                      required
+                                      value={aboutMeText}
+                                      onChange={setText}
+                            >
+                            </textarea>
+                                <p className="text-xs self-end mt-1">{maxCharacter} characters remaining</p>
+                            </div>
+
+                            <div className="flex justify-center">
+                                <button
+                                    onClick={updateBio}
+                                    type="button"
+                                    className="
+                                        text-white
+                                        bg-blue-700
+                                        font-medium
+                                        rounded-lg
+                                        text-sm
+                                        m-2
+                                        p-4
+                                        hover:bg-blue-800
+                                        focus:ring-4
+                                        focus:ring-blue-300
+                                        focus:outline-none
+                                        dark:bg-blue-600
+                                        dark:hover:bg-blue-700
+                                        dark:focus:ring-blue-800"
+                                >
+                                    Update about me
+                                </button>
+
+                            </div>
+                        </div>
+                    </>
                 }
 
             </div>
         </div>
     )
+
 }

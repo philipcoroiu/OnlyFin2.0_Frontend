@@ -32,13 +32,13 @@ export default function Page() {
         <div className={""}>
             {username ?
                 <>
-                    <div className={""}>
+                    <div className={"m-7"}>
                         <MyProfile
                             username={username}
                         />
                     </div>
 
-                    <div className={"flex-wrap justify-center py-7"}>
+                    <div className={"flex-wrap justify-center lg:w-3/4 flex mx-auto"}>
                         <UserReviews
                             targetUsername={username}
                         />

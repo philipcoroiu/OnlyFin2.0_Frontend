@@ -35,8 +35,7 @@ export default function UserProfileCard({username}: any) {
     function handleSubscribeButtonClick() {
         if (!subscribed) {
             subscribe()
-        }
-        else {
+        } else {
             unsubscribe()
         }
     }
@@ -78,16 +77,22 @@ export default function UserProfileCard({username}: any) {
                 rounded-lg
                 p-7
                 w-full
-                dark:bg-gray-700`
+                dark:bg-gray-700
+                flex
+                `
                 :
                 `bg-gray-50 
                 rounded-lg 
                 p-7 
                 w-full
-                dark:bg-gray-700`}
+                dark:bg-gray-700
+                flex
+                `}
             >
-
-                <Avatar/>
+                <div>
+                <div className="w-40 h-40">
+                    <Avatar/>
+                </div>
 
                 <h2 className={"text-3xl font-bold py-3"}>
                     {username}
@@ -115,10 +120,11 @@ export default function UserProfileCard({username}: any) {
                 >
                     {subscribed ? "UNSUBSCRIBE" : "SUBSCRIBE"}
                 </button>
-
-                <p className={"text-center"}>
+                </div>
+                <p className={" m-4"}>
                     {user?.aboutMe}
                 </p>
+
             </div>
         )
     }
@@ -129,12 +135,13 @@ export default function UserProfileCard({username}: any) {
                 bg-gray-50
                 rounded-lg
                 p-7
-                m-7
-                w-1/2
+                w-full
                 animate-pulse
                 dark:bg-gray-700`}
             >
-                <Avatar/>
+                <div className="w-40 h-40">
+                    <Avatar/>
+                </div>
 
                 <div className={"text-3xl font-bold py-3"}>
                     {username}
