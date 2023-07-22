@@ -1,14 +1,19 @@
 "use client"
 
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {ApiCalls} from "@/app/utilities/ApiCalls";
 
-export default function AddStockModal(props : any) {
+export default function AddExistingStockModal(props : any) {
 
-    const [categoryName, setCategoryName] = useState<string>();
+    const [searchPhrase, setSearchPhrase] = useState<string>();
 
-    function handleInputChange(categoryNameInput : string) {
-        setCategoryName(categoryNameInput)
+    useEffect(() => {
+
+    }, [])
+
+    function handleInputChange(searchInput : string) {
+        setSearchPhrase(searchInput)
     }
 
     return(
@@ -87,24 +92,76 @@ export default function AddStockModal(props : any) {
                                             lg:text-xl
                                             dark:text-white">
 
-                                Name your category
+                                Choose a stock
                             </h3>
                         </div>
 
                         {/* Modal Body */}
 
+                        <ul className="h-48 py-2 overflow-y-auto text-gray-700 dark:text-gray-200"
+                            aria-labelledby="dropdownUsersButton">
+                            <li>
+                                <a href="#"
+                                   className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Jese Leos
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Robert Gough
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Bonnie Green
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Leslie Livingston
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Michael Gough
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Joseph Mcfall
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Roberta Casas
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Neil Sims
+                                </a>
+                            </li>
+                        </ul>
+
                         <div className="p-6">
                             <ul className="my-4 space-y-3">
                                 <li>
                                     <form
-                                        onSubmit={(event) => props.handleAddStockModalClick(event, categoryName)}
+                                        onSubmit={(event) => props.handleAddStockModalClick(event, searchPhrase)}
                                     >
                                         <div>
                                             <input
                                                 type="text"
                                                 name="category name"
                                                 id="category name"
-                                                placeholder="Category name"
+                                                placeholder="Search stocks"
                                                 onChange={(event) => handleInputChange(event.target.value)}
 
                                                 className="bg-gray-50
@@ -140,7 +197,7 @@ export default function AddStockModal(props : any) {
                                                     dark:bg-blue-600
                                                     dark:hover:bg-blue-700
                                                     dark:focus:ring-blue-800
-                                                    my-5">Submit
+                                                    my-5">Search
                                         </button>
                                     </form>
                                 </li>
