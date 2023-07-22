@@ -8,13 +8,41 @@ export default function AddExistingStockModal(props : any) {
 
     const [searchPhrase, setSearchPhrase] = useState<string>();
 
-    useEffect(() => {
+    const [listOfAllStocks, setListOfAllStocks] = useState<OnlyfinStock[]>();
 
+    useEffect(() => {
+        ApiCalls.getAllStocks()
+            .then((response) => {
+                setListOfAllStocks(response.data)
+
+                //TODO: Delete console.log
+                console.log("List of all stocks", response.data)
+            })
     }, [])
 
     function handleInputChange(searchInput : string) {
         setSearchPhrase(searchInput)
     }
+
+    function renderListOfAllStocks() {
+        if (!listOfAllStocks) {
+            // If listOfAllStocks is undefined, return an empty array or a loading message
+            return <p>Loading...</p>; // You can also return an empty array or any other message
+        }
+
+        return (
+            listOfAllStocks.map((stock: OnlyfinStock, index: number) => (
+                <li key={index}>
+                    <button
+                        className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                    >
+                        OnlyFin AB
+                    </button>
+                </li>
+            ))
+        );
+    }
+
 
     return(
         <>
@@ -100,54 +128,9 @@ export default function AddExistingStockModal(props : any) {
 
                         <ul className="h-100 py-2 overflow-y-auto text-gray-700 dark:text-gray-200"
                             aria-labelledby="dropdownUsersButton">
-                            <li>
-                                <button
-                                   className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        OnlyFin AB
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                   className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        Apple
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                   className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        Tesla
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                   className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        Facebook
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                   className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        Netflix
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                   className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        Amazon
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                   className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        GM
-                                </button>
-                            </li>
-                            <li>
-                                <button
-                                   className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        Nvidia
-                                </button>
-                            </li>
+
+                            {renderListOfAllStocks()}
+
                         </ul>
 
                         <div className="p-6 border-t border-gray-600">
