@@ -1,6 +1,5 @@
 "use client"
 
-import {ApiCalls} from "@/app/utilities/ApiCalls";
 import {useState} from "react";
 import PrimaryStockModal from "@/app/dashboard/Tabs/StockTabs/modals/PrimaryStockModal";
 import AddExistingStockModal from "@/app/dashboard/Tabs/StockTabs/modals/AddExistingStockModal";
@@ -33,8 +32,6 @@ export default function StockEditModal(props: any) {
                         handleAddStockButtonPress={handleAddStockButtonPress}
                         handleStockEditButtonClick={props.handleStockEditButtonClick}
                         handleRemoveSelectedStock={props.handleRemoveSelectedStock}
-                        //removeSelectedStock={props.removeSelectedCategory}
-                        //handleChangeCategoryNameButtonPress={handleChangeCategoryNameButtonPress}
                     />
                 ) : typeOfModalActive === "ADD STOCK MODAL" ? (
                     <AddExistingStockModal

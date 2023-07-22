@@ -101,107 +101,78 @@ export default function AddExistingStockModal(props : any) {
                         <ul className="h-48 py-2 overflow-y-auto text-gray-700 dark:text-gray-200"
                             aria-labelledby="dropdownUsersButton">
                             <li>
-                                <a href="#"
-                                   className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        Jese Leos
-                                </a>
+                                <button
+                                   className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        OnlyFin AB
+                                </button>
                             </li>
                             <li>
-                                <a href="#"
-                                   className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        Robert Gough
-                                </a>
+                                <button
+                                   className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Apple
+                                </button>
                             </li>
                             <li>
-                                <a href="#"
-                                   className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        Bonnie Green
-                                </a>
+                                <button
+                                   className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Tesla
+                                </button>
                             </li>
                             <li>
-                                <a href="#"
-                                   className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        Leslie Livingston
-                                </a>
+                                <button
+                                   className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Facebook
+                                </button>
                             </li>
                             <li>
-                                <a href="#"
-                                   className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        Michael Gough
-                                </a>
+                                <button
+                                   className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Netflix
+                                </button>
                             </li>
                             <li>
-                                <a href="#"
-                                   className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        Joseph Mcfall
-                                </a>
+                                <button
+                                   className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Amazon
+                                </button>
                             </li>
                             <li>
-                                <a href="#"
-                                   className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        Roberta Casas
-                                </a>
+                                <button
+                                   className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        GM
+                                </button>
                             </li>
                             <li>
-                                <a href="#"
-                                   className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                        Neil Sims
-                                </a>
+                                <button
+                                   className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        Nvidia
+                                </button>
                             </li>
                         </ul>
 
                         <div className="p-6">
-                            <ul className="my-4 space-y-3">
-                                <li>
-                                    <form
-                                        onSubmit={(event) => props.handleAddStockModalClick(event, searchPhrase)}
-                                    >
-                                        <div>
-                                            <input
-                                                type="text"
-                                                name="category name"
-                                                id="category name"
-                                                placeholder="Search stocks"
-                                                onChange={(event) => handleInputChange(event.target.value)}
 
-                                                className="bg-gray-50
-                                                    border
-                                                    border-gray-300
-                                                    text-gray-900
-                                                    text-sm
-                                                    rounded-lg
-                                                    focus:ring-blue-500
-                                                    focus:border-blue-500
-                                                    block
-                                                    w-full
-                                                    p-2.5
-                                                    dark:bg-gray-600
-                                                    dark:border-gray-500
-                                                    dark:placeholder-gray-400
-                                                    dark:text-white"
-                                                required
-                                            />
-                                        </div>
-
+                            <form>
+                                <label htmlFor="default-search"
+                                       className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                                <div className="relative">
+                                    <div
+                                        className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                        <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
+                                                  strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                        </svg>
+                                    </div>
+                                    <input type="search" id="default-search"
+                                           className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                           placeholder="Search stocks" required/>
                                         <button type="submit"
-                                                className="w-full
-                                                    text-white
-                                                    bg-blue-700
-                                                    hover:bg-blue-800
-                                                    focus:ring-4
-                                                    focus:outline-none
-                                                    focus:ring-blue-300
-                                                    font-medium rounded-lg
-                                                    text-sm px-5 py-2.5
-                                                    text-center
-                                                    dark:bg-blue-600
-                                                    dark:hover:bg-blue-700
-                                                    dark:focus:ring-blue-800
-                                                    my-5">Search
+                                                className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search
                                         </button>
-                                    </form>
-                                </li>
-                            </ul>
+                                </div>
+                            </form>
+
                         </div>
                     </div>
                 </div>
