@@ -92,8 +92,6 @@ export default function StockTabs(props : any) {
 
             <li className="mr-2">
                 <button
-                    id="dropdownMenuIconHorizontalButton"
-                    data-dropdown-toggle="dropdownDotsHorizontal"
                     type="button"
                     onClick={props.handleStockEditButtonClick}
                     className="inline-flex
@@ -122,16 +120,6 @@ export default function StockTabs(props : any) {
                     </svg>
 
                 </button>
-                <div className="z-10">
-
-
-                    {/* <StockDropdownMenu
-                        dropdownMenuIsActive={dropdownMenuIsActive}
-                    ></StockDropdownMenu> */}
-
-
-                </div>
-
             </li>
         </ul>
     </div>

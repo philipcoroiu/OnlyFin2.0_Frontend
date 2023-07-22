@@ -16,7 +16,7 @@ export default function TabsContainer(props : any) {
                 // ***********//
             }
 
-
+            <p>Stocks</p>
             <StockTabs
                 activeStockTab={props.activeStockTab}
                 handleStockTabClick={props.handleStockTabClick}
@@ -24,6 +24,7 @@ export default function TabsContainer(props : any) {
                 handleStockEditButtonClick={props.handleStockEditButtonClick}
             ></StockTabs>
 
+            <p>Categories</p>
             <CategoryTabs
                 activeCategoryTab={props.activeCategoryTab}
                 handleCategoryTabClick={props.handleCategoryTabClick}
