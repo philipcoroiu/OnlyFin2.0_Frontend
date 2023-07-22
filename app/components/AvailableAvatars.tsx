@@ -25,7 +25,7 @@ export default function AvailableAvatars() {
     function renderAllAvatars() {
         let avatars = []
 
-        for (let i = 0; i <= 16; i++) {
+        for (let i = 0; i <= 57; i++) {
             avatars.push(
                 <button className={"w-40 h-40 p-1"}
                         onClick={() => {
