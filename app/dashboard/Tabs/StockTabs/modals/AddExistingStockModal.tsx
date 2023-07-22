@@ -98,7 +98,7 @@ export default function AddExistingStockModal(props : any) {
 
                         {/* Modal Body */}
 
-                        <ul className="h-48 py-2 overflow-y-auto text-gray-700 dark:text-gray-200"
+                        <ul className="h-100 py-2 overflow-y-auto text-gray-700 dark:text-gray-200"
                             aria-labelledby="dropdownUsersButton">
                             <li>
                                 <button
@@ -150,8 +150,7 @@ export default function AddExistingStockModal(props : any) {
                             </li>
                         </ul>
 
-                        <div className="p-6">
-
+                        <div className="p-6 border-t border-gray-600">
                             <form>
                                 <label htmlFor="default-search"
                                        className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -172,7 +171,6 @@ export default function AddExistingStockModal(props : any) {
                                         </button>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>
