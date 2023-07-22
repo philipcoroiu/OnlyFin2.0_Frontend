@@ -136,14 +136,7 @@ export default function dashboardModuleBoard() {
             <div className="">
 
                 <div
-                    className="mx-auto
-                mx-20
-                max-w-full
-                px-4
-                py-16
-                sm:px-12
-                sm:py-20
-                lg:px-0">
+                    className="mx-auto md:mx-20 max-w-full px-4 py-16 sm:px-12 sm:py-20 lg:px-0">
 
                     <div className="px-10
                     py-10
