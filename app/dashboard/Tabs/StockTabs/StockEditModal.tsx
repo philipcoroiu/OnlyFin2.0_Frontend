@@ -32,6 +32,7 @@ export default function StockEditModal(props: any) {
                         stockEditButtonIsActive={props.stockEditButtonIsActive}
                         handleAddStockButtonPress={handleAddStockButtonPress}
                         handleStockEditButtonClick={props.handleStockEditButtonClick}
+                        handleRemoveSelectedStock={props.handleRemoveSelectedStock}
                         //removeSelectedStock={props.removeSelectedCategory}
                         //handleChangeCategoryNameButtonPress={handleChangeCategoryNameButtonPress}
                     />

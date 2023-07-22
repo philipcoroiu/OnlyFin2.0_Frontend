@@ -102,6 +102,10 @@ export default function dashboardModuleBoard() {
         ApiCalls.updateCategoryName(currentUserCategoryId, changeCategoryNameInput)
     }
 
+    function handleRemoveSelectedStock() {
+        ApiCalls.deleteStock(currentUserStockId)
+    }
+
 
     return (
         <>
@@ -110,6 +114,7 @@ export default function dashboardModuleBoard() {
             <StockEditModal
                 stockEditButtonIsActive={stockEditButtonIsActive}
                 handleStockEditButtonClick={handleStockEditButtonClick}
+                handleRemoveSelectedStock={handleRemoveSelectedStock}
             ></StockEditModal>
 
             <CategoryEditModal
