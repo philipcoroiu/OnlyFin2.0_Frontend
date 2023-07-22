@@ -2,6 +2,7 @@
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import React, {useState} from "react";
+import Link from "next/link";
 
 /////// TEMP ////////
 const tempCharts = [
@@ -63,17 +64,19 @@ export default function DashboardModules(props : any) {
     function renderModules() {
         if(props.userCategoryArray[props.activeCategoryTab].modules.length === 0) {
             return(
-                <button
-                    className="aspect-h-1
-                                aspect-w-1
-                                w-full
-                                overflow-hidden
-                                rounded-lg
-                                bg-gray-600
-                                xl:aspect-h-8
-                                xl:aspect-w-7">
-                    Create your first graph here
-                </button>
+                <Link href="/studio">
+                    <button
+                        className="aspect-h-1
+                                    aspect-w-1
+                                    w-full
+                                    overflow-hidden
+                                    rounded-lg
+                                    bg-gray-600
+                                    xl:aspect-h-8
+                                    xl:aspect-w-7">
+                        Create your first graph here
+                    </button>
+                </Link>
             )
         }
 
