@@ -2,7 +2,7 @@
 
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import {useState} from "react";
-import PrimaryModal from "@/app/dashboard/Tabs/CategoryTabs/modals/PrimaryModal";
+import PrimaryCategoryModal from "@/app/dashboard/Tabs/CategoryTabs/modals/PrimaryCategoryModal";
 import AddCategoryModal from "@/app/dashboard/Tabs/CategoryTabs/modals/AddCategoryModal";
 import ChangeCategoryNameModal from "@/app/dashboard/Tabs/CategoryTabs/modals/ChangeCategoryNameModal";
 
@@ -28,7 +28,7 @@ export default function CategoryEditModal(props: any) {
         <>
             {
                 typeOfModalActive === "PRIMARY MODAL" ? (
-                    <PrimaryModal
+                    <PrimaryCategoryModal
                         categoryEditButtonIsActive={props.categoryEditButtonIsActive}
                         handleAddCategoryButtonPress={handleAddCategoryButtonPress}
                         handleCategoryEditButtonClick={props.handleCategoryEditButtonClick}
