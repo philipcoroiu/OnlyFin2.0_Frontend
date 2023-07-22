@@ -106,6 +106,13 @@ export default function dashboardModuleBoard() {
         ApiCalls.deleteStock(currentUserStockId)
     }
 
+    function handleAddExistingStock(selectedStockId : number) {
+        ApiCalls.addStock(selectedStockId)
+
+        //TODO: Delete console.log
+        console.log("pressed handleAddExistingStock, id: ", selectedStockId)
+    }
+
 
     return (
         <>
@@ -115,6 +122,7 @@ export default function dashboardModuleBoard() {
                 stockEditButtonIsActive={stockEditButtonIsActive}
                 handleStockEditButtonClick={handleStockEditButtonClick}
                 handleRemoveSelectedStock={handleRemoveSelectedStock}
+                handleAddExistingStock={handleAddExistingStock}
             ></StockEditModal>
 
             <CategoryEditModal

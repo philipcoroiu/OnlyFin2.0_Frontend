@@ -39,13 +39,12 @@ export default function StockEditModal(props: any) {
                     <AddExistingStockModal
                         stockEditButtonIsActive={props.stockEditButtonIsActive}
                         handleExitButtonClick={handleSecondaryModalExitButtonPress}
-                        handleAddStockModalClick={props.handleAddStockModalClick}
+                        handleAddExistingStock={props.handleAddExistingStock}
                     />
                 ) : typeOfModalActive === "ADD CUSTOM STOCK MODAL" ? (
                     <AddCustomStockModal
                         stockEditButtonIsActive={props.stockEditButtonIsActive}
                         handleExitButtonClick={handleSecondaryModalExitButtonPress}
-                        //handleChangeCategoryNameModalClick={props.handleChangeCategoryNameModalClick}
                     />
                 ) : (
                     <div></div>

@@ -26,17 +26,19 @@ export default function AddExistingStockModal(props : any) {
 
     function renderListOfAllStocks() {
         if (!listOfAllStocks) {
-            // If listOfAllStocks is undefined, return an empty array or a loading message
-            return <p>Loading...</p>; // You can also return an empty array or any other message
+
+            //TODO: Add loading animation
+            return <p>Loading...</p>;
         }
 
         return (
             listOfAllStocks.map((stock: OnlyfinStock, index: number) => (
                 <li key={index}>
                     <button
-                        className="flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        onClick={() => props.handleAddExistingStock(stock.id)}
+                        className="flex w-full items-center px-7 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     >
-                        OnlyFin AB
+                        {stock.name} ({stock.ticker})
                     </button>
                 </li>
             ))
