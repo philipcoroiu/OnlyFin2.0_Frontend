@@ -3,7 +3,7 @@
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import {useState} from "react";
 import PrimaryStockModal from "@/app/dashboard/Tabs/StockTabs/modals/PrimaryStockModal";
-import AddCategoryModal from "@/app/dashboard/Tabs/CategoryTabs/modals/AddCategoryModal";
+import AddStockModal from "@/app/dashboard/Tabs/StockTabs/modals/AddStockModal";
 import ChangeCategoryNameModal from "@/app/dashboard/Tabs/CategoryTabs/modals/ChangeCategoryNameModal";
 
 export default function StockEditModal(props: any) {
@@ -30,16 +30,16 @@ export default function StockEditModal(props: any) {
                 typeOfModalActive === "PRIMARY MODAL" ? (
                     <PrimaryStockModal
                         stockEditButtonIsActive={props.stockEditButtonIsActive}
-                        //handleAddStockButtonPress={handleAddStockButtonPress}
+                        handleAddStockButtonPress={handleAddStockButtonPress}
                         handleStockEditButtonClick={props.handleStockEditButtonClick}
                         //removeSelectedStock={props.removeSelectedCategory}
                         //handleChangeCategoryNameButtonPress={handleChangeCategoryNameButtonPress}
                     />
                 ) : typeOfModalActive === "ADD STOCK MODAL" ? (
-                    <AddCategoryModal
-                        categoryEditButtonIsActive={props.categoryEditButtonIsActive}
+                    <AddStockModal
+                        stockEditButtonIsActive={props.stockEditButtonIsActive}
                         handleExitButtonClick={handleSecondaryModalExitButtonPress}
-                        handleAddCategoryModalClick={props.handleAddCategoryModalClick}
+                        handleAddStockModalClick={props.handleAddStockModalClick}
                     />
                 ) : typeOfModalActive === "CHANGE CATEGORY NAME MODAL" ? (
                     <ChangeCategoryNameModal
