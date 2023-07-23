@@ -13,7 +13,7 @@ export default function dashboardModuleBoard() {
 
     const router = useRouter()
 
-    const [whoAmI, setWhoAmI] = useState<String>();
+    const [whoAmI, setWhoAmI] = useState<string>();
 
     const [activeStockTab, setActiveStockTab] = useState<number>(0);
     const [activeCategoryTab, setActiveCategoryTab] = useState<number>(0);
@@ -26,6 +26,8 @@ export default function dashboardModuleBoard() {
 
     const [currentUserStockId, setCurrentUserStockId] = useState<number>(0);
     const [currentUserCategoryId, setCurrentUserCategoryId] = useState<number>(0);
+
+    const [outdatedDashboard, setOutdatedDashboard] = useState<boolean>(false)
 
     useEffect(() => {
         ApiCalls.whoAmI()
@@ -40,6 +42,13 @@ export default function dashboardModuleBoard() {
                 loadStockTab(username)
             })
     }, [])
+
+    useEffect(() => {
+        if (whoAmI && outdatedDashboard) {
+            setOutdatedDashboard(false)
+            loadStockTab(whoAmI)
+        }
+    }, [outdatedDashboard])
 
     function loadStockTab(username : string) {
         ApiCalls.fetchTargetUsersStocks(username)
@@ -105,23 +114,38 @@ export default function dashboardModuleBoard() {
     function handleAddCategoryModalClick(addCategoryInputName : string) {
         console.log(`You clicked on "New Category" with text: `, addCategoryInputName)
         ApiCalls.addCategory(currentUserStockId, addCategoryInputName)
-            .then(() => console.log("Added category: ", addCategoryInputName))
+            .then(() => {
+                console.log("Added category: ", addCategoryInputName)
+                setOutdatedDashboard(true)
+            })
     }
 
     function removeSelectedCategory() {
         ApiCalls.deleteCategory(currentUserCategoryId)
+            .then(response => {
+                setOutdatedDashboard(true)
+            })
     }
 
     function handleChangeCategoryNameModalClick( changeCategoryNameInput : string) {
         ApiCalls.updateCategoryName(currentUserCategoryId, changeCategoryNameInput)
+            .then(response => {
+                setOutdatedDashboard(true)
+            })
     }
 
     function handleRemoveSelectedStock() {
         ApiCalls.deleteStock(currentUserStockId)
+            .then(response => {
+                setOutdatedDashboard(true)
+            })
     }
 
     function handleAddExistingStock(selectedStockId : number) {
         ApiCalls.addStock(selectedStockId)
+            .then(response => {
+                setOutdatedDashboard(true)
+            })
 
         //TODO: Delete console.log
         console.log("pressed handleAddExistingStock, id: ", selectedStockId)

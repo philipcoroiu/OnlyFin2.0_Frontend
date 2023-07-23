@@ -7,7 +7,7 @@ export default function DashboardModules(props : any) {
     function renderModules() {
         if (!props.userCategoryArray[props.activeCategoryTab]) {
             return (
-                <p className={"text-red-500 animate-bounce"}>Create a category!</p>
+                <p className={""}>Choose or create a category</p>
             )
         }
 
