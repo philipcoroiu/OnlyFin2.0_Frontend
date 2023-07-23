@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import UserReviewCard from "@/app/users/components/UserReviewCard";
 
-export default function EditableUserReview({targetUsername}: any) {
+export default function EditableUserReview(props: { targetUsername: string }) {
     const [ownReview, setOwnReview] = useState<OnlyfinReview>()
     const [noReviewExists, setNoReviewExists] = useState<boolean>(false)
 
@@ -14,7 +14,7 @@ export default function EditableUserReview({targetUsername}: any) {
     useEffect(getMyReview, [])
 
     function getMyReview() {
-        ApiCalls.getMyReview(targetUsername)
+        ApiCalls.getMyReview(props.targetUsername)
             .then(response => {
                 const fetchedReview: OnlyfinReview = response.data
 
@@ -35,7 +35,7 @@ export default function EditableUserReview({targetUsername}: any) {
     }
 
     function handleSubmit() {
-        ApiCalls.pushReview(targetUsername, userReviewText)
+        ApiCalls.pushReview(props.targetUsername, userReviewText)
             .then(response => {
                 setNoReviewExists(false)
                 getMyReview()
@@ -44,18 +44,20 @@ export default function EditableUserReview({targetUsername}: any) {
                 console.log("[EditableUserReview.handleSubmit()]: " + error)
             })
     }
-    
+
     function renderReviewInputBox() {
         return (
             <>
-                <div className="border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 w-full">
+                <div
+                    className="border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 w-full">
 
                     <div className="px-4 py-3 bg-white rounded-t-lg dark:bg-gray-800 flex flex-col">
-                            <textarea className="outline-none text-gray-900 bg-white border-none dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 w-full"
-                                      placeholder="Write a review..."
-                                      maxLength={2500}
-                                      required
-                                      onChange={handleInputChange}>
+                            <textarea
+                                className="outline-none text-gray-900 bg-white border-none dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 w-full"
+                                placeholder="Write a review..."
+                                maxLength={2500}
+                                required
+                                onChange={handleInputChange}>
                             </textarea>
                         <p className="text-xs self-end mt-1">{maxCharacter} characters remaining</p>
                     </div>

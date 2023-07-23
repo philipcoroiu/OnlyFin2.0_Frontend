@@ -11,9 +11,9 @@ export default function Explore() {
     const [dropdownButtonIsClicked, setDropdownButtonIsClicked] = useState(false);
     const menuItems: string[] = ["Users"]
 
-    const [noSearchResult, setNoSearchResult] = useState<boolean>(false)
+    const [nothingFound, setNothingFound] = useState<boolean>(false)
     const [usernameSearchQuery, setUsernameSearchQuery] = useState<string>()
-    const [searchResult, setSearchResult] = useState<OnlyfinProfileSubInfo[]>([]);
+    const [searchResult, setSearchResult] = useState<OnlyfinProfileSubInfo[]>();
 
     useEffect(() => {
         if (usernameSearchQuery) {
@@ -29,7 +29,7 @@ export default function Explore() {
             .then((response) => {
                 const profiles: OnlyfinProfileSubInfo[] = response.data
 
-                setNoSearchResult(response.status === 204)
+                setNothingFound(response.status === 204)
 
                 setSearchResult(profiles)
             })
@@ -44,7 +44,7 @@ export default function Explore() {
                 .then(response => {
                     const profiles: OnlyfinProfileSubInfo[] = response.data
 
-                    setNoSearchResult(response.status === 204)
+                    setNothingFound(response.status === 204)
 
                     setSearchResult(profiles)
                 })
@@ -82,7 +82,7 @@ export default function Explore() {
                 handleDropdownClick={handleDropdownClick}
                 handleSearchInput={handleSearchInput}
             />
-            {noSearchResult ? renderNoResultFound() : renderSearchResult()}
+            {nothingFound ? renderNoResultFound() : renderSearchResult()}
         </div>
     )
 }

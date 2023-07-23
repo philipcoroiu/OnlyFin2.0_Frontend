@@ -12,14 +12,14 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
  *
  * TODO: Add user not found error message (HTTP 404 response in getUser() api call)
  */
-export default function UserProfileCard({username}: any) {
+export default function UserProfileCard(props: { username: string }) {
     const [user, setUser] = useState<OnlyfinProfileExtended>()
     const [subscribed, setSubscribed] = useState<boolean>()
 
     const router = useRouter()
 
     useEffect(() => {
-        ApiCalls.getUser(username)
+        ApiCalls.getUser(props.username)
             .then((response) => {
                 const data: OnlyfinProfileExtended = response.data
 
@@ -41,13 +41,13 @@ export default function UserProfileCard({username}: any) {
     }
 
     function subscribe() {
-        ApiCalls.subscribe(username)
+        ApiCalls.subscribe(props.username)
             .then(response => {
                 setSubscribed(true)
             })
             .catch(error => {
                 if (error.response.status === 401) {
-                    router.push("/login?redirect=users/" + username)
+                    router.push("/login?redirect=users/" + props.username)
                 } else {
                     console.log("[UserProfileCard.subscribe()]: " + error)
                 }
@@ -55,13 +55,13 @@ export default function UserProfileCard({username}: any) {
     }
 
     function unsubscribe() {
-        ApiCalls.unsubscribe(username)
+        ApiCalls.unsubscribe(props.username)
             .then(response => {
                 setSubscribed(false)
             })
             .catch(error => {
                 if (error.response.status === 401) {
-                    router.push("/login?redirect=users/" + username)
+                    router.push("/login?redirect=users/" + props.username)
                 } else {
                     console.log("[UserProfileCard.unsubscribe()]: " + error)
                 }
@@ -92,12 +92,12 @@ export default function UserProfileCard({username}: any) {
                 <div>
                 <div className="w-40 h-40">
                     <Avatar
-                        username={username}
+                        username={props.username}
                     />
                 </div>
 
                 <h2 className={"text-3xl font-bold py-3"}>
-                    {username}
+                    {props.username}
                 </h2>
 
                 <button
@@ -148,7 +148,7 @@ export default function UserProfileCard({username}: any) {
                 </div>
 
                 <div className={"text-3xl font-bold py-3"}>
-                    {username}
+                    {props.username}
                 </div>
             </div>
         )

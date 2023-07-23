@@ -4,14 +4,14 @@ import {useEffect, useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import UserReviewCard from "@/app/users/components/UserReviewCard";
 
-export default function UserReviews({targetUsername}: any) {
+export default function UserReviews(props: {targetUsername: string}) {
 
     const [reviews, setReviews] = useState<OnlyfinReview[]>([])
 
     const [noReviews, setNoReviews] = useState<boolean>(false)
 
     useEffect(() => {
-        ApiCalls.getReviews(targetUsername)
+        ApiCalls.getReviews(props.targetUsername)
             .then(response => {
                 const fetchedReviews: OnlyfinReview[] = response.data
 
