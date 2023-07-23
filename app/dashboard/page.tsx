@@ -1,32 +1,39 @@
 "use client"
 
-import React, {FormEvent, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import TabsContainer from "./Tabs/TabsContainer";
 import DashboardModules from "@/app/dashboard/DashbordModules";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import Link from "next/link";
 import StockEditModal from "@/app/dashboard/Tabs/StockTabs/StockEditModal";
 import CategoryEditModal from "@/app/dashboard/Tabs/CategoryTabs/CategoryEditModal";
+import {useRouter} from "next/navigation";
 
 export default function dashboardModuleBoard() {
+
+    const router = useRouter()
 
     const [whoAmI, setWhoAmI] = useState<String>();
 
     const [activeStockTab, setActiveStockTab] = useState<number>(0);
     const [activeCategoryTab, setActiveCategoryTab] = useState<number>(0);
 
-    const [userStockArray , setUserStockArray] = useState<OnlyfinUserStock[]>();
+    const [userStockArray, setUserStockArray] = useState<OnlyfinUserStock[]>();
     const [userCategoryArray, setUserCategoryArray] = useState<OnlyfinUserCategoryTab[]>();
 
     const [stockEditButtonIsActive, setStockEditButtonIsActive] = useState<boolean>(false);
     const [categoryEditButtonIsActive, setCategoryEditButtonIsActive] = useState<boolean>(false);
 
-    const [currentUserStockId  , setCurrentUserStockId ] = useState<number>(0);
+    const [currentUserStockId, setCurrentUserStockId] = useState<number>(0);
     const [currentUserCategoryId, setCurrentUserCategoryId] = useState<number>(0);
 
     useEffect(() => {
         ApiCalls.whoAmI()
             .then((response) => {
+                if (response.status === 204) {
+                    router.push("/login?redirect=dashboard")
+                }
+
                 const username: string = response.data
 
                 setWhoAmI(username)
