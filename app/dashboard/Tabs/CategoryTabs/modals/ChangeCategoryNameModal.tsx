@@ -1,16 +1,14 @@
-"use client"
-
 import {useState} from "react";
 
-export default function ChangeCategoryNameModal(props : any) {
+export default function ChangeCategoryNameModal(props: any) {
 
     const [newCategoryName, setNewCategoryName] = useState<string>();
 
-    function handleInputChange(categoryNameInput : string) {
+    function handleInputChange(categoryNameInput: string) {
         setNewCategoryName(categoryNameInput)
     }
 
-    return(
+    return (
         <>
             {/* !--Main Modal --! */}
             <div id="crypto-modal" aria-hidden="false"
@@ -84,29 +82,24 @@ export default function ChangeCategoryNameModal(props : any) {
                                             font-semibold
                                             text-gray-900
                                             lg:text-xl
-                                            dark:text-white">
-
+                                            dark:text-white"
+                            >
                                 Rename selected category
                             </h3>
                         </div>
 
                         {/* Modal Body */}
 
-                        <div className="p-6">
-                            <ul className="my-4 space-y-3">
-                                <li>
-                                    <form
-                                        onSubmit={(event) => props.handleChangeCategoryNameModalClick(event, newCategoryName)}
-                                    >
-                                        <div>
-                                            <input
-                                                type="text"
-                                                name="category name"
-                                                id="category name"
-                                                placeholder="Category name"
-                                                onChange={(event) => handleInputChange(event.target.value)}
+                        <div className={"p-6 space-y-3"}>
+                            <div>
+                                <input
+                                    type="text"
+                                    name="category name"
+                                    id="category name"
+                                    placeholder="Category name"
+                                    onChange={(event) => handleInputChange(event.target.value)}
 
-                                                className="bg-gray-50
+                                    className="bg-gray-50
                                                     border
                                                     border-gray-300
                                                     text-gray-900
@@ -121,12 +114,13 @@ export default function ChangeCategoryNameModal(props : any) {
                                                     dark:border-gray-500
                                                     dark:placeholder-gray-400
                                                     dark:text-white"
-                                                required
-                                            />
-                                        </div>
+                                    required
+                                />
+                            </div>
 
-                                        <button type="submit"
-                                                className="w-full
+
+                            <button onClick={() => props.handleChangeCategoryNameModalClick(newCategoryName)}
+                                    className="w-full
                                                     text-white
                                                     bg-blue-700
                                                     hover:bg-blue-800
@@ -139,12 +133,12 @@ export default function ChangeCategoryNameModal(props : any) {
                                                     dark:bg-blue-600
                                                     dark:hover:bg-blue-700
                                                     dark:focus:ring-blue-800
-                                                    my-5">Submit
-                                        </button>
-                                    </form>
-                                </li>
-                            </ul>
+                                                    my-5"
+                            >
+                                Submit
+                            </button>
                         </div>
+
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-export default function AddCustomStockModal(props : any) {
+export default function AddCustomStockModal(props: any) {
 
     return (
         <>
@@ -85,18 +85,15 @@ export default function AddCustomStockModal(props : any) {
                         <div className="p-6">
                             <ul className="my-4 space-y-3">
                                 <li>
-                                    <form
-                                        //onSubmit={}
-                                    >
-                                        <div>
-                                            <input
-                                                type="text"
-                                                name="category name"
-                                                id="category name"
-                                                placeholder="Subject name"
-                                                //onChange={(event) => handleInputChange(event.target.value)}
+                                    <div>
+                                        <input
+                                            type="text"
+                                            name="category name"
+                                            id="category name"
+                                            placeholder="Subject name"
+                                            //onChange={(event) => handleInputChange(event.target.value)}
 
-                                                className="bg-gray-50
+                                            className="bg-gray-50
                                                     border
                                                     border-gray-300
                                                     text-gray-900
@@ -111,12 +108,12 @@ export default function AddCustomStockModal(props : any) {
                                                     dark:border-gray-500
                                                     dark:placeholder-gray-400
                                                     dark:text-white"
-                                                required
-                                            />
-                                        </div>
+                                            required
+                                        />
+                                    </div>
 
-                                        <button type="submit"
-                                                className="w-full
+                                    <button type="submit"
+                                            className="w-full
                                                     text-white
                                                     bg-blue-700
                                                     hover:bg-blue-800
@@ -130,8 +127,7 @@ export default function AddCustomStockModal(props : any) {
                                                     dark:hover:bg-blue-700
                                                     dark:focus:ring-blue-800
                                                     my-5">Submit
-                                        </button>
-                                    </form>
+                                    </button>
                                 </li>
                             </ul>
                         </div>

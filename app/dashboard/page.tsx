@@ -95,17 +95,17 @@ export default function dashboardModuleBoard() {
 
 
     {/* TODO: Move this function to a modal container component instead! */}
-    function handleAddCategoryModalClick(event : FormEvent<HTMLFormElement>, addCategoryInputName : string) {
-        //event.preventDefault();
+    function handleAddCategoryModalClick(addCategoryInputName : string) {
         console.log(`You clicked on "New Category" with text: `, addCategoryInputName)
         ApiCalls.addCategory(currentUserStockId, addCategoryInputName)
+            .then(() => console.log("Added category: ", addCategoryInputName))
     }
 
     function removeSelectedCategory() {
         ApiCalls.deleteCategory(currentUserCategoryId)
     }
 
-    function handleChangeCategoryNameModalClick(event : FormEvent<HTMLFormElement>, changeCategoryNameInput : string) {
+    function handleChangeCategoryNameModalClick( changeCategoryNameInput : string) {
         ApiCalls.updateCategoryName(currentUserCategoryId, changeCategoryNameInput)
     }
 
