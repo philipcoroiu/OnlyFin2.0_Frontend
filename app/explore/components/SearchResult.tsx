@@ -1,11 +1,11 @@
 import SearchProfile from "@/app/explore/components/searchProfile/SearchProfile";
 import SearchProfileSkeleton from "@/app/explore/components/searchProfile/SearchProfileSkeleton";
 
-export default function SearchResult(props: { searchResult: OnlyfinProfileSubInfo[] }) {
+export default function SearchResult(props: { searchResult: OnlyfinProfileSubInfo[] | undefined }) {
 
     function renderSearchResult() {
         return (
-            props.searchResult.map((data: any) => {
+            props.searchResult?.map((data: any) => {
                 return (
                     <SearchProfile
                         key={data.id}
