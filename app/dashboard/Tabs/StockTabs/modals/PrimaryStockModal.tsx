@@ -1,7 +1,6 @@
 export default function PrimaryStockModal(props : any) {
     return (
         <>
-
             {/* !--Main Modal --! */}
             <div id="crypto-modal" aria-hidden="false"
                  className={`fixed

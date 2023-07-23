@@ -5,7 +5,13 @@ import Link from "next/link";
 export default function DashboardModules(props : any) {
 
     function renderModules() {
-        if(props.userCategoryArray[props.activeCategoryTab].modules.length === 0) {
+        if (!props.userCategoryArray[props.activeCategoryTab]) {
+            return (
+                <p className={"text-red-500 animate-bounce"}>Create a category!</p>
+            )
+        }
+
+        else if (props.userCategoryArray[props.activeCategoryTab].modules.length === 0) {
             return(
                 <Link href={"/studio"}>
                     <button
