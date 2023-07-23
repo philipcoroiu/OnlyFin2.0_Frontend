@@ -17,21 +17,18 @@ export default function CategoryDropdownMenu(props : any) {
              ${props.dropdownMenuIsActive ? "" : "hidden"}`}
         >
 
-            <ul className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                aria-labelledby="dropdownMenuIconHorizontalButton">
-                <li>
-                    <a href="#"
-                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Add</a>
+            <ul className="py-2 text-sm text-gray-700 dark:text-gray-200 flex flex-col items-center" aria-labelledby="dropdownMenuIconHorizontalButton">
+                <li className="my-2">
+                    <button className="block flex-grow px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Add</button>
                 </li>
-                <li>
-                    <a href="#"
-                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</a>
+                <li className="my-2">
+                    <button className="block flex-grow px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</button>
                 </li>
-                <li>
-                    <a href="#"
-                       className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Change Name</a>
+                <li className="my-2">
+                    <button className="block flex-grow px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Change Name</button>
                 </li>
             </ul>
+
         </div>
     )
 }

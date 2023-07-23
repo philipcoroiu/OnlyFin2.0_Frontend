@@ -2,6 +2,7 @@
 
 import React, {useState} from "react";
 import StockDropdownMenu from "@/app/dashboard/Tabs/StockTabs/StockDropdownMenu";
+import StockEditModal from "@/app/dashboard/Tabs/StockTabs/StockEditModal";
 
 const tempTabsList = [
     {
@@ -23,10 +24,43 @@ const tempTabsList = [
 
 export default function StockTabs(props : any) {
 
+    //*********//
+    // Remove? //
+    //*********//
     const [dropdownMenuIsActive, setDropdownMenuIsActive] = useState(false);
 
+    //*********//
+    // Remove? //
+    //*********//
     function handleEditButtonClick() {
         setDropdownMenuIsActive(prevState => !prevState)
+    }
+
+    function renderStockTabs() {
+        return(
+            props.userStockArray.map((stock:OnlyfinUserStock, index : number) => (
+                <li key={index} className="mr-2">
+                    <button
+                        className={`${props.activeStockTab === index ? "inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active" : "inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"}`}
+                        onClick={() => props.handleStockTabClick(index, stock.id)}
+                        aria-current="page">{stock.stock.name}
+                        <p> ID: {stock.id}</p>
+                    </button>
+                </li>
+            ))
+        )
+    }
+
+    function renderLoadingTabs() {
+        return(
+            <li className="mr-2">
+                <div className="inline-flex space-x-2">
+                    <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
+                    <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
+                    <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
+                </div>
+            </li>
+        )
     }
 
     return (
@@ -40,22 +74,18 @@ export default function StockTabs(props : any) {
 
         <ul
             className="flex
-        flex-wrap
-        text-sm
-        font-medium
-        text-center
-        text-gray-500
-        dark:text-gray-400">
+                whitespace-nowrap
+                text-sm
+                font-medium
+                text-center
+                text-gray-500
+                dark:text-gray-400
+                overflow-x-auto
+                max-w-auto
+                scrollbar-none">
 
-            {tempTabsList.map((tab: {name:number}, index : number) => (
-                <li className="mr-2" key={index}>
-                    <button
-                          className={`${props.activeStockTab === index ? "inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active" : "inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"}`}
-                          onClick={() => props.handleStockTabClick(index)}
-                          aria-current="page">{tab.name}
-                    </button>
-                </li>
-            ))}
+
+            {props.userStockArray ? renderStockTabs() : renderLoadingTabs()}
 
             {
                 // *******************//
@@ -65,10 +95,8 @@ export default function StockTabs(props : any) {
 
             <li className="mr-2">
                 <button
-                    id="dropdownMenuIconHorizontalButton"
-                    data-dropdown-toggle="dropdownDotsHorizontal"
                     type="button"
-                    onClick={handleEditButtonClick}
+                    onClick={props.handleStockEditButtonClick}
                     className="inline-flex
                     items-center
                     p-2
@@ -95,14 +123,6 @@ export default function StockTabs(props : any) {
                     </svg>
 
                 </button>
-                <div className="z-10">
-
-                    <StockDropdownMenu
-                        dropdownMenuIsActive={dropdownMenuIsActive}
-                    ></StockDropdownMenu>
-
-                </div>
-
             </li>
         </ul>
     </div>

@@ -1,15 +1,15 @@
 "use client"
 import React, {FormEvent, useEffect, useState} from "react";
-import TabsContainer from "./Tabs/TabsContainer";
+import TabsContainer from "../Tabs/TabsContainer";
 import DashboardModules from "@/app/dashboard/DashbordModules";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import Link from "next/link";
 import StockEditModal from "@/app/dashboard/Tabs/StockTabs/StockEditModal";
 import CategoryEditModal from "@/app/dashboard/Tabs/CategoryTabs/CategoryEditModal";
 
-export default function dashboardModuleBoard() {
 
-    const [whoAmI, setWhoAmI] = useState<String>();
+
+export default function dashboardModuleBoard({params}: { params: { username: string } }) {
 
     const [activeStockTab, setActiveStockTab] = useState(0);
     const [activeCategoryTab, setActiveCategoryTab] = useState(0);
@@ -21,26 +21,19 @@ export default function dashboardModuleBoard() {
     const [categoryEditButtonIsActive, setCategoryEditButtonIsActive] = useState(false);
 
     const [currentUserStockId  , setCurrentUserStockId ] = useState<number>(0);
-    const [currentUserCategoryId, setCurrentUserCategoryId] = useState<number>(0);
 
     useEffect(() => {
-        ApiCalls.whoAmI()
-            .then((response) => {
-                setWhoAmI(response.data)
-                loadStockTab(response.data)
-            })
+        loadStockTab()
     }, [])
 
-    function loadStockTab(username : string) {
-        ApiCalls.fetchTargetUsersStocks(username)
+    function loadStockTab() {
+        ApiCalls.fetchTargetUsersStocks(params.username)
             .then((response) => {
+                console.log("userStockArray: ", response.data)
+                console.log("fetchTargetUsersStocks, stock id: ", response.data[0].id)
                 setUserStockArray(response.data)
                 setCurrentUserStockId(response.data[0].id)
                 getUserCategoryTabs(response.data[0].id)
-
-                //TODO: Delete console.log
-                console.log("userStockArray: ", response.data)
-                console.log("fetchTargetUsersStocks, stock id: ", response.data[0].id)
             })
             .catch((error) => console.log("fetchTargetUsersStocks error: " , error))
     }
@@ -50,11 +43,7 @@ export default function dashboardModuleBoard() {
         ApiCalls.fetchCategoriesAndModulesUnderUserStock(userStockIDInput)
             .then((response) => {
                 setUserCategoryArray(response.data.categories)
-                setCurrentUserCategoryId(response.data.categories[0].userCategoryId)
-
-                //TODO: Delete console.log
                 console.log("getUserCategoryTabs: ", response.data.categories)
-                console.log("currentCategoryId: ", response.data.categories[0].userCategoryId)
             })
             .catch((error) => console.log("fetchCategoriesAndModulesUnderUserStock error ", error))
     }
@@ -66,12 +55,8 @@ export default function dashboardModuleBoard() {
         getUserCategoryTabs(stockId)
     }
 
-    function handleCategoryTabClick(index : number, categoryId : number) : void {
+    function handleCategoryTabClick(index : number) : void {
         setActiveCategoryTab(index)
-        setCurrentUserCategoryId(categoryId)
-
-        //TODO: Delete console.log
-        console.log("Current category id: ", categoryId)
     }
 
     function handleStockEditButtonClick() {
@@ -89,30 +74,17 @@ export default function dashboardModuleBoard() {
 
     {/* TODO: Move this function to a modal container component instead! */}
     function handleAddCategoryModalClick(event : FormEvent<HTMLFormElement>, addCategoryInputName : string) {
-        //event.preventDefault();
+        event.preventDefault();
         console.log(`You clicked on "New Category" with text: `, addCategoryInputName)
-        ApiCalls.addCategory(currentUserStockId, addCategoryInputName)
+        //ApiCalls.addCategory(currentUserStockId, addCategoryInputName)
     }
 
-    function removeSelectedCategory() {
-        ApiCalls.deleteCategory(currentUserCategoryId)
+    {/*
+        function refreshCategoryTabs() {
+            getUserCategoryTabs(userStockID)
+        }
+     */
     }
-
-    function handleChangeCategoryNameModalClick(event : FormEvent<HTMLFormElement>, changeCategoryNameInput : string) {
-        ApiCalls.updateCategoryName(currentUserCategoryId, changeCategoryNameInput)
-    }
-
-    function handleRemoveSelectedStock() {
-        ApiCalls.deleteStock(currentUserStockId)
-    }
-
-    function handleAddExistingStock(selectedStockId : number) {
-        ApiCalls.addStock(selectedStockId)
-
-        //TODO: Delete console.log
-        console.log("pressed handleAddExistingStock, id: ", selectedStockId)
-    }
-
 
     return (
         <>
@@ -121,22 +93,25 @@ export default function dashboardModuleBoard() {
             <StockEditModal
                 stockEditButtonIsActive={stockEditButtonIsActive}
                 handleStockEditButtonClick={handleStockEditButtonClick}
-                handleRemoveSelectedStock={handleRemoveSelectedStock}
-                handleAddExistingStock={handleAddExistingStock}
             ></StockEditModal>
 
             <CategoryEditModal
                 categoryEditButtonIsActive={categoryEditButtonIsActive}
                 handleCategoryEditButtonClick={handleCategoryEditButtonClick}
                 handleAddCategoryModalClick={handleAddCategoryModalClick}
-                removeSelectedCategory={removeSelectedCategory}
-                handleChangeCategoryNameModalClick={handleChangeCategoryNameModalClick}
             ></CategoryEditModal>
 
             <div className="">
 
                 <div
-                    className="mx-auto md:mx-20 max-w-full px-4 py-16 sm:px-12 sm:py-20 lg:px-0">
+                    className="mx-auto
+                mx-20
+                max-w-full
+                px-4
+                py-16
+                sm:px-12
+                sm:py-20
+                lg:px-0">
 
                     <div className="px-10
                     py-10
@@ -158,7 +133,7 @@ export default function dashboardModuleBoard() {
 
                         ></TabsContainer>
 
-                        <Link href={"/users/" + whoAmI}>{whoAmI}</Link>
+                        <Link href={"/users/" + params.username}>{params.username}</Link>
 
                         <DashboardModules
                             userCategoryArray={userCategoryArray}
@@ -169,5 +144,6 @@ export default function dashboardModuleBoard() {
                 </div>
             </div>
         </>
+
     )
 }

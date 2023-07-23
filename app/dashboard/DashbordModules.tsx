@@ -2,6 +2,7 @@
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import React, {useState} from "react";
+import Link from "next/link";
 
 /////// TEMP ////////
 const tempCharts = [
@@ -60,20 +61,28 @@ export default function DashboardModules(props : any) {
     });
     /////////////////////
 
+    function renderModules() {
+        if(props.userCategoryArray[props.activeCategoryTab].modules.length === 0) {
+            return(
+                <Link href="/studio">
+                    <button
+                        className="aspect-h-1
+                                    aspect-w-1
+                                    w-full
+                                    overflow-hidden
+                                    rounded-lg
+                                    bg-gray-600
+                                    xl:aspect-h-8
+                                    xl:aspect-w-7">
+                        Create your first graph here
+                    </button>
+                </Link>
+            )
+        }
 
-    return(
-        <div
-            className="grid
-                    grid-cols-1
-                    gap-x-6
-                    gap-y-5
-                    sm:grid-cols-2
-                    lg:grid-cols-3
-                    xl:grid-cols-3
-                    xl:gap-x-5">
-
-            {tempCharts.map((tempChart) => (
-                <a key="" className="group">
+        return(
+            props.userCategoryArray[props.activeCategoryTab].modules.map((module : any, index:number) => (
+                <a key={index} className="group">
 
                     <div
                         className="aspect-h-1
@@ -88,11 +97,39 @@ export default function DashboardModules(props : any) {
                         <HighchartsReact
                             containerProps={{style: {height: '100%', weight: '100%'}}}
                             highcharts={Highcharts}
-                            options={studioChart}
+                            options={module.content}
                         />
                     </div>
                 </a>
-            ))}
+            ))
+        )
+    }
+
+    function renderLoadingAnimation() {
+        return (
+            <>
+                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 animate-pulse"></div>
+                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 animate-pulse"></div>
+                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 animate-pulse"></div>
+            </>
+        );
+    }
+
+
+
+    return(
+        <div
+            className="grid
+                    grid-cols-1
+                    gap-x-6
+                    gap-y-5
+                    sm:grid-cols-2
+                    lg:grid-cols-3
+                    xl:grid-cols-3
+                    xl:gap-x-5">
+
+            {props.userCategoryArray ? renderModules() : renderLoadingAnimation()}
+
         </div>
     )
 }

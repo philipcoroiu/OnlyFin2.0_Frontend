@@ -54,7 +54,7 @@ export default function SearchProfile({username, isSubscribed}: any) {
             </div>
 
             <div className="text-xl font-bold">
-                <Link href={"/users/" + username}>{username}</Link>
+                <Link href={"/dashboard/" + username}>{username}</Link>
             </div>
 
             <button
