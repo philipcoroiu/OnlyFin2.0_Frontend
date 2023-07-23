@@ -1,11 +1,14 @@
-"use client"
+export default function SearchDropDownMenu(props: {
+    menuItems: string[],
+    dropdownButtonIsClicked: boolean,
+    handleDropdownClick(): void,
+    handleSearchInput(searchQuery: string): void
+}) {
 
-export default function SearchDropDownMenu(props: any) {
     return (
-        <div className="flex  justify-center">
+        <div className="flex justify-center">
 
-            <form className="m-4">
-                <div className="flex w-full max-w-xl mt-12
+                <div className="flex w-full max-w-xl mt-12 m-4
                 shadow-xl shadow-gray-600/[0.3] rounded-lg
                 dark:shadow-none
 
@@ -51,8 +54,7 @@ export default function SearchDropDownMenu(props: any) {
                         hidden
                         xsm:block
                         "
-                        >All categories</span>
-
+                        >Users</span>
 
                         <svg aria-hidden="true" className="w-4 h-7 ml-1"
                              fill="currentColor" viewBox="0 0 20 20"
@@ -79,9 +81,11 @@ export default function SearchDropDownMenu(props: any) {
                         </ul>
                     </div>
 
-                    <div className=" w-full flex">
-                        <input type="search" id="search-dropdown"
+                    <div className="w-full flex">
+                        <input type="search" onChange={(event) => props.handleSearchInput(event.target.value)}
+                               id="search-dropdown"
                                className="block
+                               outline-none
                                p-2.5
                                h-full
                                w-full
@@ -113,8 +117,6 @@ export default function SearchDropDownMenu(props: any) {
                         <span className="sr-only">Search</span>
                     </button>
                 </div>
-
-            </form>
 
         </div>
     )
