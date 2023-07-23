@@ -11,14 +11,14 @@ import CategoryEditModal from "@/app/dashboard/Tabs/CategoryTabs/CategoryEditMod
 
 export default function dashboardModuleBoard({params}: { params: { username: string } }) {
 
-    const [activeStockTab, setActiveStockTab] = useState(0);
-    const [activeCategoryTab, setActiveCategoryTab] = useState(0);
+    const [activeStockTab, setActiveStockTab] = useState<number>(0);
+    const [activeCategoryTab, setActiveCategoryTab] = useState<number>(0);
 
-    const [userStockArray , setUserStockArray] = useState();
-    const [userCategoryArray, setUserCategoryArray] = useState();
+    const [userStockArray , setUserStockArray] = useState<OnlyfinUserStock[]>();
+    const [userCategoryArray, setUserCategoryArray] = useState<OnlyfinUserCategoryTab[]>();
 
-    const [stockEditButtonIsActive, setStockEditButtonIsActive] = useState(false);
-    const [categoryEditButtonIsActive, setCategoryEditButtonIsActive] = useState(false);
+    const [stockEditButtonIsActive, setStockEditButtonIsActive] = useState<boolean>(false);
+    const [categoryEditButtonIsActive, setCategoryEditButtonIsActive] = useState<boolean>(false);
 
     const [currentUserStockId  , setCurrentUserStockId ] = useState<number>(0);
 

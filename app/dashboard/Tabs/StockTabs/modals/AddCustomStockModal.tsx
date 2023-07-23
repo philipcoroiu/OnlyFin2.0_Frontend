@@ -1,8 +1,6 @@
-"use client"
-
 export default function AddCustomStockModal(props : any) {
 
-    return(
+    return (
         <>
             {/* !--Main Modal --! */}
             <div id="crypto-modal" aria-hidden="false"

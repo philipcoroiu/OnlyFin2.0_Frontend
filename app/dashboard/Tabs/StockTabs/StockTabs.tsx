@@ -1,47 +1,15 @@
-"use client"
-
-import React, {useState} from "react";
-import StockDropdownMenu from "@/app/dashboard/Tabs/StockTabs/StockDropdownMenu";
-import StockEditModal from "@/app/dashboard/Tabs/StockTabs/StockEditModal";
-
-const tempTabsList = [
-    {
-        name: 1,
-    },
-    {
-        name: 2,
-    },
-    {
-        name: 3,
-    },
-    {
-        name: 4,
-    },
-    {
-        name: 5,
-    },
-]
 
 export default function StockTabs(props : any) {
 
-    //*********//
-    // Remove? //
-    //*********//
-    const [dropdownMenuIsActive, setDropdownMenuIsActive] = useState(false);
-
-    //*********//
-    // Remove? //
-    //*********//
-    function handleEditButtonClick() {
-        setDropdownMenuIsActive(prevState => !prevState)
-    }
-
     function renderStockTabs() {
-        return(
+        return (
             props.userStockArray.map((stock:OnlyfinUserStock, index : number) => (
-                <li key={index} className="mr-2">
+                <li key={stock.id} className="mr-2">
                     <button
-                        className={`${props.activeStockTab === index ? "inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active" : "inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"}`}
+                        className={`${props.activeStockTab === index ?
+                            "inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active"
+                            : 
+                            "inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"}`}
                         onClick={() => props.handleStockTabClick(index, stock.id)}
                         aria-current="page">{stock.stock.name}
                         <p> ID: {stock.id}</p>
@@ -52,7 +20,7 @@ export default function StockTabs(props : any) {
     }
 
     function renderLoadingTabs() {
-        return(
+        return (
             <li className="mr-2">
                 <div className="inline-flex space-x-2">
                     <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>

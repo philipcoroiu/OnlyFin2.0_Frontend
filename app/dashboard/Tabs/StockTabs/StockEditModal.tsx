@@ -1,33 +1,37 @@
-"use client"
-
 import {useState} from "react";
 import PrimaryStockModal from "@/app/dashboard/Tabs/StockTabs/modals/PrimaryStockModal";
 import AddExistingStockModal from "@/app/dashboard/Tabs/StockTabs/modals/AddExistingStockModal";
-import ChangeCategoryNameModal from "@/app/dashboard/Tabs/CategoryTabs/modals/ChangeCategoryNameModal";
 import AddCustomStockModal from "@/app/dashboard/Tabs/StockTabs/modals/AddCustomStockModal";
+
+enum StockModal {
+    PRIMARY,
+    EXISTING_STOCK,
+    CUSTOM_STOCK,
+}
 
 export default function StockEditModal(props: any) {
 
-    const [typeOfModalActive, setTypeOfModalActive] = useState("PRIMARY MODAL");
+    const [typeOfModalActive, setTypeOfModalActive] = useState<StockModal>(StockModal.PRIMARY);
 
     function handleAddExistingStockButtonPress() {
-        setTypeOfModalActive("ADD EXISTING STOCK MODAL")
+        setTypeOfModalActive(StockModal.EXISTING_STOCK)
     }
 
     function handleAddCustomStockButtonPress() {
         console.log("Pressed 'Add custom stock' button")
-        setTypeOfModalActive("ADD CUSTOM STOCK MODAL")
+        setTypeOfModalActive(StockModal.CUSTOM_STOCK)
     }
 
     function handleSecondaryModalExitButtonPress() {
-        setTypeOfModalActive("PRIMARY MODAL")
+        setTypeOfModalActive(StockModal.PRIMARY)
         props.handleStockEditButtonClick
     }
 
-    return (
-        <>
-            {
-                typeOfModalActive === "PRIMARY MODAL" ? (
+    //TODO: Remove other functions and only use this function to render modal
+    function renderActiveModal() {
+        switch (typeOfModalActive) {
+            case StockModal.PRIMARY:
+                return (
                     <PrimaryStockModal
                         stockEditButtonIsActive={props.stockEditButtonIsActive}
                         handleAddStockButtonPress={handleAddExistingStockButtonPress}
@@ -35,22 +39,30 @@ export default function StockEditModal(props: any) {
                         handleRemoveSelectedStock={props.handleRemoveSelectedStock}
                         handleAddCustomStockModalButtonPress={handleAddCustomStockButtonPress}
                     />
-                ) : typeOfModalActive === "ADD EXISTING STOCK MODAL" ? (
+                )
+            case StockModal.EXISTING_STOCK:
+                return (
                     <AddExistingStockModal
                         stockEditButtonIsActive={props.stockEditButtonIsActive}
                         handleExitButtonClick={handleSecondaryModalExitButtonPress}
                         handleAddExistingStock={props.handleAddExistingStock}
                     />
-                ) : typeOfModalActive === "ADD CUSTOM STOCK MODAL" ? (
+                )
+            case StockModal.CUSTOM_STOCK:
+                return (
                     <AddCustomStockModal
                         stockEditButtonIsActive={props.stockEditButtonIsActive}
                         handleExitButtonClick={handleSecondaryModalExitButtonPress}
                     />
-                ) : (
-                    <div></div>
                 )
-            }
+            default:
+                return <div>Loading</div>
+        }
+    }
 
+    return (
+        <>
+            {renderActiveModal()}
         </>
     )
 }

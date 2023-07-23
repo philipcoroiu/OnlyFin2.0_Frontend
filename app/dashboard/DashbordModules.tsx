@@ -1,70 +1,13 @@
-"use client"
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
-import React, {useState} from "react";
 import Link from "next/link";
 
-/////// TEMP ////////
-const tempCharts = [
-    {
-        id: 1,
-    },
-    {
-        id: 2,
-    },
-    {
-        id: 3,
-    },
-    {
-        id: 4,
-    },
-    {
-        id: 5,
-    },
-    {
-        id: 6,
-    },
-    {
-        id: 7,
-    },
-    {
-        id: 8,
-    },
-]
-/////////////////////
-
 export default function DashboardModules(props : any) {
-
-    /////// TEMP ////////
-    const [studioChart, setStudioChart] = useState({
-        chart: {
-            type: 'bar'
-        },
-        title: {
-            text: 'Fruit Consumption'
-        },
-        xAxis: {
-            categories: ['Apples', 'Bananas', 'Oranges']
-        },
-        yAxis: {
-            title: {
-                text: 'Fruit eaten'
-            }
-        },
-        series: [{
-            name: 'Jane',
-            data: [1, 0, 4]
-        }, {
-            name: 'John',
-            data: [5, 7, 3]
-        }]
-    });
-    /////////////////////
 
     function renderModules() {
         if(props.userCategoryArray[props.activeCategoryTab].modules.length === 0) {
             return(
-                <Link href="/studio">
+                <Link href={"/studio"}>
                     <button
                         className="aspect-h-1
                                     aspect-w-1
@@ -80,12 +23,10 @@ export default function DashboardModules(props : any) {
             )
         }
 
-        return(
-            props.userCategoryArray[props.activeCategoryTab].modules.map((module : any, index:number) => (
-                <a key={index} className="group">
-
-                    <div
-                        className="aspect-h-1
+        return (
+            props.userCategoryArray[props.activeCategoryTab].modules.map((module: any) => (
+                    <div key={module.id} className="group
+                                aspect-h-1
                                 aspect-w-1
                                 w-full
                                 overflow-hidden
@@ -100,7 +41,6 @@ export default function DashboardModules(props : any) {
                             options={module.content}
                         />
                     </div>
-                </a>
             ))
         )
     }
@@ -112,14 +52,11 @@ export default function DashboardModules(props : any) {
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 animate-pulse"></div>
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 animate-pulse"></div>
             </>
-        );
+        )
     }
 
-
-
-    return(
-        <div
-            className="grid
+    return (
+        <div className="grid
                     grid-cols-1
                     gap-x-6
                     gap-y-5

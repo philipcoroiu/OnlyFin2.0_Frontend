@@ -48,6 +48,7 @@ type OnlyfinUserCategoryTab = {
 }
 
 type OnlyfinModule = {
+    id: number,
     targetCategoryId: number,
     height: number,
     width: number,

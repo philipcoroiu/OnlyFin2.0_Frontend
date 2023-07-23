@@ -1,4 +1,5 @@
 "use client"
+
 import React, {FormEvent, useEffect, useState} from "react";
 import TabsContainer from "./Tabs/TabsContainer";
 import DashboardModules from "@/app/dashboard/DashbordModules";
@@ -11,14 +12,14 @@ export default function dashboardModuleBoard() {
 
     const [whoAmI, setWhoAmI] = useState<String>();
 
-    const [activeStockTab, setActiveStockTab] = useState(0);
-    const [activeCategoryTab, setActiveCategoryTab] = useState(0);
+    const [activeStockTab, setActiveStockTab] = useState<number>(0);
+    const [activeCategoryTab, setActiveCategoryTab] = useState<number>(0);
 
-    const [userStockArray , setUserStockArray] = useState();
-    const [userCategoryArray, setUserCategoryArray] = useState();
+    const [userStockArray , setUserStockArray] = useState<OnlyfinUserStock[]>();
+    const [userCategoryArray, setUserCategoryArray] = useState<OnlyfinUserCategoryTab[]>();
 
-    const [stockEditButtonIsActive, setStockEditButtonIsActive] = useState(false);
-    const [categoryEditButtonIsActive, setCategoryEditButtonIsActive] = useState(false);
+    const [stockEditButtonIsActive, setStockEditButtonIsActive] = useState<boolean>(false);
+    const [categoryEditButtonIsActive, setCategoryEditButtonIsActive] = useState<boolean>(false);
 
     const [currentUserStockId  , setCurrentUserStockId ] = useState<number>(0);
     const [currentUserCategoryId, setCurrentUserCategoryId] = useState<number>(0);
@@ -26,17 +27,21 @@ export default function dashboardModuleBoard() {
     useEffect(() => {
         ApiCalls.whoAmI()
             .then((response) => {
-                setWhoAmI(response.data)
-                loadStockTab(response.data)
+                const username: string = response.data
+
+                setWhoAmI(username)
+                loadStockTab(username)
             })
     }, [])
 
     function loadStockTab(username : string) {
         ApiCalls.fetchTargetUsersStocks(username)
             .then((response) => {
-                setUserStockArray(response.data)
-                setCurrentUserStockId(response.data[0].id)
-                getUserCategoryTabs(response.data[0].id)
+                const userStocks: OnlyfinUserStock[] = response.data
+
+                setUserStockArray(userStocks)
+                setCurrentUserStockId(userStocks[0].id)
+                getUserCategoryTabs(userStocks[0].id)
 
                 //TODO: Delete console.log
                 console.log("userStockArray: ", response.data)
@@ -49,8 +54,10 @@ export default function dashboardModuleBoard() {
         console.log("userStockID: ", userStockIDInput)
         ApiCalls.fetchCategoriesAndModulesUnderUserStock(userStockIDInput)
             .then((response) => {
-                setUserCategoryArray(response.data.categories)
-                setCurrentUserCategoryId(response.data.categories[0].userCategoryId)
+                const stockTab: OnlyfinUserStockTab = response.data
+
+                setUserCategoryArray(stockTab.categories)
+                setCurrentUserCategoryId(stockTab.categories[0].userCategoryId)
 
                 //TODO: Delete console.log
                 console.log("getUserCategoryTabs: ", response.data.categories)
@@ -113,17 +120,14 @@ export default function dashboardModuleBoard() {
         console.log("pressed handleAddExistingStock, id: ", selectedStockId)
     }
 
-
     return (
         <>
-
-
             <StockEditModal
                 stockEditButtonIsActive={stockEditButtonIsActive}
                 handleStockEditButtonClick={handleStockEditButtonClick}
                 handleRemoveSelectedStock={handleRemoveSelectedStock}
                 handleAddExistingStock={handleAddExistingStock}
-            ></StockEditModal>
+            />
 
             <CategoryEditModal
                 categoryEditButtonIsActive={categoryEditButtonIsActive}
@@ -131,12 +135,15 @@ export default function dashboardModuleBoard() {
                 handleAddCategoryModalClick={handleAddCategoryModalClick}
                 removeSelectedCategory={removeSelectedCategory}
                 handleChangeCategoryNameModalClick={handleChangeCategoryNameModalClick}
-            ></CategoryEditModal>
+            />
 
-            <div className="">
-
-                <div
-                    className="mx-auto md:mx-20 max-w-full px-4 py-16 sm:px-12 sm:py-20 lg:px-0">
+                <div className="mx-auto
+                md:mx-20
+                max-w-full
+                px-4 py-16
+                sm:px-12
+                sm:py-20
+                lg:px-0">
 
                     <div className="px-10
                     py-10
@@ -156,18 +163,17 @@ export default function dashboardModuleBoard() {
 
                             initialUserStockId={currentUserStockId}
 
-                        ></TabsContainer>
+                        />
 
                         <Link href={"/users/" + whoAmI}>{whoAmI}</Link>
 
                         <DashboardModules
                             userCategoryArray={userCategoryArray}
                             activeCategoryTab={activeCategoryTab}
-                        ></DashboardModules>
+                        />
 
                     </div>
                 </div>
-            </div>
         </>
     )
 }

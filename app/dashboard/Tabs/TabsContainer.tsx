@@ -1,20 +1,10 @@
-"use client"
-
-import React, {useState} from "react";
 import CategoryTabs from "./CategoryTabs/CategoryTabs"
 import StockTabs from "./StockTabs/StockTabs"
-
 
 export default function TabsContainer(props : any) {
 
     return (
         <div>
-
-            {
-                // ***********//
-                // STOCK TABS //
-                // ***********//
-            }
 
             <p>Stocks</p>
             <StockTabs
@@ -22,7 +12,7 @@ export default function TabsContainer(props : any) {
                 handleStockTabClick={props.handleStockTabClick}
                 userStockArray={props.userStockArray}
                 handleStockEditButtonClick={props.handleStockEditButtonClick}
-            ></StockTabs>
+            />
 
             <p>Categories</p>
             <CategoryTabs
@@ -30,10 +20,8 @@ export default function TabsContainer(props : any) {
                 handleCategoryTabClick={props.handleCategoryTabClick}
                 userCategoryArray={props.userCategoryArray}
                 handleCategoryEditButtonClick={props.handleCategoryEditButtonClick}
-            ></CategoryTabs>
-
+            />
 
         </div>
-
     )
 }

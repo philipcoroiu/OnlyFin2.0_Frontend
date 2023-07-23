@@ -1,6 +1,5 @@
 "use client"
 
-
 import {useEffect, useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 
@@ -9,16 +8,6 @@ export default function AddExistingStockModal(props : any) {
     const [searchPhrase, setSearchPhrase] = useState<string>("");
 
     const [listOfAllStocks, setListOfAllStocks] = useState<OnlyfinStock[]>();
-
-    useEffect(() => {
-        ApiCalls.getAllStocks()
-            .then((response) => {
-                setListOfAllStocks(response.data)
-
-                //TODO: Delete console.log
-                console.log("List of all stocks", response.data)
-            })
-    }, [])
 
     useEffect(() => {
         ApiCalls.findStocksByName(searchPhrase)
@@ -38,23 +27,31 @@ export default function AddExistingStockModal(props : any) {
         if (!listOfAllStocks) {
 
             //TODO: Add loading animation
-            return <p>Loading...</p>;
+            return (
+                <p>Loading...</p>
+            )
         }
 
         return (
-            listOfAllStocks.map((stock: OnlyfinStock, index: number) => (
-                <li key={index}>
+            listOfAllStocks.map((stock: OnlyfinStock) => (
+                <li key={stock.id}>
                     <button
                         onClick={() => props.handleAddExistingStock(stock.id)}
-                        className="flex w-full items-center px-7 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        className="flex
+                        w-full
+                        items-center
+                        px-7
+                        py-2
+                        hover:bg-gray-100
+                        dark:hover:bg-gray-600
+                        dark:hover:text-white"
                     >
                         {stock.name} ({stock.ticker})
                     </button>
                 </li>
             ))
-        );
+        )
     }
-
 
     return(
         <>

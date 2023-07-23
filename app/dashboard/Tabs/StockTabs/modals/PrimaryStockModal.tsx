@@ -1,13 +1,10 @@
-"use client"
-
 export default function PrimaryStockModal(props : any) {
-    return(
+    return (
         <>
 
             {/* !--Main Modal --! */}
             <div id="crypto-modal" aria-hidden="false"
-                 className=
-                     {`fixed
+                 className={`fixed
                  top-0
                  left-0
                  right-0
@@ -81,6 +78,7 @@ export default function PrimaryStockModal(props : any) {
                                     </button>
                                 </li>
                             </ul>
+
                         </div>
                     </div>
 
