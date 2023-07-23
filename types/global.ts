@@ -57,3 +57,11 @@ type OnlyfinModule = {
     type: string,
     content: JSON
 }
+
+type OnlyfinDashboardMetadata = {
+    stocks: OnlyfinUserStockTab[]
+}
+
+type OnlyfinDashboard = {
+    stocks: OnlyfinUserStockTab[]
+}
