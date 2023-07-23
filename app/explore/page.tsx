@@ -13,7 +13,7 @@ export default function Explore() {
     const [searchResult, setSearchResult] = useState();
 
     useEffect(() => {
-        ApiCalls.fetchAllUsers()
+        ApiCalls.fetchNewestUsers()
             .then((response) => {
                 setSearchResult(response.data)
             })

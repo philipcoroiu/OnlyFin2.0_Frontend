@@ -85,9 +85,9 @@ export class ApiCalls {
         )
     }
 
-    public static async fetchAllUsers(): Promise<AxiosResponse> {
+    public static async fetchNewestUsers(): Promise<AxiosResponse> {
         return axiosInstance.get(
-            "/users/search/all",
+            "/users/search/newest",
             {
                 headers: {'Content-Type': 'application/json'},
                 withCredentials: true
