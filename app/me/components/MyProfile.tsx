@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import Avatar from "@/app/components/Avatar";
 
-export default function MyProfile({username}: any) {
+export default function MyProfile(props: { username: string }) {
 
     const [aboutMeText, setAboutMeText] = useState<string>("")
     const [maxCharacter, setMaxCharacter] = useState<number>(2500)
@@ -12,7 +12,7 @@ export default function MyProfile({username}: any) {
     const [editView, setEdit] = useState<boolean>(false)
 
     useEffect(() => {
-        ApiCalls.fetchAboutMe(username)
+        ApiCalls.fetchAboutMe(props.username)
             .then(response => {
                 setAboutMeText(response.data)
             })
@@ -57,7 +57,7 @@ export default function MyProfile({username}: any) {
 
             <div className="w-24 h-24 mb-4">
                 <Avatar
-                    username={username}
+                    username={props.username}
                 />
             </div>
 
@@ -77,7 +77,7 @@ export default function MyProfile({username}: any) {
                     justify-between
                     w-full
                     ">
-                        <h1 className="text-xl font-bold my-1 break-words text-center">{username}</h1>
+                        <h1 className="text-xl font-bold my-1 break-words text-center">{props.username}</h1>
 
                         <p className="my-1 break-words ">{aboutMeText}</p>
 
@@ -111,7 +111,7 @@ export default function MyProfile({username}: any) {
                     // Edit mode
 
                     <>
-                        <h1 className="text-xl font-bold my-1 break-words text-center">{username}</h1>
+                        <h1 className="text-xl font-bold my-1 break-words text-center">{props.username}</h1>
 
                         <div
                             className="border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 w-full">

@@ -1,8 +1,12 @@
 import {useState} from "react";
 
-export default function AddCategoryModal(props: any) {
+export default function AddCategoryModal(props: {
+    categoryEditButtonIsActive: boolean,
+    handleExitButtonClick(): void,
+    handleAddCategoryModalClick(addCategoryInputName: string): void
+}) {
 
-    const [categoryName, setCategoryName] = useState<string>();
+    const [categoryName, setCategoryName] = useState<string>("")
 
     function handleInputChange(categoryNameInput: string) {
         setCategoryName(categoryNameInput)

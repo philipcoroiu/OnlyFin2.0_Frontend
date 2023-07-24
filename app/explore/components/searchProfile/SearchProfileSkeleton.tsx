@@ -1,5 +1,3 @@
-"use client"
-
 import Avatar from "@/app/components/Avatar";
 
 export default function SearchProfileSkeleton() {

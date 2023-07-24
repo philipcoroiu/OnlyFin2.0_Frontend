@@ -9,7 +9,12 @@ enum StockModal {
     CUSTOM_STOCK,
 }
 
-export default function StockEditModal(props: any) {
+export default function StockEditModal(props: {
+    stockEditButtonIsActive: boolean,
+    handleStockEditButtonClick(): void,
+    handleRemoveSelectedStock(): void,
+    handleAddExistingStock(selectedStockId: number): void
+}) {
 
     const [typeOfModalActive, setTypeOfModalActive] = useState<StockModal>(StockModal.PRIMARY);
 
@@ -24,7 +29,7 @@ export default function StockEditModal(props: any) {
 
     function handleSecondaryModalExitButtonPress() {
         setTypeOfModalActive(StockModal.PRIMARY)
-        props.handleStockEditButtonClick
+        props.handleStockEditButtonClick()
     }
 
     //TODO: Remove other functions and only use this function to render modal

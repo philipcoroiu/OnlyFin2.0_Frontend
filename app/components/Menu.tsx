@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Menu(props: any) {
+export default function Menu(props: { toggleHamburgerMenu: boolean, setToggleHamburgerMenu: any }) {
     const menuItems: string[] = ["Dashboard", "Studio", "Explore", "Settings"]
 
     return (

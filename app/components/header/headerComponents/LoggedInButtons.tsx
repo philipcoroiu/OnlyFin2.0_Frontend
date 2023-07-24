@@ -1,14 +1,9 @@
-"use client"
-
 import Avatar from "@/app/components/Avatar";
 import Link from "next/link";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
-import {useRouter} from "next/navigation";
 
-export default function LoggedInButtons(props: any) {
+export default function LoggedInButtons(props: { username: string }) {
     const username: string = props.username
-
-    const router = useRouter();
 
     function logOut() {
         ApiCalls.logOut()
@@ -56,7 +51,8 @@ export default function LoggedInButtons(props: any) {
                            focus:outline-none
                            dark:focus:ring-gray-800
                            ml-5"
-            >Log out
+            >
+                Log out
             </button>
         </div>
     )

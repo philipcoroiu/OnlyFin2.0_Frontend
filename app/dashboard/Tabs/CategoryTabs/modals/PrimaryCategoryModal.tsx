@@ -1,4 +1,10 @@
-export default function PrimaryCategoryModal(props: any) {
+export default function PrimaryCategoryModal(props: {
+    categoryEditButtonIsActive: boolean,
+    handleAddCategoryButtonPress(): void,
+    handleCategoryEditButtonClick(): void,
+    removeSelectedCategory(): void,
+    handleChangeCategoryNameButtonPress(): void
+}) {
     return (
         <>
             {/* !--Main Modal --! */}

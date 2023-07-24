@@ -1,18 +1,18 @@
 "use client"
 
-import React, {useState} from "react";
 import Link from "next/link";
 import {useSearchParams} from "next/navigation";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
+import {useState} from "react";
 
 export default function Login() {
     const searchParams = useSearchParams()
     const redirectParam = searchParams.get("redirect")
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
 
-    const [showErrorMessage, setShowErrorMessage] = React.useState(false)
+    const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false)
 
     function handleEmailChange(event: any) {
         setEmail(event.target.value.toLowerCase());

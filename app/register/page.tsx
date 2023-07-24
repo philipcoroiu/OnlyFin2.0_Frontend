@@ -1,23 +1,23 @@
 'use client'
 
-import React, {useState} from "react";
+import {useState} from "react";
 import Link from "next/link";
 import {useRouter} from "next/navigation";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 
 export default function register() {
-    const router = useRouter();
+    const router = useRouter()
 
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [repeatPassword, setRepeatPassword] = useState('');
+    const [username, setUsername] = useState<string>('')
+    const [email, setEmail] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
+    const [repeatPassword, setRepeatPassword] = useState<string>('')
 
     // Error handling:
-    const [showErrorMessage, setShowErrorMessage] = React.useState(false)
-    const [errorMessage, setErrorMessage] = React.useState('')
-    const [errorType, setErrorType] = React.useState('')
-    const [loading, setLoading] = React.useState(false)
+    const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false)
+    const [errorMessage, setErrorMessage] = useState<string>('')
+    const [errorType, setErrorType] = useState<string>('')
+    const [loading, setLoading] = useState<boolean>(false)
 
     function handleSubmit(event: any) {
         event.preventDefault()

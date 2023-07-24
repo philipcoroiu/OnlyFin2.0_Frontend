@@ -1,13 +1,11 @@
-"use client"
-
 import Avatar from "@/app/components/Avatar";
 import {useState} from "react";
 import {useRouter} from "next/navigation";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import Link from "next/link";
 
-export default function SearchProfile({username, isSubscribed}: any) {
-    const [subscribed, setSubscribed] = useState(isSubscribed)
+export default function SearchProfile(props: { username: string, isSubscribed: boolean }) {
+    const [subscribed, setSubscribed] = useState<boolean>(props.isSubscribed)
 
     const router = useRouter()
 
@@ -20,7 +18,7 @@ export default function SearchProfile({username, isSubscribed}: any) {
     }
 
     function subscribe() {
-        ApiCalls.subscribe(username)
+        ApiCalls.subscribe(props.username)
             .then(response => {
                 setSubscribed(true)
             })
@@ -32,7 +30,7 @@ export default function SearchProfile({username, isSubscribed}: any) {
     }
 
     function unsubscribe() {
-        ApiCalls.unsubscribe(username)
+        ApiCalls.unsubscribe(props.username)
             .then(response => {
                 setSubscribed(false)
             })
@@ -46,15 +44,15 @@ export default function SearchProfile({username, isSubscribed}: any) {
     return (
         <div className="bg-gray-50 rounded-lg p-4 dark:bg-gray-700">
             <div className="w-20 h-20">
-                <Link href={"/users/" + username}>
+                <Link href={"/users/" + props.username}>
                     <Avatar
-                        username={username}
+                        username={props.username}
                     />
                 </Link>
             </div>
 
             <div className="text-xl font-bold">
-                <Link href={"/dashboard/" + username}>{username}</Link>
+                <Link href={"/dashboard/" + props.username}>{props.username}</Link>
             </div>
 
             <button

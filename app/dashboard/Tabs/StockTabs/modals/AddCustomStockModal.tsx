@@ -1,3 +1,4 @@
+//TODO: Add props types when component is written
 export default function AddCustomStockModal(props: any) {
 
     return (

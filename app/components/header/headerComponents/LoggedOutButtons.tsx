@@ -1,12 +1,10 @@
-"use client"
-
 import Link from "next/link";
 
 export default function LoggedOutButtons() {
     return (
         <div>
-            <Link href="/login"
-               className="
+            <Link href={"/login"}
+                  className="
                            text-gray-800
                            dark:text-white
                            hover:bg-gray-50
@@ -23,9 +21,11 @@ export default function LoggedOutButtons() {
                            dark:hover:bg-gray-700
                            focus:outline-none
                            dark:focus:ring-gray-800"
-            >Log in</Link>
-            <Link href="/register"
-               className="
+            >
+                Log in
+            </Link>
+            <Link href={"/register"}
+                  className="
                            text-white
                            bg-blue-700
                            hover:bg-blue-800

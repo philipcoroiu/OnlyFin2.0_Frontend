@@ -3,16 +3,15 @@
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import {useEffect, useState} from "react";
 
-export default function Avatar(props: any) {
-    const targetUsername: string = props.username
+export default function Avatar(props: { username: string | undefined }) {
 
     const [profilePictureId, setProfilePictureId] = useState<number>()
 
     useEffect(fetchProfilePicture, [])
 
     function fetchProfilePicture() {
-        if (targetUsername) {
-            ApiCalls.getProfilePicture(targetUsername)
+        if (props.username) {
+            ApiCalls.getProfilePicture(props.username)
                 .then(response => {
                     const profilePictureId: number = response.data
                     setProfilePictureId(profilePictureId)

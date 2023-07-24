@@ -193,7 +193,6 @@ export default function dashboardModuleBoard() {
                             handleCategoryEditButtonClick={handleCategoryEditButtonClick}
 
                             initialUserStockId={currentUserStockId}
-
                         />
 
                         <Link href={"/users/" + whoAmI}>{whoAmI}</Link>

@@ -9,7 +9,13 @@ enum CategoryModal {
     CHANGE_NAME
 }
 
-export default function CategoryEditModal(props: any) {
+export default function CategoryEditModal(props: {
+    categoryEditButtonIsActive: boolean,
+    handleCategoryEditButtonClick(): void,
+    handleAddCategoryModalClick(addCategoryInputName: string): void,
+    removeSelectedCategory(): void,
+    handleChangeCategoryNameModalClick(changeCategoryNameInput: string): void
+}) {
 
     const [typeOfModalActive, setTypeOfModalActive] = useState<CategoryModal>(CategoryModal.PRIMARY);
 
@@ -24,7 +30,7 @@ export default function CategoryEditModal(props: any) {
 
     function handleSecondaryModalExitButtonPress() {
         setTypeOfModalActive(CategoryModal.PRIMARY)
-        props.handleCategoryEditButtonClick
+        props.handleCategoryEditButtonClick()
     }
 
     //TODO: Remove other functions and replace with the function below

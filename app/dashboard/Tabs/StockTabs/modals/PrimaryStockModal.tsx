@@ -1,4 +1,10 @@
-export default function PrimaryStockModal(props : any) {
+export default function PrimaryStockModal(props: {
+    stockEditButtonIsActive: boolean,
+    handleAddStockButtonPress(): void,
+    handleStockEditButtonClick(): void,
+    handleRemoveSelectedStock(): void,
+    handleAddCustomStockModalButtonPress(): void
+}) {
     return (
         <>
             {/* !--Main Modal --! */}
@@ -19,7 +25,7 @@ export default function PrimaryStockModal(props : any) {
                  h-screen
                  bg-black
                  bg-opacity-50
-                 ${props.stockEditButtonIsActive? "" : "hidden"}`}>
+                 ${props.stockEditButtonIsActive ? "" : "hidden"}`}>
 
                 <div className="relative w-full max-w-md max-h-full">
 

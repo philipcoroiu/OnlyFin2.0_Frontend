@@ -2,7 +2,10 @@ import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import Link from "next/link";
 
-export default function DashboardModules(props : any) {
+export default function DashboardModules(props: {
+    userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
+    activeCategoryTab: number
+}) {
 
     function renderModules() {
         if (!props.userCategoryArray[props.activeCategoryTab]) {

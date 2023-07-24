@@ -1,7 +1,17 @@
 import CategoryTabs from "./CategoryTabs/CategoryTabs"
 import StockTabs from "./StockTabs/StockTabs"
 
-export default function TabsContainer(props : any) {
+export default function TabsContainer(props: {
+    activeStockTab: number,
+    userStockArray: OnlyfinUserStock[] | undefined,
+    userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
+    activeCategoryTab: number,
+    handleStockTabClick(index: number, stockId: number): void,
+    handleCategoryTabClick(index: number, categoryId: number): void,
+    handleStockEditButtonClick(): void,
+    handleCategoryEditButtonClick(): void,
+    initialUserStockId: number
+}) {
 
     return (
         <div>

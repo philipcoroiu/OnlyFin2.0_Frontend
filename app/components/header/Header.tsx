@@ -1,4 +1,5 @@
 "use client"
+
 import {useEffect, useState} from "react";
 import Menu from "@/app/components/Menu";
 import LoggedOutButtons from "@/app/components/header/headerComponents/LoggedOutButtons";
@@ -8,9 +9,9 @@ import Link from "next/link";
 
 export default function Header() {
 
-    const [toggleHamburgerMenu, setToggleHamburgerMenu] = useState(false)
+    const [toggleHamburgerMenu, setToggleHamburgerMenu] = useState<boolean>(false)
 
-    const [username, setUsername] = useState();
+    const [username, setUsername] = useState<string>();
 
     useEffect(() => {
         ApiCalls.whoAmI()

@@ -1,9 +1,14 @@
-
-export default function StockTabs(props : any) {
+export default function StockTabs(props: {
+    activeCategoryTab: number,
+    handleCategoryTabClick(index: number, categoryId: number): void,
+    userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
+    handleCategoryEditButtonClick(): void
+}) {
 
     function renderCategoryTabs() {
         return(
-            props.userCategoryArray.map((category:OnlyfinUserCategoryTab, index : number) => (
+            props.userCategoryArray?.map((category:OnlyfinUserCategoryTab, index : number) => (
+                //TODO: {key = index} = no no no
                 <li key={index} className="mr-2">
                     <button
                         className={`${props.activeCategoryTab === index ? 

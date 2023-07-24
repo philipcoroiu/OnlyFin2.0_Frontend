@@ -5,7 +5,7 @@ export default function SearchResult(props: { searchResult: OnlyfinProfileSubInf
 
     function renderSearchResult() {
         return (
-            props.searchResult?.map((data: any) => {
+            props.searchResult?.map((data: OnlyfinProfileSubInfo) => {
                 return (
                     <SearchProfile
                         key={data.id}

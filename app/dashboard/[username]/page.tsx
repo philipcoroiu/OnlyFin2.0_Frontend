@@ -1,4 +1,5 @@
 "use client"
+
 import React, {FormEvent, useEffect, useState} from "react";
 import TabsContainer from "../Tabs/TabsContainer";
 import DashboardModules from "@/app/dashboard/DashbordModules";
@@ -6,8 +7,6 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 import Link from "next/link";
 import StockEditModal from "@/app/dashboard/Tabs/StockTabs/StockEditModal";
 import CategoryEditModal from "@/app/dashboard/Tabs/CategoryTabs/CategoryEditModal";
-
-
 
 export default function dashboardModuleBoard({params}: { params: { username: string } }) {
 

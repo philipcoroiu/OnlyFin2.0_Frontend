@@ -19,9 +19,9 @@ export default function Page() {
                     router.push("/login?redirect=me")
                 }
 
-                const data: string = response.data
+                const username: string = response.data
 
-                setUsername(data)
+                setUsername(username)
             })
             .catch(error => {
                 console.log("[me/page.tsx]: " + error)
