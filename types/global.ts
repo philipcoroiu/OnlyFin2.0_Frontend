@@ -56,3 +56,6 @@ type OnlyfinModule = {
     type: string,
     content: JSON
 }
+
+
+type TableCell = { value: string }[][];

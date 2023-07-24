@@ -8,13 +8,19 @@ export default function DashboardPage() {
 
     const [chartTitle, setChartTitle] = useState("Untitled Chart")
     const [chartType, setChartType] = useState("column")
+    const [chartData, setChartData] = useState();
 
-    function handleChartTitleChange(event : React.ChangeEvent<HTMLInputElement>) {
+    function handleChartTitleChange(event : any) {
         setChartTitle(event.target.value)
     }
 
     function handleChartSelectChange(event : any) {
         setChartType(event.target.value)
+    }
+
+    function handleChartDataChange(newChartData : any) {
+        setChartData(newChartData)
+        console.log("newChartData", newChartData)
     }
 
 
@@ -38,6 +44,7 @@ export default function DashboardPage() {
                     <StudioPreviewChart
                         chartTitle={chartTitle}
                         chartType={chartType}
+                        chartData={chartData}
                     />
                 </div>
 
@@ -53,6 +60,7 @@ export default function DashboardPage() {
                     <Toolbar
                         handleChartTitleChange={handleChartTitleChange}
                         handleChartSelectChange={handleChartSelectChange}
+                        handleChartDataChange={handleChartDataChange}
                     />
                 </div>
             </div>

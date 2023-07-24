@@ -4,7 +4,31 @@ import React, {useEffect, useState} from "react";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 
+const initialData: any = [
+    [{ value: 'Year' }, { value: "Mike" }, { value: "John" }, { value: "Anna" }],
+    [{ value: '2020' }, { value: 2 }, { value: 3 }, { value: 2 }],
+    [{ value: '2021' }, { value: 2 }, { value: 3 }, { value: 2 }],
+    [{ value: '2022' }, { value: 3 }, { value: 2 }, { value: 3 }],
+];
+
 export default function StudioPreviewChart(props : any) {
+
+    //TEMP xAxisCategories TEST –– REMOVE LATER
+
+    // Populates the categories, skips the first row
+    const xAxisCategories = initialData.slice(1).map((row: any) => row[0].value);
+    console.log("xAxisCategories: ", xAxisCategories)
+
+    //////////////////////////////
+
+    const seriesData = initialData[0].slice(1).map((col: any, index: number) => ({
+        name: col.value,
+        data: initialData.slice(1).map((row: any) => parseInt(row[index + 1].value, 10))
+    }));
+    console.log("seriesData: ", seriesData)
+
+
+    //////////////////////////////
 
     useEffect(() => {
         console.log("Chart title has been changed to: ", props.chartTitle)
@@ -15,6 +39,13 @@ export default function StudioPreviewChart(props : any) {
         console.log(props.chartType)
         handleChartTypeChange(props.chartType)
     }, [props.chartType])
+/*
+    useEffect(() => {
+        console.log(props.chartData)
+        handleChartDataChange(props.chartData)
+    }, [props.chartData])
+
+ */
 
     function handleChartTitleChange(newChartTitle : string) {
 
@@ -40,6 +71,28 @@ export default function StudioPreviewChart(props : any) {
         }));
     }
 
+    /*
+    function handleChartDataChange(newChartData : any) {
+
+        setStudioChart((prevState) => {
+            return {
+                ...prevState,
+                series: [
+                    {
+                        name: 'Jane',
+                        data: newChartData[0], // New data for Jane series
+                    },
+                    {
+                        name: 'John',
+                        data: newChartData, // New data for John series
+                    },
+                ],
+            };
+        });
+    }
+
+     */
+
 
     const [studioChart, setStudioChart] = useState({
         chart: {
@@ -49,20 +102,14 @@ export default function StudioPreviewChart(props : any) {
             text: props.chartTitle
         },
         xAxis: {
-            categories: ['Apples', 'Bananas', 'Oranges']
+            categories: xAxisCategories
         },
         yAxis: {
             title: {
                 text: 'Fruit eaten'
             }
         },
-        series: [{
-            name: 'Jane',
-            data: [1, 0, 4]
-        }, {
-            name: 'John',
-            data: [5, 7, 3]
-        }]
+        series: seriesData
     });
 
     return(

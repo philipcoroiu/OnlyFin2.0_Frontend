@@ -1,16 +1,18 @@
-import Spreadsheet, { Cell } from "react-spreadsheet";
+import Spreadsheet from "react-spreadsheet";
 import { useState } from "react";
 
-export default function ToolbarTable() {
-    const initialData: Cell[][] = [
+export default function ToolbarTable(props : any) {
+    const initialData: TableCell = [
         [{ value: "Vanilla" }, { value: "Chocolate" }],
         [{ value: "Strawberry" }, { value: "Cookies" }]
     ];
 
     const [spreadsheetData, setSpreadsheetData] = useState(initialData);
 
-    function handleSpreadsheetChange(newData: Cell[][]) {
+    //TODO: Replace this function and the state with the prop function
+    function handleSpreadsheetChange(newData : any) {
         setSpreadsheetData(newData);
+        props.handleChartDataChange(newData)
     }
 
     function handleAddColumnClick() {
