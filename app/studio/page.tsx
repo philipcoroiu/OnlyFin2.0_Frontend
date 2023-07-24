@@ -8,7 +8,12 @@ export default function DashboardPage() {
 
     const [chartTitle, setChartTitle] = useState("Untitled Chart")
     const [chartType, setChartType] = useState("column")
-    const [chartData, setChartData] = useState();
+    const [chartData, setChartData] = useState([
+        [{ value: 'Year' }, { value: "Mike" }, { value: "John" }, { value: "Anna" }],
+        [{ value: '2020' }, { value: 2 }, { value: 3 }, { value: 2 }],
+        [{ value: '2021' }, { value: 2 }, { value: 3 }, { value: 2 }],
+        [{ value: '2022' }, { value: 3 }, { value: 2 }, { value: 3 }],
+    ]);
 
     function handleChartTitleChange(event : any) {
         setChartTitle(event.target.value)
@@ -61,6 +66,7 @@ export default function DashboardPage() {
                         handleChartTitleChange={handleChartTitleChange}
                         handleChartSelectChange={handleChartSelectChange}
                         handleChartDataChange={handleChartDataChange}
+                        chartData={chartData}
                     />
                 </div>
             </div>

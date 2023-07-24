@@ -16,16 +16,18 @@ export default function StudioPreviewChart(props : any) {
     //TEMP xAxisCategories TEST –– REMOVE LATER
 
     // Populates the categories, skips the first row
-    const xAxisCategories = initialData.slice(1).map((row: any) => row[0].value);
-    console.log("xAxisCategories: ", xAxisCategories)
+    //const xAxisCategories = props.chartData.slice(1).map((row: any) => row[0].value);
+    //console.log("xAxisCategories: ", xAxisCategories)
 
     //////////////////////////////
-
+/*
     const seriesData = initialData[0].slice(1).map((col: any, index: number) => ({
         name: col.value,
         data: initialData.slice(1).map((row: any) => parseInt(row[index + 1].value, 10))
     }));
     console.log("seriesData: ", seriesData)
+
+ */
 
 
     //////////////////////////////
@@ -39,13 +41,26 @@ export default function StudioPreviewChart(props : any) {
         console.log(props.chartType)
         handleChartTypeChange(props.chartType)
     }, [props.chartType])
-/*
-    useEffect(() => {
-        console.log(props.chartData)
-        handleChartDataChange(props.chartData)
-    }, [props.chartData])
 
- */
+    useEffect(() => {
+        const xAxisCategories = props.chartData.slice(1).map((row: any) => row[0].value);
+        const seriesData = props.chartData[0].slice(1).map((col: any, index: number) => ({
+            name: col.value,
+            data: props.chartData.slice(1).map((row: any) => parseInt(row[index + 1].value, 10))
+        }));
+
+        console.log("SeriesData in studio: ", seriesData)
+
+        setStudioChart(prevState => ({
+            ...prevState,
+            xAxis: {
+                categories: xAxisCategories
+            },
+            series: seriesData
+        }));
+
+        console.log("seriesData: ", seriesData)
+    },[props.chartData])
 
     function handleChartTitleChange(newChartTitle : string) {
 
@@ -102,14 +117,14 @@ export default function StudioPreviewChart(props : any) {
             text: props.chartTitle
         },
         xAxis: {
-            categories: xAxisCategories
+            categories: ["hej", "test"]
         },
         yAxis: {
             title: {
                 text: 'Fruit eaten'
             }
         },
-        series: seriesData
+        series: [["hej"], [2]]
     });
 
     return(

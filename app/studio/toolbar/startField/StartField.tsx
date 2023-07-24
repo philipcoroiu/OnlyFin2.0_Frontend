@@ -112,8 +112,13 @@ export default function StartField(props : any) {
                 // ***************//
             }
 
-            <label htmlFor="stocks" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
-                a stock</label>
+            <label htmlFor="stocks"
+                   className="block
+                   mb-2
+                   text-sm
+                   font-medium
+                   text-gray-900
+                   dark:text-white">Select a stock</label>
 
             <select id="stocks"
                     onChange={handleStockSelect}

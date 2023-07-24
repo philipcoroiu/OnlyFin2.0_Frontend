@@ -159,7 +159,7 @@ export default function ToolbarTable(props : any) {
                 // ******************//
             }
 
-            <Spreadsheet data={spreadsheetData} onChange={handleSpreadsheetChange} />
+            <Spreadsheet data={props.chartData} onChange={(event) => props.handleChartDataChange(event)} />
         </div>
     );
 }
