@@ -67,6 +67,7 @@ export default function DashboardPage() {
                         handleChartSelectChange={handleChartSelectChange}
                         handleChartDataChange={handleChartDataChange}
                         chartData={chartData}
+                        setChartData={setChartData}
                     />
                 </div>
             </div>

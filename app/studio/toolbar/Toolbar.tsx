@@ -14,6 +14,7 @@ export default function Toolbar(props : any) {
             <ToolbarTable
                 handleChartDataChange={props.handleChartDataChange}
                 chartData={props.chartData}
+                setChartData={props.setChartData}
             />
         </div>
     )

@@ -16,20 +16,20 @@ export default function ToolbarTable(props : any) {
     }
 
     function handleAddColumnClick() {
-        setSpreadsheetData(prevData => prevData.map(row => [...row, { value: "" }]));
+        props.setChartData((prevData: TableCell) => prevData.map(row => [...row, { value: "" }]));
     }
 
     function handleRemoveColumnClick() {
-        setSpreadsheetData(prevData => prevData.map(row => row.slice(0, -1)));
+        props.setChartData((prevData: TableCell) => prevData.map(row => row.slice(0, -1)));
     }
 
     function handleAddRowClick() {
         const newRow = new Array(spreadsheetData[0].length).fill({ value: "" });
-        setSpreadsheetData(prevData => [...prevData, newRow]);
+        props.setChartData((prevData: TableCell) => [...prevData, newRow]);
     }
 
     function handleRemoveRowClick() {
-        setSpreadsheetData(prevData => {
+        props.setChartData((prevData: TableCell) => {
             const newData = [...prevData];
             newData.pop();
             return newData;
@@ -159,7 +159,7 @@ export default function ToolbarTable(props : any) {
                 // ******************//
             }
 
-            <Spreadsheet data={props.chartData} onChange={(event) => props.handleChartDataChange(event)} />
+            <Spreadsheet data={props.chartData} onChange={handleSpreadsheetChange} />
         </div>
     );
 }
