@@ -5,7 +5,7 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 
 export default function StartField(props : any) {
 
-    const [stockIsSelected, setStockIsSelected] = useState(false);
+    const [selectedStockIndex, setSelectedStockIndex] = useState<number>(0);
 
     const [userStockTabs, setUserStockTabs] = useState<OnlyfinUserStockTab[]>();
 
@@ -20,13 +20,11 @@ export default function StartField(props : any) {
     }, [])
 
     function handleStockSelect(event : any) {
-        const selectedStockValue = event.target.value;
+        const selectedStockIndex = event.target.selectedIndex;
+        setSelectedStockIndex(selectedStockIndex)
 
-        if(selectedStockValue === "stock") {
-            setStockIsSelected(false)
-        } else {
-            setStockIsSelected(true)
-        }
+        //TODO: Delete console.log
+        console.log("event.target.value: ", event.target.selectedIndex)
     }
 
     function renderStockList() {
@@ -34,10 +32,36 @@ export default function StartField(props : any) {
         if (!userStockTabs) {
             return <option>Loading...</option>;
         } else {
-            return userStockTabs.map((stockTab: OnlyfinUserStockTab) => {
-                console.log("StockTabId: ", stockTab.userStockId);
-                return <option>{stockTab.userStockId}</option>;
+            return userStockTabs.map((stockTab: OnlyfinUserStockTab, index : number) => {
+                return (
+                    <option
+                        value={stockTab.userStockId}
+                        key={stockTab.userStockId}
+                >tempName: {stockTab.userStockId}</option>);
             });
+        }
+    }
+
+    function handleStockChoice(stockChoice : number) {
+        console.log("Selected stockChoiceID: ", stockChoice)
+        setSelectedStockIndex(stockChoice)
+    }
+
+    function renderCategoryList() {
+        if(!userStockTabs) {
+            return <option>Loading...</option>
+        } else {
+            console.log("userStockTabs[selectedStockIndex]: ", userStockTabs[selectedStockIndex].categories)
+            return(
+                userStockTabs[selectedStockIndex].categories.map((category: OnlyfinUserCategoryTab) => {
+                    return (<option
+                        key={category.userCategoryId}
+                        value={category.userCategoryId}
+                    >
+                        {category.categoryName}
+                    </option>)
+                })
+            )
         }
     }
 
@@ -112,7 +136,6 @@ export default function StartField(props : any) {
                     ark:focus:ring-blue-500
                     dark:focus:border-blue-500">
 
-                <option value="stock">Stock</option>
                 {renderStockList()}
 
             </select>
@@ -144,13 +167,9 @@ export default function StartField(props : any) {
                     dark:text-white
                     ark:focus:ring-blue-500
                     dark:focus:border-blue-500"
-                    disabled={!stockIsSelected}
             >
 
-                <option value="category">Category</option>
-                <option value="bar">Bar</option>
-                <option value="column">Column</option>
-                <option value="line">Line</option>
+                {renderCategoryList()}
             </select>
 
 
