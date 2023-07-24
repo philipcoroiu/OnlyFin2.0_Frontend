@@ -279,6 +279,13 @@ export class ApiCalls {
         )
     }
 
+    public static async fetchDashboardMetadata(): Promise<AxiosResponse> {
+        return axiosInstance.get(
+            "/dash/metadata",
+            {withCredentials: true}
+        )
+    }
+
     public static async updateCategoryName(targetCategoryId: number, newCategoryName: string): Promise<AxiosResponse> {
         return axiosInstance.put(
             "/dash/update-category",

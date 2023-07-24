@@ -1,10 +1,23 @@
 "use client"
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {ApiCalls} from "@/app/utilities/ApiCalls";
 
 export default function StartField(props : any) {
 
     const [stockIsSelected, setStockIsSelected] = useState(false);
+
+    const [userStockTabs, setUserStockTabs] = useState<OnlyfinUserStockTab[]>();
+
+    useEffect(() => {
+        ApiCalls.fetchDashboardMetadata()
+            .then((response) => {
+                setUserStockTabs(response.data.userStockTabs)
+
+                //TODO: Delete console.log
+                console.log("userStockTabs", response.data.userStockTabs)
+            })
+    }, [])
 
     function handleStockSelect(event : any) {
         const selectedStockValue = event.target.value;
@@ -15,6 +28,19 @@ export default function StartField(props : any) {
             setStockIsSelected(true)
         }
     }
+
+    function renderStockList() {
+        // TODO: Add loading animation?
+        if (!userStockTabs) {
+            return <option>Loading...</option>;
+        } else {
+            return userStockTabs.map((stockTab: OnlyfinUserStockTab) => {
+                console.log("StockTabId: ", stockTab.userStockId);
+                return <option>{stockTab.userStockId}</option>;
+            });
+        }
+    }
+
 
     return (
         <div>
@@ -87,11 +113,9 @@ export default function StartField(props : any) {
                     dark:focus:border-blue-500">
 
                 <option value="stock">Stock</option>
-                <option value="bar">Bar</option>
-                <option value="column">Column</option>
-                <option value="line">Line</option>
-            </select>
+                {renderStockList()}
 
+            </select>
             {
                 // ******************//
                 // CATEGORY SELECTOR //
