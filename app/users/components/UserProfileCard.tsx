@@ -143,7 +143,7 @@ export default function UserProfileCard(props: { username: string }) {
             >
                 <div className="w-40 h-40">
                     <Avatar
-
+                        username={undefined}
                     />
                 </div>
 
