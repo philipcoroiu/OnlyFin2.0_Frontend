@@ -7,7 +7,7 @@ export default function Avatar(props: { username: string | undefined }) {
 
     const [profilePictureId, setProfilePictureId] = useState<number>()
 
-    useEffect(fetchProfilePicture, [])
+    useEffect(fetchProfilePicture, [props.username])
 
     function fetchProfilePicture() {
         if (props.username) {
