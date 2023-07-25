@@ -15,8 +15,8 @@ export default function dashboardModuleBoard() {
 
     const [whoAmI, setWhoAmI] = useState<string>();
 
-    const [activeStockTab, setActiveStockTab] = useState<number>(0);
-    const [activeCategoryTab, setActiveCategoryTab] = useState<number>(0);
+    const [activeStockTab, setActiveStockTab] = useState<number>(0) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
+    const [activeCategoryTab, setActiveCategoryTab] = useState<number>(0) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
 
     const [userStockArray, setUserStockArray] = useState<OnlyfinUserStock[]>();
     const [userCategoryArray, setUserCategoryArray] = useState<OnlyfinUserCategoryTab[]>();
@@ -48,13 +48,15 @@ export default function dashboardModuleBoard() {
         if (whoAmI && stockChange) {
             setStockChange(false)
             loadStockTab(whoAmI)
+            setActiveStockTab(0) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
+            setActiveCategoryTab(0) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
         }
     }, [stockChange])
 
     useEffect(() => {
         if (whoAmI && categoryChange) {
             setCategoryChange(false)
-            getUserCategoryTabs(currentUserStockId)
+            refreshUserCategoryTabs(currentUserStockId)
         }
     }, [categoryChange])
 
@@ -81,13 +83,25 @@ export default function dashboardModuleBoard() {
                 const stockTab: OnlyfinUserStockTab = response.data
 
                 setUserCategoryArray(stockTab.categories)
-                //setCurrentUserCategoryId(stockTab.categories[0].userCategoryId)
+                setCurrentUserCategoryId(stockTab.categories[0].userCategoryId)
 
                 //TODO: Delete console.log
                 console.log("getUserCategoryTabs: ", response.data.categories)
                 console.log("currentCategoryId: ", response.data.categories[0].userCategoryId)
             })
             .catch((error) => console.log("fetchCategoriesAndModulesUnderUserStock error ", error))
+    }
+
+    function refreshUserCategoryTabs(userStockIDInput : number) {
+        ApiCalls.fetchCategoriesAndModulesUnderUserStock(userStockIDInput)
+            .then((response) => {
+                const stockTab: OnlyfinUserStockTab = response.data
+
+                setUserCategoryArray(stockTab.categories)
+                setActiveCategoryTab(-1)
+
+            })
+            .catch((error) => console.log("[dashboard/page.tsx:refreshUserCategoryTabs()]: " + error))
     }
 
     function handleStockTabClick(index : number, stockId : number) : void {
