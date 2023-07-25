@@ -37,7 +37,7 @@ export default function StartField(props : any) {
                     <option
                         value={stockTab.userStockId}
                         key={stockTab.userStockId}
-                >tempName: {stockTab.userStockId}</option>);
+                >{stockTab.stock.name}</option>);
             });
         }
     }

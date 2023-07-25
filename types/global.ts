@@ -38,6 +38,7 @@ type OnlyfinUserStock = {
 
 type OnlyfinUserStockTab = {
     userStockId: number,
+    stock: OnlyfinStock,
     categories: OnlyfinUserCategoryTab[]
 }
 

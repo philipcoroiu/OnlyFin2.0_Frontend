@@ -4,13 +4,6 @@ import React, {useEffect, useState} from "react";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 
-const initialData: any = [
-    [{ value: 'Year' }, { value: "Mike" }, { value: "John" }, { value: "Anna" }],
-    [{ value: '2020' }, { value: 2 }, { value: 3 }, { value: 2 }],
-    [{ value: '2021' }, { value: 2 }, { value: 3 }, { value: 2 }],
-    [{ value: '2022' }, { value: 3 }, { value: 2 }, { value: 3 }],
-];
-
 export default function StudioPreviewChart(props : any) {
 
     //TEMP xAxisCategories TEST –– REMOVE LATER
@@ -43,6 +36,7 @@ export default function StudioPreviewChart(props : any) {
     }, [props.chartType])
 
     useEffect(() => {
+        const yAxisTitle = props.chartData[0][0].value;
         const xAxisCategories = props.chartData.slice(1).map((row: any) => row[0].value);
         const seriesData = props.chartData[0].slice(1).map((col: any, index: number) => ({
             name: col.value,
@@ -55,6 +49,11 @@ export default function StudioPreviewChart(props : any) {
             ...prevState,
             xAxis: {
                 categories: xAxisCategories
+            },
+            yAxis: {
+                title: {
+                    text: yAxisTitle
+                }
             },
             series: seriesData
         }));
@@ -121,7 +120,7 @@ export default function StudioPreviewChart(props : any) {
         },
         yAxis: {
             title: {
-                text: 'Fruit eaten'
+                text: 'Billions'
             }
         },
         series: [["hej"], [2]]

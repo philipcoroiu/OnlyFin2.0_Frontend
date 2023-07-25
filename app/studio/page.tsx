@@ -9,10 +9,10 @@ export default function DashboardPage() {
     const [chartTitle, setChartTitle] = useState("Untitled Chart")
     const [chartType, setChartType] = useState("column")
     const [chartData, setChartData] = useState([
-        [{ value: 'Year' }, { value: "Mike" }, { value: "John" }, { value: "Anna" }],
-        [{ value: '2020' }, { value: 2 }, { value: 3 }, { value: 2 }],
-        [{ value: '2021' }, { value: 2 }, { value: 3 }, { value: 2 }],
-        [{ value: '2022' }, { value: 3 }, { value: 2 }, { value: 3 }],
+        [{ value: 'Billions' }, { value: "Amazon" }, { value: "Apple" }, { value: "Google" }],
+        [{ value: '2021' }, { value: 469 }, { value: 378 }, { value: 257 }],
+        [{ value: '2022' }, { value: 513 }, { value: 387 }, { value: 282 }],
+        [{ value: '2023' }, { value: 524 }, { value: 385 }, { value: 284 }],
     ]);
 
     function handleChartTitleChange(event : any) {
