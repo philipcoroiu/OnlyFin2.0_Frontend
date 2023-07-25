@@ -3,7 +3,7 @@
 import Link from "next/link";
 import {useSearchParams} from "next/navigation";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
-import {useState} from "react";
+import React, {useState} from "react";
 
 export default function Login() {
     const searchParams = useSearchParams()
@@ -27,6 +27,8 @@ export default function Login() {
      * This is used to trigger a re-render of the Header component to get the version with the logged-in buttons.
      */
     function handleSubmit() {
+
+
         ApiCalls.postLoginPlz(email, password)
             .then(response => {
                 if (response) {
@@ -49,6 +51,12 @@ export default function Login() {
         setShowErrorMessage(true);
 
     }
+
+    const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.code === "Enter") {
+            handleSubmit()
+        }
+    };
 
     return (
         <div className="
@@ -80,7 +88,8 @@ export default function Login() {
 
                 <div className="mt-8 space-y-6">
                     <div className="space-y-6">
-                        <input className="
+                        <input onKeyDown={keyDownHandler}
+                            className="
                                 w-full
                                 bg-transparent
                                 text-gray-600
@@ -102,7 +111,8 @@ export default function Login() {
                                maxLength={50}
                         />
 
-                        <input className="
+                        <input onKeyDown={keyDownHandler}
+                            className="
                                 w-full
                                 bg-transparent
                                 text-gray-600
