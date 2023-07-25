@@ -27,7 +27,7 @@ export default function AvailableAvatars() {
 
         for (let i = 0; i <= 57; i++) {
             avatars.push(
-                <button className={"w-40 h-40 p-1"}
+                <button key={i} className={"w-40 h-40 p-1"}
                         onClick={() => {
                             chooseAvatar(i)
                         }}>
