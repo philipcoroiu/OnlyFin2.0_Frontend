@@ -127,7 +127,7 @@ export default function StudioPreviewChart(props : any) {
     });
 
     return(
-        <div className="rounded">
+        <div className="flex flex-col justify-center h-3/4 mx-2 rounded p-4">
             <HighchartsReact
                 containerProps={{style: {height: '100%', weight: '100%'}}}
                 highcharts={Highcharts}

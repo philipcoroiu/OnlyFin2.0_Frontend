@@ -45,7 +45,7 @@ export default function DashboardPage() {
                 shadow-lg
                 p-4
                 h-full
-                overflow-auto">
+                ">
                     <StudioPreviewChart
                         chartTitle={chartTitle}
                         chartType={chartType}
