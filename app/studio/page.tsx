@@ -7,7 +7,7 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 
 export default function DashboardPage() {
 
-    const [currentCategoryId, setCurrentCategoryId] = useState<number>()
+    const [currentCategoryId, setCurrentCategoryId] = useState<number>(0)
     const [chartTitle, setChartTitle] = useState<string>("Untitled Chart")
     const [chartType, setChartType] = useState<string>("column")
     const [yAxisTitle, setyAxisTitle] = useState<string>();
@@ -84,7 +84,7 @@ export default function DashboardPage() {
         series: [[2], [2]]
     }
 
-        ApiCalls.addModule(141, 1,1,1,1,"column", studioChart)
+        ApiCalls.addModule(currentCategoryId, 1,1,1,1,chartType, studioChart)
             .then(() => console.log("Submitted to category id 141"))
     }
 
@@ -104,7 +104,7 @@ export default function DashboardPage() {
                 <div className="flex-1
                 mx-2
                 bg-gray-700
-                rounded
+                rounded-lg
                 shadow-lg
                 p-4
                 h-full

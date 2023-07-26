@@ -12,7 +12,10 @@ export default function StartField(props : any) {
     useEffect(() => {
         ApiCalls.fetchDashboardMetadata()
             .then((response) => {
+                const renderedCategoryId: number = response.data.userStockTabs[0].categories[0].userCategoryId
+
                 setUserStockTabs(response.data.userStockTabs)
+                props.handleCategoryIdChoice(renderedCategoryId)
 
                 //TODO: Delete console.log
                 console.log("userStockTabs", response.data.userStockTabs)

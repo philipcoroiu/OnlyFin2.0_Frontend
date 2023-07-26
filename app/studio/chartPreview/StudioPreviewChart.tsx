@@ -4,7 +4,7 @@ import React, {useEffect, useState} from "react";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 
-export default function StudioPreviewChart(props : any) {
+export default function StudioPreviewChart(props: any) {
 
     //TEMP xAxisCategories TEST –– REMOVE LATER
 
@@ -13,14 +13,14 @@ export default function StudioPreviewChart(props : any) {
     //console.log("xAxisCategories: ", xAxisCategories)
 
     //////////////////////////////
-/*
-    const seriesData = initialData[0].slice(1).map((col: any, index: number) => ({
-        name: col.value,
-        data: initialData.slice(1).map((row: any) => parseInt(row[index + 1].value, 10))
-    }));
-    console.log("seriesData: ", seriesData)
+    /*
+        const seriesData = initialData[0].slice(1).map((col: any, index: number) => ({
+            name: col.value,
+            data: initialData.slice(1).map((row: any) => parseInt(row[index + 1].value, 10))
+        }));
+        console.log("seriesData: ", seriesData)
 
- */
+     */
 
 
     //////////////////////////////
@@ -56,7 +56,7 @@ export default function StudioPreviewChart(props : any) {
         }));
 
         console.log("seriesData: ", seriesData)
-    },[props.chartData])
+    }, [props.chartData])
 
     useEffect(() => {
         handleYaxisTitle(props.yAxisTitle)
@@ -68,8 +68,7 @@ export default function StudioPreviewChart(props : any) {
     }, [props.xAxisTitle])
 
 
-
-    function handleChartTitleChange(newChartTitle : string) {
+    function handleChartTitleChange(newChartTitle: string) {
 
         props.setStudioChart((prevState: any) => {
             return {
@@ -82,7 +81,7 @@ export default function StudioPreviewChart(props : any) {
         })
     }
 
-    function handleChartTypeChange(newChartType : string) {
+    function handleChartTypeChange(newChartType: string) {
 
         props.setStudioChart((prevChart: any) => ({
             ...prevChart,
@@ -93,7 +92,7 @@ export default function StudioPreviewChart(props : any) {
         }));
     }
 
-    function handleYaxisTitle(newYaxisTitle: string){
+    function handleYaxisTitle(newYaxisTitle: string) {
         props.setStudioChart((prevChart: any) => ({
             ...prevChart,
             yAxis: {
@@ -165,8 +164,13 @@ export default function StudioPreviewChart(props : any) {
 
      */
 
-    return(
-        <div className="flex flex-col justify-center h-3/4 mx-2 rounded p-4">
+    return (
+        <div className="w-full
+                        overflow-hidden
+                        rounded-lg
+                        bg-gray-200
+                        xl:aspect-h-8
+                        xl:aspect-w-7">
             <HighchartsReact
                 containerProps={{style: {height: '100%', weight: '100%'}}}
                 highcharts={Highcharts}
