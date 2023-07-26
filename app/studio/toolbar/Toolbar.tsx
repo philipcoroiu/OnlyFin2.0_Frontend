@@ -7,18 +7,31 @@ export default function Toolbar(props : any) {
 
     return(
         <div>
-            <StartField
-                handleChartTitleChange={props.handleChartTitleChange}
-                handleChartSelectChange={props.handleChartSelectChange}
-                handleYaxisChange={props.handleYaxisChange}
-                handleXaxisChange={props.handleXaxisChange}
-            />
-            <ToolbarTable
-                handleChartDataChange={props.handleChartDataChange}
-                chartData={props.chartData}
-                setChartData={props.setChartData}
+            <div className="p-4
+                rounded
+                bg-gray-700">
 
-            />
+                <StartField
+                    handleChartTitleChange={props.handleChartTitleChange}
+                    handleChartSelectChange={props.handleChartSelectChange}
+                    handleYaxisChange={props.handleYaxisChange}
+                    handleXaxisChange={props.handleXaxisChange}
+                />
+            </div>
+
+            <div className="p-4
+                rounded
+                bg-gray-700
+                my-5
+                overflow-auto">
+
+                <ToolbarTable
+                    handleChartDataChange={props.handleChartDataChange}
+                    chartData={props.chartData}
+                    setChartData={props.setChartData}
+
+                />
+            </div>
         </div>
     )
 }
