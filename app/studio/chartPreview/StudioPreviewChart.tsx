@@ -36,7 +36,6 @@ export default function StudioPreviewChart(props : any) {
     }, [props.chartType])
 
     useEffect(() => {
-        const yAxisTitle = props.chartData[0][0].value;
         const xAxisCategories = props.chartData.slice(1).map((row: any) => row[0].value);
         const seriesData = props.chartData[0].slice(1).map((col: any, index: number) => ({
             name: col.value,
@@ -50,16 +49,15 @@ export default function StudioPreviewChart(props : any) {
             xAxis: {
                 categories: xAxisCategories
             },
-            yAxis: {
-                title: {
-                    text: yAxisTitle
-                }
-            },
             series: seriesData
         }));
 
         console.log("seriesData: ", seriesData)
     },[props.chartData])
+
+    useEffect(() => {
+        handleYaxisTitle(props.yAxisTitle)
+    }, [props.yAxisTitle])
 
     function handleChartTitleChange(newChartTitle : string) {
 
@@ -83,6 +81,17 @@ export default function StudioPreviewChart(props : any) {
                 type: newChartType,
             },
         }));
+    }
+
+    function handleYaxisTitle(newYaxisTitle: string){
+        setStudioChart((prevChart) => ({
+            ...prevChart,
+            yAxis: {
+                title: {
+                    text: newYaxisTitle
+                },
+            }
+        }))
     }
 
     /*

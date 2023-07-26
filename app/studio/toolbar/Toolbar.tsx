@@ -10,11 +10,14 @@ export default function Toolbar(props : any) {
             <StartField
                 handleChartTitleChange={props.handleChartTitleChange}
                 handleChartSelectChange={props.handleChartSelectChange}
+                handleYaxisChange={props.handleYaxisChange}
+                handleXaxisChange={props.handleXaxisChange}
             />
             <ToolbarTable
                 handleChartDataChange={props.handleChartDataChange}
                 chartData={props.chartData}
                 setChartData={props.setChartData}
+
             />
         </div>
     )

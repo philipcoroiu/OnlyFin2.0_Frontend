@@ -51,7 +51,6 @@ export default function StartField(props : any) {
         if(!userStockTabs) {
             return <option>Loading...</option>
         } else {
-            console.log("userStockTabs[selectedStockIndex]: ", userStockTabs[selectedStockIndex].categories)
             return(
                 userStockTabs[selectedStockIndex].categories.map((category: OnlyfinUserCategoryTab) => {
                     return (<option
@@ -233,7 +232,7 @@ export default function StartField(props : any) {
                        id="y-axis-input"
                        placeholder="Y axis"
                        maxLength={60}
-                       //onChange={props.handleChartTitleChange}
+                       onChange={(event) => props.handleYaxisChange(event.target.value)}
                        className="bg-gray-50
                        border
                        border-gray-300
@@ -271,7 +270,7 @@ export default function StartField(props : any) {
                        id="x-axis-input"
                        placeholder="X axis"
                        maxLength={60}
-                       //onChange={props.handleChartTitleChange}
+                       onChange={(event) => props.handleXaxisChange(event.target.value)}
                        className="bg-gray-50
                        border
                        border-gray-300

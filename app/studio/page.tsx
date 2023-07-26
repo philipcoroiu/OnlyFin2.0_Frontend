@@ -6,9 +6,11 @@ import {useState} from "react";
 
 export default function DashboardPage() {
 
-    const [chartTitle, setChartTitle] = useState("Untitled Chart")
-    const [chartType, setChartType] = useState("column")
-    const [chartData, setChartData] = useState([
+    const [chartTitle, setChartTitle] = useState<string>("Untitled Chart")
+    const [chartType, setChartType] = useState<string>("column")
+    const [yAxisTitle, setyAxisTitle] = useState<string>();
+    const [xAxisTitle, setxAxisTitle] = useState<string>();
+    const [chartData, setChartData] = useState<DataArray[]>([
         [{ value: 'Billions' }, { value: "Amazon" }, { value: "Apple" }, { value: "Google" }],
         [{ value: '2021' }, { value: 469 }, { value: 378 }, { value: 257 }],
         [{ value: '2022' }, { value: 513 }, { value: 387 }, { value: 282 }],
@@ -28,7 +30,15 @@ export default function DashboardPage() {
         console.log("newChartData", newChartData)
     }
 
+    function handleYaxisTitleChange(newValue: string) {
+        console.log("Changed Y axis value to: ", newValue)
+        setyAxisTitle(newValue)
+    }
 
+    function handleXaxisTitleChange(newValue: string) {
+        console.log("Changed X axis value to: ", newValue)
+        setxAxisTitle(newValue)
+    }
 
     return(
         <div>
@@ -50,6 +60,8 @@ export default function DashboardPage() {
                         chartTitle={chartTitle}
                         chartType={chartType}
                         chartData={chartData}
+                        yAxisTitle={yAxisTitle}
+                        xAxisTitle={xAxisTitle}
                     />
                 </div>
 
@@ -68,6 +80,8 @@ export default function DashboardPage() {
                         handleChartDataChange={handleChartDataChange}
                         chartData={chartData}
                         setChartData={setChartData}
+                        handleYaxisChange={handleYaxisTitleChange}
+                        handleXaxisChange={handleXaxisTitleChange}
                     />
                 </div>
             </div>
