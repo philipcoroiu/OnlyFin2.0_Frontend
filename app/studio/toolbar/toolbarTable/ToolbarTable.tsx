@@ -1,5 +1,6 @@
 import Spreadsheet from "react-spreadsheet";
-import { useState } from "react";
+import {useState} from "react";
+import _ from 'lodash';
 
 export default function ToolbarTable(props : any) {
 
@@ -10,12 +11,20 @@ export default function ToolbarTable(props : any) {
         [{ value: '2023' }, { value: 524 }, { value: 385 }, { value: 284 }],
     ]
 
-    const [spreadsheetData, setSpreadsheetData] = useState(initStudioSpreadsheetData);
+    const [spreadsheetData, setSpreadsheetData] = useState<DataArray[]>(initStudioSpreadsheetData);
 
     function handleSpreadsheetChange(newData : any) {
         //setSpreadsheetData(newData);
+        handleTableDataChange(newData)
         props.handleChartDataChange(newData)
     }
+
+    function handleTableDataChange(newTableData: DataArray[]) {
+        if (!_.isEqual(newTableData, spreadsheetData)) {
+            setSpreadsheetData(newTableData);
+        }
+    }
+
 
     function handleAddColumnClick() {
         props.setChartData((prevData: TableCell) => prevData.map(row => [...row, { value: "" }]));

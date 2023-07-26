@@ -116,7 +116,7 @@ export default function StudioPreviewChart(props : any) {
             text: props.chartTitle
         },
         xAxis: {
-            categories: ["hej", "test"]
+            categories: ["hej", "test"],
         },
         yAxis: {
             title: {

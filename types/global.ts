@@ -60,3 +60,6 @@ type OnlyfinModule = {
 
 
 type TableCell = { value: string }[][];
+
+type DataElement = { value: any };
+type DataArray = DataElement[];
