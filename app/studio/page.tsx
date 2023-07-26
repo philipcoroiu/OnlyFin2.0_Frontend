@@ -3,9 +3,11 @@
 import Toolbar from "@/app/studio/toolbar/Toolbar"
 import StudioPreviewChart from "@/app/studio/chartPreview/StudioPreviewChart";
 import {useState} from "react";
+import {ApiCalls} from "@/app/utilities/ApiCalls";
 
 export default function DashboardPage() {
 
+    const [currentCategoryId, setCurrentCategoryId] = useState<number>()
     const [chartTitle, setChartTitle] = useState<string>("Untitled Chart")
     const [chartType, setChartType] = useState<string>("column")
     const [yAxisTitle, setyAxisTitle] = useState<string>();
@@ -16,6 +18,27 @@ export default function DashboardPage() {
         [{ value: '2022' }, { value: 513 }, { value: 387 }, { value: 282 }],
         [{ value: '2023' }, { value: 524 }, { value: 385 }, { value: 284 }],
     ]);
+
+    const [studioChart, setStudioChart] = useState({
+        chart: {
+            type: chartType
+        },
+        title: {
+            text: chartTitle
+        },
+        xAxis: {
+            categories: ["hej", "test"],
+            title: {
+                text: "hello"
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Billions'
+            }
+        },
+        series: [["hej"], [2]]
+    });
 
     function handleChartTitleChange(event : any) {
         setChartTitle(event.target.value)
@@ -40,6 +63,36 @@ export default function DashboardPage() {
         setxAxisTitle(newValue)
     }
 
+    function handleSubmit() {
+        const testChart = { chart: {
+            type: "column"
+        },
+        title: {
+            text: "test title"
+        },
+        xAxis: {
+            categories: ["hej", "test"],
+                title: {
+                text: "hello"
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Billions'
+            }
+        },
+        series: [[2], [2]]
+    }
+
+        ApiCalls.addModule(141, 1,1,1,1,"column", studioChart)
+            .then(() => console.log("Submitted to category id 141"))
+    }
+
+    function handleCategoryIdChoice(categoryIdChoice: number) {
+        console.log("Current category id: ", categoryIdChoice)
+        setCurrentCategoryId(categoryIdChoice)
+    }
+
     return(
         <div>
             <div className="h-screen
@@ -62,6 +115,8 @@ export default function DashboardPage() {
                         chartData={chartData}
                         yAxisTitle={yAxisTitle}
                         xAxisTitle={xAxisTitle}
+                        studioChart={studioChart}
+                        setStudioChart={setStudioChart}
                     />
                 </div>
 
@@ -80,6 +135,8 @@ export default function DashboardPage() {
                         setChartData={setChartData}
                         handleYaxisChange={handleYaxisTitleChange}
                         handleXaxisChange={handleXaxisTitleChange}
+                        handleSubmit={handleSubmit}
+                        handleCategoryIdChoice={handleCategoryIdChoice}
                     />
                 </div>
             </div>

@@ -22,9 +22,6 @@ export default function StartField(props : any) {
     function handleStockSelect(event : any) {
         const selectedStockIndex = event.target.selectedIndex;
         setSelectedStockIndex(selectedStockIndex)
-
-        //TODO: Delete console.log
-        console.log("event.target.value: ", event.target.selectedIndex)
     }
 
     function renderStockList() {
@@ -152,7 +149,11 @@ export default function StartField(props : any) {
             <label htmlFor="stocks" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
                 a category</label>
 
-            <select id="stocks"
+            <select id="categories"
+                    onChange={(event) => {
+                        const selectedValue = event.target.value;
+                        props.handleCategoryIdChoice(selectedValue)
+                    }}
                     defaultValue="Category"
                     className="
                     bg-gray-50

@@ -44,7 +44,7 @@ export default function StudioPreviewChart(props : any) {
 
         console.log("SeriesData in studio: ", seriesData)
 
-        setStudioChart(prevState => ({
+        props.setStudioChart((prevState: any) => ({
             ...prevState,
             xAxis: {
                 categories: xAxisCategories,
@@ -71,7 +71,7 @@ export default function StudioPreviewChart(props : any) {
 
     function handleChartTitleChange(newChartTitle : string) {
 
-        setStudioChart(prevState => {
+        props.setStudioChart((prevState: any) => {
             return {
                 ...prevState,
                 title: {
@@ -84,7 +84,7 @@ export default function StudioPreviewChart(props : any) {
 
     function handleChartTypeChange(newChartType : string) {
 
-        setStudioChart((prevChart) => ({
+        props.setStudioChart((prevChart: any) => ({
             ...prevChart,
             chart: {
                 ...prevChart.chart,
@@ -94,7 +94,7 @@ export default function StudioPreviewChart(props : any) {
     }
 
     function handleYaxisTitle(newYaxisTitle: string){
-        setStudioChart((prevChart) => ({
+        props.setStudioChart((prevChart: any) => ({
             ...prevChart,
             yAxis: {
                 title: {
@@ -106,7 +106,7 @@ export default function StudioPreviewChart(props : any) {
 
 
     function handleXaxisTitle(newXaxisTitle: string) {
-        setStudioChart((prevChart) => ({
+        props.setStudioChart((prevChart: any) => ({
             ...prevChart,
             xAxis: {
                 ...prevChart.xAxis,
@@ -141,6 +141,7 @@ export default function StudioPreviewChart(props : any) {
      */
 
 
+    /*
     const [studioChart, setStudioChart] = useState({
         chart: {
             type: props.chartType
@@ -162,12 +163,14 @@ export default function StudioPreviewChart(props : any) {
         series: [["hej"], [2]]
     });
 
+     */
+
     return(
         <div className="flex flex-col justify-center h-3/4 mx-2 rounded p-4">
             <HighchartsReact
                 containerProps={{style: {height: '100%', weight: '100%'}}}
                 highcharts={Highcharts}
-                options={studioChart}
+                options={props.studioChart}
             />
         </div>
     )
