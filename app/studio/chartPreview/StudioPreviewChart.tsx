@@ -47,7 +47,10 @@ export default function StudioPreviewChart(props : any) {
         setStudioChart(prevState => ({
             ...prevState,
             xAxis: {
-                categories: xAxisCategories
+                categories: xAxisCategories,
+                title: {
+                    ...prevState.title.text
+                }
             },
             series: seriesData
         }));
@@ -58,6 +61,13 @@ export default function StudioPreviewChart(props : any) {
     useEffect(() => {
         handleYaxisTitle(props.yAxisTitle)
     }, [props.yAxisTitle])
+
+
+    useEffect(() => {
+        handleXaxisTitle(props.xAxisTitle)
+    }, [props.xAxisTitle])
+
+
 
     function handleChartTitleChange(newChartTitle : string) {
 
@@ -94,6 +104,20 @@ export default function StudioPreviewChart(props : any) {
         }))
     }
 
+
+    function handleXaxisTitle(newXaxisTitle: string) {
+        setStudioChart((prevChart) => ({
+            ...prevChart,
+            xAxis: {
+                ...prevChart.xAxis,
+                title: {
+                    text: newXaxisTitle
+                },
+            }
+        }))
+    }
+
+
     /*
     function handleChartDataChange(newChartData : any) {
 
@@ -126,6 +150,9 @@ export default function StudioPreviewChart(props : any) {
         },
         xAxis: {
             categories: ["hej", "test"],
+            title: {
+                text: "hello"
+            }
         },
         yAxis: {
             title: {
