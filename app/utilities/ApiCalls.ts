@@ -297,17 +297,25 @@ export class ApiCalls {
         )
     }
 
-    public static async updateModule(moduleId: number, targetCategoryId: number, height: number, width: number, xAxis: number, yAxis: number, type: string, content: any): Promise<AxiosResponse> {
+    public static async updateModuleContent(moduleId: number, type: string, content: any): Promise<AxiosResponse> {
         return axiosInstance.put(
             `/dash/update-module?moduleId=${moduleId}`,
             {
-                targetCategoryId: targetCategoryId,
+                type: type,
+                content: content
+            },
+            {withCredentials: true}
+        )
+    }
+
+    public static async updateModuleLayout(moduleId: number, height: number, width: number, xAxis: number, yAxis: number) {
+        return axiosInstance.put(
+            `/dash/update-module-layout?moduleId=${moduleId}`,
+            {
                 height: height,
                 width: width,
                 xAxis: xAxis,
-                yAxis: yAxis,
-                type: type,
-                content: content
+                yAxis: yAxis
             },
             {withCredentials: true}
         )
