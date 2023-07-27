@@ -2,7 +2,7 @@
 
 import React, {useEffect, useState} from "react";
 import TabsContainer from "./Tabs/TabsContainer";
-import DashboardModules from "@/app/dashboard/DashbordModules";
+import DashboardModules from "@/app/dashboard/modulesContainer/DashbordModules";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import Link from "next/link";
 import StockEditModal from "@/app/dashboard/Tabs/StockTabs/StockEditModal";

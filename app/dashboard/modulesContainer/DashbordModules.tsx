@@ -1,13 +1,18 @@
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import Link from "next/link";
+import {Responsive, WidthProvider} from "react-grid-layout";
 
 export default function DashboardModules(props: {
     userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
     activeCategoryTab: number
 }) {
 
+    const ResponsiveGridLayout = WidthProvider(Responsive);
+
     function renderModules() {
+        console.log("props.userCategoryArray: ", props.userCategoryArray)
+
         if (!props.userCategoryArray[props.activeCategoryTab]) {
             return (
                 <p className={""}>Choose or create a category</p>
@@ -74,7 +79,18 @@ export default function DashboardModules(props: {
                     xl:grid-cols-3
                     xl:gap-x-5">
 
-            {props.userCategoryArray ? renderModules() : renderLoadingAnimation()}
+            <ResponsiveGridLayout
+                className="layout"
+                cols={{ lg: 8, md: 6, sm: 1, xs: 1, xxs: 1 }}
+                rowHeight={190}
+                isResizable={true}
+                compactType="vertical"
+                isBounded={true}
+                isDraggable={true}
+                style={{margin: "15px"}}
+            >
+                {props.userCategoryArray ? renderModules() : renderLoadingAnimation()}
+            </ResponsiveGridLayout>
 
         </div>
     )
