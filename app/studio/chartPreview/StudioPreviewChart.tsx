@@ -4,7 +4,26 @@ import React, {useEffect, useState} from "react";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 
-export default function StudioPreviewChart(props : any) {
+export default function StudioPreviewChart(props: any) {
+
+    //TEMP xAxisCategories TEST –– REMOVE LATER
+
+    // Populates the categories, skips the first row
+    //const xAxisCategories = props.chartData.slice(1).map((row: any) => row[0].value);
+    //console.log("xAxisCategories: ", xAxisCategories)
+
+    //////////////////////////////
+    /*
+        const seriesData = initialData[0].slice(1).map((col: any, index: number) => ({
+            name: col.value,
+            data: initialData.slice(1).map((row: any) => parseInt(row[index + 1].value, 10))
+        }));
+        console.log("seriesData: ", seriesData)
+
+     */
+
+
+    //////////////////////////////
 
     useEffect(() => {
         console.log("Chart title has been changed to: ", props.chartTitle)
@@ -16,9 +35,42 @@ export default function StudioPreviewChart(props : any) {
         handleChartTypeChange(props.chartType)
     }, [props.chartType])
 
-    function handleChartTitleChange(newChartTitle : string) {
+    useEffect(() => {
+        const xAxisCategories = props.chartData.slice(1).map((row: any) => row[0].value);
+        const seriesData = props.chartData[0].slice(1).map((col: any, index: number) => ({
+            name: col.value,
+            data: props.chartData.slice(1).map((row: any) => parseInt(row[index + 1].value, 10))
+        }));
 
-        setStudioChart(prevState => {
+        console.log("SeriesData in studio: ", seriesData)
+
+        props.setStudioChart((prevState: any) => ({
+            ...prevState,
+            xAxis: {
+                categories: xAxisCategories,
+                title: {
+                    ...prevState.title.text
+                }
+            },
+            series: seriesData
+        }));
+
+        console.log("seriesData: ", seriesData)
+    }, [props.chartData])
+
+    useEffect(() => {
+        handleYaxisTitle(props.yAxisTitle)
+    }, [props.yAxisTitle])
+
+
+    useEffect(() => {
+        handleXaxisTitle(props.xAxisTitle)
+    }, [props.xAxisTitle])
+
+
+    function handleChartTitleChange(newChartTitle: string) {
+
+        props.setStudioChart((prevState: any) => {
             return {
                 ...prevState,
                 title: {
@@ -29,9 +81,9 @@ export default function StudioPreviewChart(props : any) {
         })
     }
 
-    function handleChartTypeChange(newChartType : string) {
+    function handleChartTypeChange(newChartType: string) {
 
-        setStudioChart((prevChart) => ({
+        props.setStudioChart((prevChart: any) => ({
             ...prevChart,
             chart: {
                 ...prevChart.chart,
@@ -40,7 +92,55 @@ export default function StudioPreviewChart(props : any) {
         }));
     }
 
+    function handleYaxisTitle(newYaxisTitle: string) {
+        props.setStudioChart((prevChart: any) => ({
+            ...prevChart,
+            yAxis: {
+                title: {
+                    text: newYaxisTitle
+                },
+            }
+        }))
+    }
 
+
+    function handleXaxisTitle(newXaxisTitle: string) {
+        props.setStudioChart((prevChart: any) => ({
+            ...prevChart,
+            xAxis: {
+                ...prevChart.xAxis,
+                title: {
+                    text: newXaxisTitle
+                },
+            }
+        }))
+    }
+
+
+    /*
+    function handleChartDataChange(newChartData : any) {
+
+        setStudioChart((prevState) => {
+            return {
+                ...prevState,
+                series: [
+                    {
+                        name: 'Jane',
+                        data: newChartData[0], // New data for Jane series
+                    },
+                    {
+                        name: 'John',
+                        data: newChartData, // New data for John series
+                    },
+                ],
+            };
+        });
+    }
+
+     */
+
+
+    /*
     const [studioChart, setStudioChart] = useState({
         chart: {
             type: props.chartType
@@ -49,28 +149,32 @@ export default function StudioPreviewChart(props : any) {
             text: props.chartTitle
         },
         xAxis: {
-            categories: ['Apples', 'Bananas', 'Oranges']
+            categories: ["hej", "test"],
+            title: {
+                text: "hello"
+            }
         },
         yAxis: {
             title: {
-                text: 'Fruit eaten'
+                text: 'Billions'
             }
         },
-        series: [{
-            name: 'Jane',
-            data: [1, 0, 4]
-        }, {
-            name: 'John',
-            data: [5, 7, 3]
-        }]
+        series: [["hej"], [2]]
     });
 
-    return(
-        <div className="rounded">
+     */
+
+    return (
+        <div className="w-full
+                        overflow-hidden
+                        rounded-lg
+                        bg-gray-200
+                        xl:aspect-h-8
+                        xl:aspect-w-7">
             <HighchartsReact
                 containerProps={{style: {height: '100%', weight: '100%'}}}
                 highcharts={Highcharts}
-                options={studioChart}
+                options={props.studioChart}
             />
         </div>
     )

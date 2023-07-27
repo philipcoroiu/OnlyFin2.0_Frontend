@@ -1,37 +1,60 @@
-import Spreadsheet, { Cell } from "react-spreadsheet";
-import { useState } from "react";
+import Spreadsheet from "react-spreadsheet";
+import {useState} from "react";
+import _ from 'lodash';
 
-export default function ToolbarTable() {
-    const initialData: Cell[][] = [
-        [{ value: "Vanilla" }, { value: "Chocolate" }],
-        [{ value: "Strawberry" }, { value: "Cookies" }]
-    ];
+export default function ToolbarTable(props : any) {
 
-    const [spreadsheetData, setSpreadsheetData] = useState(initialData);
+    const initStudioSpreadsheetData = [
+        [{ value: 'Billions' }, { value: "Amazon" }, { value: "Apple" }, { value: "Google" }],
+        [{ value: '2021' }, { value: 469 }, { value: 378 }, { value: 257 }],
+        [{ value: '2022' }, { value: 513 }, { value: 387 }, { value: 282 }],
+        [{ value: '2023' }, { value: 524 }, { value: 385 }, { value: 284 }],
+    ]
 
-    function handleSpreadsheetChange(newData: Cell[][]) {
-        setSpreadsheetData(newData);
+    const [spreadsheetData, setSpreadsheetData] = useState<DataArray[]>(initStudioSpreadsheetData);
+
+    function handleSpreadsheetChange(newData : any) {
+        //setSpreadsheetData(newData);
+        handleTableDataChange(newData)
+        props.handleChartDataChange(newData)
     }
 
+    function handleTableDataChange(newTableData: DataArray[]) {
+        if (!_.isEqual(newTableData, spreadsheetData)) {
+            setSpreadsheetData(newTableData);
+        }
+    }
+
+
     function handleAddColumnClick() {
-        setSpreadsheetData(prevData => prevData.map(row => [...row, { value: "" }]));
+        props.setChartData((prevData: TableCell) => prevData.map(row => [...row, { value: "" }]));
+        setSpreadsheetData((prevData: any) => prevData.map((row: any) => [...row, { value: "" }]))
     }
 
     function handleRemoveColumnClick() {
-        setSpreadsheetData(prevData => prevData.map(row => row.slice(0, -1)));
+        props.setChartData((prevData: TableCell) => prevData.map(row => row.slice(0, -1)));
+        setSpreadsheetData((prevData: any) => prevData.map((row: any) => row.slice(0, -1)));
     }
 
     function handleAddRowClick() {
         const newRow = new Array(spreadsheetData[0].length).fill({ value: "" });
-        setSpreadsheetData(prevData => [...prevData, newRow]);
+        props.setChartData((prevData: TableCell) => [...prevData, newRow]);
+        setSpreadsheetData((prevData: any) => [...prevData, newRow])
     }
 
     function handleRemoveRowClick() {
-        setSpreadsheetData(prevData => {
+        /*
+        props.setChartData((prevData: TableCell) => {
             const newData = [...prevData];
             newData.pop();
             return newData;
         });
+        */
+        setSpreadsheetData((prevData: any) => {
+            const newData = [...prevData];
+            newData.pop();
+            return newData;
+        })
     }
 
     return (

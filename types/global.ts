@@ -38,7 +38,7 @@ type OnlyfinUserStock = {
 
 type OnlyfinUserStockTab = {
     userStockId: number,
-    stock: OnlyfinStock
+    stock: OnlyfinStock,
     categories: OnlyfinUserCategoryTab[]
 }
 
@@ -49,7 +49,6 @@ type OnlyfinUserCategoryTab = {
 }
 
 type OnlyfinModule = {
-    id: number,
     targetCategoryId: number,
     height: number,
     width: number,
@@ -59,10 +58,8 @@ type OnlyfinModule = {
     content: JSON
 }
 
-type OnlyfinDashboardMetadata = {
-    stocks: OnlyfinUserStockTab[]
-}
 
-type OnlyfinDashboard = {
-    stocks: OnlyfinUserStockTab[]
-}
+type TableCell = { value: string }[][];
+
+type DataElement = { value: any };
+type DataArray = DataElement[];
