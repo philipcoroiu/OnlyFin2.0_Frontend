@@ -58,6 +58,13 @@ type OnlyfinModule = {
     content: JSON
 }
 
+type ModuleLayoutUpdateBatchDTO = {
+    moduleId: number,
+    height: number,
+    width: number,
+    xAxis: number,
+    yAxis: number
+}
 
 type TableCell = { value: string }[][];
 
