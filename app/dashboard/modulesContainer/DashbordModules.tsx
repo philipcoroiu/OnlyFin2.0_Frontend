@@ -6,6 +6,7 @@ import { Layout, Responsive, WidthProvider } from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import Module from "@/app/dashboard/modulesContainer/Module";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
+import ToggleButton from "@/app/dashboard/components/ToggleButton";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -93,10 +94,13 @@ export default function DashboardModules(props: {
 
             <button onClick={updateLayout}>Save Layout</button>
 
+            <ToggleButton/>
+
+
             <div className={"mt-4 bg-red-400"}>
                 <ResponsiveGridLayout
                     className="layout"
-                    cols={{ lg: 8, md: 6, sm: 1, xs: 1, xxs: 1 }}
+                    cols={{ lg: 1, md: 1, sm: 1, xs: 1, xxs: 1 }}
                     rowHeight={190}
                     breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
                     isResizable={true}

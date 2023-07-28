@@ -17,7 +17,7 @@ export default function StockTabs(props: {
                             "inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"}`}
 
                         onClick={() => props.handleCategoryTabClick(index, category.userCategoryId)}
-                        aria-current="page">{category.categoryName} ID: {category.userCategoryId}
+                        aria-current="page">{category.categoryName}
                     </button>
                 </li>
             ))
@@ -37,7 +37,7 @@ export default function StockTabs(props: {
     }
 
     return (
-        <div>
+        <div className={"my-5"}>
 
             {
                 // **************//
