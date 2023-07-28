@@ -20,6 +20,8 @@ export default function DashboardModules(props: {
 
     const [moduleLayout, setModuleLayout] = useState<Layout[]>();
 
+    const [toggleButtonIsActive, setToggleButtonIsActive] = useState(false);
+
     function renderModules() {
         console.log("props.userCategoryArray: ", props.userCategoryArray)
 
@@ -85,17 +87,18 @@ export default function DashboardModules(props: {
         }
     }
 
+    function handleToggleButtonClick() {
+        if(toggleButtonIsActive) {
+            updateLayout()
+        }
+
+        setToggleButtonIsActive((prevState) => !prevState)
+    }
+
     return (
         <div className="">
 
-            {
-                /* Toggle button */
-            }
-
-            <button onClick={updateLayout}>Save Layout</button>
-
-            <ToggleButton/>
-
+            <ToggleButton handleToggleButtonClick={handleToggleButtonClick}/>
 
             <div className={"mt-4 bg-red-400"}>
                 <ResponsiveGridLayout
@@ -103,7 +106,8 @@ export default function DashboardModules(props: {
                     cols={{ lg: 1, md: 1, sm: 1, xs: 1, xxs: 1 }}
                     rowHeight={190}
                     breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
-                    isResizable={true}
+                    isResizable={toggleButtonIsActive}
+                    isDraggable={toggleButtonIsActive}
                     compactType="vertical"
                     onLayoutChange={(newLayout: Layout[]) => setModuleLayout(newLayout)}
                 >

@@ -1,15 +1,11 @@
 import React from "react";
 
-export default function ToggleButton() {
-
-    function clickTest() {
-        console.log("Clicked")
-    }
+export default function ToggleButton(props: any) {
 
     return(
         <>
             <label className="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" className="sr-only peer" onClick={clickTest}/>
+                <input type="checkbox" className="sr-only peer" onClick={props.handleToggleButtonClick}/>
                 <div
                     className="w-11
                     h-6
