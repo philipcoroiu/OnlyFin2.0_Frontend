@@ -1,4 +1,3 @@
-import AvailableAvatars from "@/app/components/AvailableAvatars";
 import UserInformation from "@/app/settings/components/UserInformation";
 import ImageChanger from "@/app/settings/components/ImageChanger";
 import PasswordChangeForm from "@/app/settings/components/PasswordChangeForm";
