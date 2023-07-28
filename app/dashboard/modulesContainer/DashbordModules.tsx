@@ -48,7 +48,7 @@ export default function DashboardModules(props: {
         return (
             props.userCategoryArray[props.activeCategoryTab].modules.map((module: any) => (
                     <div key={module.id}
-                         data-grid={{x: module.xAxis, y: 0, w: module.width, h: module.height}}
+                         data-grid={{x: 0, y: 0, w: 3, h: 3}}
                                 className="">
 
                         <HighchartsReact
@@ -90,21 +90,10 @@ export default function DashboardModules(props: {
                     cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
                     isResizable={true}
                 >
-                    <div key="a" style={{ backgroundColor: 'lightblue' }}>
-                        <span>a</span>
-                    </div>
-                    <div key="b" style={{ backgroundColor: 'lightgreen' }}>
-                        <span>b</span>
-                    </div>
-                    <div key="c" style={{ backgroundColor: 'salmon' }}>
-                        <span>c</span>
-                    </div>
+                    {props.userCategoryArray ? renderModules() : renderLoadingAnimation()}
+
                 </ResponsiveGridLayout>
             </div>
-
-                {props.userCategoryArray ? renderModules() : renderLoadingAnimation()}
-
-
         </div>
     )
 }

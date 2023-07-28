@@ -219,18 +219,13 @@ export default function dashboardModuleBoard() {
 
                         <Link href={"/users/" + whoAmI}>{whoAmI}</Link>
 
-
+                        <DashboardModules
+                            userCategoryArray={userCategoryArray}
+                            activeCategoryTab={activeCategoryTab}
+                        />
 
                     </div>
                 </div>
-            <div className={"bg-pink-400"}>
-                <DashboardModules
-                    userCategoryArray={userCategoryArray}
-                    activeCategoryTab={activeCategoryTab}
-                />
-            </div>
-
-
         </>
     )
 }

@@ -97,8 +97,6 @@ export default function Explore() {
                 />
                 {nothingFound ? renderNoResultFound() : renderSearchResult()}
             </div>
-
-            <GridLayout></GridLayout>
         </>
     )
 }
