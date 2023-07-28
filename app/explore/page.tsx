@@ -4,9 +4,21 @@ import {useEffect, useState} from "react";
 import SearchDropDownMenu from "@/app/explore/components/SearchDropDownMenu";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import SearchResult from "@/app/explore/components/SearchResult";
+import {Layout, Responsive, WidthProvider} from "react-grid-layout";
+import GridLayout from "@/app/temptest/GridLayout";
 
 //TODO: Fix cursed CSS & code, add support for stock search type
 export default function Explore() {
+
+    const ResponsiveGridLayout = WidthProvider(Responsive);
+
+    const layouts: {lg: Layout[]} = {
+        lg: [
+            {i: '1', x: 0, y: 0, w: 1, h: 2},
+            {i: '2', x: 1, y: 0, w: 3, h: 2},
+            {i: '3', x: 4, y: 0, w: 1, h: 2},
+        ],
+    };
 
     const [dropdownButtonIsClicked, setDropdownButtonIsClicked] = useState(false);
     const menuItems: string[] = ["Users"]
@@ -34,7 +46,7 @@ export default function Explore() {
                 setSearchResult(profiles)
             })
             .catch(error => {
-                console.log("[explore/page.tsx] error fetching data: " + error)
+                console.log("[explore/temp.tsx] error fetching data: " + error)
             })
     }
 
@@ -75,14 +87,16 @@ export default function Explore() {
     }
 
     return (
-        <div>
-            <SearchDropDownMenu
-                menuItems={menuItems}
-                dropdownButtonIsClicked={dropdownButtonIsClicked}
-                handleDropdownClick={handleDropdownClick}
-                handleSearchInput={handleSearchInput}
-            />
-            {nothingFound ? renderNoResultFound() : renderSearchResult()}
-        </div>
+        <>
+            <div>
+                <SearchDropDownMenu
+                    menuItems={menuItems}
+                    dropdownButtonIsClicked={dropdownButtonIsClicked}
+                    handleDropdownClick={handleDropdownClick}
+                    handleSearchInput={handleSearchInput}
+                />
+                {nothingFound ? renderNoResultFound() : renderSearchResult()}
+            </div>
+        </>
     )
 }

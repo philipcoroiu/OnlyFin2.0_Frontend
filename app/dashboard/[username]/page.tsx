@@ -2,7 +2,7 @@
 
 import React, {FormEvent, useEffect, useState} from "react";
 import TabsContainer from "../Tabs/TabsContainer";
-import DashboardModules from "@/app/dashboard/DashbordModules";
+import DashboardModules from "@/app/dashboard/modulesContainer/DashbordModules";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import Link from "next/link";
 import StockEditModal from "@/app/dashboard/Tabs/StockTabs/StockEditModal";
@@ -133,7 +133,6 @@ export default function dashboardModuleBoard({params}: { params: { username: str
                         ></TabsContainer>
 
                         <Link href={"/users/" + params.username}>{params.username}</Link>
-
                         <DashboardModules
                             userCategoryArray={userCategoryArray}
                             activeCategoryTab={activeCategoryTab}

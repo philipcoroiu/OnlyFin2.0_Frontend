@@ -1,6 +1,12 @@
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import Link from "next/link";
+import React from 'react';
+import { Layout, Responsive, WidthProvider } from 'react-grid-layout';
+import 'react-grid-layout/css/styles.css';
+import Module from "@/app/dashboard/modulesContainer/Module";
+
+const ResponsiveGridLayout = WidthProvider(Responsive);
 
 export default function DashboardModules(props: {
     userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
@@ -8,6 +14,12 @@ export default function DashboardModules(props: {
 }) {
 
     function renderModules() {
+        console.log("props.userCategoryArray: ", props.userCategoryArray)
+
+        if(!props.userCategoryArray) {
+            return <div className={"w-20 h-20 bg-red-400"}>{renderLoadingAnimation()}</div>
+        }
+
         if (!props.userCategoryArray[props.activeCategoryTab]) {
             return (
                 <p className={""}>Choose or create a category</p>
@@ -31,25 +43,18 @@ export default function DashboardModules(props: {
                 </Link>
             )
         }
+            console.log("modules: ", props.userCategoryArray[props.activeCategoryTab].modules)
 
+           // <Module key={moduleData.id} moduleData = {moduleData} ></Module>
         return (
-            props.userCategoryArray[props.activeCategoryTab].modules.map((module: any) => (
-                    <div key={module.id} className="group
-                                aspect-h-1
-                                aspect-w-1
-                                w-full
-                                overflow-hidden
-                                rounded-lg
-                                bg-gray-200
-                                xl:aspect-h-8
-                                xl:aspect-w-7">
+            props.userCategoryArray[props.activeCategoryTab].modules.map((moduleData: any) => (
 
-                        <HighchartsReact
-                            containerProps={{style: {height: '100%', weight: '100%'}}}
-                            highcharts={Highcharts}
-                            options={module.content}
-                        />
-                    </div>
+                <div
+                    key={moduleData.id}
+                    data-grid={{x: moduleData.xAxis, y: moduleData.yAxis, w: moduleData.width, h: moduleData.height}}>
+                    <Module moduleData = {moduleData} ></Module>
+                </div>
+
             ))
         )
     }
@@ -64,17 +69,27 @@ export default function DashboardModules(props: {
         )
     }
 
-    return (
-        <div className="grid
-                    grid-cols-1
-                    gap-x-6
-                    gap-y-5
-                    sm:grid-cols-2
-                    lg:grid-cols-3
-                    xl:grid-cols-3
-                    xl:gap-x-5">
+    function handleLayoutChange(newLayout: Layout[])  {
+        console.log("New layout: ", newLayout)
+    }
 
-            {props.userCategoryArray ? renderModules() : renderLoadingAnimation()}
+    return (
+        <div className="">
+
+            <div className={"mt-4 bg-red-400"}>
+                <ResponsiveGridLayout
+                    className="layout"
+                    cols={{ lg: 8, md: 6, sm: 1, xs: 1, xxs: 1 }}
+                    rowHeight={190}
+                    breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
+                    isResizable={true}
+                    compactType="vertical"
+                    onLayoutChange={(newLayout: Layout[]) => handleLayoutChange(newLayout)}
+                >
+                    {renderModules()}
+
+                </ResponsiveGridLayout>
+            </div>
 
         </div>
     )

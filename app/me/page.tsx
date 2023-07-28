@@ -24,7 +24,7 @@ export default function Page() {
                 setUsername(username)
             })
             .catch(error => {
-                console.log("[me/page.tsx]: " + error)
+                console.log("[me/temp.tsx]: " + error)
             })
     }, [])
 
