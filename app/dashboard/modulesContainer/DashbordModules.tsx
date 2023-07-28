@@ -1,17 +1,23 @@
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import Link from "next/link";
-import React from 'react';
+import React, {useState} from 'react';
 import { Layout, Responsive, WidthProvider } from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import Module from "@/app/dashboard/modulesContainer/Module";
+import {ApiCalls} from "@/app/utilities/ApiCalls";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
+
+
+
 
 export default function DashboardModules(props: {
     userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
     activeCategoryTab: number
 }) {
+
+    const [moduleLayout, setModuleLayout] = useState<Layout[]>();
 
     function renderModules() {
         console.log("props.userCategoryArray: ", props.userCategoryArray)
@@ -69,12 +75,23 @@ export default function DashboardModules(props: {
         )
     }
 
-    function handleLayoutChange(newLayout: Layout[])  {
-        console.log("New layout: ", newLayout)
+    function updateLayout()  {
+        if (moduleLayout){
+            moduleLayout.map((layoutData: any) => {
+                ApiCalls.updateModuleLayout(layoutData.i, layoutData.h, layoutData.w, layoutData.x, layoutData.y)
+                    .then(() => console.log("Saved new layout"))
+            })
+        }
     }
 
     return (
         <div className="">
+
+            {
+                /* Toggle button */
+            }
+
+            <button onClick={updateLayout}>Save Layout</button>
 
             <div className={"mt-4 bg-red-400"}>
                 <ResponsiveGridLayout
@@ -84,7 +101,7 @@ export default function DashboardModules(props: {
                     breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
                     isResizable={true}
                     compactType="vertical"
-                    onLayoutChange={(newLayout: Layout[]) => handleLayoutChange(newLayout)}
+                    onLayoutChange={(newLayout: Layout[]) => setModuleLayout(newLayout)}
                 >
                     {renderModules()}
 
