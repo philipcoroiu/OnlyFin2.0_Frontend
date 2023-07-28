@@ -101,7 +101,7 @@ export default function dashboardModuleBoard() {
                 setActiveCategoryTab(-1)
 
             })
-            .catch((error) => console.log("[dashboard/page.tsx:refreshUserCategoryTabs()]: " + error))
+            .catch((error) => console.log("[dashboard/temp.tsx:refreshUserCategoryTabs()]: " + error))
     }
 
     function handleStockTabClick(index : number, stockId : number) : void {
@@ -219,13 +219,18 @@ export default function dashboardModuleBoard() {
 
                         <Link href={"/users/" + whoAmI}>{whoAmI}</Link>
 
-                        <DashboardModules
-                            userCategoryArray={userCategoryArray}
-                            activeCategoryTab={activeCategoryTab}
-                        />
+
 
                     </div>
                 </div>
+            <div className={"bg-pink-400"}>
+                <DashboardModules
+                    userCategoryArray={userCategoryArray}
+                    activeCategoryTab={activeCategoryTab}
+                />
+            </div>
+
+
         </>
     )
 }

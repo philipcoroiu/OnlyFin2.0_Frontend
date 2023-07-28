@@ -133,7 +133,6 @@ export default function dashboardModuleBoard({params}: { params: { username: str
                         ></TabsContainer>
 
                         <Link href={"/users/" + params.username}>{params.username}</Link>
-
                         <DashboardModules
                             userCategoryArray={userCategoryArray}
                             activeCategoryTab={activeCategoryTab}
