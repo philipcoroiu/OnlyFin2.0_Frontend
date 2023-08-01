@@ -1,6 +1,8 @@
 import React from "react";
 
-export default function ToggleButton(props: any) {
+type Props = { handleToggleButtonClick(): void }
+
+export default function ToggleButton(props: Props) {
 
     return(
         <>

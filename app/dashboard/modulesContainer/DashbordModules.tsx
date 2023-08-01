@@ -1,5 +1,3 @@
-import HighchartsReact from "highcharts-react-official";
-import Highcharts from "highcharts";
 import Link from "next/link";
 import React, {useState} from 'react';
 import { Layout, Responsive, WidthProvider } from 'react-grid-layout';
@@ -8,15 +6,14 @@ import Module from "@/app/dashboard/modulesContainer/Module";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import ToggleButton from "@/app/dashboard/components/ToggleButton";
 
-const ResponsiveGridLayout = WidthProvider(Responsive);
-
-
-
-
-export default function DashboardModules(props: {
+type Props = {
     userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
     activeCategoryTab: number
-}) {
+}
+
+const ResponsiveGridLayout = WidthProvider(Responsive);
+
+export default function DashboardModules(props: Props) {
 
     const [moduleLayout, setModuleLayout] = useState<Layout[]>();
 
@@ -56,12 +53,14 @@ export default function DashboardModules(props: {
 
            // <Module key={moduleData.id} moduleData = {moduleData} ></Module>
         return (
-            props.userCategoryArray[props.activeCategoryTab].modules.map((moduleData: any) => (
+            props.userCategoryArray[props.activeCategoryTab].modules.map((moduleData: OnlyfinModule) => (
 
                 <div
                     key={moduleData.id}
                     data-grid={{x: moduleData.xAxis, y: moduleData.yAxis, w: moduleData.width, h: moduleData.height}}>
-                    <Module moduleData = {moduleData} ></Module>
+                    <Module
+                        moduleData={moduleData}
+                    />
                 </div>
 
             ))
@@ -98,7 +97,9 @@ export default function DashboardModules(props: {
     return (
         <div className="">
 
-            <ToggleButton handleToggleButtonClick={handleToggleButtonClick}/>
+            <ToggleButton
+                handleToggleButtonClick={handleToggleButtonClick}
+            />
 
             <div className={"mt-4 bg-red-400"}>
                 <ResponsiveGridLayout

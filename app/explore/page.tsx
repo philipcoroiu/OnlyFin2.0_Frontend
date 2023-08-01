@@ -5,9 +5,7 @@ import SearchDropDownMenu from "@/app/explore/components/SearchDropDownMenu";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import SearchResult from "@/app/explore/components/SearchResult";
 import {Layout, Responsive, WidthProvider} from "react-grid-layout";
-import GridLayout from "@/app/temptest/GridLayout";
 
-//TODO: Fix cursed CSS & code, add support for stock search type
 export default function Explore() {
 
     const ResponsiveGridLayout = WidthProvider(Responsive);

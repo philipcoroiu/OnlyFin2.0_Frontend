@@ -1,9 +1,11 @@
-export default function SearchDropDownMenu(props: {
+type Props = {
     menuItems: string[],
     dropdownButtonIsClicked: boolean,
     handleDropdownClick(): void,
     handleSearchInput(searchQuery: string): void
-}) {
+}
+
+export default function SearchDropDownMenu(props: Props) {
 
     return (
         <div className="flex justify-center">

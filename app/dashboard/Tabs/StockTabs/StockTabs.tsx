@@ -1,9 +1,11 @@
-export default function StockTabs(props: {
+type Props = {
     activeStockTab: number,
     handleStockTabClick(index: number, stockId: number): void,
     userStockArray: OnlyfinUserStock[] | undefined,
     handleStockEditButtonClick(): void
-}) {
+}
+
+export default function StockTabs(props: Props) {
 
     function renderStockTabs() {
         return (

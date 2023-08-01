@@ -3,7 +3,6 @@
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import {useRouter} from "next/navigation";
 
-//TODO: scrap this cursed code for a proper settings page
 export default function AvailableAvatars() {
     const router = useRouter()
 

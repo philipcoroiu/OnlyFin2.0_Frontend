@@ -3,11 +3,13 @@
 import {useEffect, useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 
-export default function AddExistingStockModal(props: {
+type Props = {
     stockEditButtonIsActive: boolean,
     handleExitButtonClick(): void,
     handleAddExistingStock(selectedStockId: number): void
-}) {
+}
+
+export default function AddExistingStockModal(props: Props) {
 
     const [searchPhrase, setSearchPhrase] = useState<string>("");
 

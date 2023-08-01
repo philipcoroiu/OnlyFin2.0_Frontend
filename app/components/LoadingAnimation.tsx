@@ -1,5 +1,5 @@
 export default function LoadingAnimation() {
-    return(
+    return (
         <div
             className="flex
                     items-center

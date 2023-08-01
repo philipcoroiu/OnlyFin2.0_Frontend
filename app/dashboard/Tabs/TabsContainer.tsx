@@ -2,7 +2,7 @@ import CategoryTabs from "./CategoryTabs/CategoryTabs"
 import StockTabs from "./StockTabs/StockTabs"
 import React from "react";
 
-export default function TabsContainer(props: {
+type Props = {
     activeStockTab: number,
     userStockArray: OnlyfinUserStock[] | undefined,
     userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
@@ -12,7 +12,9 @@ export default function TabsContainer(props: {
     handleStockEditButtonClick(): void,
     handleCategoryEditButtonClick(): void,
     initialUserStockId: number
-}) {
+}
+
+export default function TabsContainer(props: Props) {
 
     return (
         <div>

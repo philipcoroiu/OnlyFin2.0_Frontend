@@ -4,7 +4,9 @@ import {useEffect, useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import UserReviewCard from "@/app/users/components/UserReviewCard";
 
-export default function UserReviews(props: {targetUsername: string}) {
+type Props = { targetUsername: string }
+
+export default function UserReviews(props: Props) {
 
     const [reviews, setReviews] = useState<OnlyfinReview[]>([])
 

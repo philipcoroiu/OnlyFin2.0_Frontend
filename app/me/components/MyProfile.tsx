@@ -4,7 +4,9 @@ import {useEffect, useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import Avatar from "@/app/components/Avatar";
 
-export default function MyProfile(props: { username: string }) {
+type Props = { username: string }
+
+export default function MyProfile(props: Props) {
 
     const [aboutMeText, setAboutMeText] = useState<string>("")
     const [maxCharacter, setMaxCharacter] = useState<number>(2500)

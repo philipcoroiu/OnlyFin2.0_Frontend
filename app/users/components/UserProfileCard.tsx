@@ -5,6 +5,8 @@ import {useEffect, useState} from "react";
 import {useRouter} from "next/navigation";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 
+type Props = { username: string }
+
 /**
  * WARNING: Don't use this in lists as this component performs operations expensive at scale!
  *
@@ -12,7 +14,7 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
  *
  * TODO: Add user not found error message (HTTP 404 response in getUser() api call)
  */
-export default function UserProfileCard(props: { username: string }) {
+export default function UserProfileCard(props: Props) {
     const [user, setUser] = useState<OnlyfinProfileExtended>()
     const [subscribed, setSubscribed] = useState<boolean>()
 

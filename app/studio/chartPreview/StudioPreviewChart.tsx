@@ -1,10 +1,20 @@
 "use client"
 
-import React, {useEffect, useState} from "react";
+import React, {Dispatch, SetStateAction, useEffect} from "react";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 
-export default function StudioPreviewChart(props: any) {
+type Props = {
+    chartTitle: string,
+    chartType: string,
+    chartData: DataArray[],
+    yAxisTitle: string | undefined,
+    xAxisTitle: string | undefined,
+    studioChart: OnlyfinHighchartsChart,
+    setStudioChart: Dispatch<SetStateAction<OnlyfinHighchartsChart>>
+}
+
+export default function StudioPreviewChart(props: Props) {
 
     //TEMP xAxisCategories TEST –– REMOVE LATER
 

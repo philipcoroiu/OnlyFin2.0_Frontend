@@ -1,10 +1,12 @@
 import {useState} from "react";
 
-export default function ChangeCategoryNameModal(props: {
+type Props = {
     categoryEditButtonIsActive: boolean,
     handleExitButtonClick(): void,
     handleChangeCategoryNameModalClick(changeCategoryNameInput: string): void
-}) {
+}
+
+export default function ChangeCategoryNameModal(props: Props) {
 
     const [newCategoryName, setNewCategoryName] = useState<string>("")
 

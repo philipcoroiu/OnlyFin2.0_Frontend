@@ -3,7 +3,15 @@
 import {useEffect, useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 
-export default function StartField(props : any) {
+type Props = {
+    handleChartTitleChange(event: any): void,
+    handleChartSelectChange(event: any): void,
+    handleYaxisChange(newValue: string): void,
+    handleXaxisChange(newValue: string): void,
+    handleCategoryIdChoice(categoryIdChoice: number): void
+}
+
+export default function StartField(props: Props) {
 
     const [selectedStockIndex, setSelectedStockIndex] = useState<number>(0);
 
@@ -155,7 +163,7 @@ export default function StartField(props : any) {
             <select id="categories"
                     onChange={(event) => {
                         const selectedValue = event.target.value;
-                        props.handleCategoryIdChoice(selectedValue)
+                        props.handleCategoryIdChoice(Number(selectedValue))
                     }}
                     defaultValue="Category"
                     className="

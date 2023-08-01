@@ -3,7 +3,9 @@
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import {useEffect, useState} from "react";
 
-export default function Avatar(props: { username: string | undefined }) {
+type Props = { username: string | undefined }
+
+export default function Avatar(props: Props) {
 
     const [profilePictureId, setProfilePictureId] = useState<number>()
 

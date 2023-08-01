@@ -1,5 +1,5 @@
 export default function BgBlurUpper(){
-    return(
+    return (
         <div
             className="
                     absolute

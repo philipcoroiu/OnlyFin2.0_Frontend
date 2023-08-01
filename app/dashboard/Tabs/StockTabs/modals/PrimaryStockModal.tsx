@@ -1,10 +1,12 @@
-export default function PrimaryStockModal(props: {
+type Props = {
     stockEditButtonIsActive: boolean,
     handleAddStockButtonPress(): void,
     handleStockEditButtonClick(): void,
     handleRemoveSelectedStock(): void,
     handleAddCustomStockModalButtonPress(): void
-}) {
+}
+
+export default function PrimaryStockModal(props: Props) {
     return (
         <>
             {/* !--Main Modal --! */}

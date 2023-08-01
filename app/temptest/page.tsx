@@ -2,9 +2,9 @@ import GridLayout from "@/app/temptest/GridLayout";
 
 export default function Page() {
 
-    return(
+    return (
         <div>
-            <GridLayout></GridLayout>
+            <GridLayout/>
         </div>
     )
 }

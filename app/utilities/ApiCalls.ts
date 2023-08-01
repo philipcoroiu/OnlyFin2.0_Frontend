@@ -1,6 +1,6 @@
-import axios, {AxiosResponse} from 'axios';
+import axios, {AxiosInstance, AxiosResponse} from 'axios';
 
-const axiosInstance = axios.create({
+const axiosInstance: AxiosInstance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_BACKEND,
 })
 

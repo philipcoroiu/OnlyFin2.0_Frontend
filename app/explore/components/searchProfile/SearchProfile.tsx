@@ -4,7 +4,12 @@ import {useRouter} from "next/navigation";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import Link from "next/link";
 
-export default function SearchProfile(props: { username: string, isSubscribed: boolean }) {
+type Props = {
+    username: string,
+    isSubscribed: boolean
+}
+
+export default function SearchProfile(props: Props) {
     const [subscribed, setSubscribed] = useState<boolean>(props.isSubscribed)
 
     const router = useRouter()

@@ -1,9 +1,11 @@
-export default function StockTabs(props: {
+type Props = {
     activeCategoryTab: number,
     handleCategoryTabClick(index: number, categoryId: number): void,
     userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
     handleCategoryEditButtonClick(): void
-}) {
+}
+
+export default function StockTabs(props: Props) {
 
     function renderCategoryTabs() {
         return(

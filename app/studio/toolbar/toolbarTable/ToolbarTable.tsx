@@ -1,8 +1,14 @@
 import Spreadsheet from "react-spreadsheet";
-import {useState} from "react";
+import {Dispatch, SetStateAction, useState} from "react";
 import _ from 'lodash';
 
-export default function ToolbarTable(props : any) {
+type Props = {
+    handleChartDataChange(newChartData: any): void,
+    chartData: DataArray[],
+    setChartData: Dispatch<SetStateAction<DataArray[]>>
+}
+
+export default function ToolbarTable(props: Props) {
 
     const initStudioSpreadsheetData = [
         [{ value: 'Billions' }, { value: "Amazon" }, { value: "Apple" }, { value: "Google" }],

@@ -1,7 +1,7 @@
-"use client"
+type Props = { dropdownMenuIsActive: boolean }
 
-export default function TableDropdownMenu(props : any) {
-    return(
+export default function TableDropdownMenu(props : Props) {
+    return (
         <div id="dropdownLeft"
              className={`
              fixed

@@ -2,7 +2,9 @@ import Avatar from "@/app/components/Avatar";
 import Link from "next/link";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 
-export default function LoggedInButtons(props: { username: string }) {
+type Props = { username: string }
+
+export default function LoggedInButtons(props: Props) {
     const username: string = props.username
 
     function logOut() {

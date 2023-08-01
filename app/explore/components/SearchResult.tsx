@@ -1,7 +1,9 @@
 import SearchProfile from "@/app/explore/components/searchProfile/SearchProfile";
 import SearchProfileSkeleton from "@/app/explore/components/searchProfile/SearchProfileSkeleton";
 
-export default function SearchResult(props: { searchResult: OnlyfinProfileSubInfo[] | undefined }) {
+type Props = { searchResult: OnlyfinProfileSubInfo[] | undefined }
+
+export default function SearchResult(props: Props) {
 
     function renderSearchResult() {
         return (

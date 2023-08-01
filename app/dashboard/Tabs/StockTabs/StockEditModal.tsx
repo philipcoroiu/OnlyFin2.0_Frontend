@@ -3,18 +3,20 @@ import PrimaryStockModal from "@/app/dashboard/Tabs/StockTabs/modals/PrimaryStoc
 import AddExistingStockModal from "@/app/dashboard/Tabs/StockTabs/modals/AddExistingStockModal";
 import AddCustomStockModal from "@/app/dashboard/Tabs/StockTabs/modals/AddCustomStockModal";
 
+type Props = {
+    stockEditButtonIsActive: boolean,
+    handleStockEditButtonClick(): void,
+    handleRemoveSelectedStock(): void,
+    handleAddExistingStock(selectedStockId: number): void
+}
+
 enum StockModal {
     PRIMARY,
     EXISTING_STOCK,
     CUSTOM_STOCK,
 }
 
-export default function StockEditModal(props: {
-    stockEditButtonIsActive: boolean,
-    handleStockEditButtonClick(): void,
-    handleRemoveSelectedStock(): void,
-    handleAddExistingStock(selectedStockId: number): void
-}) {
+export default function StockEditModal(props: Props) {
 
     const [typeOfModalActive, setTypeOfModalActive] = useState<StockModal>(StockModal.PRIMARY);
 

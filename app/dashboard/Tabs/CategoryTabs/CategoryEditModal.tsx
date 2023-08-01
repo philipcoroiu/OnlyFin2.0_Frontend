@@ -3,19 +3,21 @@ import PrimaryCategoryModal from "@/app/dashboard/Tabs/CategoryTabs/modals/Prima
 import AddCategoryModal from "@/app/dashboard/Tabs/CategoryTabs/modals/AddCategoryModal";
 import ChangeCategoryNameModal from "@/app/dashboard/Tabs/CategoryTabs/modals/ChangeCategoryNameModal";
 
+type Props = {
+    categoryEditButtonIsActive: boolean,
+    handleCategoryEditButtonClick(): void,
+    handleAddCategoryModalClick(addCategoryInputName: string): void,
+    removeSelectedCategory(): void,
+    handleChangeCategoryNameModalClick(changeCategoryNameInput: string): void
+}
+
 enum CategoryModal {
     PRIMARY,
     ADD,
     CHANGE_NAME
 }
 
-export default function CategoryEditModal(props: {
-    categoryEditButtonIsActive: boolean,
-    handleCategoryEditButtonClick(): void,
-    handleAddCategoryModalClick(addCategoryInputName: string): void,
-    removeSelectedCategory(): void,
-    handleChangeCategoryNameModalClick(changeCategoryNameInput: string): void
-}) {
+export default function CategoryEditModal(props: Props) {
 
     const [typeOfModalActive, setTypeOfModalActive] = useState<CategoryModal>(CategoryModal.PRIMARY);
 

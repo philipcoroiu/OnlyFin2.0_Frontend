@@ -6,7 +6,7 @@ import ToolbarTable from "@/app/studio/toolbar/toolbarTable/ToolbarTable";
 
 export default function RemoveThisClassLater() {
 
-    const [dropdownMenuIsActive, setDropdownMenuIsActive] = useState(false);
+    const [dropdownMenuIsActive, setDropdownMenuIsActive] = useState<boolean>(false);
 
     function handleEditButtonClick() {
         setDropdownMenuIsActive(prevState => !prevState)

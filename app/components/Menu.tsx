@@ -1,6 +1,12 @@
 import Link from "next/link";
+import {Dispatch, SetStateAction} from "react";
 
-export default function Menu(props: { toggleHamburgerMenu: boolean, setToggleHamburgerMenu: any }) {
+type Props = {
+    toggleHamburgerMenu: boolean,
+    setToggleHamburgerMenu: Dispatch<SetStateAction<boolean>>
+}
+
+export default function Menu(props: Props) {
     const menuItems: string[] = ["Dashboard", "Studio", "Explore", "Settings"]
 
     return (

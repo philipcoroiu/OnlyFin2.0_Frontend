@@ -1,11 +1,22 @@
-"use client"
 import ToolbarTable from "@/app/studio/toolbar/toolbarTable/ToolbarTable";
 import StartField from "@/app/studio/toolbar/startField/StartField";
+import {Dispatch, SetStateAction} from "react";
 
-export default function Toolbar(props : any) {
+type Props = {
+    handleChartTitleChange(event: any): void,
+    handleChartSelectChange(event: any): void,
+    handleChartDataChange(newChartData: any): void,
+    chartData: DataArray[],
+    setChartData: Dispatch<SetStateAction<DataArray[]>>,
+    handleYaxisChange(newValue: string): void,
+    handleXaxisChange(newValue: string): void
+    handleSubmit(): void,
+    handleCategoryIdChoice(categoryIdChoice: number): void
+}
 
+export default function Toolbar(props : Props) {
 
-    return(
+    return (
         <div>
             <div className="p-4
                 rounded

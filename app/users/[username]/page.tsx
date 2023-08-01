@@ -4,7 +4,6 @@ import EditableUserReview from "@/app/users/components/EditableUserReview";
 
 export default function Page({params}: { params: { username: string } }) {
     return (
-        //TODO: FIX CURSED CSS in components and add error handling
         <div className={""}>
             <div className={"justify-center flex lg:w-1/2 mx-auto px-7 py-7"}>
                 <UserProfileCard

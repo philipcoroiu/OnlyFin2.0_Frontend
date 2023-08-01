@@ -1,5 +1,5 @@
 export default function BgBlurLower(){
-    return(
+    return (
         <div
             className="
                     absolute

@@ -4,7 +4,7 @@ import {useState} from "react";
 
 export default function Feed() {
 
-    const [showComments, setShowComments] = useState(false)
+    const [showComments, setShowComments] = useState<boolean>(false)
 
     function manageComments() {
         setShowComments(!showComments);
