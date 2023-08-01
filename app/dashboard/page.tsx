@@ -8,6 +8,7 @@ import Link from "next/link";
 import StockEditModal from "@/app/dashboard/Tabs/StockTabs/StockEditModal";
 import CategoryEditModal from "@/app/dashboard/Tabs/CategoryTabs/CategoryEditModal";
 import {useRouter} from "next/navigation";
+import Avatar from "@/app/components/Avatar";
 
 export default function dashboardModuleBoard() {
 
@@ -205,6 +206,16 @@ export default function dashboardModuleBoard() {
                     rounded-lg
                     bg-gray-700">
 
+                        <div className={"flex items-center text-center mb-4  justify-center sm:justify-start"}>
+                            <div className={"w-16 h-16"}>
+                                <Link href={"/me"}>
+                                    <Avatar username={whoAmI}></Avatar>
+                                </Link>
+
+                            </div>
+                            <Link className={"font-bold text-xl"} href={"/me"}>{whoAmI}</Link>
+                        </div>
+
                         <TabsContainer
                             activeStockTab={activeStockTab}
                             userStockArray={userStockArray}
@@ -218,7 +229,7 @@ export default function dashboardModuleBoard() {
                             initialUserStockId={currentUserStockId}
                         />
 
-                        <Link href={"/users/" + whoAmI}>{whoAmI}</Link>
+
 
 
                         <DashboardModules

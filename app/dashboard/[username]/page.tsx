@@ -88,7 +88,6 @@ export default function dashboardModuleBoard({params}: { params: { username: str
     return (
         <>
 
-
             <StockEditModal
                 stockEditButtonIsActive={stockEditButtonIsActive}
                 handleStockEditButtonClick={handleStockEditButtonClick}
@@ -101,7 +100,6 @@ export default function dashboardModuleBoard({params}: { params: { username: str
             ></CategoryEditModal>
 
             <div className="">
-
                 <div
                     className="mx-auto
                 mx-20

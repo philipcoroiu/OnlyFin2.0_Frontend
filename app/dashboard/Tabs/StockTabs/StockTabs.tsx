@@ -12,8 +12,8 @@ export default function StockTabs(props: {
                     <button
                         className={`${props.activeStockTab === index ?
                             "inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active"
-                            : 
-                            "inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"}`}
+                            :
+                            "inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:bg-gray-800 dark:hover:text-white "}`}
                         onClick={() => props.handleStockTabClick(index, stock.id)}
                         aria-current="page">{stock.stock.name}
                     </button>
@@ -36,23 +36,20 @@ export default function StockTabs(props: {
 
     return (
 
-    <div>
-        {
             // ***********//
             // STOCK TABS //
             // ***********//
-        }
-
         <ul
             className="flex
+                items-center
                 whitespace-nowrap
                 text-sm
                 font-medium
                 text-center
                 text-gray-500
                 dark:text-gray-400
-                overflow-x-auto
                 max-w-auto
+                overflow-x-auto
                 scrollbar-none">
 
 
@@ -78,13 +75,13 @@ export default function StockTabs(props: {
                     bg-white
                     rounded-lg
                     hover:bg-gray-100
-                    focus:ring-4
                     focus:outline-none
                     dark:text-white
-                    focus:ring-gray-50
                     dark:bg-gray-800
                     dark:hover:bg-gray-700
-                    dark:focus:ring-gray-600"
+                    dark:focus:ring-gray-600
+                    transition duration-300 ease-in-out hover:scale-110
+                    "
                     >
 
                     <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
@@ -96,7 +93,5 @@ export default function StockTabs(props: {
                 </button>
             </li>
         </ul>
-    </div>
-
 )
 }

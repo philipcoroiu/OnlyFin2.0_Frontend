@@ -1,5 +1,6 @@
 import CategoryTabs from "./CategoryTabs/CategoryTabs"
 import StockTabs from "./StockTabs/StockTabs"
+import React from "react";
 
 export default function TabsContainer(props: {
     activeStockTab: number,
@@ -15,6 +16,10 @@ export default function TabsContainer(props: {
 
     return (
         <div>
+            <div className={"rounded-xl bg-gray-900 p-4 mb-4"}>
+
+            <h3 className={"font-bold text-xl"}
+            >Stocks</h3>
 
             <StockTabs
                 activeStockTab={props.activeStockTab}
@@ -22,15 +27,19 @@ export default function TabsContainer(props: {
                 userStockArray={props.userStockArray}
                 handleStockEditButtonClick={props.handleStockEditButtonClick}
             />
+            </div>
 
+            <div className={"rounded-xl bg-gray-900 p-4 my-6"}>
+                <h3 className={"font-bold text-xl"}
+                >Category</h3>
 
-            <CategoryTabs
-                activeCategoryTab={props.activeCategoryTab}
-                handleCategoryTabClick={props.handleCategoryTabClick}
-                userCategoryArray={props.userCategoryArray}
-                handleCategoryEditButtonClick={props.handleCategoryEditButtonClick}
-            />
-
+                <CategoryTabs
+                    activeCategoryTab={props.activeCategoryTab}
+                    handleCategoryTabClick={props.handleCategoryTabClick}
+                    userCategoryArray={props.userCategoryArray}
+                    handleCategoryEditButtonClick={props.handleCategoryEditButtonClick}
+                />
+            </div>
         </div>
     )
 }
