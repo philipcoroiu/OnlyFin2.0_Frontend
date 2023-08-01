@@ -32,6 +32,7 @@ export default function Explore() {
     const [stockDropdownSearchSuggestions, setStockDropdownSearchSuggestions] = useState<OnlyfinStock[] | undefined>();
 
     useEffect(() => {
+        setNothingFound(false)
         if (usernameSearchQuery) {
             fetchUsersByUsername()
         }
@@ -90,10 +91,13 @@ export default function Explore() {
         if(dropdownChoice === "Users") {
             setUsernameSearchQuery(searchQuery)
         } else if (dropdownChoice === "Stocks") {
-            setStockSearchQuery(searchQuery)
-            fetchStockBySearchInput()
+            if(searchQuery === "") {
+                setStockDropdownSearchSuggestions(undefined)
+            } else {
+                setStockSearchQuery(searchQuery)
+                fetchStockBySearchInput()
+            }
         }
-
     }
 
     function renderSearchResult() {
@@ -121,11 +125,20 @@ export default function Explore() {
     function handleStockSuggestionClick(stockIdChoice: number) {
         console.log("Will do search based on stock id: ", stockIdChoice)
 
+        setNothingFound(false)
+
         ApiCalls.findAnalystsThatCoverStock(stockIdChoice)
             .then((response) => {
-                setSearchResult(response.data)
+                if(response.data.length === 0) {
+                    setNothingFound(true)
+                } else {
+                    setSearchResult(response.data)
+                }
+
                 console.log("setSearchResult: ", response.data)
             })
+
+        setStockDropdownSearchSuggestions(undefined)
     }
 
     return (
