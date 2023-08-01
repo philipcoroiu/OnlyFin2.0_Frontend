@@ -21,11 +21,15 @@ export default function Explore() {
     };
 
     const [dropdownButtonIsClicked, setDropdownButtonIsClicked] = useState(false);
-    const menuItems: string[] = ["Users"]
+    const [dropdownChoice, setDropdownChoice] = useState("Users");
+    //const menuItems: string[] = ["Users", "Stocks"]
 
     const [nothingFound, setNothingFound] = useState<boolean>(false)
     const [usernameSearchQuery, setUsernameSearchQuery] = useState<string>()
+    const [stockSearchQuery, setStockSearchQuery] = useState<string>()
     const [searchResult, setSearchResult] = useState<OnlyfinProfileSubInfo[]>();
+
+    const [stockDropdownSearchSuggestions, setStockDropdownSearchSuggestions] = useState<OnlyfinStock[] | undefined>();
 
     useEffect(() => {
         if (usernameSearchQuery) {
@@ -35,6 +39,8 @@ export default function Explore() {
             fetchRandomUsers()
         }
     }, [usernameSearchQuery])
+
+
 
     function fetchRandomUsers() {
         ApiCalls.fetchNewestUsers()
@@ -66,12 +72,28 @@ export default function Explore() {
         }
     }
 
+    function fetchStockBySearchInput() {
+        if(stockSearchQuery) {
+            ApiCalls.findStocksByName(stockSearchQuery)
+                .then((response) => {
+                    setStockDropdownSearchSuggestions(response.data)
+                    console.log("Stock dropdown search suggestions: ", response.data)
+                })
+        }
+    }
+
     function handleDropdownClick() {
         setDropdownButtonIsClicked(oldValue => !oldValue);
     }
 
     function handleSearchInput(searchQuery: string) {
-        setUsernameSearchQuery(searchQuery)
+        if(dropdownChoice === "Users") {
+            setUsernameSearchQuery(searchQuery)
+        } else if (dropdownChoice === "Stocks") {
+            setStockSearchQuery(searchQuery)
+            fetchStockBySearchInput()
+        }
+
     }
 
     function renderSearchResult() {
@@ -86,14 +108,39 @@ export default function Explore() {
         return <p className={"text-center"}>No results found...</p>
     }
 
+    function handleUserClick() {
+        setDropdownChoice("Users")
+        setDropdownButtonIsClicked(false)
+    }
+
+    function handleStockClick() {
+        setDropdownChoice("Stocks")
+        setDropdownButtonIsClicked(false)
+    }
+
+    function handleStockSuggestionClick(stockIdChoice: number) {
+        console.log("Will do search based on stock id: ", stockIdChoice)
+
+        ApiCalls.findAnalystsThatCoverStock(stockIdChoice)
+            .then((response) => {
+                setSearchResult(response.data)
+                console.log("setSearchResult: ", response.data)
+            })
+    }
+
     return (
         <>
             <div>
                 <SearchDropDownMenu
-                    menuItems={menuItems}
+                    //menuItems={menuItems}
                     dropdownButtonIsClicked={dropdownButtonIsClicked}
                     handleDropdownClick={handleDropdownClick}
                     handleSearchInput={handleSearchInput}
+                    handleUserClick={handleUserClick}
+                    handleStockClick={handleStockClick}
+                    dropdownChoice={dropdownChoice}
+                    stockDropdownSearchSuggestions={stockDropdownSearchSuggestions}
+                    handleStockSuggestionClick={handleStockSuggestionClick}
                 />
                 {nothingFound ? renderNoResultFound() : renderSearchResult()}
             </div>
