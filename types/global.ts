@@ -49,6 +49,7 @@ type OnlyfinUserCategoryTab = {
 }
 
 type OnlyfinModule = {
+    id: number,
     targetCategoryId: number,
     height: number,
     width: number,
@@ -69,4 +70,5 @@ type ModuleLayoutUpdateBatchDTO = {
 type TableCell = { value: string }[][];
 
 type DataElement = { value: any };
+
 type DataArray = DataElement[];
