@@ -149,10 +149,28 @@ export class ApiCalls {
      ********************************
      */
 
+    public static async addCustomStock(name: string, ticker: string): Promise<AxiosResponse> {
+        return axiosInstance.post(
+            "/stocks/add-custom-stock",
+            {
+                name: name,
+                ticker: ticker
+            },
+            {withCredentials: true}
+        )
+    }
+
     public static async getAllStocks(): Promise<AxiosResponse> {
         return axiosInstance.get(
             "/stocks/all",
             {}
+        )
+    }
+
+    public static async deleteCustomStock(customStockId: number): Promise<AxiosResponse> {
+        return axiosInstance.delete(
+            `/stocks/delete-custom-stock?customStockId=${customStockId}`,
+            {withCredentials: true},
         )
     }
 
