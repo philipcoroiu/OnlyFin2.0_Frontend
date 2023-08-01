@@ -2,6 +2,7 @@
 
 import {useEffect, useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
+import {useRouter} from "next/navigation";
 
 type Props = {
     handleChartTitleChange(event: any): void,
@@ -12,6 +13,8 @@ type Props = {
 }
 
 export default function StartField(props: Props) {
+
+    const router = useRouter()
 
     const [selectedStockIndex, setSelectedStockIndex] = useState<number>(0);
 
@@ -27,6 +30,11 @@ export default function StartField(props: Props) {
 
                 //TODO: Delete console.log
                 console.log("userStockTabs", response.data.userStockTabs)
+            })
+            .catch(error => {
+                if (error.response?.status === 401) {
+                    router.push("/login?redirect=studio")
+                }
             })
     }, [])
 

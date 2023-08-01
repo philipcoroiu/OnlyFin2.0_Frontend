@@ -5,7 +5,7 @@ import StudioPreviewChart from "@/app/studio/chartPreview/StudioPreviewChart";
 import {useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 
-export default function DashboardPage() {
+export default function StudioPage() {
 
     const [currentCategoryId, setCurrentCategoryId] = useState<number>(0)
     const [chartTitle, setChartTitle] = useState<string>("Untitled Chart")
