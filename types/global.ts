@@ -72,3 +72,5 @@ type TableCell = { value: string }[][];
 type DataElement = { value: any };
 
 type DataArray = DataElement[];
+
+type OnlyfinHighchartsChart = {chart: {type: string}, title: {text: string}, xAxis: {categories: string[], title: {text: string}}, yAxis: {title: {text: string}}, series: (string[] | number[])[]}
