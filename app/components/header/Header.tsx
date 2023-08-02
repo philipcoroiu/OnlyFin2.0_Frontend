@@ -60,10 +60,13 @@ export default function Header() {
                     flex
                     items-center"
                     >
-                        <img src="https://flowbite.com/docs/images/logo.svg"
-                             className="mr-3 h-9"
-                             alt="Flowbite Logo"
-                        />
+                        {/*
+                             <img src="https://flowbite.com/docs/images/logo.svg"
+                                 className="mr-3 h-9"
+                                 alt="Flowbite Logo"
+                            />
+                         */}
+
                         <span
                             className="
                             hidden
@@ -73,7 +76,8 @@ export default function Header() {
                             font-semibold
                             whitespace-nowrap
                             dark:text-white"
-                        >OnlyFin</span>
+                        >OnlyFin <span className="font-light">beta</span>
+                        </span>
                     </Link>
                     <div className="
                     flex items-center
