@@ -193,14 +193,13 @@ export default function dashboardModuleBoard() {
             />
 
                 <div className="mx-auto
-                md:mx-20
                 max-w-full
-                px-4 py-16
-                sm:px-12
-                sm:py-20
-                lg:px-0">
+                px-4 py-10
+                lg:px-10">
 
-                    <div className="px-10
+                    <div className="
+                    px-5
+                    md:px-10
                     py-10
                     overflow-y-auto
                     rounded-lg
