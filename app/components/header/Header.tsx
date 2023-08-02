@@ -56,9 +56,9 @@ export default function Header() {
                 mx-auto
                 max-w-screen-xl"
                 >
-                    <Link href="/" className="
-                    flex
-                    items-center"
+                    <Link href={`${username ? "dashboard" : "/"}`}
+                          className={"flex items-center"}
+
                     >
                         {/*
                              <img src="https://flowbite.com/docs/images/logo.svg"
