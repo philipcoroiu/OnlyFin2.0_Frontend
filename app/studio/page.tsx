@@ -4,8 +4,10 @@ import Toolbar from "@/app/studio/toolbar/Toolbar"
 import StudioPreviewChart from "@/app/studio/chartPreview/StudioPreviewChart";
 import {useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
-
+import {useRouter} from "next/navigation";
 export default function StudioPage() {
+
+    const router = useRouter()
 
     const [currentCategoryId, setCurrentCategoryId] = useState<number>(0)
     const [chartTitle, setChartTitle] = useState<string>("Untitled Chart")
@@ -84,8 +86,11 @@ export default function StudioPage() {
         series: [[2], [2]]
     }
 
-        ApiCalls.addModule(currentCategoryId, 1,1,1,1,chartType, studioChart)
+        ApiCalls.addModule(currentCategoryId, 3,1,1,1,chartType, studioChart)
             .then(() => console.log("Submitted to category id 141"))
+            .finally(() => {
+                router.push('/dashboard')
+            })
     }
 
     function handleCategoryIdChoice(categoryIdChoice: number) {
