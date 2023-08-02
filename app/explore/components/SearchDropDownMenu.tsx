@@ -1,13 +1,57 @@
-type Props = {
-    menuItems: string[],
+export default function SearchDropDownMenu(props: {
     dropdownButtonIsClicked: boolean,
     handleDropdownClick(): void,
-    handleSearchInput(searchQuery: string): void
-}
+    handleSearchInput(searchQuery: string): void,
+    handleUserClick(): void,
+    handleStockClick(): void,
+    dropdownChoice: string,
+    stockDropdownSearchSuggestions: OnlyfinStock[],
+    handleStockSuggestionClick(id: number): void
+}) {
 
-export default function SearchDropDownMenu(props: Props) {
+    function renderSearchDropdownSuggestions() {
+        if(props.stockDropdownSearchSuggestions) {
+            return(
+                <div id="dropdown-search"
+                     className={`z-10 
+                 origin-top-right 
+                 absolute 
+                 mt-28 
+                 bg-white 
+                 divide-y 
+                 divide-gray-100 
+                 rounded-lg 
+                 shadow 
+                 w-80 
+                 dark:bg-gray-700`}>
+
+                    <ul className="py-2 text-sm text-gray-700 dark:text-gray-200 max-h-[75vh] overflow-auto">
+                        {props.stockDropdownSearchSuggestions.map((stock) => {
+                            return(
+                                <li key={stock.id.toString()}>
+                                    <button
+                                        onClick={() => props.handleStockSuggestionClick(stock.id)}
+                                        className="text-left
+                                    w-full
+                                    block
+                                    px-4
+                                    py-2
+                                    hover:bg-gray-100
+                                    dark:hover:bg-gray-600
+                                    dark:hover:text-white">{stock.name} ({stock.ticker})</button>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
+            )
+        }
+
+    }
 
     return (
+        <>
+
         <div className="flex justify-center">
 
                 <div className="flex w-full max-w-xl mt-12 m-4
@@ -56,7 +100,7 @@ export default function SearchDropDownMenu(props: Props) {
                         hidden
                         xsm:block
                         "
-                        >Users</span>
+                        >{props.dropdownChoice}</span>
 
                         <svg aria-hidden="true" className="w-4 h-7 ml-1"
                              fill="currentColor" viewBox="0 0 20 20"
@@ -71,14 +115,16 @@ export default function SearchDropDownMenu(props: Props) {
                     <div id="dropdown"
                          className={`z-10 ${props.dropdownButtonIsClicked ? "" : "hidden"} origin-top-right absolute mt-12 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700`}>
                         <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
-                            {props.menuItems.map((name:string, index:number) => (
-                                <li key={index}>
-                                    <button type="button"
-                                            className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{name}
+                                <li>
+                                    <button onClick={props.handleUserClick}
+                                            className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Users
                                     </button>
                                 </li>
-
-                            ))}
+                                <li>
+                                    <button onClick={props.handleStockClick}
+                                        className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Stocks
+                                    </button>
+                                </li>
 
                         </ul>
                     </div>
@@ -120,6 +166,9 @@ export default function SearchDropDownMenu(props: Props) {
                     </button>
                 </div>
 
+            {renderSearchDropdownSuggestions()}
+
         </div>
+        </>
     )
 }
