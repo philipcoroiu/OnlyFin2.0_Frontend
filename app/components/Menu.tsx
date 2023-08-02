@@ -11,7 +11,7 @@ export default function Menu(props: Props) {
 
     return (
         <div
-            className={` ${props.toggleHamburgerMenu ? "" : "hidden"} justify-between items-center w-full lg:flex lg:w-auto lg:order-1`}
+            className={` ${props.toggleHamburgerMenu ? "" : "hidden"}  justify-between items-center w-full lg:ml-28 lg:flex lg:w-auto lg:order-1`}
             id="mobile-menu-2">
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                 {menuItems.map((name: string) => (

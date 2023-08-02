@@ -21,7 +21,7 @@ export default function TabsContainer(props: Props) {
             <div className={"rounded-xl bg-gray-800 p-4 mb-4"}>
 
             <h3 className={"font-bold text-xl my-3 mt-0"}
-            >Stocks</h3>
+            >Stock</h3>
 
             <StockTabs
                 activeStockTab={props.activeStockTab}

@@ -47,40 +47,43 @@ export default function SearchProfile(props: Props) {
     }
 
     return (
-        <div className="bg-gray-50 rounded-lg p-4 dark:bg-gray-700">
-            <div className="w-20 h-20">
-                <Link href={"/users/" + props.username}>
-                    <Avatar
-                        username={props.username}
-                    />
-                </Link>
-            </div>
+        <div className="flex justify-center bg-gray-50 rounded-lg p-4 dark:bg-gray-700">
+            <div>
+                <div className="w-20 h-20 ml-4">
+                    <Link href={"/users/" + props.username}>
+                        <Avatar
+                            username={props.username}
+                        />
+                    </Link>
+                </div>
 
-            <div className="text-xl font-bold">
-                <Link href={"/dashboard/" + props.username}>{props.username}</Link>
-            </div>
+                <div className="flex justify-center items-center text-xl font-bold mt-2">
+                    <Link href={"/dashboard/" + props.username}>{props.username}</Link>
+                </div>
 
-            <button
-                onClick={handleSubscribeButtonClick}
-                type="button"
-                className="text-white
-                           bg-blue-700
-                           hover:bg-blue-800
-                           focus:ring-4
-                           focus:ring-blue-300
-                           font-medium
-                           rounded-lg
-                           text-sm
-                           px-5
-                           py-2.5
-                           mr-2
-                           mb-2
-                           dark:bg-blue-600
-                           dark:hover:bg-blue-700
-                           focus:outline-none
-                           dark:focus:ring-blue-800">
-                {subscribed ? "UNSUBSCRIBE" : "SUBSCRIBE"}
-            </button>
+                <button
+                    onClick={handleSubscribeButtonClick}
+                    type="button"
+                    className="text-white
+                               bg-blue-700
+                               hover:bg-blue-800
+                               focus:ring-4
+                               focus:ring-blue-300
+                               font-medium
+                               rounded-lg
+                               text-sm
+                               px-5
+                               py-2.5
+                               mr-2
+                               mb-2
+                               dark:bg-blue-600
+                               dark:hover:bg-blue-700
+                               focus:outline-none
+                               dark:focus:ring-blue-800
+                               mt-4">
+                    {subscribed ? "UNSUBSCRIBE" : "SUBSCRIBE"}
+                </button>
+            </div>
         </div>
     )
 }

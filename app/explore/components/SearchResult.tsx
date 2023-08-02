@@ -24,7 +24,7 @@ export default function SearchResult(props: Props) {
             {props.searchResult ?
                 (
                     <div className="mx-auto my-10 px-4 sm:px-6 lg:px-20">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4">
                             {renderSearchResult()}
                         </div>
                     </div>
