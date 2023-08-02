@@ -101,7 +101,7 @@ export default function DashboardModules(props: Props) {
                 handleToggleButtonClick={handleToggleButtonClick}
             />
 
-            <div className={"mt-4 bg-red-400"}>
+            <div className={"mt-4"}>
                 <ResponsiveGridLayout
                     className="layout"
                     cols={{ lg: 1, md: 1, sm: 1, xs: 1, xxs: 1 }}

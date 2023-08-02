@@ -18,9 +18,9 @@ export default function TabsContainer(props: Props) {
 
     return (
         <div>
-            <div className={"rounded-xl bg-gray-900 p-4 mb-4"}>
+            <div className={"rounded-xl bg-gray-800 p-4 mb-4"}>
 
-            <h3 className={"font-bold text-xl"}
+            <h3 className={"font-bold text-xl my-3 mt-0"}
             >Stocks</h3>
 
             <StockTabs
@@ -31,8 +31,8 @@ export default function TabsContainer(props: Props) {
             />
             </div>
 
-            <div className={"rounded-xl bg-gray-900 p-4 my-6"}>
-                <h3 className={"font-bold text-xl"}
+            <div className={"rounded-xl bg-gray-800 p-4 my-6"}>
+                <h3 className={"font-bold text-xl my-3 mt-0"}
                 >Category</h3>
 
                 <CategoryTabs
