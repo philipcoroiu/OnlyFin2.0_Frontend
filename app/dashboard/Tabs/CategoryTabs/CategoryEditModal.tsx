@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import PrimaryCategoryModal from "@/app/dashboard/Tabs/CategoryTabs/modals/PrimaryCategoryModal";
 import AddCategoryModal from "@/app/dashboard/Tabs/CategoryTabs/modals/AddCategoryModal";
 import ChangeCategoryNameModal from "@/app/dashboard/Tabs/CategoryTabs/modals/ChangeCategoryNameModal";
@@ -20,6 +20,12 @@ enum CategoryModal {
 export default function CategoryEditModal(props: Props) {
 
     const [typeOfModalActive, setTypeOfModalActive] = useState<CategoryModal>(CategoryModal.PRIMARY);
+
+    useEffect(() => {
+        if(!props.categoryEditButtonIsActive) {
+            setTypeOfModalActive(CategoryModal.PRIMARY)
+        }
+    }, [props.categoryEditButtonIsActive])
 
     function handleAddCategoryButtonPress() {
         setTypeOfModalActive(CategoryModal.ADD)

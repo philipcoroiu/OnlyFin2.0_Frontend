@@ -148,6 +148,7 @@ export default function dashboardModuleBoard() {
         ApiCalls.deleteCategory(currentUserCategoryId)
             .then(response => {
                 setCategoryChange(true)
+                setCategoryEditButtonIsActive(false)
             })
     }
 
@@ -155,6 +156,7 @@ export default function dashboardModuleBoard() {
         ApiCalls.updateCategoryName(currentUserCategoryId, changeCategoryNameInput)
             .then(response => {
                 setCategoryChange(true)
+                setCategoryEditButtonIsActive(false)
             })
     }
 
@@ -162,6 +164,7 @@ export default function dashboardModuleBoard() {
         ApiCalls.deleteStock(currentUserStockId)
             .then(response => {
                 setStockChange(true)
+                setStockEditButtonIsActive(false)
             })
     }
 
@@ -169,6 +172,7 @@ export default function dashboardModuleBoard() {
         ApiCalls.addStock(selectedStockId)
             .then(response => {
                 setStockChange(true)
+                setStockEditButtonIsActive(false)
             })
 
         //TODO: Delete console.log

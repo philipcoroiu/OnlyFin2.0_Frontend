@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import PrimaryStockModal from "@/app/dashboard/Tabs/StockTabs/modals/PrimaryStockModal";
 import AddExistingStockModal from "@/app/dashboard/Tabs/StockTabs/modals/AddExistingStockModal";
 import AddCustomStockModal from "@/app/dashboard/Tabs/StockTabs/modals/AddCustomStockModal";
@@ -19,6 +19,12 @@ enum StockModal {
 export default function StockEditModal(props: Props) {
 
     const [typeOfModalActive, setTypeOfModalActive] = useState<StockModal>(StockModal.PRIMARY);
+
+    useEffect(() => {
+        if(!props.stockEditButtonIsActive) {
+            setTypeOfModalActive(StockModal.PRIMARY)
+        }
+    }, [props.stockEditButtonIsActive])
 
     function handleAddExistingStockButtonPress() {
         setTypeOfModalActive(StockModal.EXISTING_STOCK)
