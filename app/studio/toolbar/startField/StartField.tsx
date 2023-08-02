@@ -231,6 +231,10 @@ export default function StartField(props: Props) {
                 <option value="bar">Bar</option>
                 <option value="column">Column</option>
                 <option value="line">Line</option>
+                <option value="area">Area</option>
+                <option value="areaspline">Area spline</option>
+                <option value="spline">Spline</option>
+                <option value="scatter">Scatter</option>
             </select>
 
             {
