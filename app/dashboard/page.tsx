@@ -9,6 +9,7 @@ import StockEditModal from "@/app/dashboard/Tabs/StockTabs/StockEditModal";
 import CategoryEditModal from "@/app/dashboard/Tabs/CategoryTabs/CategoryEditModal";
 import {useRouter} from "next/navigation";
 import Avatar from "@/app/components/Avatar";
+import {undefined} from "zod";
 
 export default function dashboardModuleBoard() {
 
@@ -16,8 +17,9 @@ export default function dashboardModuleBoard() {
 
     const [whoAmI, setWhoAmI] = useState<string>();
 
-    const [activeStockTab, setActiveStockTab] = useState<number>(0) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
-    const [activeCategoryTab, setActiveCategoryTab] = useState<number>(0) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
+
+    const [activeStockTab, setActiveStockTab] = useState<number>(-1) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
+    const [activeCategoryTab, setActiveCategoryTab] = useState<number>(-1) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
 
     const [userStockArray, setUserStockArray] = useState<OnlyfinUserStock[]>();
     const [userCategoryArray, setUserCategoryArray] = useState<OnlyfinUserCategoryTab[]>();
@@ -25,8 +27,8 @@ export default function dashboardModuleBoard() {
     const [stockEditButtonIsActive, setStockEditButtonIsActive] = useState<boolean>(false);
     const [categoryEditButtonIsActive, setCategoryEditButtonIsActive] = useState<boolean>(false);
 
-    const [currentUserStockId, setCurrentUserStockId] = useState<number>(0);
-    const [currentUserCategoryId, setCurrentUserCategoryId] = useState<number>(0);
+    const [currentUserStockId, setCurrentUserStockId] = useState<number>(-1);
+    const [currentUserCategoryId, setCurrentUserCategoryId] = useState<number>(-1);
 
     const [stockChange, setStockChange] = useState<boolean>(false)
     const [categoryChange, setCategoryChange] = useState<boolean>(false)
@@ -50,8 +52,8 @@ export default function dashboardModuleBoard() {
         if (whoAmI && stockChange) {
             setStockChange(false)
             loadStockTab(whoAmI)
-            setActiveStockTab(0) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
-            setActiveCategoryTab(0) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
+            setActiveStockTab(-1) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
+            setActiveCategoryTab(-1) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
         }
     }, [stockChange])
 
@@ -68,8 +70,6 @@ export default function dashboardModuleBoard() {
                 const userStocks: OnlyfinUserStock[] = response.data
 
                 setUserStockArray(userStocks)
-                setCurrentUserStockId(userStocks[0].id)
-                getUserCategoryTabs(userStocks[0].id)
 
                 //TODO: Delete console.log
                 console.log("userStockArray: ", response.data)

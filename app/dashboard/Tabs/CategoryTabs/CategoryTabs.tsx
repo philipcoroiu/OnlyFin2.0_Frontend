@@ -27,14 +27,22 @@ export default function StockTabs(props: Props) {
     }
 
     function renderLoadingTabs() {
-        return(
-            <li className="mr-2">
-                <div className="inline-flex space-x-2">
-                    <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
-                    <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
-                    <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
-                </div>
-            </li>
+        return (
+            <>
+                {props.activeCategoryTab !== -1 ?
+                    <li className="mr-2">
+                        <div className="inline-flex space-x-2">
+                            <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
+                            <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
+                            <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
+                        </div>
+                    </li>
+                    :
+                    <>
+                    <p className={"mr-2 text-xl"}>No stock selected</p>
+                    </>
+                }
+            </>
         )
     }
 
