@@ -12,8 +12,8 @@ export default function StudioPage() {
     const [currentCategoryId, setCurrentCategoryId] = useState<number>(0)
     const [chartTitle, setChartTitle] = useState<string>("Untitled Chart")
     const [chartType, setChartType] = useState<string>("column")
-    const [yAxisTitle, setyAxisTitle] = useState<string>();
-    const [xAxisTitle, setxAxisTitle] = useState<string>();
+    const [yAxisTitle, setyAxisTitle] = useState<string | undefined>();
+    const [xAxisTitle, setxAxisTitle] = useState<string | undefined>();
     const [chartData, setChartData] = useState<DataArray[]>([
         [{ value: 'Billions' }, { value: "Amazon" }, { value: "Apple" }, { value: "Google" }],
         [{ value: '2021' }, { value: 469 }, { value: 378 }, { value: 257 }],

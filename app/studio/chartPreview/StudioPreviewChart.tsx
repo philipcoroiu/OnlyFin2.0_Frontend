@@ -16,25 +16,6 @@ type Props = {
 
 export default function StudioPreviewChart(props: Props) {
 
-    //TEMP xAxisCategories TEST –– REMOVE LATER
-
-    // Populates the categories, skips the first row
-    //const xAxisCategories = props.chartData.slice(1).map((row: any) => row[0].value);
-    //console.log("xAxisCategories: ", xAxisCategories)
-
-    //////////////////////////////
-    /*
-        const seriesData = initialData[0].slice(1).map((col: any, index: number) => ({
-            name: col.value,
-            data: initialData.slice(1).map((row: any) => parseInt(row[index + 1].value, 10))
-        }));
-        console.log("seriesData: ", seriesData)
-
-     */
-
-
-    //////////////////////////////
-
     useEffect(() => {
         console.log("Chart title has been changed to: ", props.chartTitle)
         handleChartTitleChange(props.chartTitle)
@@ -92,7 +73,6 @@ export default function StudioPreviewChart(props: Props) {
     }
 
     function handleChartTypeChange(newChartType: string) {
-
         props.setStudioChart((prevChart: any) => ({
             ...prevChart,
             chart: {
@@ -102,7 +82,7 @@ export default function StudioPreviewChart(props: Props) {
         }));
     }
 
-    function handleYaxisTitle(newYaxisTitle: string) {
+    function handleYaxisTitle(newYaxisTitle: string | undefined) {
         props.setStudioChart((prevChart: any) => ({
             ...prevChart,
             yAxis: {
@@ -114,7 +94,7 @@ export default function StudioPreviewChart(props: Props) {
     }
 
 
-    function handleXaxisTitle(newXaxisTitle: string) {
+    function handleXaxisTitle(newXaxisTitle: string | undefined) {
         props.setStudioChart((prevChart: any) => ({
             ...prevChart,
             xAxis: {
@@ -126,53 +106,6 @@ export default function StudioPreviewChart(props: Props) {
         }))
     }
 
-
-    /*
-    function handleChartDataChange(newChartData : any) {
-
-        setStudioChart((prevState) => {
-            return {
-                ...prevState,
-                series: [
-                    {
-                        name: 'Jane',
-                        data: newChartData[0], // New data for Jane series
-                    },
-                    {
-                        name: 'John',
-                        data: newChartData, // New data for John series
-                    },
-                ],
-            };
-        });
-    }
-
-     */
-
-
-    /*
-    const [studioChart, setStudioChart] = useState({
-        chart: {
-            type: props.chartType
-        },
-        title: {
-            text: props.chartTitle
-        },
-        xAxis: {
-            categories: ["hej", "test"],
-            title: {
-                text: "hello"
-            }
-        },
-        yAxis: {
-            title: {
-                text: 'Billions'
-            }
-        },
-        series: [["hej"], [2]]
-    });
-
-     */
 
     return (
         <div className="w-full
