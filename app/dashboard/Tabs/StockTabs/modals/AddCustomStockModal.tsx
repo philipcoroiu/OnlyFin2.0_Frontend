@@ -1,9 +1,18 @@
+import {useState} from "react";
+
 type Props = {
     stockEditButtonIsActive: boolean,
-    handleExitButtonClick(): void
+    handleExitButtonClick(): void,
+    handleAddCustomStock(stockName : string) : void
 }
 
 export default function AddCustomStockModal(props: Props) {
+
+    const [customStockNameInput, setCustomStockNameInput] = useState<string>("Untitled")
+
+    function handleInputChange(input : string) {
+        setCustomStockNameInput(input)
+    }
 
     return (
         <>
@@ -96,7 +105,7 @@ export default function AddCustomStockModal(props: Props) {
                                             name="category name"
                                             id="category name"
                                             placeholder="Subject name"
-                                            //onChange={(event) => handleInputChange(event.target.value)}
+                                            onChange={(event) => handleInputChange(event.target.value)}
 
                                             className="bg-gray-50
                                                     border
@@ -118,6 +127,7 @@ export default function AddCustomStockModal(props: Props) {
                                     </div>
 
                                     <button type="submit"
+                                            onClick={() => props.handleAddCustomStock(customStockNameInput)}
                                             className="w-full
                                                     text-white
                                                     bg-blue-700

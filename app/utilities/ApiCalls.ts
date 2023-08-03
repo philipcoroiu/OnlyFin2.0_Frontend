@@ -149,7 +149,7 @@ export class ApiCalls {
      ********************************
      */
 
-    public static async addCustomStock(name: string, ticker: string): Promise<AxiosResponse> {
+    public static async addCustomStock(name: string, ticker: string | undefined): Promise<AxiosResponse> {
         return axiosInstance.post(
             "/stocks/add-custom-stock",
             {

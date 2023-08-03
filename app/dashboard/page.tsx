@@ -179,6 +179,15 @@ export default function dashboardModuleBoard() {
         console.log("pressed handleAddExistingStock, id: ", selectedStockId)
     }
 
+    function handleAddCustomStock(stockName : string) {
+        ApiCalls.addCustomStock(stockName, undefined)
+            .then(() => {
+                console.log("Added custom stock: ", stockName)
+                setStockEditButtonIsActive(false)
+                setStockChange(true)
+            })
+    }
+
     return (
         <>
             <StockEditModal
@@ -186,6 +195,7 @@ export default function dashboardModuleBoard() {
                 handleStockEditButtonClick={handleStockEditButtonClick}
                 handleRemoveSelectedStock={handleRemoveSelectedStock}
                 handleAddExistingStock={handleAddExistingStock}
+                handleAddCustomStock={handleAddCustomStock}
             />
 
             <CategoryEditModal

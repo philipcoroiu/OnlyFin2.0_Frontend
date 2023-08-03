@@ -7,7 +7,8 @@ type Props = {
     stockEditButtonIsActive: boolean,
     handleStockEditButtonClick(): void,
     handleRemoveSelectedStock(): void,
-    handleAddExistingStock(selectedStockId: number): void
+    handleAddExistingStock(selectedStockId: number): void,
+    handleAddCustomStock(stockName : string) : void
 }
 
 enum StockModal {
@@ -66,6 +67,7 @@ export default function StockEditModal(props: Props) {
                     <AddCustomStockModal
                         stockEditButtonIsActive={props.stockEditButtonIsActive}
                         handleExitButtonClick={handleSecondaryModalExitButtonPress}
+                        handleAddCustomStock={props.handleAddCustomStock}
                     />
                 )
             default:
