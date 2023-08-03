@@ -9,7 +9,6 @@ import StockEditModal from "@/app/dashboard/Tabs/StockTabs/StockEditModal";
 import CategoryEditModal from "@/app/dashboard/Tabs/CategoryTabs/CategoryEditModal";
 import {useRouter} from "next/navigation";
 import Avatar from "@/app/components/Avatar";
-import {undefined} from "zod";
 
 export default function dashboardModuleBoard() {
 
