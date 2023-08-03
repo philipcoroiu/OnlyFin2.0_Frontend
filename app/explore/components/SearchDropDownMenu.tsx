@@ -5,7 +5,7 @@ export default function SearchDropDownMenu(props: {
     handleUserClick(): void,
     handleStockClick(): void,
     dropdownChoice: string,
-    stockDropdownSearchSuggestions: OnlyfinStock[],
+    stockDropdownSearchSuggestions: OnlyfinStock[] | undefined,
     handleStockSuggestionClick(id: number): void
 }) {
 

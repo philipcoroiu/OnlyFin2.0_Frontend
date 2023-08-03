@@ -57,7 +57,7 @@ export default function Header() {
                 max-w-screen-xl"
                 >
                     <Link href={`${username ? "dashboard" : "/"}`}
-                          className={"flex items-center"}
+                          className={"flex items-center lg:flex-1"}
 
                     >
                         {/*
@@ -80,7 +80,10 @@ export default function Header() {
                         </span>
                     </Link>
                     <div className="
-                    flex items-center
+                    flex
+                    items-center
+                    justify-end
+                    flex-1
                     lg:order-2"
                     >
                         {username ? (<LoggedInButtons username={username}/>) : (<LoggedOutButtons/>)}

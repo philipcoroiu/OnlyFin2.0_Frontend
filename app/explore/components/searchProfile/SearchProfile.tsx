@@ -47,9 +47,8 @@ export default function SearchProfile(props: Props) {
     }
 
     return (
-        <div className="flex justify-center bg-gray-50 rounded-lg p-4 dark:bg-gray-700">
-            <div>
-                <div className="w-20 h-20 ml-4">
+        <div className="flex flex-col justify-center items-center bg-gray-50 rounded-lg p-4 dark:bg-gray-700">
+                <div className="w-20 h-20">
                     <Link href={"/users/" + props.username}>
                         <Avatar
                             username={props.username}
@@ -57,7 +56,7 @@ export default function SearchProfile(props: Props) {
                     </Link>
                 </div>
 
-                <div className="flex justify-center items-center text-xl font-bold mt-2">
+                <div className="text-xl w-full font-bold mt-2 break-words text-center">
                     <Link href={"/dashboard/" + props.username}>{props.username}</Link>
                 </div>
 
@@ -74,7 +73,6 @@ export default function SearchProfile(props: Props) {
                                text-sm
                                px-5
                                py-2.5
-                               mr-2
                                mb-2
                                dark:bg-blue-600
                                dark:hover:bg-blue-700
@@ -84,6 +82,5 @@ export default function SearchProfile(props: Props) {
                     {subscribed ? "UNSUBSCRIBE" : "SUBSCRIBE"}
                 </button>
             </div>
-        </div>
     )
 }
