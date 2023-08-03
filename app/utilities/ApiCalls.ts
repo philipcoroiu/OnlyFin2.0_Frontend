@@ -290,7 +290,7 @@ export class ApiCalls {
         )
     }
 
-    public static async fetchModule(moduleId: number): Promise<AxiosResponse> {
+    public static async fetchModule(moduleId: number): Promise<AxiosResponse<OnlyfinModule>> {
         return axiosInstance.get(
             `/dash/fetch-module?moduleId=${moduleId}`,
             {withCredentials: true}
