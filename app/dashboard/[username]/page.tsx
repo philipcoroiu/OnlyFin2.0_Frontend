@@ -91,7 +91,7 @@ export default function dashboardModuleBoard({params}: { params: { username: str
             <StockEditModal
                 stockEditButtonIsActive={stockEditButtonIsActive}
                 handleStockEditButtonClick={handleStockEditButtonClick}
-            ></StockEditModal>
+            />
 
             <CategoryEditModal
                 categoryEditButtonIsActive={categoryEditButtonIsActive}

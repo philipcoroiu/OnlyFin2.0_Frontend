@@ -54,7 +54,8 @@ export default function StockTabs(props: Props) {
                 text-gray-500
                 dark:text-gray-400
                 max-w-auto
-                overflow-x-auto
+                overflow-x-scroll
+                overflow-y-clip
                 scrollbar-none">
 
                 {props.userCategoryArray ? renderCategoryTabs() : renderLoadingTabs()}
