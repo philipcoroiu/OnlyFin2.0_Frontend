@@ -290,6 +290,13 @@ export class ApiCalls {
         )
     }
 
+    public static async fetchModule(moduleId: number): Promise<AxiosResponse> {
+        return axiosInstance.get(
+            `/dash/fetch-module?moduleId=${moduleId}`,
+            {withCredentials: true}
+        )
+    }
+
     public static async fetchTargetUsersStocks(targetUsername: string): Promise<AxiosResponse> {
         return axiosInstance.get(
             `/dash/fetch-user-stocks?targetUsername=${targetUsername}`,
