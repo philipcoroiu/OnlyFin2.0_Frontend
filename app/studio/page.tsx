@@ -14,7 +14,7 @@ export default function StudioPage() {
     const [chartType, setChartType] = useState<string>("column")
     const [yAxisTitle, setyAxisTitle] = useState<string | undefined>();
     const [xAxisTitle, setxAxisTitle] = useState<string | undefined>();
-    const [chartData, setChartData] = useState<DataArray[]>([
+    const [tableData, setTableData] = useState<DataArray[]>([
         [{ value: 'Billions' }, { value: "Amazon" }, { value: "Apple" }, { value: "Google" }],
         [{ value: '2021' }, { value: 469 }, { value: 378 }, { value: 257 }],
         [{ value: '2022' }, { value: 513 }, { value: 387 }, { value: 282 }],
@@ -51,7 +51,7 @@ export default function StudioPage() {
     }
 
     function handleChartDataChange(newChartData : any) {
-        setChartData(newChartData)
+        setTableData(newChartData)
         console.log("newChartData", newChartData)
     }
 
@@ -98,6 +98,10 @@ export default function StudioPage() {
         setCurrentCategoryId(categoryIdChoice)
     }
 
+    function handleTableDataChange(newTableData : any) {
+        setTableData(newTableData)
+    }
+
     return(
         <div>
             <div className="h-screen
@@ -117,7 +121,7 @@ export default function StudioPage() {
                     <StudioPreviewChart
                         chartTitle={chartTitle}
                         chartType={chartType}
-                        chartData={chartData}
+                        tableData={tableData}
                         yAxisTitle={yAxisTitle}
                         xAxisTitle={xAxisTitle}
                         studioChart={studioChart}
@@ -136,8 +140,8 @@ export default function StudioPage() {
                         handleChartTitleChange={handleChartTitleChange}
                         handleChartSelectChange={handleChartSelectChange}
                         handleChartDataChange={handleChartDataChange}
-                        chartData={chartData}
-                        setChartData={setChartData}
+                        tableData={tableData}
+                        setTableData={handleTableDataChange}
                         handleYaxisChange={handleYaxisTitleChange}
                         handleXaxisChange={handleXaxisTitleChange}
                         handleSubmit={handleSubmit}

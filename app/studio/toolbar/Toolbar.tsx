@@ -6,15 +6,30 @@ type Props = {
     handleChartTitleChange(event: any): void,
     handleChartSelectChange(event: any): void,
     handleChartDataChange(newChartData: any): void,
-    chartData: DataArray[],
-    setChartData: Dispatch<SetStateAction<DataArray[]>>,
+    tableData: DataArray[],
+    setTableData: Dispatch<SetStateAction<DataArray[]>>,
     handleYaxisChange(newValue: string): void,
     handleXaxisChange(newValue: string): void
     handleSubmit(): void,
-    handleCategoryIdChoice(categoryIdChoice: number): void
+    handleCategoryIdChoice(categoryIdChoice: number): void,
+    chartTitle?: string,
+    chartType?: string,
+    yAxisTitle?: string | undefined,
+    xAxisTitle?: string | undefined,
+    isEditPage?: boolean | undefined,
+    handleUpdateModule?: () => void,
+    handleDeleteModule?: () => void
 }
 
 export default function Toolbar(props : Props) {
+
+    function handleSubmit() {
+        if(props.isEditPage && props.handleUpdateModule) {
+            props.handleUpdateModule()
+        } else {
+            props.handleSubmit()
+        }
+    }
 
     return (
         <div>
@@ -28,6 +43,12 @@ export default function Toolbar(props : Props) {
                     handleYaxisChange={props.handleYaxisChange}
                     handleXaxisChange={props.handleXaxisChange}
                     handleCategoryIdChoice={props.handleCategoryIdChoice}
+
+                    chartTitle={props.chartTitle}
+                    chartType={props.chartType}
+                    yAxisTitle={props.yAxisTitle}
+                    xAxisTitle={props.xAxisTitle}
+                    isEditPage={props.isEditPage}
                 />
             </div>
 
@@ -39,8 +60,8 @@ export default function Toolbar(props : Props) {
 
                 <ToolbarTable
                     handleChartDataChange={props.handleChartDataChange}
-                    chartData={props.chartData}
-                    setChartData={props.setChartData}
+                    tableData={props.tableData}
+                    setChartData={props.setTableData}
                 />
             </div>
 
@@ -61,8 +82,29 @@ export default function Toolbar(props : Props) {
                     dark:bg-blue-600
                     dark:hover:bg-blue-700
                     focus:outline-none
-                    dark:focus:ring-blue-800">Submit
+                    dark:focus:ring-blue-800">{props.isEditPage ? "Update" : "Submit"}
             </button>
+
+            {props.isEditPage &&
+                <button
+                onClick={props.handleDeleteModule}
+                className="w-full
+                    text-white
+                    bg-red-700
+                    hover:bg-blue-800
+                    focus:ring-4
+                    focus:ring-blue-300
+                    font-medium rounded-lg
+                    text-sm
+                    px-5
+                    py-2.5
+                    mr-2
+                    mb-2
+                    dark:bg-red-600
+                    dark:hover:bg-blue-700
+                    focus:outline-none
+                    dark:focus:ring-blue-800">Delete
+            </button>}
 
         </div>
     )

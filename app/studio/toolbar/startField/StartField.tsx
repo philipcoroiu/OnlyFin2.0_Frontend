@@ -9,10 +9,17 @@ type Props = {
     handleChartSelectChange(event: any): void,
     handleYaxisChange(newValue: string): void,
     handleXaxisChange(newValue: string): void,
-    handleCategoryIdChoice(categoryIdChoice: number): void
+    handleCategoryIdChoice(categoryIdChoice: number): void,
+    chartTitle: string | undefined,
+    chartType: string | undefined,
+    yAxisTitle: string | undefined,
+    xAxisTitle: string | undefined,
+    isEditPage?: boolean | undefined
 }
 
 export default function StartField(props: Props) {
+
+    console.log("yAxisTitle: ", props.chartTitle)
 
     const router = useRouter()
 
@@ -80,6 +87,82 @@ export default function StartField(props: Props) {
         }
     }
 
+    function renderStockSelector() {
+        return(
+            <>
+                <label htmlFor="stocks"
+                       className="block
+                   mb-2
+                   text-sm
+                   font-medium
+                   text-gray-900
+                   dark:text-white">Select a stock</label>
+
+                <select id="stocks"
+                        onChange={handleStockSelect}
+                        defaultValue="stock"
+                        className="
+                    bg-gray-50
+                    border
+                    border-gray-300
+                    text-gray-900
+                    text-sm rounded-lg
+                    focus:ring-blue-500
+                    focus:border-blue-500
+                    block
+                    w-full
+                    p-2.5
+                    dark:bg-gray-700
+                    dark:border-gray-600
+                    dark:placeholder-gray-400
+                    dark:text-white
+                    ark:focus:ring-blue-500
+                    dark:focus:border-blue-500">
+
+                    {renderStockList()}
+
+                </select>
+            </>
+        )
+    }
+
+    function renderCategorySelector() {
+        return(
+            <>
+                <label htmlFor="stocks" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
+                    a category</label>
+
+                <select id="categories"
+                        onChange={(event) => {
+                            const selectedValue = event.target.value;
+                            props.handleCategoryIdChoice(Number(selectedValue))
+                        }}
+                        defaultValue="Category"
+                        className="
+                    bg-gray-50
+                    border
+                    border-gray-300
+                    text-gray-900
+                    text-sm rounded-lg
+                    focus:ring-blue-500
+                    focus:border-blue-500
+                    block
+                    w-full
+                    p-2.5
+                    dark:bg-gray-700
+                    dark:border-gray-600
+                    dark:placeholder-gray-400
+                    dark:text-white
+                    ark:focus:ring-blue-500
+                    dark:focus:border-blue-500"
+                >
+
+                    {renderCategoryList()}
+                </select>
+            </>
+        )
+    }
+
 
     return (
         <div>
@@ -100,7 +183,10 @@ export default function StartField(props: Props) {
 
                 <input type="text"
                        id="default-input"
-                       placeholder="Untitled Chart"
+                       placeholder={props.chartTitle && props.chartTitle.length > 0 ?
+                           props.chartTitle
+                           :
+                           "Untitled Chart"}
                        maxLength={60}
                        onChange={props.handleChartTitleChange}
                        className="bg-gray-50
@@ -121,80 +207,12 @@ export default function StartField(props: Props) {
                        dark:focus:border-blue-500"/>
             </div>
 
-            {
-                // ***************//
-                // STOCK SELECTOR //
-                // ***************//
-            }
-
-            <label htmlFor="stocks"
-                   className="block
-                   mb-2
-                   text-sm
-                   font-medium
-                   text-gray-900
-                   dark:text-white">Select a stock</label>
-
-            <select id="stocks"
-                    onChange={handleStockSelect}
-                    defaultValue="stock"
-                    className="
-                    bg-gray-50
-                    border
-                    border-gray-300
-                    text-gray-900
-                    text-sm rounded-lg
-                    focus:ring-blue-500
-                    focus:border-blue-500
-                    block
-                    w-full
-                    p-2.5
-                    dark:bg-gray-700
-                    dark:border-gray-600
-                    dark:placeholder-gray-400
-                    dark:text-white
-                    ark:focus:ring-blue-500
-                    dark:focus:border-blue-500">
-
-                {renderStockList()}
-
-            </select>
-            {
-                // ******************//
-                // CATEGORY SELECTOR //
-                // ******************//
-            }
-
-            <label htmlFor="stocks" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
-                a category</label>
-
-            <select id="categories"
-                    onChange={(event) => {
-                        const selectedValue = event.target.value;
-                        props.handleCategoryIdChoice(Number(selectedValue))
-                    }}
-                    defaultValue="Category"
-                    className="
-                    bg-gray-50
-                    border
-                    border-gray-300
-                    text-gray-900
-                    text-sm rounded-lg
-                    focus:ring-blue-500
-                    focus:border-blue-500
-                    block
-                    w-full
-                    p-2.5
-                    dark:bg-gray-700
-                    dark:border-gray-600
-                    dark:placeholder-gray-400
-                    dark:text-white
-                    ark:focus:ring-blue-500
-                    dark:focus:border-blue-500"
-            >
-
-                {renderCategoryList()}
-            </select>
+            {!props.isEditPage && (
+                <>
+                    {renderStockSelector()}
+                    {renderCategorySelector()}
+                </>
+            )}
 
 
             {
@@ -254,7 +272,10 @@ export default function StartField(props: Props) {
 
                 <input type="text"
                        id="y-axis-input"
-                       placeholder="Y axis"
+                       placeholder={props.yAxisTitle && props.yAxisTitle.length > 0 ?
+                           props.yAxisTitle
+                           :
+                           "Y axis"}
                        maxLength={60}
                        onChange={(event) => props.handleYaxisChange(event.target.value)}
                        className="bg-gray-50
@@ -292,7 +313,10 @@ export default function StartField(props: Props) {
 
                 <input type="text"
                        id="x-axis-input"
-                       placeholder="X axis"
+                       placeholder={props.xAxisTitle && props.xAxisTitle.length > 0 ?
+                           props.xAxisTitle
+                           :
+                           "X axis"}
                        maxLength={60}
                        onChange={(event) => props.handleXaxisChange(event.target.value)}
                        className="bg-gray-50
