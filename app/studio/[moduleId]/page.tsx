@@ -19,8 +19,15 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
                 //Set toolbar
                 setChartTitle(module.title.text)
                 setChartType(module.chart.type)
-                setyAxisTitle(module.yAxis.title)
-                setxAxisTitle(module.xAxis.title)
+                setyAxisTitle(module.yAxis.title.text)
+                setxAxisTitle(module.xAxis.title.text)
+
+                console.log("xxxxx chart info xxxxxx")
+                console.log("chart title: ", module.title.text)
+                console.log("chart type: ", module.chart.type)
+                console.log("y axis title: ", module.yAxis.title.text)
+                console.log("x axis title: ", module.xAxis.title.text)
+                console.log("xxxxxxxxxxxxxxxxxxxxxxx")
 
                 //Set studio chart
                 setStudioChart(module)
@@ -198,7 +205,7 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
                 h-full
                 ">
                     {renderStudioPreviewChart()}
-                    
+
                 </div>
 
                 <div className="flex-1
