@@ -6,12 +6,16 @@ type Props = {
     handleChartTitleChange(event: any): void,
     handleChartSelectChange(event: any): void,
     handleChartDataChange(newChartData: any): void,
-    chartData: DataArray[],
-    setChartData: Dispatch<SetStateAction<DataArray[]>>,
+    tableData: DataArray[],
+    setTableData: Dispatch<SetStateAction<DataArray[]>>,
     handleYaxisChange(newValue: string): void,
     handleXaxisChange(newValue: string): void
     handleSubmit(): void,
-    handleCategoryIdChoice(categoryIdChoice: number): void
+    handleCategoryIdChoice(categoryIdChoice: number): void,
+    chartTitle: string,
+    chartType: string,
+    yAxisTitle: string | undefined,
+    xAxisTitle: string | undefined,
 }
 
 export default function Toolbar(props : Props) {
@@ -28,6 +32,11 @@ export default function Toolbar(props : Props) {
                     handleYaxisChange={props.handleYaxisChange}
                     handleXaxisChange={props.handleXaxisChange}
                     handleCategoryIdChoice={props.handleCategoryIdChoice}
+
+                    chartTitle={props.chartTitle}
+                    chartType={props.chartType}
+                    yAxisTitle={props.yAxisTitle}
+                    xAxisTitle={props.xAxisTitle}
                 />
             </div>
 
@@ -39,8 +48,8 @@ export default function Toolbar(props : Props) {
 
                 <ToolbarTable
                     handleChartDataChange={props.handleChartDataChange}
-                    chartData={props.chartData}
-                    setChartData={props.setChartData}
+                    tableData={props.tableData}
+                    setChartData={props.setTableData}
                 />
             </div>
 

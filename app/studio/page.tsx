@@ -117,7 +117,7 @@ export default function StudioPage() {
                     <StudioPreviewChart
                         chartTitle={chartTitle}
                         chartType={chartType}
-                        chartData={chartData}
+                        tableData={chartData}
                         yAxisTitle={yAxisTitle}
                         xAxisTitle={xAxisTitle}
                         studioChart={studioChart}
@@ -136,8 +136,8 @@ export default function StudioPage() {
                         handleChartTitleChange={handleChartTitleChange}
                         handleChartSelectChange={handleChartSelectChange}
                         handleChartDataChange={handleChartDataChange}
-                        chartData={chartData}
-                        setChartData={setChartData}
+                        tableData={chartData}
+                        setTableData={setChartData}
                         handleYaxisChange={handleYaxisTitleChange}
                         handleXaxisChange={handleXaxisTitleChange}
                         handleSubmit={handleSubmit}

@@ -7,7 +7,7 @@ import Highcharts from "highcharts";
 type Props = {
     chartTitle: string,
     chartType: string,
-    chartData: DataArray[],
+    tableData: DataArray[],
     yAxisTitle: string | undefined,
     xAxisTitle: string | undefined,
     studioChart: OnlyfinHighchartsChart,
@@ -15,6 +15,10 @@ type Props = {
 }
 
 export default function StudioPreviewChart(props: Props) {
+
+    if(!props.tableData) {
+        return <div>Loading</div>
+    }
 
     useEffect(() => {
         console.log("Chart title has been changed to: ", props.chartTitle)
@@ -27,10 +31,13 @@ export default function StudioPreviewChart(props: Props) {
     }, [props.chartType])
 
     useEffect(() => {
-        const xAxisCategories = props.chartData.slice(1).map((row: any) => row[0].value);
-        const seriesData = props.chartData[0].slice(1).map((col: any, index: number) => ({
+        const xAxisCategories = props.tableData.slice(1).map((row: any) => row[0].value);
+
+        console.log("props.tableData in StudioPreviewChart: ", props.tableData)
+
+        const seriesData = props.tableData[0].slice(1).map((col: any, index: number) => ({
             name: col.value,
-            data: props.chartData.slice(1).map((row: any) => parseInt(row[index + 1].value, 10))
+            data: props.tableData.slice(1).map((row: any) => parseInt(row[index + 1].value, 10))
         }));
 
         console.log("SeriesData in studio: ", seriesData)
@@ -47,7 +54,7 @@ export default function StudioPreviewChart(props: Props) {
         }));
 
         console.log("seriesData: ", seriesData)
-    }, [props.chartData])
+    }, [props.tableData])
 
     useEffect(() => {
         handleYaxisTitle(props.yAxisTitle)

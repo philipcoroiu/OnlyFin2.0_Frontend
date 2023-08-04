@@ -9,10 +9,16 @@ type Props = {
     handleChartSelectChange(event: any): void,
     handleYaxisChange(newValue: string): void,
     handleXaxisChange(newValue: string): void,
-    handleCategoryIdChoice(categoryIdChoice: number): void
+    handleCategoryIdChoice(categoryIdChoice: number): void,
+    chartTitle: string,
+    chartType: string,
+    yAxisTitle: string | undefined,
+    xAxisTitle: string | undefined,
 }
 
 export default function StartField(props: Props) {
+
+    console.log("yAxisTitle: ", props.chartTitle)
 
     const router = useRouter()
 
@@ -100,7 +106,10 @@ export default function StartField(props: Props) {
 
                 <input type="text"
                        id="default-input"
-                       placeholder="Untitled Chart"
+                       placeholder={props.chartTitle && props.chartTitle.length > 0 ?
+                           props.chartTitle
+                           :
+                           "Untitled Chart"}
                        maxLength={60}
                        onChange={props.handleChartTitleChange}
                        className="bg-gray-50
@@ -254,7 +263,10 @@ export default function StartField(props: Props) {
 
                 <input type="text"
                        id="y-axis-input"
-                       placeholder="Y axis"
+                       placeholder={props.yAxisTitle && props.yAxisTitle.length > 0 ?
+                           props.yAxisTitle
+                           :
+                           "Y axis"}
                        maxLength={60}
                        onChange={(event) => props.handleYaxisChange(event.target.value)}
                        className="bg-gray-50
@@ -292,7 +304,10 @@ export default function StartField(props: Props) {
 
                 <input type="text"
                        id="x-axis-input"
-                       placeholder="X axis"
+                       placeholder={props.xAxisTitle && props.xAxisTitle.length > 0 ?
+                           props.xAxisTitle
+                           :
+                           "X axis"}
                        maxLength={60}
                        onChange={(event) => props.handleXaxisChange(event.target.value)}
                        className="bg-gray-50

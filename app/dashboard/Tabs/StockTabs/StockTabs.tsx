@@ -9,7 +9,7 @@ export default function StockTabs(props: Props) {
 
     function renderStockTabs() {
         return (
-            props.userStockArray.map((stock:OnlyfinUserStock, index : number) => (
+            props.userStockArray?.map((stock:OnlyfinUserStock, index : number) => (
                 <li key={stock.id} className="mr-2">
                     <button
                         className={`${props.activeStockTab === index ?

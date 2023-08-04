@@ -4,11 +4,22 @@ import _ from 'lodash';
 
 type Props = {
     handleChartDataChange(newChartData: any): void,
-    chartData: DataArray[],
+    tableData: DataArray[],
     setChartData: Dispatch<SetStateAction<DataArray[]>>
 }
 
 export default function ToolbarTable(props: Props) {
+
+    const initStudioSpreadsheetData = props.tableData
+
+    if(!props.tableData) {
+        return(
+            <p>Loading</p>
+        )
+    }
+
+    /*
+    In case of major bug:
 
     const initStudioSpreadsheetData = [
         [{ value: 'Billions' }, { value: "Amazon" }, { value: "Apple" }, { value: "Google" }],
@@ -17,10 +28,13 @@ export default function ToolbarTable(props: Props) {
         [{ value: '2023' }, { value: 524 }, { value: 385 }, { value: 284 }],
     ]
 
+     */
+
     const [spreadsheetData, setSpreadsheetData] = useState<DataArray[]>(initStudioSpreadsheetData);
 
     function handleSpreadsheetChange(newData : any) {
         //setSpreadsheetData(newData);
+        console.log("Data from toolbar table: ", newData)
         handleTableDataChange(newData)
         props.handleChartDataChange(newData)
     }
@@ -30,7 +44,6 @@ export default function ToolbarTable(props: Props) {
             setSpreadsheetData(newTableData);
         }
     }
-
 
     function handleAddColumnClick() {
         props.setChartData((prevData: TableCell) => prevData.map(row => [...row, { value: "" }]));
