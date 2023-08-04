@@ -126,12 +126,18 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
         setTableData(newTableData)
     }
 
-    function handleUpdate() {
+    function handleUpdateModule() {
         ApiCalls.updateModuleContent(moduleIdToEdit, chartType, studioChart)
             .then(() => console.log("Chart updated"))
             .finally(() => {
                 router.push('/dashboard')
             })
+    }
+
+    function handleDeleteModule() {
+        ApiCalls.deleteModule(moduleIdToEdit)
+            .then(() => console.log("Chart removed"))
+            .finally(() => router.push('/dashboard'))
     }
 
     function renderToolbar() {
@@ -157,7 +163,8 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
                 yAxisTitle={yAxisTitle}
                 xAxisTitle={xAxisTitle}
                 isEditPage={true}
-                handleUpdate={handleUpdate}
+                handleUpdateModule={handleUpdateModule}
+                handleDeleteModule={handleDeleteModule}
             />
         )
     }

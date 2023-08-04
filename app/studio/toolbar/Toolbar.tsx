@@ -17,14 +17,15 @@ type Props = {
     yAxisTitle?: string | undefined,
     xAxisTitle?: string | undefined,
     isEditPage?: boolean | undefined,
-    handleUpdate() : void
+    handleUpdateModule?: () => void,
+    handleDeleteModule?: () => void
 }
 
 export default function Toolbar(props : Props) {
 
     function handleSubmit() {
-        if(props.isEditPage) {
-            props.handleUpdate()
+        if(props.isEditPage && props.handleUpdateModule) {
+            props.handleUpdateModule()
         } else {
             props.handleSubmit()
         }
@@ -86,7 +87,7 @@ export default function Toolbar(props : Props) {
 
             {props.isEditPage &&
                 <button
-                onClick={props.handleSubmit}
+                onClick={props.handleDeleteModule}
                 className="w-full
                     text-white
                     bg-red-700
