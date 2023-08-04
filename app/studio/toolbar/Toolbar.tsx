@@ -1,6 +1,7 @@
 import ToolbarTable from "@/app/studio/toolbar/toolbarTable/ToolbarTable";
 import StartField from "@/app/studio/toolbar/startField/StartField";
 import {Dispatch, SetStateAction} from "react";
+import {boolean} from "zod";
 
 type Props = {
     handleChartTitleChange(event: any): void,
@@ -16,12 +17,14 @@ type Props = {
     chartType?: string,
     yAxisTitle?: string | undefined,
     xAxisTitle?: string | undefined,
-    isEditPage?: boolean | undefined,
+    isEditPage?: boolean,
     handleUpdateModule?: () => void,
     handleDeleteModule?: () => void
 }
 
 export default function Toolbar(props : Props) {
+
+    console.log("YYYYYYYYY isEditPage: ", props.isEditPage)
 
     function handleSubmit() {
         if(props.isEditPage && props.handleUpdateModule) {
@@ -66,7 +69,7 @@ export default function Toolbar(props : Props) {
             </div>
 
             <button
-                    onClick={props.handleSubmit}
+                    onClick={handleSubmit}
                     className="w-full
                     text-white
                     bg-blue-700
