@@ -110,26 +110,6 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
     }
 
     function handleSubmit() {
-        const testChart = { chart: {
-            type: "column"
-        },
-        title: {
-            text: "test title"
-        },
-        xAxis: {
-            categories: ["hej", "test"],
-                title: {
-                text: "hello"
-            }
-        },
-        yAxis: {
-            title: {
-                text: 'Billions'
-            }
-        },
-        series: [[2], [2]]
-    }
-
         ApiCalls.addModule(currentCategoryId, 3,1,1,1,chartType, studioChart)
             .then(() => console.log("Submitted to category id 141"))
             .finally(() => {
@@ -144,6 +124,14 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
 
     function handleTableDataChange(newTableData : any) {
         setTableData(newTableData)
+    }
+
+    function handleUpdate() {
+        ApiCalls.updateModuleContent(moduleIdToEdit, chartType, studioChart)
+            .then(() => console.log("Chart updated"))
+            .finally(() => {
+                router.push('/dashboard')
+            })
     }
 
     function renderToolbar() {
@@ -169,6 +157,7 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
                 yAxisTitle={yAxisTitle}
                 xAxisTitle={xAxisTitle}
                 isEditPage={true}
+                handleUpdate={handleUpdate}
             />
         )
     }

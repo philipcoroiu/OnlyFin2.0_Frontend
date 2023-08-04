@@ -16,10 +16,19 @@ type Props = {
     chartType?: string,
     yAxisTitle?: string | undefined,
     xAxisTitle?: string | undefined,
-    isEditPage?: boolean | undefined
+    isEditPage?: boolean | undefined,
+    handleUpdate() : void
 }
 
 export default function Toolbar(props : Props) {
+
+    function handleSubmit() {
+        if(props.isEditPage) {
+            props.handleUpdate()
+        } else {
+            props.handleSubmit()
+        }
+    }
 
     return (
         <div>
@@ -72,8 +81,29 @@ export default function Toolbar(props : Props) {
                     dark:bg-blue-600
                     dark:hover:bg-blue-700
                     focus:outline-none
-                    dark:focus:ring-blue-800">Submit
+                    dark:focus:ring-blue-800">{props.isEditPage ? "Update" : "Submit"}
             </button>
+
+            {props.isEditPage &&
+                <button
+                onClick={props.handleSubmit}
+                className="w-full
+                    text-white
+                    bg-red-700
+                    hover:bg-blue-800
+                    focus:ring-4
+                    focus:ring-blue-300
+                    font-medium rounded-lg
+                    text-sm
+                    px-5
+                    py-2.5
+                    mr-2
+                    mb-2
+                    dark:bg-red-600
+                    dark:hover:bg-blue-700
+                    focus:outline-none
+                    dark:focus:ring-blue-800">Delete
+            </button>}
 
         </div>
     )
