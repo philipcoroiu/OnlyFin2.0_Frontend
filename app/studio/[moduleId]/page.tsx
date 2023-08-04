@@ -10,10 +10,6 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
     const router = useRouter()
     const moduleIdToEdit = parseInt(params.moduleId)
 
-    //Boolean for child component to know
-    //which components to render
-    const isEditPage = true;
-
     useEffect(() => {
         ApiCalls.fetchModule(moduleIdToEdit)
             .then((response) => {
@@ -114,6 +110,7 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
             .then(() => console.log("Submitted to category id 141"))
             .finally(() => {
                 router.push('/dashboard')
+                console.log("YYYYYYYYYYYYYYY handleSubmit was called")
             })
     }
 
@@ -131,6 +128,7 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
             .then(() => console.log("Chart updated"))
             .finally(() => {
                 router.push('/dashboard')
+                console.log("YYYYYYYYYYYYYYY handleUpdateModule was called")
             })
     }
 
