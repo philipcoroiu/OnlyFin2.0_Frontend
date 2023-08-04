@@ -12,10 +12,11 @@ type Props = {
     handleXaxisChange(newValue: string): void
     handleSubmit(): void,
     handleCategoryIdChoice(categoryIdChoice: number): void,
-    chartTitle: string,
-    chartType: string,
-    yAxisTitle: string | undefined,
-    xAxisTitle: string | undefined,
+    chartTitle?: string,
+    chartType?: string,
+    yAxisTitle?: string | undefined,
+    xAxisTitle?: string | undefined,
+    isEditPage?: boolean | undefined
 }
 
 export default function Toolbar(props : Props) {
@@ -37,6 +38,7 @@ export default function Toolbar(props : Props) {
                     chartType={props.chartType}
                     yAxisTitle={props.yAxisTitle}
                     xAxisTitle={props.xAxisTitle}
+                    isEditPage={props.isEditPage}
                 />
             </div>
 

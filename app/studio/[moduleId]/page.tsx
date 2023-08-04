@@ -10,6 +10,10 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
     const router = useRouter()
     const moduleIdToEdit = parseInt(params.moduleId)
 
+    //Boolean for child component to know
+    //which components to render
+    const isEditPage = true;
+
     useEffect(() => {
         ApiCalls.fetchModule(moduleIdToEdit)
             .then((response) => {
@@ -45,6 +49,7 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
 
                 setTableData(result)
 
+
                 console.log("Result: ", result)
                 console.log("TableData", tableData)
 
@@ -58,10 +63,7 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
     const [chartType, setChartType] = useState<string>("column")
     const [yAxisTitle, setyAxisTitle] = useState<string | undefined>();
     const [xAxisTitle, setxAxisTitle] = useState<string | undefined>();
-
     const [tableData, setTableData] = useState<DataArray[]>();
-
-
 
     const [studioChart, setStudioChart] = useState({
         chart: {
@@ -166,6 +168,7 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
                 chartType={chartType}
                 yAxisTitle={yAxisTitle}
                 xAxisTitle={xAxisTitle}
+                isEditPage={true}
             />
         )
     }
