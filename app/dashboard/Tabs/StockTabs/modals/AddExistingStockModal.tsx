@@ -19,9 +19,6 @@ export default function AddExistingStockModal(props: Props) {
         ApiCalls.findStocksByName(searchPhrase)
             .then((response) => {
                 setListOfAllStocks(response.data)
-
-                //TODO: Delete console.log
-                console.log("Result of search: ", response.data)
             })
     }, [searchPhrase])
 

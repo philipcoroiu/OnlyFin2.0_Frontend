@@ -76,7 +76,6 @@ export default function Explore() {
             ApiCalls.findStocksByName(stockSearchQuery)
                 .then((response) => {
                     setStockDropdownSearchSuggestions(response.data)
-                    console.log("Stock dropdown search suggestions: ", response.data)
                 })
         }
     }
@@ -121,8 +120,6 @@ export default function Explore() {
     }
 
     function handleStockSuggestionClick(stockIdChoice: number) {
-        console.log("Will do search based on stock id: ", stockIdChoice)
-
         setNothingFound(false)
 
         ApiCalls.findAnalystsThatCoverStock(stockIdChoice)
@@ -132,8 +129,6 @@ export default function Explore() {
                 } else {
                     setSearchResult(response.data)
                 }
-
-                console.log("setSearchResult: ", response.data)
             })
 
         setStockDropdownSearchSuggestions(undefined)

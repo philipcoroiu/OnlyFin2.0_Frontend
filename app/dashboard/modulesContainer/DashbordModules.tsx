@@ -22,7 +22,6 @@ export default function DashboardModules(props: Props) {
     const [toggleButtonIsActive, setToggleButtonIsActive] = useState(false);
 
     function renderModules() {
-        console.log("props.userCategoryArray: ", props.userCategoryArray)
 
         if(!props.userCategoryArray) {
             return <div className={"w-20 h-20 bg-red-400"}>{renderLoadingAnimation()}</div>
@@ -51,7 +50,6 @@ export default function DashboardModules(props: Props) {
                 </Link>
             )
         }
-            console.log("modules: ", props.userCategoryArray[props.activeCategoryTab].modules)
 
            // <Module key={moduleData.id} moduleData = {moduleData} ></Module>
         return (
@@ -91,7 +89,6 @@ export default function DashboardModules(props: Props) {
 
             //ApiCalls.updateModuleLayoutBatch(props.currentUserCategoryId, moduleLayout)
 
-            console.log("moduleLayout: ", moduleLayout)
         }
     }
 

@@ -50,7 +50,6 @@ export default function dashboardModuleBoard({params}: { params: { username: str
     }
 
     function getUserCategoryTabs(userStockIDInput : number) {
-        console.log("userStockID: ", userStockIDInput)
         ApiCalls.fetchCategoriesAndModulesUnderUserStock(userStockIDInput)
             .then((response) => {
                 const stockTab: OnlyfinUserStockTab = response.data

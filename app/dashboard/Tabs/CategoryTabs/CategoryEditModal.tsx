@@ -32,7 +32,6 @@ export default function CategoryEditModal(props: Props) {
     }
 
     function handleChangeCategoryNameButtonPress() {
-        console.log("Pressed 'Change Category Name' button")
         setTypeOfModalActive(CategoryModal.CHANGE_NAME)
     }
 

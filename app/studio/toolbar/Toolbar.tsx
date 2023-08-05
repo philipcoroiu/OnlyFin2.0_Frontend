@@ -23,9 +23,6 @@ type Props = {
 }
 
 export default function Toolbar(props : Props) {
-
-    console.log("YYYYYYYYY isEditPage: ", props.isEditPage)
-
     function handleSubmit() {
         if(props.isEditPage && props.handleUpdateModule) {
             props.handleUpdateModule()

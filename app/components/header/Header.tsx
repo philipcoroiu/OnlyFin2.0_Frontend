@@ -60,12 +60,6 @@ export default function Header() {
                           className={"flex items-center lg:flex-1"}
 
                     >
-                        {/*
-                             <img src="https://flowbite.com/docs/images/logo.svg"
-                                 className="mr-3 h-9"
-                                 alt="Flowbite Logo"
-                            />
-                         */}
 
                         <span
                             className="

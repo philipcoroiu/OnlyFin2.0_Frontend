@@ -44,9 +44,6 @@ export default function Login() {
     }
 
     function displayErrorMessage() {
-
-        console.log(email)
-
         /* sets the showErrorMessage to true to show the error messages */
         setShowErrorMessage(true);
 

@@ -52,16 +52,13 @@ export default function StudioPage() {
 
     function handleChartDataChange(newChartData : any) {
         setTableData(newChartData)
-        console.log("newChartData", newChartData)
     }
 
     function handleYaxisTitleChange(newValue: string) {
-        console.log("Changed Y axis value to: ", newValue)
         setyAxisTitle(newValue)
     }
 
     function handleXaxisTitleChange(newValue: string) {
-        console.log("Changed X axis value to: ", newValue)
         setxAxisTitle(newValue)
     }
 
@@ -87,14 +84,12 @@ export default function StudioPage() {
     }
 
         ApiCalls.addModule(currentCategoryId, 3,1,1,1,chartType, studioChart)
-            .then(() => console.log("Submitted to category id 141"))
             .finally(() => {
                 router.push('/dashboard')
             })
     }
 
     function handleCategoryIdChoice(categoryIdChoice: number) {
-        console.log("Current category id: ", categoryIdChoice)
         setCurrentCategoryId(categoryIdChoice)
     }
 

@@ -33,8 +33,6 @@ export default function ToolbarTable(props: Props) {
     const [spreadsheetData, setSpreadsheetData] = useState<DataArray[]>(initStudioSpreadsheetData);
 
     function handleSpreadsheetChange(newData : any) {
-        //setSpreadsheetData(newData);
-        console.log("Data from toolbar table: ", newData)
         handleTableDataChange(newData)
         props.handleChartDataChange(newData)
     }

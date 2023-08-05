@@ -18,9 +18,6 @@ type Props = {
 }
 
 export default function StartField(props: Props) {
-
-    console.log("yAxisTitle: ", props.chartTitle)
-
     const router = useRouter()
 
     const [selectedStockIndex, setSelectedStockIndex] = useState<number>(0);
@@ -35,8 +32,6 @@ export default function StartField(props: Props) {
                 setUserStockTabs(response.data.userStockTabs)
                 props.handleCategoryIdChoice(renderedCategoryId)
 
-                //TODO: Delete console.log
-                console.log("userStockTabs", response.data.userStockTabs)
             })
             .catch(error => {
                 if (error.response?.status === 401) {
@@ -66,7 +61,6 @@ export default function StartField(props: Props) {
     }
 
     function handleStockChoice(stockChoice : number) {
-        console.log("Selected stockChoiceID: ", stockChoice)
         setSelectedStockIndex(stockChoice)
     }
 
