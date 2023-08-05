@@ -67,6 +67,7 @@ type ModuleLayoutUpdateBatchDTO = {
     yAxis: number
 }
 
+
 type TableCell = { value: string }[][];
 
 type DataElement = { value: any };

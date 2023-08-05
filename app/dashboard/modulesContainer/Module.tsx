@@ -5,8 +5,6 @@ import Link from "next/link";
 type Props = { moduleData: OnlyfinModule }
 
 export default function Module(props: Props){
-    console.log("xxxx")
-    console.log(props)
 
     return (
         <>

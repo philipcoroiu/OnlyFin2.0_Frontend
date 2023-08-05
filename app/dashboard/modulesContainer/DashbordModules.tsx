@@ -8,7 +8,8 @@ import ToggleButton from "@/app/dashboard/components/ToggleButton";
 
 type Props = {
     userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
-    activeCategoryTab: number
+    activeCategoryTab: number,
+    currentUserCategoryId: number
 }
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -79,10 +80,41 @@ export default function DashboardModules(props: Props) {
 
     function updateLayout()  {
         if (moduleLayout){
+            /*
             moduleLayout.map((layoutData: any) => {
                 ApiCalls.updateModuleLayout(layoutData.i, layoutData.h, layoutData.w, layoutData.x, layoutData.y)
                     .then(() => console.log("Saved new layout"))
             })
+             */
+
+            //ApiCalls.updateModuleLayoutBatch(props.currentUserCategoryId, moduleLayout)
+
+            if (moduleLayout && props.userCategoryArray && props.userCategoryArray[props.activeCategoryTab]) {
+                let moduleLayoutDTOS: ModuleLayoutUpdateBatchDTO[] = []
+
+                moduleLayout.map((currentLayout: Layout) => {
+                    const currentLayoutDTO: ModuleLayoutUpdateBatchDTO = {
+                        moduleId: Number(currentLayout.i),
+                        height: currentLayout.h,
+                        width: currentLayout.w,
+                        xAxis: currentLayout.x,
+                        yAxis: currentLayout.y
+                    }
+
+                    moduleLayoutDTOS.push(currentLayoutDTO)
+                })
+
+                ApiCalls.updateModuleLayoutBatch(props.userCategoryArray[props.activeCategoryTab].userCategoryId, moduleLayoutDTOS)
+                    .then(response => {
+                        console.log("[DashboardModules.tsx]: layout batch update commenced with great success")
+                    })
+                    .catch(error => {
+                        console.log("[DashboardModules.tsx]: layout batch update failed: " + error)
+                    })
+
+            }
+
+            console.log("moduleLayout: ", moduleLayout)
         }
     }
 

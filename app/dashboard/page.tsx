@@ -70,10 +70,6 @@ export default function dashboardModuleBoard() {
                 setUserStockArray(userStocks)
                 setCurrentUserStockId(userStocks[0].id)
                 getUserCategoryTabs(userStocks[0].id)
-
-                //TODO: Delete console.log
-                console.log("userStockArray: ", response.data)
-                console.log("fetchTargetUsersStocks, stock id: ", response.data[0].id)
             })
             .catch((error) => console.log("fetchTargetUsersStocks error: " , error))
     }
@@ -86,10 +82,6 @@ export default function dashboardModuleBoard() {
 
                 setUserCategoryArray(stockTab.categories)
                 setCurrentUserCategoryId(stockTab.categories[0].userCategoryId)
-
-                //TODO: Delete console.log
-                console.log("getUserCategoryTabs: ", response.data.categories)
-                console.log("currentCategoryId: ", response.data.categories[0].userCategoryId)
             })
             .catch((error) => console.log("fetchCategoriesAndModulesUnderUserStock error ", error))
     }
@@ -116,9 +108,6 @@ export default function dashboardModuleBoard() {
     function handleCategoryTabClick(index : number, categoryId : number) : void {
         setActiveCategoryTab(index)
         setCurrentUserCategoryId(categoryId)
-
-        //TODO: Delete console.log
-        console.log("Current category id: ", categoryId)
     }
 
     function handleStockEditButtonClick() {
@@ -248,6 +237,7 @@ export default function dashboardModuleBoard() {
                         <DashboardModules
                             userCategoryArray={userCategoryArray}
                             activeCategoryTab={activeCategoryTab}
+                            currentUserCategoryId={currentUserCategoryId}
                         />
 
                     </div>
