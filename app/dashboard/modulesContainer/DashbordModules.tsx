@@ -9,7 +9,8 @@ import ToggleButton from "@/app/dashboard/components/ToggleButton";
 type Props = {
     userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
     activeCategoryTab: number,
-    currentUserCategoryId: number
+    currentUserCategoryId: number,
+    isProfileDashboard?: boolean
 }
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -104,9 +105,11 @@ export default function DashboardModules(props: Props) {
     return (
         <div className="">
 
-            <ToggleButton
+            {!props.isProfileDashboard &&
+                <ToggleButton
                 handleToggleButtonClick={handleToggleButtonClick}
-            />
+            />}
+
 
             <div className={"mt-4"}>
                 <ResponsiveGridLayout

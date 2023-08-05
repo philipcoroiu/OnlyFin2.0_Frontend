@@ -105,6 +105,12 @@ export default function dashboardModuleBoard({params}: { params: { username: str
                         initialUserStockId={currentUserStockId}
                     />
 
+                    <DashboardModules
+                        userCategoryArray={userCategoryArray}
+                        activeCategoryTab={activeCategoryTab}
+                        currentUserCategoryId={currentUserCategoryId}
+                        isProfileDashboard={true}
+                    />
 
                 </div>
             </div>
