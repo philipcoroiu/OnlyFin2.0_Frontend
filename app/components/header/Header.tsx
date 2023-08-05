@@ -56,7 +56,7 @@ export default function Header() {
                 mx-auto
                 max-w-screen-xl"
                 >
-                    <Link href={`${username ? "dashboard" : "/"}`}
+                    <Link href={`${username ? "/dashboard" : "/"}`}
                           className={"flex items-center lg:flex-1"}
 
                     >
