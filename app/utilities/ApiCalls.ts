@@ -348,7 +348,7 @@ export class ApiCalls {
 
     public static async updateModuleLayoutBatch(categoryId: number, moduleLayouts: ModuleLayoutUpdateBatchDTO[]): Promise<AxiosResponse> {
         return axiosInstance.put(
-            `update-module-layout-batch?categoryId=${categoryId}`,
+            `/dash/update-module-layout-batch?categoryId=${categoryId}`,
             {moduleLayoutUpdateBatchDTOs: moduleLayouts},
             {withCredentials: true}
         )
