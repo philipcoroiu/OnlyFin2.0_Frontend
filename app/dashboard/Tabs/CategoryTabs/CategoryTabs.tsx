@@ -10,9 +10,8 @@ export default function StockTabs(props: Props) {
 
     function renderCategoryTabs() {
         return(
-            props.userCategoryArray?.map((category:OnlyfinUserCategoryTab, index : number) => (
-                //TODO: {key = index} = no no no
-                <li key={index} className="mr-2">
+            props.userCategoryArray?.map((category: OnlyfinUserCategoryTab, index: number) => (
+                <li key={category.userCategoryId} className="mr-2">
                     <button
                         className={`${props.activeCategoryTab === index ? 
                             "inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active"
@@ -28,14 +27,22 @@ export default function StockTabs(props: Props) {
     }
 
     function renderLoadingTabs() {
-        return(
-            <li className="mr-2">
-                <div className="inline-flex space-x-2">
-                    <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
-                    <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
-                    <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
-                </div>
-            </li>
+        return (
+            <>
+                {props.activeCategoryTab !== -1 ?
+                    <li className="mr-2">
+                        <div className="inline-flex space-x-2">
+                            <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
+                            <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
+                            <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
+                        </div>
+                    </li>
+                    :
+                    <>
+                        <p className={"mr-2 text-xl"}>No stock selected</p>
+                    </>
+                }
+            </>
         )
     }
 
