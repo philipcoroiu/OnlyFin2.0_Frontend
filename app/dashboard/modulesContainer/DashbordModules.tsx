@@ -62,6 +62,7 @@ export default function DashboardModules(props: Props) {
                     data-grid={{x: moduleData.xAxis, y: moduleData.yAxis, w: moduleData.width, h: moduleData.height}}>
                     <Module
                         moduleData={moduleData}
+                        isProfileDashboard={props.isProfileDashboard}
                     />
                 </div>
 
