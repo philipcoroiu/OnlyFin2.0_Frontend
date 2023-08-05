@@ -79,19 +79,7 @@ export default function DashboardModules(props: Props) {
     }
 
     function updateLayout()  {
-        /*
-        if (moduleLayout){
-            /*
-            moduleLayout.map((layoutData: any) => {
-                ApiCalls.updateModuleLayout(layoutData.i, layoutData.h, layoutData.w, layoutData.x, layoutData.y)
-                    .then(() => console.log("Saved new layout"))
-            })
-             */
 
-            //ApiCalls.updateModuleLayoutBatch(props.currentUserCategoryId, moduleLayout)
-
-        }
-         */
 
         if (moduleLayout && props.userCategoryArray && props.userCategoryArray[props.activeCategoryTab]) {
             let moduleLayoutDTOS: ModuleLayoutUpdateBatchDTO[] = []
