@@ -4,7 +4,7 @@ import Link from "next/link";
 
 type Props = {
     moduleData: OnlyfinModule,
-    isProfileDashboard: boolean
+    isProfileDashboard?: boolean
 }
 
 export default function Module(props: Props){
