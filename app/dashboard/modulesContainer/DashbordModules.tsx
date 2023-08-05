@@ -8,7 +8,9 @@ import ToggleButton from "@/app/dashboard/components/ToggleButton";
 
 type Props = {
     userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
-    activeCategoryTab: number
+    activeCategoryTab: number,
+    currentUserCategoryId: number,
+    isProfileDashboard?: boolean
 }
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -20,7 +22,6 @@ export default function DashboardModules(props: Props) {
     const [toggleButtonIsActive, setToggleButtonIsActive] = useState(false);
 
     function renderModules() {
-        console.log("props.userCategoryArray: ", props.userCategoryArray)
 
         if(!props.userCategoryArray) {
             return <div className={"w-20 h-20 bg-red-400"}>{renderLoadingAnimation()}</div>
@@ -49,7 +50,6 @@ export default function DashboardModules(props: Props) {
                 </Link>
             )
         }
-            console.log("modules: ", props.userCategoryArray[props.activeCategoryTab].modules)
 
            // <Module key={moduleData.id} moduleData = {moduleData} ></Module>
         return (
@@ -60,6 +60,7 @@ export default function DashboardModules(props: Props) {
                     data-grid={{x: moduleData.xAxis, y: moduleData.yAxis, w: moduleData.width, h: moduleData.height}}>
                     <Module
                         moduleData={moduleData}
+                        isProfileDashboard={props.isProfileDashboard}
                     />
                 </div>
 
@@ -80,10 +81,15 @@ export default function DashboardModules(props: Props) {
     function updateLayout()  {
         /*
         if (moduleLayout){
+            /*
             moduleLayout.map((layoutData: any) => {
                 ApiCalls.updateModuleLayout(layoutData.i, layoutData.h, layoutData.w, layoutData.x, layoutData.y)
                     .then(() => console.log("Saved new layout"))
             })
+             */
+
+            //ApiCalls.updateModuleLayoutBatch(props.currentUserCategoryId, moduleLayout)
+
         }
          */
 
@@ -124,9 +130,11 @@ export default function DashboardModules(props: Props) {
     return (
         <div className="">
 
-            <ToggleButton
+            {!props.isProfileDashboard &&
+                <ToggleButton
                 handleToggleButtonClick={handleToggleButtonClick}
-            />
+            />}
+
 
             <div className={"mt-4"}>
                 <ResponsiveGridLayout

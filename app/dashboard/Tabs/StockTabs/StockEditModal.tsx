@@ -32,7 +32,6 @@ export default function StockEditModal(props: Props) {
     }
 
     function handleAddCustomStockButtonPress() {
-        console.log("Pressed 'Add custom stock' button")
         setTypeOfModalActive(StockModal.CUSTOM_STOCK)
     }
 

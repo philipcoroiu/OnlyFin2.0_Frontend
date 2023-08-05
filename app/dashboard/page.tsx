@@ -241,12 +241,10 @@ export default function dashboardModuleBoard() {
                             initialUserStockId={currentUserStockId}
                         />
 
-
-
-
                         <DashboardModules
                             userCategoryArray={userCategoryArray}
                             activeCategoryTab={activeCategoryTab}
+                            currentUserCategoryId={currentUserCategoryId}
                         />
 
                     </div>

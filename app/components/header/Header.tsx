@@ -56,16 +56,10 @@ export default function Header() {
                 mx-auto
                 max-w-screen-xl"
                 >
-                    <Link href={`${username ? "dashboard" : "/"}`}
+                    <Link href={`${username ? "/dashboard" : "/"}`}
                           className={"flex items-center lg:flex-1"}
 
                     >
-                        {/*
-                             <img src="https://flowbite.com/docs/images/logo.svg"
-                                 className="mr-3 h-9"
-                                 alt="Flowbite Logo"
-                            />
-                         */}
 
                         <span
                             className="

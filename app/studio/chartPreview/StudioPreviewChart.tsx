@@ -21,26 +21,20 @@ export default function StudioPreviewChart(props: Props) {
     }
 
     useEffect(() => {
-        console.log("Chart title has been changed to: ", props.chartTitle)
         handleChartTitleChange(props.chartTitle)
     }, [props.chartTitle]);
 
     useEffect(() => {
-        console.log(props.chartType)
         handleChartTypeChange(props.chartType)
     }, [props.chartType])
 
     useEffect(() => {
         const xAxisCategories = props.tableData.slice(1).map((row: any) => row[0].value);
 
-        console.log("props.tableData in StudioPreviewChart: ", props.tableData)
-
         const seriesData = props.tableData[0].slice(1).map((col: any, index: number) => ({
             name: col.value,
             data: props.tableData.slice(1).map((row: any) => parseInt(row[index + 1].value, 10))
         }));
-
-        console.log("SeriesData in studio: ", seriesData)
 
         props.setStudioChart((prevState: any) => ({
             ...prevState,
@@ -53,7 +47,6 @@ export default function StudioPreviewChart(props: Props) {
             series: seriesData
         }));
 
-        console.log("seriesData: ", seriesData)
     }, [props.tableData])
 
     useEffect(() => {

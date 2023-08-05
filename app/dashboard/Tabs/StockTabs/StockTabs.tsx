@@ -2,7 +2,8 @@ type Props = {
     activeStockTab: number,
     handleStockTabClick(index: number, stockId: number): void,
     userStockArray: OnlyfinUserStock[] | undefined,
-    handleStockEditButtonClick(): void
+    handleStockEditButtonClick?: () => void,
+    isProfileDashboard?: boolean
 }
 
 export default function StockTabs(props: Props) {
@@ -36,41 +37,14 @@ export default function StockTabs(props: Props) {
         )
     }
 
-    return (
-
-            // ***********//
-            // STOCK TABS //
-            // ***********//
-        <ul
-            className="
-                flex
-                items-center
-                whitespace-nowrap
-                text-sm
-                font-medium
-                text-center
-                text-gray-500
-                dark:text-gray-400
-                max-w-auto
-                overflow-x-scroll
-                overflow-y-clip
-                scrollbar-none
-                ">
-
-            {props.userStockArray ? renderStockTabs() : renderLoadingTabs()}
-
-            {
-                // *******************//
-                // EDIT STOCKS BUTTON //
-                // *******************//
-            }
-
-            <li className="mr-2">
-                <button
-                    type="button"
-                    onClick={props.handleStockEditButtonClick}
-                    className="
-                    inline-flex
+    function renderEditButton() {
+        if(!props.isProfileDashboard && props.handleStockEditButtonClick) {
+            return(
+                <li className="mr-2">
+                    <button
+                        type="button"
+                        onClick={props.handleStockEditButtonClick}
+                        className="inline-flex
                     items-center
                     p-2
                     text-sm
@@ -89,15 +63,45 @@ export default function StockTabs(props: Props) {
                     "
                     >
 
-                    <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
-                        </path>
-                    </svg>
+                        <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                        </svg>
 
-                </button>
-            </li>
+                    </button>
+                </li>
+            )
+        }
+
+    }
+
+    return (
+
+            // ***********//
+            // STOCK TABS //
+            // ***********//
+        <ul
+            className="flex
+                items-center
+                whitespace-nowrap
+                text-sm
+                font-medium
+                text-center
+                text-gray-500
+                dark:text-gray-400
+                max-w-auto
+                overflow-x-auto
+                scrollbar-none">
+
+
+            {props.userStockArray ? renderStockTabs() : renderLoadingTabs()}
+
+            {
+                renderEditButton()
+            }
+
+
         </ul>
 )
 }

@@ -14,20 +14,12 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
         ApiCalls.fetchModule(moduleIdToEdit)
             .then((response) => {
                 const module = response.data.content
-                console.log("module: ", module)
 
                 //Set toolbar
                 setChartTitle(module.title.text)
                 setChartType(module.chart.type)
                 setyAxisTitle(module.yAxis.title.text)
                 setxAxisTitle(module.xAxis.title.text)
-
-                console.log("xxxxx chart info xxxxxx")
-                console.log("chart title: ", module.title.text)
-                console.log("chart type: ", module.chart.type)
-                console.log("y axis title: ", module.yAxis.title.text)
-                console.log("x axis title: ", module.xAxis.title.text)
-                console.log("xxxxxxxxxxxxxxxxxxxxxxx")
 
                 //Set studio chart
                 setStudioChart(module)
@@ -44,12 +36,6 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
                 });
 
                 setTableData(result)
-
-
-                console.log("Result: ", result)
-                console.log("TableData", tableData)
-
-
             })
     }, [])
 
@@ -92,30 +78,22 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
 
     function handleChartDataChange(newChartData : any) {
         setTableData(newChartData)
-        console.log("newChartData", newChartData)
     }
 
     function handleYaxisTitleChange(newValue: string) {
-        console.log("Changed Y axis value to: ", newValue)
         setyAxisTitle(newValue)
     }
 
     function handleXaxisTitleChange(newValue: string) {
-        console.log("Changed X axis value to: ", newValue)
         setxAxisTitle(newValue)
     }
 
     function handleSubmit() {
         ApiCalls.addModule(currentCategoryId, 3,1,1,1,chartType, studioChart)
-            .then(() => console.log("Submitted to category id 141"))
-            .finally(() => {
-                router.push('/dashboard')
-                console.log("YYYYYYYYYYYYYYY handleSubmit was called")
-            })
+            .then(() => router.push('/dashboard'))
     }
 
     function handleCategoryIdChoice(categoryIdChoice: number) {
-        console.log("Current category id: ", categoryIdChoice)
         setCurrentCategoryId(categoryIdChoice)
     }
 
@@ -125,17 +103,12 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
 
     function handleUpdateModule() {
         ApiCalls.updateModuleContent(moduleIdToEdit, chartType, studioChart)
-            .then(() => console.log("Chart updated"))
-            .finally(() => {
-                router.push('/dashboard')
-                console.log("YYYYYYYYYYYYYYY handleUpdateModule was called")
-            })
+            .then(() => router.push('/dashboard'))
     }
 
     function handleDeleteModule() {
         ApiCalls.deleteModule(moduleIdToEdit)
-            .then(() => console.log("Chart removed"))
-            .finally(() => router.push('/dashboard'))
+            .then(() => router.push('/dashboard'))
     }
 
     function renderToolbar() {
