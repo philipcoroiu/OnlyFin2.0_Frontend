@@ -2,7 +2,8 @@ type Props = {
     activeCategoryTab: number,
     handleCategoryTabClick(index: number, categoryId: number): void,
     userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
-    handleCategoryEditButtonClick(): void
+    handleCategoryEditButtonClick?: () => void,
+    isProfileDashboard?: boolean
 }
 
 export default function StockTabs(props: Props) {
@@ -38,33 +39,9 @@ export default function StockTabs(props: Props) {
         )
     }
 
-    return (
-
-                // **************//
-                // CATEGORY TABS //
-                // **************//
-
-            <ul
-                className="flex
-                items-center
-                whitespace-nowrap
-                text-sm
-                font-medium
-                text-center
-                text-gray-500
-                dark:text-gray-400
-                max-w-auto
-                overflow-x-auto
-                scrollbar-none">
-
-                {props.userCategoryArray ? renderCategoryTabs() : renderLoadingTabs()}
-
-                {
-                    // ***********************//
-                    // EDIT CATEGORIES BUTTON //
-                    // ***********************//
-                }
-
+    function renderEditButton() {
+        if(!props.isProfileDashboard && props.handleCategoryEditButtonClick) {
+            return(
                 <li className="mr-2">
                     <button
                         id="dropdownMenuIconHorizontalButton"
@@ -98,6 +75,35 @@ export default function StockTabs(props: Props) {
 
                     </button>
                 </li>
+            )
+        }
+    }
+
+    return (
+
+                // **************//
+                // CATEGORY TABS //
+                // **************//
+
+            <ul
+                className="flex
+                items-center
+                whitespace-nowrap
+                text-sm
+                font-medium
+                text-center
+                text-gray-500
+                dark:text-gray-400
+                max-w-auto
+                overflow-x-auto
+                scrollbar-none">
+
+                {props.userCategoryArray ? renderCategoryTabs() : renderLoadingTabs()}
+
+                {
+                    renderEditButton()
+                }
+
             </ul>
 
 

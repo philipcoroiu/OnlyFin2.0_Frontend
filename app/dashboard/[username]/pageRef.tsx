@@ -1,7 +1,7 @@
 "use client"
 
 import React, {useEffect, useState} from "react";
-import TabsContainer from "./Tabs/TabsContainer";
+import TabsContainer from "../Tabs/TabsContainer";
 import DashboardModules from "@/app/dashboard/modulesContainer/DashbordModules";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import Link from "next/link";
@@ -10,7 +10,7 @@ import CategoryEditModal from "@/app/dashboard/Tabs/CategoryTabs/CategoryEditMod
 import {useRouter} from "next/navigation";
 import Avatar from "@/app/components/Avatar";
 
-export default function dashboardModuleBoard() {
+export default function dashboardModuleBoard({params}: { params: { username: string } }) {
 
     const router = useRouter()
 
@@ -242,10 +242,12 @@ export default function dashboardModuleBoard() {
                             initialUserStockId={currentUserStockId}
                         />
 
+
+
+
                         <DashboardModules
                             userCategoryArray={userCategoryArray}
                             activeCategoryTab={activeCategoryTab}
-                            currentUserCategoryId={currentUserCategoryId}
                         />
 
                     </div>

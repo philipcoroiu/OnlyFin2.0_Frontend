@@ -8,7 +8,8 @@ import ToggleButton from "@/app/dashboard/components/ToggleButton";
 
 type Props = {
     userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
-    activeCategoryTab: number
+    activeCategoryTab: number,
+    currentUserCategoryId: number
 }
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -79,10 +80,16 @@ export default function DashboardModules(props: Props) {
 
     function updateLayout()  {
         if (moduleLayout){
+            /*
             moduleLayout.map((layoutData: any) => {
                 ApiCalls.updateModuleLayout(layoutData.i, layoutData.h, layoutData.w, layoutData.x, layoutData.y)
                     .then(() => console.log("Saved new layout"))
             })
+             */
+
+            //ApiCalls.updateModuleLayoutBatch(props.currentUserCategoryId, moduleLayout)
+
+            console.log("moduleLayout: ", moduleLayout)
         }
     }
 
