@@ -13,14 +13,14 @@ export default function dashboardModuleBoard({params}: { params: { username: str
 
     const username = params.username;
 
-    const [activeStockTab, setActiveStockTab] = useState<number>(0) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
-    const [activeCategoryTab, setActiveCategoryTab] = useState<number>(0) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
+    const [activeStockTab, setActiveStockTab] = useState<number>(-1) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
+    const [activeCategoryTab, setActiveCategoryTab] = useState<number>(-1) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
 
     const [userStockArray, setUserStockArray] = useState<OnlyfinUserStock[]>();
     const [userCategoryArray, setUserCategoryArray] = useState<OnlyfinUserCategoryTab[]>();
 
-    const [currentUserStockId, setCurrentUserStockId] = useState<number>(0);
-    const [currentUserCategoryId, setCurrentUserCategoryId] = useState<number>(0);
+    const [currentUserStockId, setCurrentUserStockId] = useState<number>(-1);
+    const [currentUserCategoryId, setCurrentUserCategoryId] = useState<number>(-1);
 
     //TODO: Place in tab container
     useEffect(() => {
@@ -34,12 +34,10 @@ export default function dashboardModuleBoard({params}: { params: { username: str
 
                 setUserStockArray(userStocks)
                 setCurrentUserStockId(userStocks[0].id)
-                getUserCategoryTabs(userStocks[0].id)
 
             })
             .catch((error) => console.log("fetchTargetUsersStocks error: " , error))
     }
-
 
     //TODO: Place in tab container
     function handleStockTabClick(index : number, stockId : number) : void {
