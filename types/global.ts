@@ -56,7 +56,7 @@ type OnlyfinModule = {
     xAxis: number,
     yAxis: number,
     type: string,
-    content: JSON
+    content: any
 }
 
 type ModuleLayoutUpdateBatchDTO = {
