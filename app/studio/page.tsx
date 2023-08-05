@@ -99,20 +99,9 @@ export default function StudioPage() {
 
     return(
         <div>
-            <div className="h-screen
-            flex
-            justify-center
-            items-center
-            p-4">
+            <div className="h-screen md:flex xxl:flex md:items-center xxl:items-center md:justify-center xxl:justify-center p-4 gap-4">
 
-                <div className="flex-1
-                mx-2
-                bg-gray-700
-                rounded-lg
-                shadow-lg
-                p-4
-                h-full
-                ">
+                <div className="flex-1 mx-2 bg-gray-600 rounded-lg shadow-lg p-4 h-full max-w-xl">
                     <StudioPreviewChart
                         chartTitle={chartTitle}
                         chartType={chartType}
@@ -124,12 +113,7 @@ export default function StudioPage() {
                     />
                 </div>
 
-                <div className="flex-1
-                mx-2
-                rounded
-                shadow-lg
-                p-4
-                h-full">
+                <div className="flex-1 mx-2 bg-gray-600 rounded shadow-lg p-4 h-full max-w-xl">
 
                     <Toolbar
                         handleChartTitleChange={handleChartTitleChange}
