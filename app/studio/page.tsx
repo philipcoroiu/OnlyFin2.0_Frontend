@@ -126,7 +126,7 @@ export default function StudioPage() {
                     />
                 </div>
             </div>
-            <div className="w-1/2 rounded bg-gray-700 my-5 overflow-auto p-4">
+            <div className="w-1/2 h-96 rounded bg-gray-700 my-5 overflow-auto p-4">
                 <ToolbarTable
                     handleChartDataChange={handleChartDataChange}
                     tableData={tableData}

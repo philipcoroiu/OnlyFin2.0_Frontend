@@ -109,6 +109,7 @@ export default function StudioPreviewChart(props: Props) {
 
     return (
         <div className="w-full
+                        h-full
                         overflow-hidden
                         rounded-lg
                         bg-gray-200
