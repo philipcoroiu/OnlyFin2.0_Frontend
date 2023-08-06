@@ -101,7 +101,7 @@ export default function StudioPage() {
     return(
         <div className="h-max p-4 flex flex-col items-center justify-center">
             <div className="flex gap-4 mb-4 w-full justify-center">
-                <div className="w-1/4 bg-gray-600 rounded-lg shadow-lg p-4 overflow-auto">
+                <div className="w-1/4 bg-gray-600 rounded shadow-lg p-4 overflow-auto">
                     <StudioPreviewChart
                         chartTitle={chartTitle}
                         chartType={chartType}
@@ -126,7 +126,7 @@ export default function StudioPage() {
                     />
                 </div>
             </div>
-            <div className="w-1/2 rounded bg-gray-700 my-5 overflow-auto p-4 resize">
+            <div className="w-1/2 rounded bg-gray-600 overflow-auto p-4 resize">
                 <ToolbarTable
                     handleChartDataChange={handleChartDataChange}
                     tableData={tableData}
