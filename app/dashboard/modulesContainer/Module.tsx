@@ -8,8 +8,6 @@ type Props = {
 }
 
 export default function Module(props: Props){
-    console.log("xxxx")
-    console.log(props)
 
     return (
         <>

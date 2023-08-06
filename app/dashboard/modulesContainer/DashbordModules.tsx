@@ -9,8 +9,7 @@ import ToggleButton from "@/app/dashboard/components/ToggleButton";
 type Props = {
     userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
     activeCategoryTab: number,
-    currentUserCategoryId: number,
-    isProfileDashboard?: boolean
+    currentUserCategoryId: number
 }
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
@@ -22,6 +21,7 @@ export default function DashboardModules(props: Props) {
     const [toggleButtonIsActive, setToggleButtonIsActive] = useState(false);
 
     function renderModules() {
+        console.log("props.userCategoryArray: ", props.userCategoryArray)
 
         if(!props.userCategoryArray) {
             return <div className={"w-20 h-20 bg-red-400"}>{renderLoadingAnimation()}</div>
@@ -50,6 +50,7 @@ export default function DashboardModules(props: Props) {
                 </Link>
             )
         }
+            console.log("modules: ", props.userCategoryArray[props.activeCategoryTab].modules)
 
            // <Module key={moduleData.id} moduleData = {moduleData} ></Module>
         return (
@@ -60,7 +61,6 @@ export default function DashboardModules(props: Props) {
                     data-grid={{x: moduleData.xAxis, y: moduleData.yAxis, w: moduleData.width, h: moduleData.height}}>
                     <Module
                         moduleData={moduleData}
-                        isProfileDashboard={props.isProfileDashboard}
                     />
                 </div>
 
@@ -79,31 +79,42 @@ export default function DashboardModules(props: Props) {
     }
 
     function updateLayout()  {
-
-
-        if (moduleLayout && props.userCategoryArray && props.userCategoryArray[props.activeCategoryTab]) {
-            let moduleLayoutDTOS: ModuleLayoutUpdateBatchDTO[] = []
-
-            moduleLayout.map((currentLayout: Layout) => {
-                const currentLayoutDTO: ModuleLayoutUpdateBatchDTO = {
-                    moduleId: Number(currentLayout.i),
-                    height: currentLayout.h,
-                    width: currentLayout.w,
-                    xAxis: currentLayout.x,
-                    yAxis: currentLayout.y
-                }
-
-                moduleLayoutDTOS.push(currentLayoutDTO)
+        if (moduleLayout){
+            /*
+            moduleLayout.map((layoutData: any) => {
+                ApiCalls.updateModuleLayout(layoutData.i, layoutData.h, layoutData.w, layoutData.x, layoutData.y)
+                    .then(() => console.log("Saved new layout"))
             })
+             */
 
-            ApiCalls.updateModuleLayoutBatch(props.userCategoryArray[props.activeCategoryTab].userCategoryId, moduleLayoutDTOS)
-                .then(response => {
-                    console.log("[DashboardModules.tsx]: layout batch update commenced with great success")
-                })
-                .catch(error => {
-                    console.log("[DashboardModules.tsx]: layout batch update failed: " + error)
+            //ApiCalls.updateModuleLayoutBatch(props.currentUserCategoryId, moduleLayout)
+
+            if (moduleLayout && props.userCategoryArray && props.userCategoryArray[props.activeCategoryTab]) {
+                let moduleLayoutDTOS: ModuleLayoutUpdateBatchDTO[] = []
+
+                moduleLayout.map((currentLayout: Layout) => {
+                    const currentLayoutDTO: ModuleLayoutUpdateBatchDTO = {
+                        moduleId: Number(currentLayout.i),
+                        height: currentLayout.h,
+                        width: currentLayout.w,
+                        xAxis: currentLayout.x,
+                        yAxis: currentLayout.y
+                    }
+
+                    moduleLayoutDTOS.push(currentLayoutDTO)
                 })
 
+                ApiCalls.updateModuleLayoutBatch(props.userCategoryArray[props.activeCategoryTab].userCategoryId, moduleLayoutDTOS)
+                    .then(response => {
+                        console.log("[DashboardModules.tsx]: layout batch update commenced with great success")
+                    })
+                    .catch(error => {
+                        console.log("[DashboardModules.tsx]: layout batch update failed: " + error)
+                    })
+
+            }
+
+            console.log("moduleLayout: ", moduleLayout)
         }
     }
 
@@ -118,11 +129,9 @@ export default function DashboardModules(props: Props) {
     return (
         <div className="">
 
-            {!props.isProfileDashboard &&
-                <ToggleButton
+            <ToggleButton
                 handleToggleButtonClick={handleToggleButtonClick}
-            />}
-
+            />
 
             <div className={"mt-4"}>
                 <ResponsiveGridLayout

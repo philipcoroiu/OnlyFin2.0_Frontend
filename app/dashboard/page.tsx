@@ -16,9 +16,8 @@ export default function dashboardModuleBoard() {
 
     const [whoAmI, setWhoAmI] = useState<string>();
 
-
-    const [activeStockTab, setActiveStockTab] = useState<number>(-1) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
-    const [activeCategoryTab, setActiveCategoryTab] = useState<number>(-1) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
+    const [activeStockTab, setActiveStockTab] = useState<number>(0) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
+    const [activeCategoryTab, setActiveCategoryTab] = useState<number>(0) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
 
     const [userStockArray, setUserStockArray] = useState<OnlyfinUserStock[]>();
     const [userCategoryArray, setUserCategoryArray] = useState<OnlyfinUserCategoryTab[]>();
@@ -26,8 +25,8 @@ export default function dashboardModuleBoard() {
     const [stockEditButtonIsActive, setStockEditButtonIsActive] = useState<boolean>(false);
     const [categoryEditButtonIsActive, setCategoryEditButtonIsActive] = useState<boolean>(false);
 
-    const [currentUserStockId, setCurrentUserStockId] = useState<number>(-1);
-    const [currentUserCategoryId, setCurrentUserCategoryId] = useState<number>(-1);
+    const [currentUserStockId, setCurrentUserStockId] = useState<number>(0);
+    const [currentUserCategoryId, setCurrentUserCategoryId] = useState<number>(0);
 
     const [stockChange, setStockChange] = useState<boolean>(false)
     const [categoryChange, setCategoryChange] = useState<boolean>(false)
@@ -51,8 +50,8 @@ export default function dashboardModuleBoard() {
         if (whoAmI && stockChange) {
             setStockChange(false)
             loadStockTab(whoAmI)
-            setActiveStockTab(-1) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
-            setActiveCategoryTab(-1) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
+            setActiveStockTab(0) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
+            setActiveCategoryTab(0) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
         }
     }, [stockChange])
 
@@ -69,10 +68,8 @@ export default function dashboardModuleBoard() {
                 const userStocks: OnlyfinUserStock[] = response.data
 
                 setUserStockArray(userStocks)
-
-                //TODO: Delete console.log
-                console.log("userStockArray: ", response.data)
-                console.log("fetchTargetUsersStocks, stock id: ", response.data[0].id)
+                setCurrentUserStockId(userStocks[0].id)
+                getUserCategoryTabs(userStocks[0].id)
             })
             .catch((error) => console.log("fetchTargetUsersStocks error: " , error))
     }
@@ -85,10 +82,6 @@ export default function dashboardModuleBoard() {
 
                 setUserCategoryArray(stockTab.categories)
                 setCurrentUserCategoryId(stockTab.categories[0].userCategoryId)
-
-                //TODO: Delete console.log
-                console.log("getUserCategoryTabs: ", response.data.categories)
-                console.log("currentCategoryId: ", response.data.categories[0].userCategoryId)
             })
             .catch((error) => console.log("fetchCategoriesAndModulesUnderUserStock error ", error))
     }
@@ -115,9 +108,6 @@ export default function dashboardModuleBoard() {
     function handleCategoryTabClick(index : number, categoryId : number) : void {
         setActiveCategoryTab(index)
         setCurrentUserCategoryId(categoryId)
-
-        //TODO: Delete console.log
-        console.log("Current category id: ", categoryId)
     }
 
     function handleStockEditButtonClick() {
@@ -240,6 +230,9 @@ export default function dashboardModuleBoard() {
 
                             initialUserStockId={currentUserStockId}
                         />
+
+
+
 
                         <DashboardModules
                             userCategoryArray={userCategoryArray}
