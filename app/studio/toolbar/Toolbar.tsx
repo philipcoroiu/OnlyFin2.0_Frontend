@@ -52,19 +52,6 @@ export default function Toolbar(props : Props) {
                 />
             </div>
 
-            <div className="p-4
-                rounded
-                bg-gray-700
-                my-5
-                overflow-auto">
-
-                <ToolbarTable
-                    handleChartDataChange={props.handleChartDataChange}
-                    tableData={props.tableData}
-                    setChartData={props.setTableData}
-                />
-            </div>
-
             <button
                     onClick={handleSubmit}
                     className="w-full

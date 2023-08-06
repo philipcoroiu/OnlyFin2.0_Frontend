@@ -5,6 +5,7 @@ import StudioPreviewChart from "@/app/studio/chartPreview/StudioPreviewChart";
 import {useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import {useRouter} from "next/navigation";
+import ToolbarTable from "@/app/studio/toolbar/toolbarTable/ToolbarTable";
 export default function StudioPage() {
 
     const router = useRouter()
@@ -98,10 +99,9 @@ export default function StudioPage() {
     }
 
     return(
-        <div>
-            <div className="h-screen md:flex xxl:flex md:items-center xxl:items-center md:justify-center xxl:justify-center p-4 gap-4">
-
-                <div className="flex-1 mx-2 bg-gray-600 rounded-lg shadow-lg p-4 h-full max-w-xl">
+        <div className="h-screen p-4 flex flex-col items-center justify-center">
+            <div className="flex gap-4 mb-4 w-full justify-center">
+                <div className="w-1/4 bg-gray-600 rounded-lg shadow-lg p-4 overflow-auto">
                     <StudioPreviewChart
                         chartTitle={chartTitle}
                         chartType={chartType}
@@ -112,9 +112,7 @@ export default function StudioPage() {
                         setStudioChart={setStudioChart}
                     />
                 </div>
-
-                <div className="flex-1 mx-2 bg-gray-600 rounded shadow-lg p-4 h-full max-w-xl">
-
+                <div className="w-1/4 bg-gray-600 rounded shadow-lg p-4 overflow-auto">
                     <Toolbar
                         handleChartTitleChange={handleChartTitleChange}
                         handleChartSelectChange={handleChartSelectChange}
@@ -128,7 +126,15 @@ export default function StudioPage() {
                     />
                 </div>
             </div>
-
+            <div className="w-1/2 rounded bg-gray-700 my-5 overflow-auto p-4">
+                <ToolbarTable
+                    handleChartDataChange={handleChartDataChange}
+                    tableData={tableData}
+                    setChartData={setTableData}
+                />
+            </div>
         </div>
+
+
     )
 }
