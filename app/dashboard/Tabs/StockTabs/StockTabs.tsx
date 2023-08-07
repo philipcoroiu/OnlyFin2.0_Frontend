@@ -25,9 +25,17 @@ export default function StockTabs(props: Props) {
         )
     }
 
+    function bruh() {
+        return (
+            <>
+                <div className={"p"}></div>
+            </>
+        )
+    }
+
     function renderLoadingTabs() {
         return (
-            <li className="mr-2">
+            <li className={"mr-2"}>
                 <div className="inline-flex space-x-2">
                     <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>
                     <button className="px-4 py-3 text-white bg-gray-600 rounded-lg active animate-pulse" aria-current="page">...</button>

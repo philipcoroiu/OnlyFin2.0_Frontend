@@ -18,8 +18,8 @@ type Props = {
 export default function TabsContainer(props: Props) {
 
     return (
-        <div>
-            <div className={"rounded-xl bg-gray-800 p-4 mb-4"}>
+        <>
+            <div className={"rounded-xl bg-white dark:bg-gray-800 dark:border-0 border border-blue-900 p-4 mb-4"}>
 
             <h3 className={"font-bold text-xl my-3 mt-0"}
             >Stock</h3>
@@ -33,7 +33,7 @@ export default function TabsContainer(props: Props) {
             />
             </div>
 
-            <div className={"rounded-xl bg-gray-800 p-4 my-6"}>
+            <div className={"rounded-xl bg-white dark:bg-gray-800 dark:border-0 border border-blue-900 p-4 my-6"}>
                 <h3 className={"font-bold text-xl my-3 mt-0"}
                 >Category</h3>
 
@@ -45,6 +45,6 @@ export default function TabsContainer(props: Props) {
                     isProfileDashboard={props.isProfileDashboard}
                 />
             </div>
-        </div>
+        </>
     )
 }

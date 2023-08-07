@@ -201,19 +201,20 @@ export default function dashboardModuleBoard() {
                 lg:px-10">
 
                     <div className="
-                    px-5
-                    md:px-10
-                    py-10
-                    overflow-y-auto
-                    rounded-lg
-                    bg-gray-700">
+                        rounded-[calc(1.5rem-1px)]
+                        px-10 p-12
+                        bg-white
+                        dark:bg-gray-900
+                        dark:border-0
+                        border-2
+                        border-blue-900
+                        ">
 
-                        <div className={"flex items-center text-center mb-4  justify-center sm:justify-start"}>
+                        <div className={`flex items-center text-center mb-4 justify-center sm:justify-start `}>
                             <div className={"w-16 h-16"}>
                                 <Link href={"/me"}>
                                     <Avatar username={whoAmI}></Avatar>
                                 </Link>
-
                             </div>
                             <Link className={"font-bold text-xl"} href={"/me"}>{whoAmI}</Link>
                         </div>
