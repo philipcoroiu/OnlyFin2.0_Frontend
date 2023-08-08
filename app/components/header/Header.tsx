@@ -43,7 +43,7 @@ export default function Header() {
 
             dark:border-b-0
 
-            py-2.5
+            py-4
             bg-gray-100/[0.6]
             dark:bg-gray-800/[0.6]
             "
