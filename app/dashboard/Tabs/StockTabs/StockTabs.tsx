@@ -14,22 +14,14 @@ export default function StockTabs(props: Props) {
                 <li key={stock.id} className="mr-2">
                     <button
                         className={`${props.activeStockTab === index ?
-                            "inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active"
+                            "inline-block px-4 py-3 text-white bg-blue-600 font-bold rounded-lg active"
                             :
-                            "inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600 dark:bg-gray-700 dark:hover:text-white "}`}
+                            "inline-block px-4 py-3 rounded-lg hover:text-gray-900 bg-gray-200 text-black dark:text-white dark:hover:bg-gray-600 dark:bg-gray-700 dark:hover:text-white "}`}
                         onClick={() => props.handleStockTabClick(index, stock.id)}
                         aria-current="page">{stock.stock.name}
                     </button>
                 </li>
             ))
-        )
-    }
-
-    function bruh() {
-        return (
-            <>
-                <div className={"p"}></div>
-            </>
         )
     }
 
@@ -58,10 +50,9 @@ export default function StockTabs(props: Props) {
                     text-sm
                     font-medium
                     text-center
-                    text-gray-900
-                    bg-white
+                    bg-blue-600
+                    text-white
                     rounded-lg
-                    hover:bg-gray-100
                     focus:outline-none
                     dark:text-white
                     dark:bg-gray-700
@@ -70,7 +61,7 @@ export default function StockTabs(props: Props) {
                     transition duration-300 ease-in-out hover:scale-110
                     "
                     >
-
+                        {/*hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600 dark:bg-gray-700 dark:hover:text-white*/}
                         <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                              xmlns="http://www.w3.org/2000/svg">
                             <path

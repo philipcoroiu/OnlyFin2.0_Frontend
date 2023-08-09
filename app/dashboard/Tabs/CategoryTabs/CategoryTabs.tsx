@@ -13,10 +13,10 @@ export default function StockTabs(props: Props) {
             props.userCategoryArray?.map((category: OnlyfinUserCategoryTab, index: number) => (
                 <li key={category.userCategoryId} className="mr-2">
                     <button
-                        className={`${props.activeCategoryTab === index ? 
-                            "inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active"
+                        className={`${props.activeCategoryTab === index ?
+                            "inline-block px-4 py-3 text-white bg-blue-600 font-bold rounded-lg active"
                             :
-                            "inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600 dark:bg-gray-700 dark:hover:text-white "}`}
+                            "inline-block px-4 py-3 rounded-lg hover:text-gray-900 bg-gray-200 text-black dark:text-white dark:hover:bg-gray-600 dark:bg-gray-700 dark:hover:text-white "}`}
 
                         onClick={() => props.handleCategoryTabClick(index, category.userCategoryId)}
                         aria-current="page">{category.categoryName}
@@ -56,21 +56,20 @@ export default function StockTabs(props: Props) {
                         type="button"
                         onClick={props.handleCategoryEditButtonClick}
                         className="inline-flex
-                            items-center
-                            p-2
-                            text-sm
-                            font-medium
-                            text-center
-                            text-gray-900
-                            bg-white
-                            rounded-lg
-                            hover:bg-gray-100
-                            focus:outline-none
-                            dark:text-white
-                            dark:bg-gray-700
-                            dark:hover:bg-gray-600
-                            dark:focus:ring-gray-500
-                            transition duration-300 ease-in-out hover:scale-110
+                     items-center
+                    p-2
+                    text-sm
+                    font-medium
+                    text-center
+                    bg-blue-600
+                    text-white
+                    rounded-lg
+                    focus:outline-none
+                    dark:text-white
+                    dark:bg-gray-700
+                    dark:hover:bg-gray-600
+                    dark:focus:ring-gray-500
+                    transition duration-300 ease-in-out hover:scale-110
                     "
                     >
 
