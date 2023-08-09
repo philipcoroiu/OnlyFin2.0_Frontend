@@ -1,7 +1,7 @@
 type Props = {
     activeTab: number,
     handleTabClick(index: number, tabId: number): void,
-    userArray: any,
+    tabArray: OnlyfinUserStock[] | OnlyfinUserCategoryTab[] | undefined
 }
 
 export default function Tab(props: Props) {
@@ -11,7 +11,7 @@ export default function Tab(props: Props) {
    */
     function renderEditButton() {
         return (
-            props.userArray?.map((tab : any, index: number) => (
+            props.tabArray?.map((tab : any, index: number) => (
 
                 <li key={tab.userCategoryId || tab.id} className="mr-2">
                     <button

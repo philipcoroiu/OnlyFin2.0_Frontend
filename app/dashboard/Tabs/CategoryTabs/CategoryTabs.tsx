@@ -13,7 +13,7 @@ export default function StockTabs(props: Props) {
 
     function renderCategoryTabs() {
         return(
-            <Tab activeTab={props.activeCategoryTab} handleTabClick={props.handleCategoryTabClick} userArray={props.userCategoryArray}/>
+            <Tab activeTab={props.activeCategoryTab} handleTabClick={props.handleCategoryTabClick} tabArray={props.userCategoryArray}/>
         )
     }
 
