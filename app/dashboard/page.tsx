@@ -197,12 +197,14 @@ export default function dashboardModuleBoard() {
 
                 <div className="mx-auto
                 max-w-full
-                px-4 py-10
+                px-0 sm:px-4
+                py-10
                 lg:px-10">
 
                     <div className="
                         rounded-[calc(1.5rem-1px)]
-                        px-10 p-12
+                        px-4 sm:px-10
+                        py-12
                         bg-white
                         dark:bg-gray-900
                         dark:border-0
