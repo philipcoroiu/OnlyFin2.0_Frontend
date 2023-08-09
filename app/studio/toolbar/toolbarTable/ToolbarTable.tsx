@@ -75,8 +75,8 @@ export default function ToolbarTable(props: Props) {
     }
 
     return (
-        <div>
-            <div >
+        <div className="flex flex-col items-center mt-4">
+            <div className="grid grid-cols-2">
 
                 {
                     // **************//
@@ -198,7 +198,7 @@ export default function ToolbarTable(props: Props) {
                 // SPREADSHEET TABLE //
                 // ******************//
             }
-            <div>
+            <div className="mt-8">
                 <Spreadsheet data={spreadsheetData} onChange={handleSpreadsheetChange} />
             </div>
         </div>

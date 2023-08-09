@@ -19,7 +19,7 @@ export default function App() {
                 </h1>
                 <p className="
                         mt-6
-                        mx-4
+                        mx-16
                         text-lg
                         leading-8
                         dark:text-gray-300">
