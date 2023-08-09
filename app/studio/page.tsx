@@ -98,44 +98,89 @@ export default function StudioPage() {
         setTableData(newTableData)
     }
 
-    return(
+    function renderStudioPreviewChart() {
+        if(!tableData) {
+            return <div>Loading</div>
+        }
+
+        return(
+            <StudioPreviewChart
+                chartTitle={chartTitle}
+                chartType={chartType}
+                tableData={tableData}
+                yAxisTitle={yAxisTitle}
+                xAxisTitle={xAxisTitle}
+                studioChart={studioChart}
+                setStudioChart={setStudioChart}
+            />
+        )
+    }
+
+    function renderToolbar() {
+        if(!tableData) {
+            return <div>Loading</div>
+        }
+
+        return(
+            <Toolbar
+                handleChartTitleChange={handleChartTitleChange}
+                handleChartSelectChange={handleChartSelectChange}
+                handleChartDataChange={handleChartDataChange}
+                tableData={tableData}
+                setTableData={handleTableDataChange}
+                handleYaxisChange={handleYaxisTitleChange}
+                handleXaxisChange={handleXaxisTitleChange}
+                handleSubmit={handleSubmit}
+                handleCategoryIdChoice={handleCategoryIdChoice}
+            />
+        )
+    }
+
+    function renderToolbarTable() {
+        if(!tableData) {
+            return <div>Loading</div>
+        }
+
+        return(
+            <ToolbarTable
+                handleChartDataChange={handleChartDataChange}
+                tableData={tableData}
+                setTableData={handleChartDataChange}
+            />
+        )
+    }
+
+    {/*
+
         <div className="h-max p-4 flex flex-col items-center justify-center">
-            <div className="flex gap-4 mb-4 w-full justify-center">
-                <div className="w-1/4 bg-gray-600 rounded shadow-lg p-4 overflow-auto">
-                    <StudioPreviewChart
-                        chartTitle={chartTitle}
-                        chartType={chartType}
-                        tableData={tableData}
-                        yAxisTitle={yAxisTitle}
-                        xAxisTitle={xAxisTitle}
-                        studioChart={studioChart}
-                        setStudioChart={setStudioChart}
-                    />
+            <div className="flex md:flex-col gap-4 mb-4 w-full justify-center">
+                <div className="w-1/4 md:w-full bg-gray-600 rounded shadow-lg p-4 overflow-auto">
+                    {renderStudioPreviewChart()}
                 </div>
-                <div className="w-1/4 bg-gray-600 rounded shadow-lg p-4 overflow-auto">
-                    <Toolbar
-                        handleChartTitleChange={handleChartTitleChange}
-                        handleChartSelectChange={handleChartSelectChange}
-                        handleChartDataChange={handleChartDataChange}
-                        tableData={tableData}
-                        setTableData={handleTableDataChange}
-                        handleYaxisChange={handleYaxisTitleChange}
-                        handleXaxisChange={handleXaxisTitleChange}
-                        handleSubmit={handleSubmit}
-                        handleCategoryIdChoice={handleCategoryIdChoice}
-                    />
+                <div className="w-1/4 md:w-full bg-gray-600 rounded shadow-lg p-4 overflow-auto">
+                    {renderToolbar()}
                 </div>
             </div>
-            <div className="w-1/2 rounded bg-gray-600 overflow-auto p-4 resize">
-                <ToolbarTable
-                    handleChartDataChange={handleChartDataChange}
-                    tableData={tableData}
-                    setChartData={setTableData}
-                />
+            <div className="w-1/2 md:w-full rounded bg-gray-600 overflow-auto p-4 resize">
+                {renderToolbarTable()}
             </div>
         </div>
 
+    */}
 
-
+    return(
+        <div className="h-max p-4 flex flex-col items-center justify-center">
+            <div className="flex flex-col md:flex-row gap-4 mb-4 w-full justify-center">
+                <div className="xl:w-4/12 w-full bg-gray-600 rounded shadow-lg p-4 overflow-auto">
+                    {renderStudioPreviewChart()}
+                </div>
+                <div className="xl:w-4/12 w-full bg-gray-600 rounded shadow-lg p-4 overflow-auto">
+                    {renderToolbar()}
+                </div>
+            </div>
+            <div className="xl:w-8/12 w-full rounded bg-gray-600 overflow-auto p-8 resize">
+                {renderToolbarTable()}
+            </div>
+        </div>
     )
 }

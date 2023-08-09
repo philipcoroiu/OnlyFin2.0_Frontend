@@ -5,6 +5,7 @@ import StudioPreviewChart from "@/app/studio/chartPreview/StudioPreviewChart";
 import {useEffect, useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import {useRouter, useSearchParams} from "next/navigation";
+import ToolbarTable from "@/app/studio/toolbar/toolbarTable/ToolbarTable";
 export default function StudioPage({params}: { params: { moduleId: string } }) {
 
     const router = useRouter()
@@ -117,26 +118,30 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
         }
 
         return(
-            <Toolbar
-                handleChartTitleChange={handleChartTitleChange}
-                handleChartSelectChange={handleChartSelectChange}
-                handleChartDataChange={handleChartDataChange}
-                //chartData={tableData}
-                tableData={tableData}
-                setTableData={handleTableDataChange}
-                handleYaxisChange={handleYaxisTitleChange}
-                handleXaxisChange={handleXaxisTitleChange}
-                handleSubmit={handleSubmit}
-                handleCategoryIdChoice={handleCategoryIdChoice}
+            <div>
+                <Toolbar
+                    handleChartTitleChange={handleChartTitleChange}
+                    handleChartSelectChange={handleChartSelectChange}
+                    handleChartDataChange={handleChartDataChange}
+                    //chartData={tableData}
+                    tableData={tableData}
+                    setTableData={handleTableDataChange}
+                    handleYaxisChange={handleYaxisTitleChange}
+                    handleXaxisChange={handleXaxisTitleChange}
+                    handleSubmit={handleSubmit}
+                    handleCategoryIdChoice={handleCategoryIdChoice}
 
-                chartTitle={chartTitle}
-                chartType={chartType}
-                yAxisTitle={yAxisTitle}
-                xAxisTitle={xAxisTitle}
-                isEditPage={true}
-                handleUpdateModule={handleUpdateModule}
-                handleDeleteModule={handleDeleteModule}
-            />
+                    chartTitle={chartTitle}
+                    chartType={chartType}
+                    yAxisTitle={yAxisTitle}
+                    xAxisTitle={xAxisTitle}
+                    isEditPage={true}
+                    handleUpdateModule={handleUpdateModule}
+                    handleDeleteModule={handleDeleteModule}
+                />
+
+
+            </div>
         )
     }
 
@@ -158,37 +163,33 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
         )
     }
 
+    function renderToolbarTable() {
+        if(!tableData) {
+            return <div>Loading</div>
+        }
+
+        return(
+            <ToolbarTable
+                handleChartDataChange={handleChartDataChange}
+                tableData={tableData}
+                setTableData={handleChartDataChange}
+            />
+        )
+    }
+
     return(
-        <div>
-            <div className="h-screen
-            flex
-            justify-center
-            items-center
-            p-4">
-
-                <div className="flex-1
-                mx-2
-                bg-gray-700
-                rounded-lg
-                shadow-lg
-                p-4
-                h-full
-                ">
+        <div className="h-max p-4 flex flex-col items-center justify-center">
+            <div className="flex flex-col md:flex-row gap-4 mb-4 w-full justify-center">
+                <div className="xl:w-4/12 w-full bg-gray-600 rounded shadow-lg p-4 overflow-auto">
                     {renderStudioPreviewChart()}
-
                 </div>
-
-                <div className="flex-1
-                mx-2
-                rounded
-                shadow-lg
-                p-4
-                h-full">
-
+                <div className="xl:w-4/12 w-full bg-gray-600 rounded shadow-lg p-4 overflow-auto">
                     {renderToolbar()}
                 </div>
             </div>
-
+            <div className="xl:w-8/12 w-full rounded bg-gray-600 overflow-auto p-8 resize">
+                {renderToolbarTable()}
+            </div>
         </div>
     )
 }

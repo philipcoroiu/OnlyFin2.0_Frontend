@@ -5,7 +5,7 @@ import _ from 'lodash';
 type Props = {
     handleChartDataChange(newChartData: any): void,
     tableData: DataArray[],
-    setChartData: Dispatch<SetStateAction<DataArray[]>>
+    setTableData: Dispatch<SetStateAction<DataArray[]>>
 }
 
 export default function ToolbarTable(props: Props) {
@@ -19,7 +19,7 @@ export default function ToolbarTable(props: Props) {
     }
 
     /*
-    In case of major bug:
+    In case of major bug lol:
 
     const initStudioSpreadsheetData = [
         [{ value: 'Billions' }, { value: "Amazon" }, { value: "Apple" }, { value: "Google" }],
@@ -44,18 +44,18 @@ export default function ToolbarTable(props: Props) {
     }
 
     function handleAddColumnClick() {
-        props.setChartData((prevData: TableCell) => prevData.map(row => [...row, { value: "" }]));
+        props.setTableData((prevData: TableCell) => prevData.map(row => [...row, { value: "" }]));
         setSpreadsheetData((prevData: any) => prevData.map((row: any) => [...row, { value: "" }]))
     }
 
     function handleRemoveColumnClick() {
-        props.setChartData((prevData: TableCell) => prevData.map(row => row.slice(0, -1)));
+        props.setTableData((prevData: TableCell) => prevData.map(row => row.slice(0, -1)));
         setSpreadsheetData((prevData: any) => prevData.map((row: any) => row.slice(0, -1)));
     }
 
     function handleAddRowClick() {
         const newRow = new Array(spreadsheetData[0].length).fill({ value: "" });
-        props.setChartData((prevData: TableCell) => [...prevData, newRow]);
+        props.setTableData((prevData: TableCell) => [...prevData, newRow]);
         setSpreadsheetData((prevData: any) => [...prevData, newRow])
     }
 
