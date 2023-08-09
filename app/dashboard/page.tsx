@@ -106,6 +106,7 @@ export default function dashboardModuleBoard() {
     }
 
     function handleCategoryTabClick(index : number, categoryId : number) : void {
+        console.log("handleCategoryTabClick index:" + index + " categoryId: " + categoryId)
         setActiveCategoryTab(index)
         setCurrentUserCategoryId(categoryId)
     }

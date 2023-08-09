@@ -27,7 +27,6 @@ export default function EditButton(props: Props) {
                     transition duration-300 ease-in-out hover:scale-110
                     "
                     >
-                        {/*hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600 dark:bg-gray-700 dark:hover:text-white*/}
                         <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                              xmlns="http://www.w3.org/2000/svg">
                             <path

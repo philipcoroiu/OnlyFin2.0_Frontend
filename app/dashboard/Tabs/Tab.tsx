@@ -20,7 +20,7 @@ export default function Tab(props: Props) {
                             :
                             "inline-block px-4 py-3 rounded-lg hover:text-gray-900 bg-gray-200 text-black dark:text-white dark:hover:bg-gray-600 dark:bg-gray-700 dark:hover:text-white "}`}
 
-                        onClick={() => props.handleTabClick(index, tab.id)}
+                        onClick={() => props.handleTabClick(index, tab.userCategoryId || tab.id)}
                         aria-current="page">{tab.categoryName || tab.stock.name}
                     </button>
                 </li>
