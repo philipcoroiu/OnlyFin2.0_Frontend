@@ -13,7 +13,7 @@ export default function Tab(props: Props) {
         return (
             props.tabArray?.map((tab : any, index: number) => (
 
-                <li key={tab.userCategoryId || tab.id} className="mr-2">
+                <li key={tab.userCategoryId || tab.id} className="m-1">
                     <button
                         className={`${props.activeTab === index ?
                             "inline-block px-4 py-3 text-white bg-blue-600 font-bold rounded-lg active"

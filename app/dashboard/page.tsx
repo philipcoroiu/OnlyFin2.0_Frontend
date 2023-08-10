@@ -196,16 +196,18 @@ export default function dashboardModuleBoard() {
                 handleChangeCategoryNameModalClick={handleChangeCategoryNameModalClick}
             />
 
-                <div className="mx-auto
+                <div className="
+                mx-2
                 max-w-full
                 px-0 sm:px-4
-                py-10
+                py-4
+                lg:py-10
                 lg:px-10">
 
                     <div className="
                         rounded-[calc(1.5rem-1px)]
                         px-4 sm:px-10
-                        py-12
+                        py-4
                         bg-white
                         dark:bg-gray-900
                         dark:border-0

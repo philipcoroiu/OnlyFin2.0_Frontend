@@ -54,6 +54,8 @@ export default function StockTabs(props: Props) {
 
             <ul
                 className="flex
+                flex-wrap
+                lg:flex-nowrap
                 items-center
                 whitespace-nowrap
                 text-sm

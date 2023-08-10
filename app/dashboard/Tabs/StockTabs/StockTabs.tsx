@@ -45,6 +45,8 @@ export default function StockTabs(props: Props) {
             // ***********//
         <ul
             className="flex
+                flex-wrap
+                lg:flex-nowrap
                 items-center
                 whitespace-nowrap
                 text-sm
@@ -54,7 +56,8 @@ export default function StockTabs(props: Props) {
                 dark:text-gray-400
                 max-w-auto
                 overflow-x-auto
-                scrollbar-none">
+                scrollbar-none
+                ">
 
 
             {props.userStockArray ? renderStockTabs() : renderLoadingTabs()}
