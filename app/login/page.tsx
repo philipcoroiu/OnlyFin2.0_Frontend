@@ -6,6 +6,7 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 import React, {useState} from "react";
 import InputField from "@/app/register/components/InputField";
 import Script from "next/script";
+import Turnstile, {useTurnstile} from "react-turnstile";
 
 export default function Login() {
     const searchParams = useSearchParams()
@@ -13,8 +14,21 @@ export default function Login() {
 
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const [turnstileToken, setTurnstileToken] = useState<string>();
 
     const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false)
+
+
+    function TurnstileWidget() {
+        const turnstile = useTurnstile();
+        return (
+            <Turnstile
+                sitekey="0x4AAAAAAAImh0f7n4mAhXgr"
+                onVerify={(token) => setTurnstileToken(token)}
+            />
+        );
+    }
+
 
     function handleEmailChange(event: any) {
         setEmail(event.target.value.toLowerCase());
@@ -31,7 +45,7 @@ export default function Login() {
     function handleSubmit(event: any) {
         event.preventDefault()
 
-        ApiCalls.postLoginPlz(email, password)
+        ApiCalls.postLoginPlz(email, password, turnstileToken)
             .then(response => {
                 if (response) {
                     window.location.href = redirectParam ? `/${redirectParam}` : '/dashboard'
@@ -102,10 +116,9 @@ export default function Login() {
                         </div>
                     )}
 
-                    {/*Cloudflare Script
-                    <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></Script>
+                    {/*Cloudflare check*/}
+                    {TurnstileWidget()}
 
-                    <div className="cf-turnstile" data-sitekey="0x4AAAAAAAImh0f7n4mAhXgr"></div>*/}
 
                     <button
                         className="
