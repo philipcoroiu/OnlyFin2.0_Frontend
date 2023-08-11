@@ -15,7 +15,7 @@ export default function register() {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [repeatPassword, setRepeatPassword] = useState<string>('')
-    const [cloudflareToken, setCloudflareToken] = useState<string>();
+    const [turnstileToken, setTurnstileToken] = useState<string>();
 
     // Error handling:
     const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false)
@@ -29,7 +29,7 @@ export default function register() {
         return (
             <Turnstile
                 sitekey="0x4AAAAAAAImh0f7n4mAhXgr"
-                onVerify={(token) => setCloudflareToken(token)}
+                onVerify={(token) => setTurnstileToken(token)}
             />
         );
     }
@@ -61,7 +61,7 @@ export default function register() {
         setErrorType('');
 
         setLoading(true);
-        ApiCalls.registerNewUser(email, username, password, cloudflareToken)
+        ApiCalls.registerNewUser(email, username, password, turnstileToken)
             .then(response => {
                 router.push("/login/")
             })

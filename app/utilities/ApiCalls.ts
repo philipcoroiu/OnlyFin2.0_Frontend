@@ -70,14 +70,14 @@ export class ApiCalls {
         )
     }
 
-    public static async registerNewUser(email: string, username: string, password: string, cloudflareToken: string | undefined): Promise<axios.AxiosResponse> {
+    public static async registerNewUser(email: string, username: string, password: string, turnstileToken: string | undefined): Promise<AxiosResponse> {
         return axiosInstance.post(
             "/users/register",
             {
                 email: email,
                 username: username,
                 password: password,
-                cloudflareToken: cloudflareToken
+                turnstileToken: turnstileToken
             },
             {
                 headers: {'Content-Type': 'application/json'},
