@@ -23,7 +23,6 @@ export default function register() {
     const [errorType, setErrorType] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
 
-
     function TurnstileWidget() {
         const turnstile = useTurnstile();
         return (
@@ -33,7 +32,6 @@ export default function register() {
             />
         );
     }
-
 
     function handleSubmit(event: any) {
         event.preventDefault()
@@ -82,7 +80,7 @@ export default function register() {
     }
 
     function checkPassword() {
-        // Check if password is longer than 8 characters.
+        // Check if the password is longer than 8 characters.
 
         if (password.length < 8) {
             setShowErrorMessage(true);
@@ -96,7 +94,6 @@ export default function register() {
             return null;
         }
         return true;
-
     }
 
     function handleEmailChange(event: any) {
@@ -115,7 +112,6 @@ export default function register() {
         setRepeatPassword(event.target.value)
     }
 
-    //TODO: change dark mode text input to be a readable color
     return (
         <div className="
         mx-auto
@@ -125,8 +121,6 @@ export default function register() {
         lg:py-56
         p-12
         ">
-
-
                 <div className="
                     rounded-[calc(1.5rem-1px)]
                     border-2
@@ -134,7 +128,6 @@ export default function register() {
                     bg-white
                     px-10 p-12
                     dark:bg-gray-900">
-
                     <div>
                         <h1 className="text-xl font-semibold text-gray-800 dark:text-white">Register an account</h1>
                         <p className="text-sm tracking-wide text-gray-600 dark:text-gray-300">
@@ -145,8 +138,6 @@ export default function register() {
                             </Link>
                         </p>
                     </div>
-
-                   
 
                     <form className="mt-8 space-y-6 flex flex-col items-center" onSubmit={handleSubmit}>
                             {/*Username*/}
@@ -192,12 +183,7 @@ export default function register() {
                             </div>
                         </div>}
 
-                        {/*Cloudflare Script
-                        <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></Script>
-
-                        <div className="cf-turnstile" data-sitekey="0x4AAAAAAAImh0f7n4mAhXgr"></div>*/}
                         {TurnstileWidget()}
-
 
                         <button
                             className="
