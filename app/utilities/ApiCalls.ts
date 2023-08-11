@@ -21,9 +21,9 @@ export class ApiCalls {
         return axiosInstance.post(
             "/plz",
             {
-                username:email,
-                password:password,
-                turnstileToken:turnstileToken
+                username: email,
+                password: password,
+                turnstileToken: turnstileToken
             },
             {
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
