@@ -18,7 +18,6 @@ export default function Login() {
 
     const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false)
 
-
     function TurnstileWidget() {
         const turnstile = useTurnstile();
         return (
@@ -28,7 +27,6 @@ export default function Login() {
             />
         );
     }
-
 
     function handleEmailChange(event: any) {
         setEmail(event.target.value.toLowerCase());
@@ -62,9 +60,7 @@ export default function Login() {
     function displayErrorMessage() {
         /* sets the showErrorMessage to true to show the error messages */
         setShowErrorMessage(true);
-
     }
-
 
     return (
         <div className="
@@ -94,7 +90,7 @@ export default function Login() {
                     </p>
                 </div>
 
-                <form className="mt-8 space-y-6 flex flex-col items-center" onClick={handleSubmit}>
+                <form className="mt-8 space-y-6 flex flex-col items-center" onSubmit={handleSubmit}>
 
                     {/*Email*/}
                     <InputField error={undefined} errorType={""} inputName={"Email"} inputValue={email} inputType={"email"} onChange={handleEmailChange}></InputField>
@@ -118,7 +114,6 @@ export default function Login() {
 
                     {/*Cloudflare check*/}
                     {TurnstileWidget()}
-
 
                     <button
                         className="
