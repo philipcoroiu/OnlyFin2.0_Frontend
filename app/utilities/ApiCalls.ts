@@ -17,14 +17,11 @@ export class ApiCalls {
      *                              *
      ********************************
      */
-    public static async postLoginPlz(email: string, password: string, turnstileToken: string | undefined): Promise<AxiosResponse> {
+
+    public static async postLoginPlz(email: string, password: string): Promise<AxiosResponse> {
         return axiosInstance.post(
             "/plz",
-            {
-                username: email,
-                password: password,
-                turnstileToken: turnstileToken
-            },
+            `username=${email}&password=${password}`,
             {
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 withCredentials: true

@@ -6,7 +6,6 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 import React, {useState} from "react";
 import InputField from "@/app/register/components/InputField";
 import Script from "next/script";
-import Turnstile, {useTurnstile} from "react-turnstile";
 
 export default function Login() {
     const searchParams = useSearchParams()
@@ -14,19 +13,8 @@ export default function Login() {
 
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const [turnstileToken, setTurnstileToken] = useState<string>();
 
     const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false)
-
-    function TurnstileWidget() {
-        const turnstile = useTurnstile();
-        return (
-            <Turnstile
-                sitekey="0x4AAAAAAAImh0f7n4mAhXgr"
-                onVerify={(token) => setTurnstileToken(token)}
-            />
-        );
-    }
 
     function handleEmailChange(event: any) {
         setEmail(event.target.value.toLowerCase());
@@ -43,7 +31,7 @@ export default function Login() {
     function handleSubmit(event: any) {
         event.preventDefault()
 
-        ApiCalls.postLoginPlz(email, password, turnstileToken)
+        ApiCalls.postLoginPlz(email, password)
             .then(response => {
                 if (response) {
                     window.location.href = redirectParam ? `/${redirectParam}` : '/dashboard'
@@ -60,7 +48,9 @@ export default function Login() {
     function displayErrorMessage() {
         /* sets the showErrorMessage to true to show the error messages */
         setShowErrorMessage(true);
+
     }
+
 
     return (
         <div className="
@@ -90,7 +80,7 @@ export default function Login() {
                     </p>
                 </div>
 
-                <form className="mt-8 space-y-6 flex flex-col items-center" onSubmit={handleSubmit}>
+                <form className="mt-8 space-y-6 flex flex-col items-center" onClick={handleSubmit}>
 
                     {/*Email*/}
                     <InputField error={undefined} errorType={""} inputName={"Email"} inputValue={email} inputType={"email"} onChange={handleEmailChange}></InputField>
@@ -112,8 +102,10 @@ export default function Login() {
                         </div>
                     )}
 
-                    {/*Cloudflare check*/}
-                    {TurnstileWidget()}
+                    {/*Cloudflare Script
+                    <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></Script>
+
+                    <div className="cf-turnstile" data-sitekey="0x4AAAAAAAImh0f7n4mAhXgr"></div>*/}
 
                     <button
                         className="

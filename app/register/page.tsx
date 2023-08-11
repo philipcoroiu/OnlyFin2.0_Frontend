@@ -183,7 +183,6 @@ export default function register() {
                             </div>
                         </div>}
 
-                        {/*Cloudflare check*/}
                         {TurnstileWidget()}
 
                         <button
