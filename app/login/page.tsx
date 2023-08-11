@@ -4,6 +4,8 @@ import Link from "next/link";
 import {useSearchParams} from "next/navigation";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import React, {useState} from "react";
+import InputField from "@/app/register/components/InputField";
+import Script from "next/script";
 
 export default function Login() {
     const searchParams = useSearchParams()
@@ -26,8 +28,8 @@ export default function Login() {
      * window.location.href is used here instead of Router.push() on purpose.
      * This is used to trigger a re-render of the Header component to get the version with the logged-in buttons.
      */
-    function handleSubmit() {
-
+    function handleSubmit(event: any) {
+        event.preventDefault()
 
         ApiCalls.postLoginPlz(email, password)
             .then(response => {
@@ -49,11 +51,6 @@ export default function Login() {
 
     }
 
-    const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.code === "Enter") {
-            handleSubmit()
-        }
-    };
 
     return (
         <div className="
@@ -83,54 +80,15 @@ export default function Login() {
                     </p>
                 </div>
 
-                <div className="mt-8 space-y-6">
-                    <div className="space-y-6">
-                        <input onKeyDown={keyDownHandler}
-                            className="
-                                w-full
-                                bg-transparent
-                                text-gray-600
-                                dark:text-white
-                                dark:border-gray-700
-                                rounded-md
-                                border
-                                border-gray-300
-                                px-3
-                                py-2
-                                text-sm
-                                placeholder-gray-600
-                                invalid:border-red-500
-                                dark:placeholder-gray-300"
-                               type="email"
-                               value={email}
-                               onChange={handleEmailChange}
-                               placeholder="Email"
-                               maxLength={50}
-                        />
+                <form className="mt-8 space-y-6 flex flex-col items-center" onClick={handleSubmit}>
 
-                        <input onKeyDown={keyDownHandler}
-                            className="
-                                w-full
-                                bg-transparent
-                                text-gray-600
-                                dark:text-white
-                                dark:border-gray-700
-                                rounded-md
-                                border
-                                border-gray-300
-                                px-3
-                                py-2
-                                text-sm
-                                placeholder-gray-600
-                                invalid:border-red-500
-                                dark:placeholder-gray-300"
-                               type="password"
-                               value={password}
-                               onChange={handlePasswordChange}
-                               placeholder="Password"
-                               maxLength={100}
-                        />
-                    </div>
+                    {/*Email*/}
+                    <InputField error={undefined} errorType={""} inputName={"Email"} inputValue={email} inputType={"email"} onChange={handleEmailChange}></InputField>
+
+                    {/*Password*/}
+                    <InputField error={undefined} errorType={""} inputName={"Password"} inputValue={password} inputType={"password"} onChange={handlePasswordChange}></InputField>
+
+
 
                     {showErrorMessage && (
                         <div className="
@@ -144,8 +102,12 @@ export default function Login() {
                         </div>
                     )}
 
+                    {/*Cloudflare Script
+                    <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></Script>
+
+                    <div className="cf-turnstile" data-sitekey="0x4AAAAAAAImh0f7n4mAhXgr"></div>*/}
+
                     <button
-                        onClick={handleSubmit}
                         className="
                                 h-10
                                 px-3
@@ -167,7 +129,7 @@ export default function Login() {
                     >
                         Login
                     </button>
-                </div>
+                </form>
             </div>
         </div>
     )

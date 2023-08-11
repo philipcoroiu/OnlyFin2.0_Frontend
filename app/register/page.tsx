@@ -4,20 +4,36 @@ import {useState} from "react";
 import Link from "next/link";
 import {useRouter} from "next/navigation";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
+import InputField from "@/app/register/components/InputField";
+import Turnstile, { useTurnstile } from "react-turnstile";
 
 export default function register() {
+
     const router = useRouter()
 
     const [username, setUsername] = useState<string>('')
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [repeatPassword, setRepeatPassword] = useState<string>('')
+    const [cloudflareToken, setCloudflareToken] = useState<string>();
 
     // Error handling:
     const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false)
     const [errorMessage, setErrorMessage] = useState<string>('')
     const [errorType, setErrorType] = useState<string>('')
     const [loading, setLoading] = useState<boolean>(false)
+
+
+    function TurnstileWidget() {
+        const turnstile = useTurnstile();
+        return (
+            <Turnstile
+                sitekey="0x4AAAAAAAImh0f7n4mAhXgr"
+                onVerify={(token) => setCloudflareToken(token)}
+            />
+        );
+    }
+
 
     function handleSubmit(event: any) {
         event.preventDefault()
@@ -45,7 +61,7 @@ export default function register() {
         setErrorType('');
 
         setLoading(true);
-        ApiCalls.registerNewUser(email, username, password)
+        ApiCalls.registerNewUser(email, username, password, cloudflareToken)
             .then(response => {
                 router.push("/login/")
             })
@@ -109,8 +125,7 @@ export default function register() {
         lg:py-56
         p-12
         ">
-            <form
-                onSubmit={handleSubmit}>
+
 
                 <div className="
                     rounded-[calc(1.5rem-1px)]
@@ -131,113 +146,25 @@ export default function register() {
                         </p>
                     </div>
 
-                    <div className="mt-8 space-y-6">
-                        <div className="space-y-6">
+                   
 
+                    <form className="mt-8 space-y-6 flex flex-col items-center" onSubmit={handleSubmit}>
                             {/*Username*/}
 
-                            <input className={`w-full
-                                bg-transparent
-                                text-gray-600
-                                dark:text-white
-                                rounded-md
-                                border
-                                px-3
-                                py-2
-                                text-sm
-                                placeholder-gray-600
-                                invalid:border-red-500
-                                dark:placeholder-gray-300
-                                ${errorType === "username" ? "border-red-500" : "dark:border-gray-700 border-gray-300"}
-                                `}
-
-                                   type="text"
-                                   id="username"
-                                   name="username"
-                                   value={username}
-                                   onChange={handleUsernameChange}
-                                   placeholder="Username"
-                                   maxLength={50}
-                            />
+                            <InputField error={errorType} errorType={"username"} inputName={"Username"} inputValue={username} inputType={"text"} onChange={handleUsernameChange}></InputField>
 
                             {/*Email*/}
 
-                            <input className={`w-full
-                                bg-transparent
-                                text-gray-600
-                                dark:text-white
-                                rounded-md
-                                border
-                                px-3
-                                py-2
-                                text-sm
-                                placeholder-gray-600
-                                invalid:border-red-500
-                                dark:placeholder-gray-300
-                                ${errorType === "email" ? "border-red-500" : "dark:border-gray-700 border-gray-300"}
-                                `}
-                                   type="email"
-                                   id="email"
-                                   name="email"
-                                   value={email}
-                                   onChange={handleEmailChange}
-                                   placeholder="Email"
-                                   maxLength={50}
-                            />
+                            <InputField error={errorType} errorType={"email"} inputName={"Email"} inputValue={email} inputType={"email"} onChange={handleEmailChange}></InputField>
 
                             {/*Password*/}
 
-                            <input className={`w-full
-                                bg-transparent
-                                text-gray-600
-                                dark:text-white
-                                rounded-md
-                                border
-                                px-3
-                                py-2
-                                text-sm
-                                placeholder-gray-600
-                                invalid:border-red-500
-                                dark:placeholder-gray-300
-                                ${errorType === "password" ? "border-red-500" : "dark:border-gray-700 border-gray-300"}
-                                `}
-
-                                   type="password"
-                                   id="password"
-                                   name="password"
-                                   value={password}
-                                   onChange={handlePasswordChange}
-                                   placeholder="Password"
-                                   maxLength={100}
-                            />
-
+                            <InputField error={errorType} errorType={"password"} inputName={"Password"} inputValue={password} inputType={"password"} onChange={handlePasswordChange}></InputField>
 
                             {/*Repeat Password*/}
 
-                            <input className={`w-full
-                                bg-transparent
-                                text-gray-600
-                                dark:text-white
-                                rounded-md
-                                border
-                                px-3
-                                py-2
-                                text-sm
-                                placeholder-gray-600
-                                invalid:border-red-500
-                                dark:placeholder-gray-300
-                                ${errorType === "password" ? "border-red-500" : "dark:border-gray-700 border-gray-300"}
-                                `}
+                            <InputField error={errorType} errorType={"password"} inputName={"Repeat password"} inputValue={repeatPassword} inputType={"password"} onChange={handleRepeatPasswordChange}></InputField>
 
-                                   type="password"
-                                   id="repeatPassword"
-                                   name="repeatPassword"
-                                   value={repeatPassword}
-                                   onChange={handleRepeatPasswordChange}
-                                   placeholder="Repeat Password"
-                                   maxLength={100}
-                            />
-                        </div>
 
                         {/*Error message*/}
 
@@ -265,6 +192,12 @@ export default function register() {
                             </div>
                         </div>}
 
+                        {/*Cloudflare Script
+                        <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></Script>
+
+                        <div className="cf-turnstile" data-sitekey="0x4AAAAAAAImh0f7n4mAhXgr"></div>*/}
+                        {TurnstileWidget()}
+
 
                         <button
                             className="
@@ -288,9 +221,8 @@ export default function register() {
                                 ">
                             Register
                         </button>
-                    </div>
+                    </form>
                 </div>
-            </form>
         </div>
     )
 }
