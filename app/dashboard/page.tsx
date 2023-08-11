@@ -75,7 +75,6 @@ export default function dashboardModuleBoard() {
     }
 
     function getUserCategoryTabs(userStockIDInput : number) {
-        console.log("userStockID: ", userStockIDInput)
         ApiCalls.fetchCategoriesAndModulesUnderUserStock(userStockIDInput)
             .then((response) => {
                 const stockTab: OnlyfinUserStockTab = response.data
@@ -106,7 +105,6 @@ export default function dashboardModuleBoard() {
     }
 
     function handleCategoryTabClick(index : number, categoryId : number) : void {
-        console.log("handleCategoryTabClick index:" + index + " categoryId: " + categoryId)
         setActiveCategoryTab(index)
         setCurrentUserCategoryId(categoryId)
     }
@@ -126,10 +124,8 @@ export default function dashboardModuleBoard() {
 
     {/* TODO: Move this function to a modal container component instead! */}
     function handleAddCategoryModalClick(addCategoryInputName : string) {
-        console.log(`You clicked on "New Category" with text: `, addCategoryInputName)
         ApiCalls.addCategory(currentUserStockId, addCategoryInputName)
             .then(() => {
-                console.log("Added category: ", addCategoryInputName)
                 setCategoryChange(true)
             })
     }
@@ -165,8 +161,6 @@ export default function dashboardModuleBoard() {
                 setStockEditButtonIsActive(false)
             })
 
-        //TODO: Delete console.log
-        console.log("pressed handleAddExistingStock, id: ", selectedStockId)
     }
 
     function handleAddCustomStock(stockName : string) {

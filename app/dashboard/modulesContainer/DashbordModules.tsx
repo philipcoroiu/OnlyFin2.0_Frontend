@@ -22,7 +22,6 @@ export default function DashboardModules(props: Props) {
     const [toggleButtonIsActive, setToggleButtonIsActive] = useState(false);
 
     function renderModules() {
-        console.log("props.userCategoryArray: ", props.userCategoryArray)
 
         if(!props.userCategoryArray) {
             return <div className={"w-20 h-20 bg-red-400"}>{renderLoadingAnimation()}</div>
@@ -81,16 +80,6 @@ export default function DashboardModules(props: Props) {
     }
 
     function updateLayout()  {
-        if (moduleLayout){
-            /*
-            moduleLayout.map((layoutData: any) => {
-                ApiCalls.updateModuleLayout(layoutData.i, layoutData.h, layoutData.w, layoutData.x, layoutData.y)
-                    .then(() => console.log("Saved new layout"))
-            })
-             */
-
-            //ApiCalls.updateModuleLayoutBatch(props.currentUserCategoryId, moduleLayout)
-
             if (moduleLayout && props.userCategoryArray && props.userCategoryArray[props.activeCategoryTab]) {
                 let moduleLayoutDTOS: ModuleLayoutUpdateBatchDTO[] = []
 
@@ -116,8 +105,6 @@ export default function DashboardModules(props: Props) {
 
             }
 
-            console.log("moduleLayout: ", moduleLayout)
-        }
     }
 
     function handleToggleButtonClick() {
