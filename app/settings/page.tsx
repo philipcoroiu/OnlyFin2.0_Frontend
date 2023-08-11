@@ -9,7 +9,8 @@ export default function Page() {
 
             <div className="flex-1
                 mx-2
-                bg-gray-700
+                bg-gray-50
+                dark:bg-gray-700
                 rounded
                 shadow-lg
                 p-4
