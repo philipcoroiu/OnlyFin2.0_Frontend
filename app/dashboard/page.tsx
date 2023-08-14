@@ -9,6 +9,9 @@ import StockEditModal from "@/app/dashboard/Tabs/StockTabs/StockEditModal";
 import CategoryEditModal from "@/app/dashboard/Tabs/CategoryTabs/CategoryEditModal";
 import {useRouter} from "next/navigation";
 import Avatar from "@/app/components/Avatar";
+import EmptyDashboardModal from "@/app/dashboard/components/GuideModalsContainer/EmptyDashboardModal";
+import MissingCategoryModal from "@/app/dashboard/components/GuideModalsContainer/MissingCategoryModal";
+import GuideModalsContainer from "@/app/dashboard/components/GuideModalsContainer/GuideModalsContainer";
 
 export default function dashboardModuleBoard() {
 
@@ -127,6 +130,7 @@ export default function dashboardModuleBoard() {
         ApiCalls.addCategory(currentUserStockId, addCategoryInputName)
             .then(() => {
                 setCategoryChange(true)
+                setCategoryEditButtonIsActive(false)
             })
     }
 
@@ -174,6 +178,12 @@ export default function dashboardModuleBoard() {
 
     return (
         <>
+
+            <GuideModalsContainer
+                userStockArray={userStockArray}
+                userCategoryArray={userCategoryArray}
+            />
+
             <StockEditModal
                 stockEditButtonIsActive={stockEditButtonIsActive}
                 handleStockEditButtonClick={handleStockEditButtonClick}

@@ -64,20 +64,20 @@ export default function PrimaryCategoryModal(props: Props) {
                                 <li>
                                     <button
                                         onClick={props.handleAddCategoryButtonPress}
-                                        className="flex w-full items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                        className="flex w-full items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-200 hover:bg-gray-300 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                                         <span className="flex-1 ml-3 whitespace-nowrap">Add Category</span>
                                     </button>
                                 </li>
                                 <li>
                                     <button onClick={props.removeSelectedCategory}
-                                            className="flex w-full items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                            className="flex w-full items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-200 hover:bg-gray-300 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                                         <span className="flex-1 ml-3 whitespace-nowrap">Remove Selected Category</span>
                                     </button>
                                 </li>
                                 <li>
                                     <button
                                         onClick={props.handleChangeCategoryNameButtonPress}
-                                        className="flex w-full items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
+                                        className="flex w-full items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-200 hover:bg-gray-300 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white">
                                         <span className="flex-1 ml-3 whitespace-nowrap">Change name</span>
                                     </button>
                                 </li>
