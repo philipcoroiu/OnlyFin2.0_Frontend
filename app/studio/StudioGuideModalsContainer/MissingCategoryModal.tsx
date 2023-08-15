@@ -3,7 +3,7 @@ import {router} from "next/client";
 import {useRouter} from "next/navigation";
 
 
-export default function EmptyStudioModal() {
+export default function MissingCategoryModal() {
 
     const router = useRouter()
 

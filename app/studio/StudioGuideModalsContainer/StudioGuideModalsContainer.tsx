@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import EmptyStudioModal from "@/app/studio/StudioGuideModalsContainer/EmptyStudioModal";
+import MissingCategoryModal from "@/app/studio/StudioGuideModalsContainer/MissingCategoryModal";
 
 
 type Props = {
@@ -15,7 +16,7 @@ export default function StudioGuideModalsContainer() {
     useEffect(() => {
         ApiCalls.fetchDashboardMetadata()
             .then((response) => {
-                console.log("response.data.userStockTabs[0]: ", response.data.userStockTabs[0])
+                //console.log("response.data.userStockTabs[0]: ", response.data.userStockTabs[0])
                 setUserStockTabs(response.data.userStockTabs)
             })
     }, [])
@@ -26,14 +27,15 @@ export default function StudioGuideModalsContainer() {
         let userHasNoCategoryInFirstStock: boolean |undefined
 
         if (userStockTabs) {
-            userHasNoCategoryInFirstStock = userStockTabs[0].categories.length === 0
+            //userHasNoCategoryInFirstStock = userStockTabs[0].categories.length === 0
         }
 
         //Previous declarations are only for semantics – ignore
         if(userStockTabs && userHasNoStocks) {
             return <EmptyStudioModal/>
         } else if(userStockTabs && userHasOneStock && userHasNoCategoryInFirstStock) {
-            return <EmptyStudioModal/>
+            //TODO: Should say: Category is needed
+            return <MissingCategoryModal/>
         }
     }
 

@@ -45,6 +45,8 @@ export default function StartField(props: Props) {
         setSelectedStockIndex(selectedStockIndex)
     }
 
+    console.log("userStockTabs: ", userStockTabs)
+
     function renderStockList() {
         // TODO: Add loading animation?
         if (!userStockTabs) {
