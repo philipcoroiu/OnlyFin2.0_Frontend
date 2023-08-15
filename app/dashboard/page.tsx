@@ -9,9 +9,9 @@ import StockEditModal from "@/app/dashboard/Tabs/StockTabs/StockEditModal";
 import CategoryEditModal from "@/app/dashboard/Tabs/CategoryTabs/CategoryEditModal";
 import {useRouter} from "next/navigation";
 import Avatar from "@/app/components/Avatar";
-import EmptyDashboardModal from "@/app/dashboard/components/GuideModalsContainer/EmptyDashboardModal";
-import MissingCategoryModal from "@/app/dashboard/components/GuideModalsContainer/MissingCategoryModal";
-import GuideModalsContainer from "@/app/dashboard/components/GuideModalsContainer/GuideModalsContainer";
+import EmptyDashboardModal from "@/app/dashboard/components/DashGuideModalsContainer/EmptyDashboardModal";
+import MissingCategoryModal from "@/app/dashboard/components/DashGuideModalsContainer/MissingCategoryModal";
+import DashGuideModalsContainer from "@/app/dashboard/components/DashGuideModalsContainer/DashGuideModalsContainer";
 
 export default function dashboardModuleBoard() {
 
@@ -179,7 +179,7 @@ export default function dashboardModuleBoard() {
     return (
         <>
 
-            <GuideModalsContainer
+            <DashGuideModalsContainer
                 userStockArray={userStockArray}
                 userCategoryArray={userCategoryArray}
             />

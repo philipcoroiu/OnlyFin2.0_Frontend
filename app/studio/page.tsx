@@ -6,6 +6,7 @@ import {useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import {useRouter} from "next/navigation";
 import ToolbarTable from "@/app/studio/toolbar/toolbarTable/ToolbarTable";
+import StudioGuideModalsContainer from "@/app/studio/StudioGuideModalsContainer/StudioGuideModalsContainer";
 export default function StudioPage() {
 
     const router = useRouter()
@@ -150,37 +151,68 @@ export default function StudioPage() {
         )
     }
 
-    {/*
-
-        <div className="h-max p-4 flex flex-col items-center justify-center">
-            <div className="flex md:flex-col gap-4 mb-4 w-full justify-center">
-                <div className="w-1/4 md:w-full bg-gray-600 rounded shadow-lg p-4 overflow-auto">
-                    {renderStudioPreviewChart()}
-                </div>
-                <div className="w-1/4 md:w-full bg-gray-600 rounded shadow-lg p-4 overflow-auto">
-                    {renderToolbar()}
-                </div>
-            </div>
-            <div className="w-1/2 md:w-full rounded bg-gray-600 overflow-auto p-4 resize">
-                {renderToolbarTable()}
-            </div>
-        </div>
-
-    */}
-
     return(
-        <div className="h-max p-4 flex flex-col items-center justify-center">
-            <div className="flex flex-col md:flex-row gap-4 mb-4 w-full justify-center">
-                <div className="xl:w-4/12 w-full bg-gray-600 rounded shadow-lg p-4 overflow-auto">
-                    {renderStudioPreviewChart()}
+        <>
+            <StudioGuideModalsContainer/>
+
+            <div className="h-max
+            p-4
+            flex
+            flex-col
+            items-center
+            justify-center">
+
+                <div className="flex
+                flex-col
+                md:flex-row
+                gap-4
+                mb-4
+                w-full
+                justify-center">
+
+                    <div className="xl:w-4/12
+                    w-full
+                    bg-white
+                    border-2
+                    border-blue-900
+                    dark:bg-gray-600
+                    rounded shadow-lg
+                    p-4
+                    overflow-auto">
+
+                        {renderStudioPreviewChart()}
+
+                    </div>
+                    <div className="xl:w-4/12
+                    w-full
+                    bg-white
+                    border-2
+                    border-blue-900
+                    dark:bg-gray-600
+                    rounded
+                    shadow-lg
+                    p-4
+                    overflow-auto">
+
+                        {renderToolbar()}
+
+                    </div>
                 </div>
-                <div className="xl:w-4/12 w-full bg-gray-600 rounded shadow-lg p-4 overflow-auto">
-                    {renderToolbar()}
+                <div className="xl:w-8/12
+                w-full
+                rounded
+                bg-white
+                border-2
+                border-blue-900
+                dark:bg-gray-600
+                overflow-auto
+                p-8
+                resize">
+
+                    {renderToolbarTable()}
+
                 </div>
             </div>
-            <div className="xl:w-8/12 w-full rounded bg-gray-600 overflow-auto p-8 resize">
-                {renderToolbarTable()}
-            </div>
-        </div>
+        </>
     )
 }

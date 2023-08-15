@@ -33,7 +33,7 @@ export default function Toolbar(props : Props) {
 
     return (
         <div className="space-y-4 h-max">
-            <div className="p-4 rounded bg-gray-700 space-y-2 h-max">
+            <div className="p-4 rounded dark:bg-gray-700 space-y-2 h-max">
                 <StartField
                     handleChartTitleChange={props.handleChartTitleChange}
                     handleChartSelectChange={props.handleChartSelectChange}
