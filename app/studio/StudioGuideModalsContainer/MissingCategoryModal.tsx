@@ -48,7 +48,7 @@ export default function MissingCategoryModal() {
                             {/* Modal Header */}
                             <div className="px-6 py-4 border-b rounded-t dark:border-gray-600">
                                 <h3 className="text-base font-semibold text-gray-900 lg:text-xl dark:text-white">
-                                    Your dashboard is empty
+                                    Almost there
                                 </h3>
                             </div>
                             {/* Modal Body */}
@@ -56,6 +56,9 @@ export default function MissingCategoryModal() {
                                 <p className="text-sm font-normal text-gray-500 dark:text-gray-400">It looks like you
                                     haven't added a stock to the dashboard. Without it you won't be able to publish your
                                     chart.
+                                    <br/>
+                                    <br/>
+                                    <b>What is a category?</b> <br/>Some examples are: Financials, Sales by segment, Competitors... <br/>
                                 </p>
                                 <ul className="my-4 space-y-3">
                                     <li>

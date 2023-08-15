@@ -26,14 +26,24 @@ export default function StudioGuideModalsContainer() {
         const userHasOneStock: boolean | undefined = userStockTabs?.length === 1
         let userHasNoCategoryInFirstStock: boolean |undefined
 
+        let userHasNoCategories: boolean = true
+
         if (userStockTabs) {
             //userHasNoCategoryInFirstStock = userStockTabs[0].categories.length === 0
         }
 
+        console.log("userStockTabs: ", userStockTabs)
+
+        userStockTabs?.map((stock) => {
+            if(stock.categories.length > 0) {
+                userHasNoCategories = false
+            }
+        })
+
         //Previous declarations are only for semantics – ignore
         if(userStockTabs && userHasNoStocks) {
             return <EmptyStudioModal/>
-        } else if(userStockTabs && userHasOneStock && userHasNoCategoryInFirstStock) {
+        } else if(userStockTabs && userHasNoCategories) {
             //TODO: Should say: Category is needed
             return <MissingCategoryModal/>
         }

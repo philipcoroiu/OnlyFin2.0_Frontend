@@ -54,7 +54,7 @@ export default function EmptyStudioModal() {
                             {/* Modal Body */}
                             <div className="p-6">
                                 <p className="text-sm font-normal text-gray-500 dark:text-gray-400">It looks like you
-                                    haven't added a stock to the dashboard. Without it you won't be able to publish your
+                                    haven't added a category to the dashboard. Without it you won't be able to publish your
                                     chart.
                                 </p>
                                 <ul className="my-4 space-y-3">
