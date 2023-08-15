@@ -24,16 +24,24 @@ export default function StartField(props: Props) {
 
     const [userStockTabs, setUserStockTabs] = useState<OnlyfinUserStockTab[]>();
 
+    const [userHasStocks, setUserHasStocks] = useState(false)
+
     useEffect(() => {
         ApiCalls.fetchDashboardMetadata()
             .then((response) => {
-                const renderedCategoryId: number = response.data.userStockTabs[0].categories[0].userCategoryId
+                const firstCategoryId = response.data?.userStockTabs?.[0]?.categories?.[0]?.userCategoryId ?? -1;
+
+                if(response.data?.userStockTabs?.[0]?.categories?.[0]?.userCategoryId) {
+                    setUserHasStocks(true)
+                }
 
                 setUserStockTabs(response.data.userStockTabs)
-                props.handleCategoryIdChoice(renderedCategoryId)
+                props.handleCategoryIdChoice(firstCategoryId)
 
             })
             .catch(error => {
+                console.log("Error ZZZZZ: ", error)
+
                 if (error.response?.status === 401) {
                     router.push("/login?redirect=studio")
                 }
@@ -45,14 +53,15 @@ export default function StartField(props: Props) {
         setSelectedStockIndex(selectedStockIndex)
     }
 
-    console.log("userStockTabs: ", userStockTabs)
+
 
     function renderStockList() {
         // TODO: Add loading animation?
         if (!userStockTabs) {
+            console.log("userStockTabs xxxx: ", userStockTabs)
             return <option>Loading...</option>;
         } else {
-            return userStockTabs.map((stockTab: OnlyfinUserStockTab, index : number) => {
+            return userStockTabs.map((stockTab: OnlyfinUserStockTab) => {
                 return (
                     <option
                         value={stockTab.userStockId}
@@ -69,17 +78,17 @@ export default function StartField(props: Props) {
     function renderCategoryList() {
         if(!userStockTabs) {
             return <option>Loading...</option>
-        } else {
-            return(
-                userStockTabs[selectedStockIndex].categories.map((category: OnlyfinUserCategoryTab) => {
-                    return (<option
-                        key={category.userCategoryId}
-                        value={category.userCategoryId}
-                    >
-                        {category.categoryName}
-                    </option>)
-                })
-            )
+        }
+
+        if(userHasStocks) {
+            userStockTabs[selectedStockIndex].categories.map((category: OnlyfinUserCategoryTab) => {
+                return (<option
+                    key={category.userCategoryId}
+                    value={category.userCategoryId}
+                >
+                    {category.categoryName}
+                </option>)
+            })
         }
     }
 
@@ -153,7 +162,8 @@ export default function StartField(props: Props) {
                     dark:focus:border-blue-500"
                 >
 
-                    {renderCategoryList()}
+                    {userHasStocks && renderCategoryList()}
+
                 </select>
             </>
         )
