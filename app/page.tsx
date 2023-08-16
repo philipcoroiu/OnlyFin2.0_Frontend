@@ -1,4 +1,5 @@
 import Link from "next/link";
+import StartPageBanner from "./components/StartPageBanner"
 
 export default function App() {
     return (
@@ -65,6 +66,9 @@ export default function App() {
                     </Link>
                 </div>
             </div>
+
+            {/* <StartPageBanner/> */}
+            
         </main>
     )
 }
