@@ -110,18 +110,11 @@ export default function DashboardModules(props: Props) {
     function renderPlaceholderModule() {
         return(
             <Link href={"/studio"}>
-                <button
-                    className="aspect-h-1
-                                            aspect-w-1
-                                            w-full
-                                            overflow-hidden
-                                            rounded-lg
-                                            bg-gray-600
-                                            xl:aspect-h-8
-                                            xl:aspect-w-7">
+                <button className="w-full py-20 text-gray-800 bg-white border-4 border-dashed border-blue-400 hover:bg-blue-50  transition-all duration-300 rounded-lg">
                     Create your first graph here
                 </button>
             </Link>
+
         )
     }
 
