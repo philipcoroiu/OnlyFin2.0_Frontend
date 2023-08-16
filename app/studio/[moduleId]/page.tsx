@@ -180,14 +180,14 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
     return(
         <div className="h-max p-4 flex flex-col items-center justify-center">
             <div className="flex flex-col md:flex-row gap-4 mb-4 w-full justify-center">
-                <div className="xl:w-4/12 w-full bg-gray-600 rounded shadow-lg p-4 overflow-auto">
+                <div className="xl:w-4/12 w-full bg-white dark:bg-gray-600 border-2 border-blue-900 dark:border-0 rounded shadow-lg p-4 overflow-auto">
                     {renderStudioPreviewChart()}
                 </div>
-                <div className="xl:w-4/12 w-full bg-gray-600 rounded shadow-lg p-4 overflow-auto">
+                <div className="xl:w-4/12 w-full bg-white dark:bg-gray-600 border-2 border-blue-900 dark:border-0 rounded shadow-lg p-4 overflow-auto">
                     {renderToolbar()}
                 </div>
             </div>
-            <div className="xl:w-8/12 w-full rounded bg-gray-600 overflow-auto p-8 resize">
+            <div className="xl:w-8/12 w-full rounded bg-white dark:bg-gray-600 border-2 border-blue-900 dark:border-0 overflow-auto p-8 resize">
                 {renderToolbarTable()}
             </div>
         </div>

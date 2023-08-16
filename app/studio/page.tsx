@@ -177,6 +177,7 @@ export default function StudioPage() {
                     bg-white
                     border-2
                     border-blue-900
+                    dark:border-0
                     dark:bg-gray-600
                     rounded shadow-lg
                     p-4
@@ -189,6 +190,7 @@ export default function StudioPage() {
                     w-full
                     bg-white
                     border-2
+                    dark:border-0
                     border-blue-900
                     dark:bg-gray-600
                     rounded
@@ -205,6 +207,7 @@ export default function StudioPage() {
                 rounded
                 bg-white
                 border-2
+                dark:border-0
                 border-blue-900
                 dark:bg-gray-600
                 overflow-auto

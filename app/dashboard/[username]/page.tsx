@@ -78,7 +78,11 @@ export default function dashboardModuleBoard({params}: { params: { username: str
                     py-10
                     overflow-y-auto
                     rounded-lg
-                    bg-gray-700">
+                    bg-white
+                    border-2
+                    border-blue-900
+                    dark:border-0
+                    dark:bg-gray-700">
 
                     <div className={"flex items-center text-center mb-4  justify-center sm:justify-start"}>
                         <div className={"w-16 h-16"}>
