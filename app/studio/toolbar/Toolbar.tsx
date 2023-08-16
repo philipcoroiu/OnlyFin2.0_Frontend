@@ -36,6 +36,16 @@ export default function Toolbar(props : Props) {
         return props.currentCategoryId !== -1;
     }
 
+    function renderTooltip() {
+        if(!submitButtonIsActive()) {
+            return (
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full  p-2 bg-black text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Stock or category is empty
+                </div>
+            )
+        }
+    }
+
     return (
         <div className="space-y-4 h-max">
             <div className="p-4 rounded dark:bg-gray-700 space-y-2 h-max">
@@ -77,9 +87,8 @@ export default function Toolbar(props : Props) {
                     `}>{props.isEditPage ? "Update" : "Submit"}
                 </button>
 
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full  p-2 bg-black text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    Stock or category is empty
-                </div>
+                {renderTooltip()}
+
             </div>
 
             {props.isEditPage &&
