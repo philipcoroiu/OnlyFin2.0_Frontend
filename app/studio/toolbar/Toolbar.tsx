@@ -19,7 +19,8 @@ type Props = {
     xAxisTitle?: string | undefined,
     isEditPage?: boolean,
     handleUpdateModule?: () => void,
-    handleDeleteModule?: () => void
+    handleDeleteModule?: () => void,
+    currentCategoryId?: number
 }
 
 export default function Toolbar(props : Props) {
@@ -29,6 +30,10 @@ export default function Toolbar(props : Props) {
         } else {
             props.handleSubmit()
         }
+    }
+
+    function submitButtonIsActive() {
+        return props.currentCategoryId !== -1;
     }
 
     return (
@@ -49,10 +54,33 @@ export default function Toolbar(props : Props) {
                 />
             </div>
 
-            <button
-                onClick={handleSubmit}
-                className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">{props.isEditPage ? "Update" : "Submit"}
-            </button>
+            <div className={"relative group"}>
+                <button
+                    onClick={handleSubmit}
+                    disabled={!submitButtonIsActive()}
+                    className={`w-full 
+                    text-white 
+                    bg-blue-700 
+                    hover:bg-blue-800 
+                    focus:ring-4 
+                    focus:ring-blue-300 
+                    font-medium 
+                    rounded-lg 
+                    text-sm 
+                    px-5 
+                    py-2.5 
+                    dark:bg-blue-600 
+                    dark:hover:bg-blue-700 
+                    focus:outline-none 
+                    dark:focus:ring-blue-800
+                    ${submitButtonIsActive() ? '' : 'opacity-50 cursor-not-allowed'}
+                    `}>{props.isEditPage ? "Update" : "Submit"}
+                </button>
+
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-full  p-2 bg-black text-white text-xs rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Stock or category is empty
+                </div>
+            </div>
 
             {props.isEditPage &&
                 <button

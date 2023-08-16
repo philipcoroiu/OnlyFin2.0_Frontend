@@ -92,6 +92,7 @@ export default function StudioPage() {
     }
 
     function handleCategoryIdChoice(categoryIdChoice: number) {
+        console.log("XXXXXXXXXXXXX Selected category value: ", categoryIdChoice, " XXXXXXXXXXXX")
         setCurrentCategoryId(categoryIdChoice)
     }
 
@@ -133,6 +134,7 @@ export default function StudioPage() {
                 handleXaxisChange={handleXaxisTitleChange}
                 handleSubmit={handleSubmit}
                 handleCategoryIdChoice={handleCategoryIdChoice}
+                currentCategoryId={currentCategoryId}
             />
         )
     }

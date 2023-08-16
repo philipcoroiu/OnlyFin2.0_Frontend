@@ -31,7 +31,8 @@ export default function StartField(props: Props) {
             .then((response) => {
                 const firstCategoryId = response.data?.userStockTabs?.[0]?.categories?.[0]?.userCategoryId ?? -1;
 
-                if(response.data?.userStockTabs?.[0]?.categories?.[0]?.userCategoryId) {
+                if(response.data?.userStockTabs.length > 0) {
+                    console.log("XXXXXXXXXX user has stocks")
                     setUserHasStocks(true)
                 }
 
@@ -46,11 +47,23 @@ export default function StartField(props: Props) {
                     router.push("/login?redirect=studio")
                 }
             })
+
+
     }, [])
 
     function handleStockSelect(event : any) {
         const selectedStockIndex = event.target.selectedIndex;
         setSelectedStockIndex(selectedStockIndex)
+
+        const currentStockHasCategories : boolean =
+            (userStockTabs?.[selectedStockIndex]?.categories?.length || 0) > 0;
+
+        if(userStockTabs && currentStockHasCategories) {
+            const firstCategoryId: number = userStockTabs[selectedStockIndex].categories[0].userCategoryId;
+            props.handleCategoryIdChoice(firstCategoryId)
+        } else {
+            props.handleCategoryIdChoice(-1)
+        }
     }
 
 
@@ -71,17 +84,11 @@ export default function StartField(props: Props) {
         }
     }
 
-    function handleStockChoice(stockChoice : number) {
-        setSelectedStockIndex(stockChoice)
-    }
-
     function renderCategoryList() {
         if(!userStockTabs) {
             return <option>Loading...</option>
-        }
-
-        if(userHasStocks) {
-            userStockTabs[selectedStockIndex].categories.map((category: OnlyfinUserCategoryTab) => {
+        } else if (userHasStocks) {
+            return userStockTabs[selectedStockIndex].categories.map((category: OnlyfinUserCategoryTab) => {
                 return (<option
                     key={category.userCategoryId}
                     value={category.userCategoryId}
@@ -162,7 +169,7 @@ export default function StartField(props: Props) {
                     dark:focus:border-blue-500"
                 >
 
-                    {userHasStocks && renderCategoryList()}
+                    {renderCategoryList()}
 
                 </select>
             </>
