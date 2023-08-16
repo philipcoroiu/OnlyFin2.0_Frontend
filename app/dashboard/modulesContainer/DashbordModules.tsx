@@ -140,7 +140,7 @@ export default function DashboardModules(props: Props) {
                             </div>
                         </div>
                     </div>
-                    
+
                 </button>
             </Link>
 
@@ -183,10 +183,19 @@ export default function DashboardModules(props: Props) {
         setToggleButtonIsActive((prevState) => !prevState)
     }
 
+    function toggleButtonShouldRender() {
+        const shouldRenderToggleButton =
+            !props.isProfileDashboard &&
+            userHasCategory &&
+            categoryHasModule;
+
+        return shouldRenderToggleButton
+    }
+
     return (
         <div className="">
 
-            {!props.isProfileDashboard &&
+            {toggleButtonShouldRender() &&
                 <ToggleButton
                     handleToggleButtonClick={handleToggleButtonClick}
                 />}
