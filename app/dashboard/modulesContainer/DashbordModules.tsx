@@ -110,7 +110,19 @@ export default function DashboardModules(props: Props) {
     function renderPlaceholderModule() {
         return(
             <Link href={"/studio"}>
-                <button className="w-full py-20 text-gray-800 bg-white border-4 border-dashed border-blue-400 hover:bg-blue-50  transition-all duration-300 rounded-lg">
+                <button className="w-full py-20
+                text-gray-800
+                dark:text-white
+                bg-white
+                dark:bg-gray-900
+                border-4
+                border-dashed
+                border-blue-400
+                hover:bg-blue-50
+                dark:hover:bg-gray-800
+                transition-all
+                duration-300
+                rounded-lg">
                     Create your first graph here
                 </button>
             </Link>
