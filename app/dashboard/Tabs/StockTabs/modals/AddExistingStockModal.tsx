@@ -31,7 +31,7 @@ export default function AddExistingStockModal(props: Props) {
 
             //TODO: Add loading animation
             return (
-                <p>Loading...</p>
+                <p className={"ml-10"}>Loading...</p>
             )
         }
 

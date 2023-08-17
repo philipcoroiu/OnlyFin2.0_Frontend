@@ -141,6 +141,7 @@ export default function DashboardModules(props: Props) {
                         </div>
                     </div>
 
+                    <p className={"mt-4 text-white"}>Create a chart</p>
                 </button>
             </Link>
 
