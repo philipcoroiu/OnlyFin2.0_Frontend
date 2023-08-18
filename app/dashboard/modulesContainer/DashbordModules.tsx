@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, {useEffect, useState} from 'react';
-import { Layout, Responsive, WidthProvider } from 'react-grid-layout';
+import {Layout, Responsive, WidthProvider} from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import Module from "@/app/dashboard/modulesContainer/Module";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
@@ -169,13 +169,12 @@ export default function DashboardModules(props: Props) {
         setToggleButtonIsActive((prevState) => !prevState)
     }
 
-    function toggleButtonShouldRender() {
-        const shouldRenderToggleButton =
+    function toggleButtonShouldRender(): boolean {
+        return (
             !props.isProfileDashboard &&
             userHasCategory &&
-            categoryHasModule;
-
-        return shouldRenderToggleButton
+            categoryHasModule
+        )
     }
 
     return (

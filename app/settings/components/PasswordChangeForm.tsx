@@ -63,7 +63,7 @@ export default function PasswordChangeForm() {
             setLoading(true)
 
             ApiCalls.changePassword(oldPassword, newPassword)
-                .then(response => {
+                .then(() => {
                     setLoading(false)
                     setShowPasswordChangeForm(false)
 

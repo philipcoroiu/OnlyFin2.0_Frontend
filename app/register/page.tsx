@@ -61,7 +61,7 @@ export default function register() {
         setLoading(true)
 
         ApiCalls.registerNewUser(email, username, password, turnstileToken)
-            .then(response => {
+            .then(() => {
                 router.push("/login/")
             })
             .catch(error => {

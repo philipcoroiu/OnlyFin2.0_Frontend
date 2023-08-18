@@ -4,12 +4,13 @@ import {useEffect, useState} from "react";
 import SearchDropDownMenu from "@/app/explore/components/SearchDropDownMenu";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import SearchResult from "@/app/explore/components/SearchResult";
-import {Layout, Responsive, WidthProvider} from "react-grid-layout";
+//import {Layout, Responsive, WidthProvider} from "react-grid-layout";
 
 export default function Explore() {
 
-    const ResponsiveGridLayout = WidthProvider(Responsive)
+    //const ResponsiveGridLayout = WidthProvider(Responsive)
 
+    /*
     const layouts: {lg: Layout[]} = {
         lg: [
             {i: '1', x: 0, y: 0, w: 1, h: 2},
@@ -17,6 +18,7 @@ export default function Explore() {
             {i: '3', x: 4, y: 0, w: 1, h: 2},
         ],
     };
+     */
 
     const [dropdownButtonIsClicked, setDropdownButtonIsClicked] = useState(false);
     const [dropdownChoice, setDropdownChoice] = useState("Users");

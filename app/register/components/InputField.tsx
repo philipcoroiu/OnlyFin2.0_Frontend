@@ -6,9 +6,10 @@ type Props = {
     inputType: string,
     onChange(event: any):void
 }
+
 export default function InputField(props:Props) {
 
-    return(
+    return (
         <input className={`w-full
                                 bg-transparent
                                 text-gray-600

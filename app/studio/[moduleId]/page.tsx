@@ -6,6 +6,7 @@ import {useEffect, useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import {useRouter} from "next/navigation";
 import ToolbarTable from "@/app/studio/toolbar/toolbarTable/ToolbarTable";
+
 export default function StudioPage({params}: { params: { moduleId: string } }) {
 
     const router = useRouter()

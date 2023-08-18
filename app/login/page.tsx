@@ -39,7 +39,7 @@ export default function Login() {
                     displayErrorMessage()
                 }
             })
-            .catch(error => {
+            .catch(() => {
                 displayErrorMessage()
             })
     }

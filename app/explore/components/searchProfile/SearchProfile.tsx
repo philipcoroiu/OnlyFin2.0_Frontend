@@ -24,7 +24,7 @@ export default function SearchProfile(props: Props) {
 
     function subscribe() {
         ApiCalls.subscribe(props.username)
-            .then(response => {
+            .then(() => {
                 setSubscribed(true)
             })
             .catch(error => {
@@ -36,7 +36,7 @@ export default function SearchProfile(props: Props) {
 
     function unsubscribe() {
         ApiCalls.unsubscribe(props.username)
-            .then(response => {
+            .then(() => {
                 setSubscribed(false)
             })
             .catch(error => {

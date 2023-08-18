@@ -10,7 +10,6 @@ export default function App() {
                 sm:py-48
                 lg:py-56">
 
-
             <div className="text-center">
                 <h1 className="
                         text-4xl
@@ -38,7 +37,7 @@ export default function App() {
                         gap-6">
 
                     <Link
-                        href="/register"
+                        href={"/register"}
                         className="
                            text-white
                            bg-blue-700

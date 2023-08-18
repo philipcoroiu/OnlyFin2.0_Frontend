@@ -34,7 +34,7 @@ export default function MyProfile(props: Props) {
 
     function updateBio() {
         ApiCalls.updateAboutMe(aboutMeText)
-            .then(response => {
+            .then(() => {
                 toggleEdit()
             })
             .catch(error => {

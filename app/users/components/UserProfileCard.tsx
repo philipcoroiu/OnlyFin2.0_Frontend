@@ -45,7 +45,7 @@ export default function UserProfileCard(props: Props) {
 
     function subscribe() {
         ApiCalls.subscribe(props.username)
-            .then(response => {
+            .then(() => {
                 setSubscribed(true)
             })
             .catch(error => {

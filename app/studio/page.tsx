@@ -66,7 +66,7 @@ export default function StudioPage() {
     }
 
     function handleSubmit() {
-        const testChart = { chart: {
+        /* const testChart = { chart: {
             type: "column"
         },
         title: {
@@ -85,6 +85,7 @@ export default function StudioPage() {
         },
         series: [[2], [2]]
     }
+         */
 
         ApiCalls.addModule(currentCategoryId, 3,1,1,1,chartType, studioChart)
             .then(() => {

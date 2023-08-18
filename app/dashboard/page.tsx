@@ -127,7 +127,7 @@ export default function dashboardModuleBoard() {
             .then(() => {
                 setCategoryChange(true)
                 setCategoryEditButtonIsActive(false)
-            }).catch(error => {
+            }).catch(() => {
                 setCategoryEditButtonIsActive(false)
                 setErrorMessage("No stock selected")
                 setShowErrorMessage(true)
@@ -140,7 +140,7 @@ export default function dashboardModuleBoard() {
             .then(() => {
                 setCategoryChange(true)
                 setCategoryEditButtonIsActive(false)
-            }).catch(error => {
+            }).catch(() => {
                 setCategoryEditButtonIsActive(false)
                 setErrorMessage("No category selected")
                 setShowErrorMessage(true)
@@ -153,7 +153,7 @@ export default function dashboardModuleBoard() {
             .then(() => {
                 setCategoryChange(true)
                 setCategoryEditButtonIsActive(false)
-            }).catch(error => {
+            }).catch(() => {
                 setCategoryEditButtonIsActive(false)
                 setErrorMessage("No category selected")
                 setShowErrorMessage(true)
@@ -166,7 +166,7 @@ export default function dashboardModuleBoard() {
             .then(() => {
                 setStockChange(true)
                 setStockEditButtonIsActive(false)
-            }).catch(error => {
+            }).catch(() => {
                 setStockEditButtonIsActive(false)
                 setErrorMessage("No stock selected")
                 setShowErrorMessage(true)
