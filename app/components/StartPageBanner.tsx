@@ -1,8 +1,6 @@
 
 export default function startPageBanner() {
     return (
-
-
         <div id="bottom-banner"
              className="fixed bottom-0 left-0 z-50 flex justify-between w-full p-4 border-t border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
             <div className="flex items-center mx-auto">
@@ -17,6 +15,5 @@ export default function startPageBanner() {
                 </button>
             </div>
         </div>
-
     )
 }

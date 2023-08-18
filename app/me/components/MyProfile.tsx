@@ -7,7 +7,6 @@ import Avatar from "@/app/components/Avatar";
 type Props = { username: string }
 
 export default function MyProfile(props: Props) {
-
     const [aboutMeText, setAboutMeText] = useState<string>("")
     const [maxCharacter, setMaxCharacter] = useState<number>(2500)
 
@@ -56,7 +55,6 @@ export default function MyProfile(props: Props) {
         >
             {/*flex items-center flex-wrap justify-center bg-blue-950*/}
 
-
             <div className="w-24 h-24 mb-4">
                 <Avatar
                     username={props.username}
@@ -70,7 +68,6 @@ export default function MyProfile(props: Props) {
                     h-full
                     "
             >
-
                 {!editView ?
                     // Viewing mode
                     <div className="
@@ -82,7 +79,6 @@ export default function MyProfile(props: Props) {
                         <h1 className="text-xl font-bold my-1 break-words text-center">{props.username}</h1>
 
                         <p className="my-1 break-words ">{aboutMeText}</p>
-
 
                         <button
                             className="
@@ -108,10 +104,8 @@ export default function MyProfile(props: Props) {
                             Edit bio
                         </button>
                     </div>
-
                     :
                     // Edit mode
-
                     <>
                         <h1 className="text-xl font-bold my-1 break-words text-center">{props.username}</h1>
 
@@ -154,14 +148,11 @@ export default function MyProfile(props: Props) {
                                 >
                                     Update about me
                                 </button>
-
                             </div>
                         </div>
                     </>
                 }
-
             </div>
         </div>
     )
-
 }

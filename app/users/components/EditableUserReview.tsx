@@ -25,7 +25,8 @@ export default function EditableUserReview(props: Props) {
             .catch(error => {
                 if (error.response?.status === 404) {
                     setNoReviewExists(true)
-                } else {
+                }
+                else {
                     console.log("[MutableUserReview.getMyReview()]: " + error)
                 }
             })
@@ -38,7 +39,7 @@ export default function EditableUserReview(props: Props) {
 
     function handleSubmit() {
         ApiCalls.pushReview(props.targetUsername, userReviewText)
-            .then(response => {
+            .then(() => {
                 setNoReviewExists(false)
                 getMyReview()
             })

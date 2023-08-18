@@ -3,7 +3,6 @@ import React from "react";
 type Props = { handleToggleButtonClick(): void }
 
 export default function ToggleButton(props: Props) {
-
     return(
         <>
             <label className="relative inline-flex items-center cursor-pointer">

@@ -5,7 +5,6 @@ import 'react-grid-layout/css/styles.css';
 import Module from "@/app/dashboard/modulesContainer/Module";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import ToggleButton from "@/app/dashboard/components/ToggleButton";
-import {boolean} from "zod";
 
 type Props = {
     userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
@@ -14,44 +13,32 @@ type Props = {
     isProfileDashboard?: boolean
 }
 
-const ResponsiveGridLayout = WidthProvider(Responsive);
+const ResponsiveGridLayout = WidthProvider(Responsive)
 
 export default function DashboardModules(props: Props) {
+    const [moduleLayout, setModuleLayout] = useState<Layout[]>()
+    const [toggleButtonIsActive, setToggleButtonIsActive] = useState<boolean>(false)
 
-    const [moduleLayout, setModuleLayout] = useState<Layout[]>();
-    const [toggleButtonIsActive, setToggleButtonIsActive] = useState(false);
-    const [shouldRenderPlaceholderModule, setShouldRenderPlaceholderModule] = useState(true);
-
-    const [userHasCategory, setUserHasCategory] = useState(false)
-    const [categoryHasModule, setCategoryHasModule] = useState(false)
-
+    const [userHasCategory, setUserHasCategory] = useState<boolean>(false)
+    const [categoryHasModule, setCategoryHasModule] = useState<boolean>(false)
 
     useEffect(() => {
-        const hasUserCategoryArray = Boolean(props.userCategoryArray);
-        const hasActiveCategory = hasUserCategoryArray && Boolean(props.userCategoryArray?.[props.activeCategoryTab]);
-        const currentCategoryHasModules = hasActiveCategory && Boolean(props.userCategoryArray?.[props.activeCategoryTab].modules?.length);
+        const hasUserCategoryArray = Boolean(props.userCategoryArray)
+        const hasActiveCategory = hasUserCategoryArray && Boolean(props.userCategoryArray?.[props.activeCategoryTab])
+        const currentCategoryHasModules = hasActiveCategory && Boolean(props.userCategoryArray?.[props.activeCategoryTab].modules?.length)
 
         setUserHasCategory(hasActiveCategory)
         setCategoryHasModule(currentCategoryHasModules)
-
-        console.log("hasUserCategoryArray: ", hasUserCategoryArray)
-        console.log("hasActiveCategory: ", hasActiveCategory)
-        console.log("currentCategoryHasModules: ", currentCategoryHasModules)
-
     }, [props.userCategoryArray, props.activeCategoryTab])
 
-
-
     function renderDashboardContent() {
-
         if (userHasCategory && !categoryHasModule) {
             return renderPlaceholderModule()
         }
 
-        if(categoryHasModule) {
+        if (categoryHasModule) {
             return renderResponsiveGridLayout()
         }
-
     }
 
     function renderResponsiveGridLayout() {
@@ -76,7 +63,7 @@ export default function DashboardModules(props: Props) {
 
         const modulesAreAvailable = Boolean(props.userCategoryArray?.[props.activeCategoryTab]?.modules)
 
-        if(props.userCategoryArray && modulesAreAvailable) {
+        if (props.userCategoryArray && modulesAreAvailable) {
             return props.userCategoryArray[props.activeCategoryTab].modules.map((moduleData: OnlyfinModule) => (
                     <div
                         key={moduleData.id}
@@ -165,15 +152,13 @@ export default function DashboardModules(props: Props) {
                 })
 
                 ApiCalls.updateModuleLayoutBatch(props.userCategoryArray[props.activeCategoryTab].userCategoryId, moduleLayoutDTOS)
-                    .then(response => {
-                        console.log("[DashboardModules.tsx]: layout batch update commenced with great success")
+                    .then(() => {
+
                     })
                     .catch(error => {
                         console.log("[DashboardModules.tsx]: layout batch update failed: " + error)
                     })
-
             }
-
     }
 
     function handleToggleButtonClick() {

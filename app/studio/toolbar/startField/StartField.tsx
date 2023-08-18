@@ -32,7 +32,6 @@ export default function StartField(props: Props) {
                 const firstCategoryId = response.data?.userStockTabs?.[0]?.categories?.[0]?.userCategoryId ?? -1;
 
                 if(response.data?.userStockTabs.length > 0) {
-                    console.log("XXXXXXXXXX user has stocks")
                     setUserHasStocks(true)
                 }
 
@@ -41,17 +40,15 @@ export default function StartField(props: Props) {
 
             })
             .catch(error => {
-                console.log("Error ZZZZZ: ", error)
+                console.log("[studio/toolbar/startField.tsx]: " + error)
 
                 if (error.response?.status === 401) {
                     router.push("/login?redirect=studio")
                 }
             })
-
-
     }, [])
 
-    function handleStockSelect(event : any) {
+    function handleStockSelect(event: any) {
         const selectedStockIndex = event.target.selectedIndex;
         setSelectedStockIndex(selectedStockIndex)
 
@@ -65,8 +62,6 @@ export default function StartField(props: Props) {
             props.handleCategoryIdChoice(-1)
         }
     }
-
-
 
     function renderStockList() {
         // TODO: Add loading animation?
@@ -175,7 +170,6 @@ export default function StartField(props: Props) {
             </>
         )
     }
-
 
     return (
         <div className="space-y-4">

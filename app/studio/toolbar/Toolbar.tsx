@@ -1,7 +1,5 @@
-import ToolbarTable from "@/app/studio/toolbar/toolbarTable/ToolbarTable";
 import StartField from "@/app/studio/toolbar/startField/StartField";
 import {Dispatch, SetStateAction} from "react";
-import {boolean} from "zod";
 
 type Props = {
     handleChartTitleChange(event: any): void,
@@ -23,9 +21,9 @@ type Props = {
     currentCategoryId?: number
 }
 
-export default function Toolbar(props : Props) {
+export default function Toolbar(props: Props) {
     function handleSubmit() {
-        if(props.isEditPage && props.handleUpdateModule) {
+        if (props.isEditPage && props.handleUpdateModule) {
             props.handleUpdateModule()
         } else {
             props.handleSubmit()
@@ -33,7 +31,7 @@ export default function Toolbar(props : Props) {
     }
 
     function submitButtonIsActive() {
-        return props.currentCategoryId !== -1;
+        return props.currentCategoryId !== -1
     }
 
     function renderTooltip() {

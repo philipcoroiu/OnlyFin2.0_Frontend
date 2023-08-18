@@ -1,7 +1,6 @@
 import EmptyDashboardModal from "@/app/dashboard/components/DashGuideModalsContainer/EmptyDashboardModal";
 import MissingCategoryModal from "@/app/dashboard/components/DashGuideModalsContainer/MissingCategoryModal";
 
-
 type Props = {
     userStockArray?: OnlyfinUserStock[],
     userCategoryArray?: OnlyfinUserCategoryTab[]

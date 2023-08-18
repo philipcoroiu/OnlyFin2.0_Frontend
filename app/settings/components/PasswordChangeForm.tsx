@@ -13,7 +13,6 @@ export default function PasswordChangeForm() {
     const [passwordSuccess, setPasswordSuccess] = useState<boolean>(false)
 
     // Error messages
-
     const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false)
     const [errorMessage, setErrorMessage] = useState<string>('')
     const [errorType, setErrorType] = useState<string>('')
@@ -39,15 +38,15 @@ export default function PasswordChangeForm() {
     function passwordOk(): boolean {
         // Check if password is longer than 8 characters.
         if (newPassword.length < 8) {
-            setShowErrorMessage(true);
-            setErrorMessage("Password must contain at least 8 characters");
+            setShowErrorMessage(true)
+            setErrorMessage("Password must contain at least 8 characters")
             setErrorType("NewPassword")
             return false;
         }
 
         if (newPassword !== newPasswordConfirmation) {
-            setShowErrorMessage(true);
-            setErrorMessage("Password does not match");
+            setShowErrorMessage(true)
+            setErrorMessage("Password does not match")
             setErrorType("BothPassword")
             return false;
         }
@@ -57,11 +56,12 @@ export default function PasswordChangeForm() {
 
     function handleSubmit() {
         setShowErrorMessage(false)
-        setErrorMessage('');
-        setErrorType('');
+        setErrorMessage('')
+        setErrorType('')
 
         if (passwordOk()) {
-            setLoading(true);
+            setLoading(true)
+
             ApiCalls.changePassword(oldPassword, newPassword)
                 .then(response => {
                     setLoading(false)
@@ -72,11 +72,11 @@ export default function PasswordChangeForm() {
                     setNewPasswordConfirmation("")
                     setPasswordSuccess(true)
 
-                    setTimeout(() => {setPasswordSuccess(false)}, 5000);
+                    setTimeout(() => {setPasswordSuccess(false)}, 5000)
                 })
                 .catch(error => {
-                    setShowErrorMessage(true);
-                    setErrorMessage(error.response.data);
+                    setShowErrorMessage(true)
+                    setErrorMessage(error.response.data)
                     setErrorType("OldPassword")
                     setLoading(false)
                 })

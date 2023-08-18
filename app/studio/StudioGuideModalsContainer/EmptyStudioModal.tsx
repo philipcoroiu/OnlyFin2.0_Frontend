@@ -1,16 +1,14 @@
 import {useState} from "react";
-import {router} from "next/client";
 import {useRouter} from "next/navigation";
-
 
 export default function EmptyStudioModal() {
 
     const router = useRouter()
 
-    const [modalIsActive, setModalIsActive] = useState(true);
+    const [modalIsActive, setModalIsActive] = useState<boolean>(true)
 
     function handleStayButtonClick() {
-        setModalIsActive(false);
+        setModalIsActive(false)
     }
 
     function handleDashboardButtonClick() {

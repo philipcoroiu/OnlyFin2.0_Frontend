@@ -3,10 +3,8 @@ import ImageChanger from "@/app/settings/components/ImageChanger";
 import PasswordChangeForm from "@/app/settings/components/PasswordChangeForm";
 
 export default function Page() {
-
     return (
         <div className={"flex flex-wrap justify-center mt-10 mx-10"}>
-
             <div className="flex-1
                 mx-2
                 bg-gray-50
@@ -22,9 +20,7 @@ export default function Page() {
                 <ImageChanger/>
 
                 <PasswordChangeForm/>
-
             </div>
-
         </div>
     )
 }

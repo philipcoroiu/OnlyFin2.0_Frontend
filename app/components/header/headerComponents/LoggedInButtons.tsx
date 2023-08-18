@@ -12,7 +12,7 @@ export default function LoggedInButtons(props: Props) {
             .then(() => {
                 window.location.href = "/"
             })
-            .catch(error => {
+            .catch(() => {
                 window.location.href = "/"
             })
     }

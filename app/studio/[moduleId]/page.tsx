@@ -4,7 +4,7 @@ import Toolbar from "@/app/studio/toolbar/Toolbar"
 import StudioPreviewChart from "@/app/studio/chartPreview/StudioPreviewChart";
 import {useEffect, useState} from "react";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
-import {useRouter, useSearchParams} from "next/navigation";
+import {useRouter} from "next/navigation";
 import ToolbarTable from "@/app/studio/toolbar/toolbarTable/ToolbarTable";
 export default function StudioPage({params}: { params: { moduleId: string } }) {
 
@@ -26,7 +26,7 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
                 setStudioChart(module)
 
                 //Set toolbar table
-                let result : DataArray[] = new Array();
+                let result : DataArray[] = [];
 
                 let header = [{ value: 'Billions' }].concat(module.series.map((company : any) => ({ value: company.name })));
                 result[0] = header;
@@ -39,7 +39,6 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
                 setTableData(result)
             })
     }, [])
-
 
     const [currentCategoryId, setCurrentCategoryId] = useState<number>(0)
     const [chartTitle, setChartTitle] = useState<string>("Untitled Chart")
@@ -98,7 +97,7 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
         setCurrentCategoryId(categoryIdChoice)
     }
 
-    function handleTableDataChange(newTableData : any) {
+    function handleTableDataChange(newTableData: any) {
         setTableData(newTableData)
     }
 
@@ -139,8 +138,6 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
                     handleUpdateModule={handleUpdateModule}
                     handleDeleteModule={handleDeleteModule}
                 />
-
-
             </div>
         )
     }
@@ -168,7 +165,7 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
             return <div>Loading</div>
         }
 
-        return(
+        return (
             <ToolbarTable
                 handleChartDataChange={handleChartDataChange}
                 tableData={tableData}
@@ -177,7 +174,7 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
         )
     }
 
-    return(
+    return (
         <div className="h-max p-4 flex flex-col items-center justify-center">
             <div className="flex flex-col md:flex-row gap-4 mb-4 w-full justify-center">
                 <div className="xl:w-4/12 w-full bg-white dark:bg-gray-600 border-2 border-blue-900 dark:border-0 rounded shadow-lg p-4 overflow-auto">

@@ -6,7 +6,7 @@ export default function UserReviewCard(review: OnlyfinReview) {
 
     function handleDelete() {
         ApiCalls.deleteReview(review.target.username)
-            .then(response => {
+            .then(() => {
                 document.location.reload()
             })
             .catch(error => {

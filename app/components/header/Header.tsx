@@ -11,15 +11,14 @@ export default function Header() {
 
     const [toggleHamburgerMenu, setToggleHamburgerMenu] = useState<boolean>(false)
 
-    const [username, setUsername] = useState<string>();
+    const [username, setUsername] = useState<string>()
 
     useEffect(() => {
         ApiCalls.whoAmI()
             .then((response) => {
                 if (response.status === 204) {
-                    console.log("User not logged in")
-                } else {
-                    console.log("whoAmI response.data: ", response.data)
+                }
+                else {
                     setUsername(response.data)
                 }
             })

@@ -26,7 +26,6 @@ export default function UserInformation() {
             })
     }, [])
 
-
     return (
         <div>
             <div className={"flex items-center"}>
@@ -36,10 +35,7 @@ export default function UserInformation() {
                     />
                 </div>
                 <p className={"text-2xl font-bold"}>{username}</p>
-
-
             </div>
-
         </div>
     )
 }

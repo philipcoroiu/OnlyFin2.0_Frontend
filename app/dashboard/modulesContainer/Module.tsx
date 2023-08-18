@@ -1,7 +1,6 @@
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import Link from "next/link";
-import pencil from "@/app/icons/pencil.svg";
 
 type Props = {
     moduleData: OnlyfinModule,
@@ -9,7 +8,6 @@ type Props = {
 }
 
 export default function Module(props: Props){
-
     return (
         <>
             {!props.isProfileDashboard && <Link href={"/studio/" + props.moduleData.id.toString()}>
@@ -27,5 +25,4 @@ export default function Module(props: Props){
             />
         </>
     )
-
 }

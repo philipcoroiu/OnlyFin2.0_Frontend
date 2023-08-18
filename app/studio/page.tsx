@@ -11,11 +11,12 @@ export default function StudioPage() {
 
     const router = useRouter()
 
-    const [currentCategoryId, setCurrentCategoryId] = useState<number>(0)
+    const [currentCategoryId, setCurrentCategoryId] = useState<number>(-1)
     const [chartTitle, setChartTitle] = useState<string>("Untitled Chart")
     const [chartType, setChartType] = useState<string>("column")
-    const [yAxisTitle, setyAxisTitle] = useState<string | undefined>();
-    const [xAxisTitle, setxAxisTitle] = useState<string | undefined>();
+    const [yAxisTitle, setyAxisTitle] = useState<string | undefined>()
+    const [xAxisTitle, setxAxisTitle] = useState<string | undefined>()
+
     const [tableData, setTableData] = useState<DataArray[]>([
         [{ value: 'Billions' }, { value: "Amazon" }, { value: "Apple" }, { value: "Google" }],
         [{ value: '2021' }, { value: 469 }, { value: 378 }, { value: 257 }],
@@ -86,13 +87,12 @@ export default function StudioPage() {
     }
 
         ApiCalls.addModule(currentCategoryId, 3,1,1,1,chartType, studioChart)
-            .finally(() => {
+            .then(() => {
                 router.push('/dashboard')
             })
     }
 
     function handleCategoryIdChoice(categoryIdChoice: number) {
-        console.log("XXXXXXXXXXXXX Selected category value: ", categoryIdChoice, " XXXXXXXXXXXX")
         setCurrentCategoryId(categoryIdChoice)
     }
 
@@ -140,7 +140,7 @@ export default function StudioPage() {
     }
 
     function renderToolbarTable() {
-        if(!tableData) {
+        if (!tableData) {
             return <div>Loading</div>
         }
 

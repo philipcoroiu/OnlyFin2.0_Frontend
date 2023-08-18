@@ -1,16 +1,14 @@
 import {useState} from "react";
-import {router} from "next/client";
 import {useRouter} from "next/navigation";
-
 
 export default function MissingCategoryModal() {
 
     const router = useRouter()
 
-    const [modalIsActive, setModalIsActive] = useState(true);
+    const [modalIsActive, setModalIsActive] = useState(true)
 
     function handleStayButtonClick() {
-        setModalIsActive(false);
+        setModalIsActive(false)
     }
 
     function handleDashboardButtonClick() {

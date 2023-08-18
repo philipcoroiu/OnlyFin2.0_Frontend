@@ -9,7 +9,6 @@ type Props = {
 export default function InputField(props:Props) {
 
     return(
-
         <input className={`w-full
                                 bg-transparent
                                 text-gray-600

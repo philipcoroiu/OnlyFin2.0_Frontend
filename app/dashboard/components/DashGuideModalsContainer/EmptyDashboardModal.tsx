@@ -1,10 +1,9 @@
 import {useState} from "react";
 
-
 export default function EmptyDashboardModal() {
 
     //Change "true" to dynamic
-    const [modalIsActive, setModalIsActive] = useState(true);
+    const [modalIsActive, setModalIsActive] = useState<boolean>(true);
 
     function handleButtonClick() {
         setModalIsActive(false);

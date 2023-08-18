@@ -37,7 +37,8 @@ export default function UserProfileCard(props: Props) {
     function handleSubscribeButtonClick() {
         if (!subscribed) {
             subscribe()
-        } else {
+        }
+        else {
             unsubscribe()
         }
     }
@@ -50,7 +51,8 @@ export default function UserProfileCard(props: Props) {
             .catch(error => {
                 if (error.response.status === 401) {
                     router.push("/login?redirect=users/" + props.username)
-                } else {
+                }
+                else {
                     console.log("[UserProfileCard.subscribe()]: " + error)
                 }
             })
@@ -58,7 +60,7 @@ export default function UserProfileCard(props: Props) {
 
     function unsubscribe() {
         ApiCalls.unsubscribe(props.username)
-            .then(response => {
+            .then(() => {
                 setSubscribed(false)
             })
             .catch(error => {

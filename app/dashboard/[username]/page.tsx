@@ -1,7 +1,5 @@
 "use client"
 
-import StockEditModal from "@/app/dashboard/Tabs/StockTabs/StockEditModal";
-import CategoryEditModal from "@/app/dashboard/Tabs/CategoryTabs/CategoryEditModal";
 import React, {useEffect, useState} from "react";
 import Link from "next/link";
 import Avatar from "@/app/components/Avatar";
@@ -11,16 +9,16 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 
 export default function dashboardModuleBoard({params}: { params: { username: string } }) {
 
-    const username = params.username;
+    const username = params.username
 
-    const [activeStockTab, setActiveStockTab] = useState<number>(-1) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
-    const [activeCategoryTab, setActiveCategoryTab] = useState<number>(-1) //TODO: should only be assigned by UI. maybe -1/undefined to signal no tab selected?
+    const [activeStockTab, setActiveStockTab] = useState<number>(-1)
+    const [activeCategoryTab, setActiveCategoryTab] = useState<number>(-1)
 
-    const [userStockArray, setUserStockArray] = useState<OnlyfinUserStock[]>();
-    const [userCategoryArray, setUserCategoryArray] = useState<OnlyfinUserCategoryTab[]>();
+    const [userStockArray, setUserStockArray] = useState<OnlyfinUserStock[]>()
+    const [userCategoryArray, setUserCategoryArray] = useState<OnlyfinUserCategoryTab[]>()
 
-    const [currentUserStockId, setCurrentUserStockId] = useState<number>(-1);
-    const [currentUserCategoryId, setCurrentUserCategoryId] = useState<number>(-1);
+    const [currentUserStockId, setCurrentUserStockId] = useState<number>(-1)
+    const [currentUserCategoryId, setCurrentUserCategoryId] = useState<number>(-1)
 
     //TODO: Place in tab container
     useEffect(() => {
@@ -33,8 +31,6 @@ export default function dashboardModuleBoard({params}: { params: { username: str
                 const userStocks: OnlyfinUserStock[] = response.data
 
                 setUserStockArray(userStocks)
-                setCurrentUserStockId(userStocks[0].id)
-
             })
             .catch((error) => console.log("fetchTargetUsersStocks error: " , error))
     }
@@ -42,7 +38,6 @@ export default function dashboardModuleBoard({params}: { params: { username: str
     //TODO: Place in tab container
     function handleStockTabClick(index : number, stockId : number) : void {
         setActiveStockTab(index)
-        setActiveCategoryTab(0)
         setCurrentUserStockId(stockId)
         getUserCategoryTabs(stockId)
     }
@@ -53,7 +48,6 @@ export default function dashboardModuleBoard({params}: { params: { username: str
                 const stockTab: OnlyfinUserStockTab = response.data
 
                 setUserCategoryArray(stockTab.categories)
-                setCurrentUserCategoryId(stockTab.categories[0].userCategoryId)
             })
             .catch((error) => console.log("fetchCategoriesAndModulesUnderUserStock error ", error))
     }
@@ -63,7 +57,6 @@ export default function dashboardModuleBoard({params}: { params: { username: str
         setActiveCategoryTab(index)
         setCurrentUserCategoryId(categoryId)
     }
-
 
     return(
         <>
@@ -115,8 +108,6 @@ export default function dashboardModuleBoard({params}: { params: { username: str
 
                 </div>
             </div>
-
-
         </>
     )
 }

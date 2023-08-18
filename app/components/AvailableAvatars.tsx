@@ -8,7 +8,7 @@ export default function AvailableAvatars() {
 
     function chooseAvatar(avatarId: number) {
         ApiCalls.updateProfilePicture(avatarId)
-            .then(response => {
+            .then(() => {
                 document.location.reload()
             })
             .catch(error => {

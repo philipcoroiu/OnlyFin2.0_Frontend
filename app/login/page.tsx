@@ -5,7 +5,6 @@ import {useSearchParams} from "next/navigation";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import React, {useState} from "react";
 import InputField from "@/app/register/components/InputField";
-import Script from "next/script";
 
 export default function Login() {
     const searchParams = useSearchParams()
@@ -51,7 +50,6 @@ export default function Login() {
 
     }
 
-
     return (
         <div className="
             mx-auto
@@ -88,8 +86,6 @@ export default function Login() {
                     {/*Password*/}
                     <InputField error={undefined} errorType={""} inputName={"Password"} inputValue={password} inputType={"password"} onChange={handlePasswordChange}></InputField>
 
-
-
                     {showErrorMessage && (
                         <div className="
                                     text-center
@@ -101,11 +97,6 @@ export default function Login() {
                             <p>INCORRECT EMAIL OR PASSWORD!</p>
                         </div>
                     )}
-
-                    {/*Cloudflare Script
-                    <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></Script>
-
-                    <div className="cf-turnstile" data-sitekey="0x4AAAAAAAImh0f7n4mAhXgr"></div>*/}
 
                     <button
                         className="

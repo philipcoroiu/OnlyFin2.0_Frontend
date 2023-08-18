@@ -16,13 +16,9 @@ type Props = {
 
 export default function StudioPreviewChart(props: Props) {
 
-    if(!props.tableData) {
-        return <div>Loading</div>
-    }
-
     useEffect(() => {
         handleChartTitleChange(props.chartTitle)
-    }, [props.chartTitle]);
+    }, [props.chartTitle])
 
     useEffect(() => {
         handleChartTypeChange(props.chartType)
@@ -53,11 +49,9 @@ export default function StudioPreviewChart(props: Props) {
         handleYaxisTitle(props.yAxisTitle)
     }, [props.yAxisTitle])
 
-
     useEffect(() => {
         handleXaxisTitle(props.xAxisTitle)
     }, [props.xAxisTitle])
-
 
     function handleChartTitleChange(newChartTitle: string) {
 
@@ -106,6 +100,9 @@ export default function StudioPreviewChart(props: Props) {
         }))
     }
 
+    if(!props.tableData) {
+        return <div>Loading</div>
+    }
 
     return (
         <div className="w-full

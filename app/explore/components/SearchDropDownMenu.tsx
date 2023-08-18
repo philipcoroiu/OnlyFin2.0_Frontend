@@ -1,4 +1,4 @@
-export default function SearchDropDownMenu(props: {
+type Props = {
     dropdownButtonIsClicked: boolean,
     handleDropdownClick(): void,
     handleSearchInput(searchQuery: string): void,
@@ -7,10 +7,12 @@ export default function SearchDropDownMenu(props: {
     dropdownChoice: string,
     stockDropdownSearchSuggestions: OnlyfinStock[] | undefined,
     handleStockSuggestionClick(id: number): void
-}) {
+}
+
+export default function SearchDropDownMenu(props: Props) {
 
     function renderSearchDropdownSuggestions() {
-        if(props.stockDropdownSearchSuggestions) {
+        if (props.stockDropdownSearchSuggestions) {
             return(
                 <div id="dropdown-search"
                      className={`z-10 
@@ -46,12 +48,10 @@ export default function SearchDropDownMenu(props: {
                 </div>
             )
         }
-
     }
 
     return (
         <>
-
         <div className="flex justify-center">
 
                 <div className="flex w-full max-w-xl mt-12 m-4

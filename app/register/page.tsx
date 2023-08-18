@@ -15,7 +15,7 @@ export default function register() {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [repeatPassword, setRepeatPassword] = useState<string>('')
-    const [turnstileToken, setTurnstileToken] = useState<string>();
+    const [turnstileToken, setTurnstileToken] = useState<string>()
 
     // Error handling:
     const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false)
@@ -24,7 +24,7 @@ export default function register() {
     const [loading, setLoading] = useState<boolean>(false)
 
     function TurnstileWidget() {
-        const turnstile = useTurnstile();
+        const turnstile = useTurnstile()
         return (
             <Turnstile
                 sitekey="0x4AAAAAAAImh0f7n4mAhXgr"
@@ -37,44 +37,47 @@ export default function register() {
         event.preventDefault()
 
         if (username.length === 0) {
-            setShowErrorMessage(true);
-            setErrorMessage("Missing username");
-            setErrorType('username');
+            setShowErrorMessage(true)
+            setErrorMessage("Missing username")
+            setErrorType('username')
             return null;
         }
         if (email.length === 0) {
-            setShowErrorMessage(true);
-            setErrorMessage("Missing email");
-            setErrorType('email');
-            return null;
+            setShowErrorMessage(true)
+            setErrorMessage("Missing email")
+            setErrorType('email')
+            return null
         }
 
         if (!checkPassword()) {
-            setErrorType('password');
-            return null;
+            setErrorType('password')
+            return null
         }
 
-        setShowErrorMessage(false);
-        setErrorMessage('');
-        setErrorType('');
+        setShowErrorMessage(false)
+        setErrorMessage('')
+        setErrorType('')
 
-        setLoading(true);
+        setLoading(true)
+
         ApiCalls.registerNewUser(email, username, password, turnstileToken)
             .then(response => {
                 router.push("/login/")
             })
             .catch(error => {
-                setShowErrorMessage(true);
-                if (error.response){
-                    switch (error.response.data){
+                setShowErrorMessage(true)
+
+                if (error.response) {
+                    switch (error.response.data) {
                         case "Username is already taken!" : setErrorType('username');
                             break;
                         case "Email is already taken!" : setErrorType('email');
                             break;
                         default: setErrorType('');
                     }
-                    setErrorMessage(error.response.data);
-                    setLoading(false);
+
+                    setErrorMessage(error.response.data)
+                    setLoading(false)
                 }
             });
     }
@@ -83,16 +86,17 @@ export default function register() {
         // Check if the password is longer than 8 characters.
 
         if (password.length < 8) {
-            setShowErrorMessage(true);
+            setShowErrorMessage(true)
             setErrorMessage("Password must contain at least 8 characters");
             return null;
         }
 
         if (password !== repeatPassword) {
-            setShowErrorMessage(true);
+            setShowErrorMessage(true)
             setErrorMessage("Password does not match");
             return null;
         }
+
         return true;
     }
 
@@ -155,7 +159,6 @@ export default function register() {
                             {/*Repeat Password*/}
 
                             <InputField error={errorType} errorType={"password"} inputName={"Repeat password"} inputValue={repeatPassword} inputType={"password"} onChange={handleRepeatPasswordChange}></InputField>
-
 
                         {/*Error message*/}
 

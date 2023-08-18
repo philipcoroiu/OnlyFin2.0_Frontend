@@ -22,7 +22,7 @@ export default function CategoryEditModal(props: Props) {
     const [typeOfModalActive, setTypeOfModalActive] = useState<CategoryModal>(CategoryModal.PRIMARY);
 
     useEffect(() => {
-        if(!props.categoryEditButtonIsActive) {
+        if (!props.categoryEditButtonIsActive) {
             setTypeOfModalActive(CategoryModal.PRIMARY)
         }
     }, [props.categoryEditButtonIsActive])

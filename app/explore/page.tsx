@@ -8,7 +8,7 @@ import {Layout, Responsive, WidthProvider} from "react-grid-layout";
 
 export default function Explore() {
 
-    const ResponsiveGridLayout = WidthProvider(Responsive);
+    const ResponsiveGridLayout = WidthProvider(Responsive)
 
     const layouts: {lg: Layout[]} = {
         lg: [
@@ -39,19 +39,18 @@ export default function Explore() {
         }
     }, [usernameSearchQuery])
 
-
-
     function fetchRandomUsers() {
         ApiCalls.fetchNewestUsers()
             .then((response) => {
                 const profiles: OnlyfinProfileSubInfo[] = response.data
 
-                setNothingFound(response.status === 204)
+                const noResultFound = response.status === 204
+                setNothingFound(noResultFound)
 
                 setSearchResult(profiles)
             })
             .catch(error => {
-                console.log("[explore/temp.tsx] error fetching data: " + error)
+                console.log("[explore/page.tsx] error fetching data: " + error)
             })
     }
 
@@ -66,7 +65,7 @@ export default function Explore() {
                     setSearchResult(profiles)
                 })
                 .catch(error => {
-                    console.log("[explore/page]: " + error)
+                    console.log("[explore/page.tsx]: " + error)
                 })
         }
     }
@@ -85,12 +84,14 @@ export default function Explore() {
     }
 
     function handleSearchInput(searchQuery: string) {
-        if(dropdownChoice === "Users") {
+        if (dropdownChoice === "Users") {
             setUsernameSearchQuery(searchQuery)
-        } else if (dropdownChoice === "Stocks") {
-            if(searchQuery === "") {
+        }
+        else if (dropdownChoice === "Stocks") {
+            if (searchQuery === "") {
                 setStockDropdownSearchSuggestions(undefined)
-            } else {
+            }
+            else {
                 setStockSearchQuery(searchQuery)
                 fetchStockBySearchInput()
             }
