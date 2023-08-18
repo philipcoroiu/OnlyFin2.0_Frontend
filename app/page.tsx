@@ -18,7 +18,7 @@ export default function App() {
                         tracking-tight
                         dark:text-gray-200
                         sm:text-6xl">
-                    The OnlyFans <br/> of investing
+                    The OnlyFans <br/> of stock market analysis
                 </h1>
                 <p className="
                         mt-6
@@ -26,7 +26,7 @@ export default function App() {
                         text-lg
                         leading-8
                         dark:text-gray-300">
-                    Make money on your stock market analysis
+                    Visualize and make money on your research
                 </p>
                 <div className="
                         mt-10
@@ -67,8 +67,8 @@ export default function App() {
                 </div>
             </div>
 
-            {/* <StartPageBanner/> */}
-            
+            <StartPageBanner/>
+
         </main>
     )
 }
