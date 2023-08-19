@@ -1,5 +1,3 @@
-"use client"
-
 type Props = {
     message: string,
     toggle: (value: (((prevState: boolean) => boolean) | boolean)) => void,
