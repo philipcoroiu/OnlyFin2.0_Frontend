@@ -5,6 +5,8 @@ import {useRouter} from "next/navigation";
 
 export default function AvailableAvatars() {
     const router = useRouter()
+    
+    const NUMBER_OF_AVATARS = 57
 
     function chooseAvatar(avatarId: number) {
         ApiCalls.updateProfilePicture(avatarId)
@@ -24,7 +26,7 @@ export default function AvailableAvatars() {
     function renderAllAvatars() {
         let avatars = []
 
-        for (let i = 0; i <= 57; i++) {
+        for (let i = 0; i <= NUMBER_OF_AVATARS; i++) {
             avatars.push(
                 <button key={i} className={"w-20 h-20 p-1 transition duration-300 ease-in-out hover:scale-125"}
                         onClick={() => {
