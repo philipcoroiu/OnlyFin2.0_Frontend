@@ -2,7 +2,6 @@
 
 import { ApiCalls } from "@/app/utilities/ApiCalls";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 
 type Props = { username: string | undefined }
 
@@ -31,7 +30,7 @@ export default function Avatar(props: Props) {
 
     function renderProfilePicture() {
         return (
-                <Image width={100} height={100} src={`/Avatars/avatar-${profilePictureId}.svg`} alt="Profile picture"/>
+                <img src={`/Avatars/avatar-${profilePictureId}.svg`} alt="Profile picture"/>
         )
     }
 
@@ -39,7 +38,7 @@ export default function Avatar(props: Props) {
             <>
                 {profilePictureId ?
                         renderProfilePicture() :
-                        <Image width={100} height={100} src={`/Avatars/avatar-0.svg`} alt="Profile picture"/>}
+                        <img src={`/Avatars/avatar-0.svg`} alt="Profile picture"/>}
             </>
     )
 }
