@@ -37,8 +37,11 @@ export default function Page({params}: { params: { username: string } }) {
 
     //TODO: Place in tab container
     function handleStockTabClick(index : number, stockId : number) : void {
+        setActiveCategoryTab(-1)
+
         setActiveStockTab(index)
         setCurrentUserStockId(stockId)
+
         getUserCategoryTabs(stockId)
     }
 
