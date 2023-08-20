@@ -82,7 +82,6 @@ export default function UserProfileCard(props: Props) {
                 p-7
                 w-full
                 dark:bg-gray-700
-                flex
                 `
                 :
                 `bg-gray-50 
@@ -90,7 +89,6 @@ export default function UserProfileCard(props: Props) {
                 p-7 
                 w-full
                 dark:bg-gray-700
-                flex
                 `}
             >
                 <div>
