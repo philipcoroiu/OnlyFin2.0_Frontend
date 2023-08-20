@@ -2,6 +2,7 @@
 
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 import {useRouter} from "next/navigation";
+import Image from "next/image";
 
 export default function AvailableAvatars() {
     const router = useRouter()
@@ -32,7 +33,7 @@ export default function AvailableAvatars() {
                         onClick={() => {
                             chooseAvatar(i)
                         }}>
-                    <img src={`/Avatars/avatar-${i}.svg`} alt={`Profile picture ${i}`}/>
+                    <Image width={100} height={100} src={`/Avatars/avatar-${i}.svg`} alt={`Profile picture ${i}`}/>
                 </button>
             )
         }
