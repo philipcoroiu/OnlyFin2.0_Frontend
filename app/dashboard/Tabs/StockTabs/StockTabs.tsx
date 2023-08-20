@@ -1,5 +1,7 @@
 import EditButton from "@/app/dashboard/Tabs/EditButton";
 import Tab from "@/app/dashboard/Tabs/Tab";
+import AlertNoDismiss from "@/app/components/AlertNoDismiss";
+import { AlertTypes } from "@/types/AlertTypes";
 
 type Props = {
     activeStockTab: number,
@@ -12,9 +14,18 @@ type Props = {
 export default function StockTabs(props: Props) {
 
     function renderStockTabs() {
-        return (
-            <Tab activeTab={props.activeStockTab} handleTabClick={props.handleStockTabClick} tabArray={props.userStockArray}/>
-        )
+        if (props.userStockArray) {
+            return (
+                <>
+                    {props.userStockArray.length > 0 ?
+                        <Tab activeTab={props.activeStockTab} handleTabClick={props.handleStockTabClick}
+                             tabArray={props.userStockArray}/>
+                        :
+                        <AlertNoDismiss message={"This dashboard is empty"} alertType={AlertTypes.INFO}/>
+                    }
+                </>
+            )
+        }
     }
 
     function renderLoadingTabs() {

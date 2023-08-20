@@ -1,24 +1,27 @@
 "use client"
 
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Avatar from "@/app/components/Avatar";
 import TabsContainer from "@/app/dashboard/Tabs/TabsContainer";
 import DashboardModules from "@/app/dashboard/modulesContainer/DashbordModules";
-import {ApiCalls} from "@/app/utilities/ApiCalls";
+import { ApiCalls } from "@/app/utilities/ApiCalls";
 
 export default function Page({params}: { params: { username: string } }) {
 
+    const noTabSelectedStatusId: number = -1
+    const switchingTabStatusId: number = -69
+
     const username = params.username
 
-    const [activeStockTab, setActiveStockTab] = useState<number>(-1)
-    const [activeCategoryTab, setActiveCategoryTab] = useState<number>(-1)
+    const [activeStockTab, setActiveStockTab] = useState<number>(noTabSelectedStatusId)
+    const [activeCategoryTab, setActiveCategoryTab] = useState<number>(noTabSelectedStatusId)
 
     const [userStockArray, setUserStockArray] = useState<OnlyfinUserStock[]>()
     const [userCategoryArray, setUserCategoryArray] = useState<OnlyfinUserCategoryTab[]>()
 
-    const [currentUserStockId, setCurrentUserStockId] = useState<number>(-1)
-    const [currentUserCategoryId, setCurrentUserCategoryId] = useState<number>(-1)
+    const [currentUserStockId, setCurrentUserStockId] = useState<number>(noTabSelectedStatusId)
+    const [currentUserCategoryId, setCurrentUserCategoryId] = useState<number>(noTabSelectedStatusId)
 
     //TODO: Place in tab container
     useEffect(() => {
@@ -37,7 +40,8 @@ export default function Page({params}: { params: { username: string } }) {
 
     //TODO: Place in tab container
     function handleStockTabClick(index : number, stockId : number) : void {
-        setActiveCategoryTab(-1)
+        setActiveCategoryTab(switchingTabStatusId)
+        setUserCategoryArray(undefined)
 
         setActiveStockTab(index)
         setCurrentUserStockId(stockId)

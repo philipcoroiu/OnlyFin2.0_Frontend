@@ -1,10 +1,12 @@
 import Link from "next/link";
-import React, {useEffect, useState} from 'react';
-import {Layout, Responsive, WidthProvider} from 'react-grid-layout';
+import React, { useEffect, useState } from 'react';
+import { Layout, Responsive, WidthProvider } from 'react-grid-layout';
 import 'react-grid-layout/css/styles.css';
 import Module from "@/app/dashboard/modulesContainer/Module";
-import {ApiCalls} from "@/app/utilities/ApiCalls";
+import { ApiCalls } from "@/app/utilities/ApiCalls";
 import ToggleButton from "@/app/dashboard/components/ToggleButton";
+import AlertNoDismiss from "@/app/components/AlertNoDismiss";
+import { AlertTypes } from "@/types/AlertTypes";
 
 type Props = {
     userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
@@ -95,43 +97,34 @@ export default function DashboardModules(props: Props) {
     }
 
     function renderPlaceholderModule() {
-        return(
-            <Link href={"/studio"}>
-                <button className="w-full py-20
-                text-gray-800
-                dark:text-white
-                bg-white
-                dark:bg-gray-900
-                border-4
-
-                border-blue-400
-                hover:bg-blue-50
-                dark:hover:bg-gray-800
-                transition-all
-                duration-300
-                rounded-lg">
-
-                    <div className="flex justify-center items-center w-full">
-                        <div className="flex space-x-2 h-16">
-                            <div className="flex w-2 bg-transparent flex-col justify-end">
-                                <div className="w-full bg-blue-500 h-8"></div>
-                            </div>
-                            <div className="flex w-2 bg-transparent flex-col justify-end">
-                                <div className="w-full bg-blue-500 h-12"></div>
-                            </div>
-                            <div className="flex w-2 bg-transparent flex-col justify-end">
-                                <div className="w-full bg-blue-500 h-16"></div>
-                            </div>
-                            <div className="flex w-2 bg-transparent flex-col justify-end">
-                                <div className="w-full bg-blue-500 h-10"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p className={"mt-4 text-white"}>Create a chart</p>
-                </button>
-            </Link>
-
+        return (
+                <>
+                    {props.readOnly ?
+                            <AlertNoDismiss message={"The selected category is empty"} alertType={AlertTypes.INFO}/>
+                            :
+                            <Link href={"/studio"}>
+                                <button className="w-full py-20 text-gray-800 dark:text-white bg-white dark:bg-gray-900 border-4 border-blue-400 hover:bg-blue-50 dark:hover:bg-gray-800 transition-all duration-300 rounded-lg">
+                                    <div className="flex justify-center items-center w-full">
+                                        <div className="flex space-x-2 h-16">
+                                            <div className="flex w-2 bg-transparent flex-col justify-end">
+                                                <div className="w-full bg-blue-500 h-8"></div>
+                                            </div>
+                                            <div className="flex w-2 bg-transparent flex-col justify-end">
+                                                <div className="w-full bg-blue-500 h-12"></div>
+                                            </div>
+                                            <div className="flex w-2 bg-transparent flex-col justify-end">
+                                                <div className="w-full bg-blue-500 h-16"></div>
+                                            </div>
+                                            <div className="flex w-2 bg-transparent flex-col justify-end">
+                                                <div className="w-full bg-blue-500 h-10"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p className={"mt-4 text-white"}>Create a chart</p>
+                                </button>
+                            </Link>
+                    }
+                </>
         )
     }
 

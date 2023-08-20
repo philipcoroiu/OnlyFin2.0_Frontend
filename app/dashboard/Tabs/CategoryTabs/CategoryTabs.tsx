@@ -1,4 +1,6 @@
 import EditButton from "@/app/dashboard/Tabs/EditButton";
+import AlertNoDismiss from "@/app/components/AlertNoDismiss";
+import { AlertTypes } from "@/types/AlertTypes";
 import Tab from "@/app/dashboard/Tabs/Tab";
 
 type Props = {
@@ -12,9 +14,18 @@ type Props = {
 export default function StockTabs(props: Props) {
 
     function renderCategoryTabs() {
-        return(
-            <Tab activeTab={props.activeCategoryTab} handleTabClick={props.handleCategoryTabClick} tabArray={props.userCategoryArray}/>
-        )
+        if (props.userCategoryArray) {
+            return (
+                <>
+                    {props.userCategoryArray?.length > 0 ?
+                        <Tab activeTab={props.activeCategoryTab} handleTabClick={props.handleCategoryTabClick}
+                             tabArray={props.userCategoryArray}/>
+                        :
+                        <AlertNoDismiss message={"The selected tab is empty"} alertType={AlertTypes.INFO}/>
+                    }
+                </>
+            )
+        }
     }
 
     function renderLoadingTabs() {
