@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "next lint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
@@ -34,6 +36,7 @@
     "typescript": "5.1.3"
   },
   "devDependencies": {
-    "@types/react-grid-layout": "^1.3.2"
+    "@types/react-grid-layout": "^1.3.2",
+    "husky": "^8.0.3"
   }
 }
