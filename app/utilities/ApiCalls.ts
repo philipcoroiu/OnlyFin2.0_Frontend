@@ -205,6 +205,13 @@ export class ApiCalls {
         )
     }
 
+    public static async getUserSubscriptionCount(targetUsername: string): Promise<AxiosResponse> {
+        return axiosInstance.get(
+            `/subscriptions/count?targetUsername=${targetUsername}`,
+            {}
+        )
+    }
+
     public static async getSubscriptionList(): Promise<AxiosResponse> {
         return axiosInstance.get(
             "/subscriptions/list",
