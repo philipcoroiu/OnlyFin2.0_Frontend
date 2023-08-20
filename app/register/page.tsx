@@ -7,7 +7,7 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 import InputField from "@/app/register/components/InputField";
 import Turnstile, { useTurnstile } from "react-turnstile";
 
-export default function register() {
+export default function Page() {
 
     const router = useRouter()
 

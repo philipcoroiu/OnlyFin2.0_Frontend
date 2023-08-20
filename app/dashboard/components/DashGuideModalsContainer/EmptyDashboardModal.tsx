@@ -47,6 +47,7 @@ export default function EmptyDashboardModal() {
                             <div className="p-6">
                                 <p className="text-sm font-normal text-gray-500 dark:text-gray-400">To visualize your
                                     research you first need to <u>add a stock</u> to your tabs.<br/><br/>
+                                    {/* eslint-disable-next-line react/no-unescaped-entities */}
                                     Do this by clicking on the "..." below the word "Stock".</p>
 
                                 <ul className="my-4 space-y-3">

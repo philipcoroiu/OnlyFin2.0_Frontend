@@ -4,7 +4,7 @@ type Props = {
     visible: boolean
 }
 
-export default function (props: Props) {
+export default function Alert(props: Props) {
 
     return (
             <div className={`${props.visible ? "flex" : "hidden"} my-4 justify-center items-center m-1 font-medium py-1 px-2 rounded-md text-red-700 bg-red-100 border border-red-300`}>

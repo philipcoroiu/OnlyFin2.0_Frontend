@@ -6,7 +6,7 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 import React, {useState} from "react";
 import InputField from "@/app/register/components/InputField";
 
-export default function Login() {
+export default function Page() {
     const searchParams = useSearchParams()
     const redirectParam = searchParams.get("redirect")
 
@@ -70,6 +70,7 @@ export default function Login() {
                         Login to your account
                     </h1>
                     <p className="text-sm tracking-wide text-gray-600 dark:text-gray-300">
+                        {/* eslint-disable-next-line react/no-unescaped-entities */}
                         <span>Don't have an account? </span>
                         <Link className="text-blue-600 transition duration-200 hover:underline dark:text-blue-400"
                               href={"/register"}>

@@ -52,6 +52,7 @@ export default function MissingCategoryModal() {
                             {/* Modal Body */}
                             <div className="p-6">
                                 <p className="text-sm font-normal text-gray-500 dark:text-gray-400">It looks like you
+                                    {/* eslint-disable-next-line react/no-unescaped-entities */}
                                     haven't added a stock to the dashboard. Without it you won't be able to publish your
                                     chart.
                                     <br/>

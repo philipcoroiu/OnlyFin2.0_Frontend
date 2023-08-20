@@ -7,7 +7,7 @@ import TabsContainer from "@/app/dashboard/Tabs/TabsContainer";
 import DashboardModules from "@/app/dashboard/modulesContainer/DashbordModules";
 import {ApiCalls} from "@/app/utilities/ApiCalls";
 
-export default function dashboardModuleBoard({params}: { params: { username: string } }) {
+export default function Page({params}: { params: { username: string } }) {
 
     const username = params.username
 

@@ -7,7 +7,7 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 import {useRouter} from "next/navigation";
 import ToolbarTable from "@/app/studio/toolbar/toolbarTable/ToolbarTable";
 
-export default function StudioPage({params}: { params: { moduleId: string } }) {
+export default function Page({params}: { params: { moduleId: string } }) {
 
     const router = useRouter()
     const moduleIdToEdit = parseInt(params.moduleId)
@@ -15,25 +15,25 @@ export default function StudioPage({params}: { params: { moduleId: string } }) {
     useEffect(() => {
         ApiCalls.fetchModule(moduleIdToEdit)
             .then((response) => {
-                const module = response.data.content
+                const onlyfinModule = response.data.content
 
                 //Set toolbar
-                setChartTitle(module.title.text)
-                setChartType(module.chart.type)
-                setyAxisTitle(module.yAxis.title.text)
-                setxAxisTitle(module.xAxis.title.text)
+                setChartTitle(onlyfinModule.title.text)
+                setChartType(onlyfinModule.chart.type)
+                setyAxisTitle(onlyfinModule.yAxis.title.text)
+                setxAxisTitle(onlyfinModule.xAxis.title.text)
 
                 //Set studio chart
-                setStudioChart(module)
+                setStudioChart(onlyfinModule)
 
                 //Set toolbar table
                 let result : DataArray[] = [];
 
-                let header = [{ value: 'Billions' }].concat(module.series.map((company : any) => ({ value: company.name })));
+                let header = [{ value: 'Billions' }].concat(onlyfinModule.series.map((company : any) => ({ value: company.name })));
                 result[0] = header;
 
-                module.xAxis.categories.forEach((year: any, index: number) => {
-                    let row = [{ value: year }].concat(module.series.map((category : any) => ({value: category.data[index]})));
+                onlyfinModule.xAxis.categories.forEach((year: any, index: number) => {
+                    let row = [{ value: year }].concat(onlyfinModule.series.map((category : any) => ({value: category.data[index]})));
                     result.push(row);
                 });
 

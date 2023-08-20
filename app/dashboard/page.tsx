@@ -12,7 +12,7 @@ import Avatar from "@/app/components/Avatar";
 import DashGuideModalsContainer from "@/app/dashboard/components/DashGuideModalsContainer/DashGuideModalsContainer";
 import Alert from "@/app/components/Alert";
 
-export default function dashboardModuleBoard() {
+export default function Page() {
 
     const router = useRouter()
 

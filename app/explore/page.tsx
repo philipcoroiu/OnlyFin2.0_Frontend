@@ -6,7 +6,7 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 import SearchResult from "@/app/explore/components/SearchResult";
 //import {Layout, Responsive, WidthProvider} from "react-grid-layout";
 
-export default function Explore() {
+export default function Page() {
 
     //const ResponsiveGridLayout = WidthProvider(Responsive)
 

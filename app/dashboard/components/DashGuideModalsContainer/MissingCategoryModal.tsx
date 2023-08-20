@@ -51,6 +51,7 @@ export default function MissingCategoryModal() {
 
                                     <b>What is a category?</b> <br/>Some examples are: Financials, Sales by segment, Competitors... <br/><br/>
 
+                                    {/* eslint-disable-next-line react/no-unescaped-entities */}
                                     Create a category by clicking on the "..." below the word "Category".</p>
 
                                 <ul className="my-4 space-y-3">

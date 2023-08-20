@@ -7,7 +7,8 @@ import {ApiCalls} from "@/app/utilities/ApiCalls";
 import {useRouter} from "next/navigation";
 import ToolbarTable from "@/app/studio/toolbar/toolbarTable/ToolbarTable";
 import StudioGuideModalsContainer from "@/app/studio/StudioGuideModalsContainer/StudioGuideModalsContainer";
-export default function StudioPage() {
+
+export default function Page() {
 
     const router = useRouter()
 

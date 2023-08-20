@@ -2,7 +2,7 @@
 
 import {useState} from "react";
 
-export default function Feed() {
+export default function Page() {
 
     const [showComments, setShowComments] = useState<boolean>(false)
 
