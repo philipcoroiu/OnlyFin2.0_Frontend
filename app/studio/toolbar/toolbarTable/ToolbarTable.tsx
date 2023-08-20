@@ -12,11 +12,7 @@ export default function ToolbarTable(props: Props) {
 
     const initStudioSpreadsheetData = props.tableData
 
-    if(!props.tableData) {
-        return(
-            <p>Loading</p>
-        )
-    }
+    const [spreadsheetData, setSpreadsheetData] = useState<DataArray[]>(initStudioSpreadsheetData);
 
     /*
     In case of major bug lol:
@@ -29,7 +25,6 @@ export default function ToolbarTable(props: Props) {
     ]
 
      */
-    const [spreadsheetData, setSpreadsheetData] = useState<DataArray[]>(initStudioSpreadsheetData);
 
     function handleSpreadsheetChange(newData : any) {
         handleTableDataChange(newData)
@@ -71,6 +66,13 @@ export default function ToolbarTable(props: Props) {
             newData.pop();
             return newData;
         })
+    }
+
+    //TODO: Is this needed?
+    if (!props.tableData) {
+        return (
+                <p>Loading</p>
+        )
     }
 
     return (
