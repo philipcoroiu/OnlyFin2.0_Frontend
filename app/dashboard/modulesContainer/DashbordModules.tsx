@@ -10,7 +10,7 @@ type Props = {
     userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
     activeCategoryTab: number,
     currentUserCategoryId: number,
-    isProfileDashboard?: boolean
+    readOnly?: boolean
 }
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
@@ -70,7 +70,7 @@ export default function DashboardModules(props: Props) {
                         data-grid={{x: moduleData.xAxis, y: moduleData.yAxis, w: moduleData.width, h: moduleData.height}}>
                         <Module
                             moduleData={moduleData}
-                            isProfileDashboard={props.isProfileDashboard}
+                            readOnly={props.readOnly}
                         />
                     </div>
                 ))
@@ -85,7 +85,7 @@ export default function DashboardModules(props: Props) {
                     data-grid={{x: moduleData.xAxis, y: moduleData.yAxis, w: moduleData.width, h: moduleData.height}}>
                     <Module
                         moduleData={moduleData}
-                        isProfileDashboard={props.isProfileDashboard}
+                        readOnly={props.readOnly}
                     />
                 </div>
 
@@ -171,7 +171,7 @@ export default function DashboardModules(props: Props) {
 
     function toggleButtonShouldRender(): boolean {
         return (
-            !props.isProfileDashboard &&
+            !props.readOnly &&
             userHasCategory &&
             categoryHasModule
         )

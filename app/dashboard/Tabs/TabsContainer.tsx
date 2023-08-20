@@ -12,7 +12,7 @@ type Props = {
     handleStockEditButtonClick?: () => void,
     handleCategoryEditButtonClick?: () => void,
     initialUserStockId: number,
-    isProfileDashboard?: boolean
+    readOnly?: boolean
 }
 
 export default function TabsContainer(props: Props) {
@@ -29,7 +29,7 @@ export default function TabsContainer(props: Props) {
                 handleStockTabClick={props.handleStockTabClick}
                 userStockArray={props.userStockArray}
                 handleStockEditButtonClick={props.handleStockEditButtonClick}
-                isProfileDashboard={props.isProfileDashboard}
+                readOnly={props.readOnly}
             />
             </div>
 
@@ -42,7 +42,7 @@ export default function TabsContainer(props: Props) {
                     handleCategoryTabClick={props.handleCategoryTabClick}
                     userCategoryArray={props.userCategoryArray}
                     handleCategoryEditButtonClick={props.handleCategoryEditButtonClick}
-                    isProfileDashboard={props.isProfileDashboard}
+                    readOnly={props.readOnly}
                 />
             </div>
         </>

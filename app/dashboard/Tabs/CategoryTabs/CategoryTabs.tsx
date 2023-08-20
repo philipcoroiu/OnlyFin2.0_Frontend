@@ -6,7 +6,7 @@ type Props = {
     handleCategoryTabClick(index: number, categoryId: number): void,
     userCategoryArray: OnlyfinUserCategoryTab[] | undefined,
     handleCategoryEditButtonClick?: () => void,
-    isProfileDashboard?: boolean
+    readOnly?: boolean
 }
 
 export default function StockTabs(props: Props) {
@@ -38,7 +38,7 @@ export default function StockTabs(props: Props) {
     }
 
     function renderEditButton() {
-        if(!props.isProfileDashboard && props.handleCategoryEditButtonClick) {
+        if(!props.readOnly && props.handleCategoryEditButtonClick) {
             return(
                 <EditButton handleEditButtonClick={props.handleCategoryEditButtonClick}></EditButton>
             )

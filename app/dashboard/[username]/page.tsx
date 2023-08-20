@@ -94,7 +94,7 @@ export default function Page({params}: { params: { username: string } }) {
                         activeCategoryTab={activeCategoryTab}
                         handleStockTabClick={handleStockTabClick}
                         handleCategoryTabClick={handleCategoryTabClick}
-                        isProfileDashboard={true}
+                        readOnly={true}
 
                         initialUserStockId={currentUserStockId}
                     />
@@ -103,7 +103,7 @@ export default function Page({params}: { params: { username: string } }) {
                         userCategoryArray={userCategoryArray}
                         activeCategoryTab={activeCategoryTab}
                         currentUserCategoryId={currentUserCategoryId}
-                        isProfileDashboard={true}
+                        readOnly={true}
                     />
 
                 </div>

@@ -6,7 +6,7 @@ type Props = {
     handleStockTabClick(index: number, stockId: number): void,
     userStockArray: OnlyfinUserStock[] | undefined,
     handleStockEditButtonClick?: () => void,
-    isProfileDashboard?: boolean
+    readOnly?: boolean
 }
 
 export default function StockTabs(props: Props) {
@@ -30,7 +30,7 @@ export default function StockTabs(props: Props) {
     }
 
     function renderEditButton() {
-        if(!props.isProfileDashboard && props.handleStockEditButtonClick) {
+        if(!props.readOnly && props.handleStockEditButtonClick) {
             return(
                 <EditButton handleEditButtonClick={props.handleStockEditButtonClick}></EditButton>
             )
