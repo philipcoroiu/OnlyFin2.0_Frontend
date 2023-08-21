@@ -32,7 +32,7 @@ export default function UserProfileCard(props: Props) {
                 console.log("[UserProfileCard.useEffect()]: " + error)
 
             })
-    }, [])
+    }, [props.username, subscribed])
 
     function handleSubscribeButtonClick() {
         if (!subscribed) {
@@ -122,10 +122,10 @@ export default function UserProfileCard(props: Props) {
                            focus:outline-none
                            dark:focus:ring-blue-800"
                 >
-                    {subscribed ? "UNSUBSCRIBE" : "SUBSCRIBE"}
+                    {subscribed ? "UNSUBSCRIBE" : "SUBSCRIBE"} {user?.subscriptionCount}
                 </button>
                 </div>
-                <p className={" m-4"}>
+                <p className={"m-4"}>
                     {user?.aboutMe}
                 </p>
 

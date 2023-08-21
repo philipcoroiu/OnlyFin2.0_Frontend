@@ -14,7 +14,8 @@ type OnlyfinProfileExtended = {
     username: string,
     isSubscribed: boolean,
     aboutMe: string,
-    self: boolean
+    self: boolean,
+    subscriptionCount: number
 }
 
 type OnlyfinReview = {
