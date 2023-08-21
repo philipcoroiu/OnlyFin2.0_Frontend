@@ -2,7 +2,7 @@ type Props = {
     errorType: string
     error: string | undefined,
     inputName: string,
-    inputValue: string,
+    inputValue: string | undefined,
     inputType: string,
     onChange(event: any):void
 }

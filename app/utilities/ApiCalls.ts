@@ -18,7 +18,7 @@ export class ApiCalls {
      ********************************
      */
 
-    public static async postLoginPlz(email: string, password: string): Promise<AxiosResponse> {
+    public static async login(email: FormDataEntryValue | null, password: FormDataEntryValue | null): Promise<AxiosResponse> {
         return axiosInstance.post(
             "/plz",
             `username=${email}&password=${password}`,

@@ -10,18 +10,7 @@ export default function Page() {
     const searchParams = useSearchParams()
     const redirectParam = searchParams.get("redirect")
 
-    const [email, setEmail] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
-
     const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false)
-
-    function handleEmailChange(event: any) {
-        setEmail(event.target.value.toLowerCase());
-    }
-
-    function handlePasswordChange(event: any) {
-        setPassword(event.target.value);
-    }
 
     /**
      * window.location.href is used here instead of Router.push() on purpose.
@@ -30,7 +19,11 @@ export default function Page() {
     function handleSubmit(event: any) {
         event.preventDefault()
 
-        ApiCalls.postLoginPlz(email, password)
+        const formData = new FormData(event.target)
+        const email = formData.get("Email")
+        const password = formData.get("Password")
+
+        ApiCalls.login(email, password)
             .then(response => {
                 if (response) {
                     window.location.href = redirectParam ? `/${redirectParam}` : '/dashboard'
@@ -47,7 +40,6 @@ export default function Page() {
     function displayErrorMessage() {
         /* sets the showErrorMessage to true to show the error messages */
         setShowErrorMessage(true);
-
     }
 
     return (
@@ -82,10 +74,10 @@ export default function Page() {
                 <form className="mt-8 space-y-6 flex flex-col items-center" onSubmit={handleSubmit}>
 
                     {/*Email*/}
-                    <InputField error={undefined} errorType={""} inputName={"Email"} inputValue={email} inputType={"email"} onChange={handleEmailChange}></InputField>
+                    <InputField error={undefined} errorType={""} inputName={"Email"} inputValue={undefined} inputType={"email"} onChange={() => {}}></InputField>
 
                     {/*Password*/}
-                    <InputField error={undefined} errorType={""} inputName={"Password"} inputValue={password} inputType={"password"} onChange={handlePasswordChange}></InputField>
+                    <InputField error={undefined} errorType={""} inputName={"Password"} inputValue={undefined} inputType={"password"} onChange={() => {}}></InputField>
 
                     {showErrorMessage && (
                         <div className="
