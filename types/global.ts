@@ -6,7 +6,8 @@ type OnlyfinProfile = {
 type OnlyfinProfileSubInfo = {
     id: number,
     username: string,
-    isSubscribed: boolean
+    isSubscribed: boolean,
+    subscriptionCount: number
 }
 
 type OnlyfinProfileExtended = {

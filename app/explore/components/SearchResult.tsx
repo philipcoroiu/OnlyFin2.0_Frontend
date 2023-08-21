@@ -7,12 +7,11 @@ export default function SearchResult(props: Props) {
 
     function renderSearchResult() {
         return (
-            props.searchResult?.map((data: OnlyfinProfileSubInfo) => {
+            props.searchResult?.map((profile: OnlyfinProfileSubInfo) => {
                 return (
                     <SearchProfile
-                        key={data.id}
-                        username={data.username}
-                        isSubscribed={data.isSubscribed}
+                        key={profile.id}
+                        profile={profile}
                     />
                 );
             })
