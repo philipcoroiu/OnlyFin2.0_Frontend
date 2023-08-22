@@ -371,7 +371,7 @@ export class ApiCalls {
      ********************************
      */
 
-    public static async findAnalystsThatCoverStock(targetStockId: number): Promise<AxiosResponse<OnlyfinProfile[]>> {
+    public static async findAnalystsThatCoverStock(targetStockId: number): Promise<AxiosResponse<OnlyfinProfileSubInfo[]>> {
         return axiosInstance.get(
             `/search/covers-stock?targetStockId=${targetStockId}`,
             {}
