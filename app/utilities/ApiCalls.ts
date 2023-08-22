@@ -1,11 +1,11 @@
-import axios, {AxiosInstance, AxiosResponse} from 'axios';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 const axiosInstance: AxiosInstance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_BACKEND,
 })
 
 /**
- * To use this class, write import {ApiCalls} from "@/app/utilities/ApiCalls";
+ * To use this class, write import { ApiCalls } from "@/app/utilities/ApiCalls";
  * To call functions write ApiCalls.{function name}
  */
 export class ApiCalls {
@@ -18,7 +18,7 @@ export class ApiCalls {
      ********************************
      */
 
-    public static async login(email: FormDataEntryValue | null, password: FormDataEntryValue | null): Promise<AxiosResponse> {
+    public static async login(email: FormDataEntryValue | null, password: FormDataEntryValue | null): Promise<AxiosResponse<void>> {
         return axiosInstance.post(
             "/plz",
             `username=${email}&password=${password}`,
@@ -29,7 +29,7 @@ export class ApiCalls {
         )
     }
 
-    public static async logOut(): Promise<AxiosResponse> {
+    public static async logOut(): Promise<AxiosResponse<void>> {
         return axiosInstance.post(
             "/logout",
             {},
@@ -45,14 +45,14 @@ export class ApiCalls {
      ********************************
      */
 
-    public static async fetchAboutMe(targetUsername: string): Promise<AxiosResponse> {
+    public static async fetchAboutMe(targetUsername: string): Promise<AxiosResponse<string>> {
         return axiosInstance.get(
             `/users/about-me?targetUsername=${targetUsername}`,
             {}
         )
     }
 
-    public static async changePassword(oldPassword: string, newPassword: string): Promise<AxiosResponse> {
+    public static async changePassword(oldPassword: string, newPassword: string): Promise<AxiosResponse<string>> {
         return axiosInstance.post(
             "/users/password-change",
             {
@@ -63,14 +63,14 @@ export class ApiCalls {
         )
     }
 
-    public static async getProfilePicture(targetUsername: string): Promise<AxiosResponse> {
+    public static async getProfilePicture(targetUsername: string): Promise<AxiosResponse<number>> {
         return axiosInstance.get(
             `/users/profile-picture?targetUsername=${targetUsername}`,
             {}
         )
     }
 
-    public static async registerNewUser(email: string, username: string, password: string, turnstileToken: string | undefined): Promise<AxiosResponse> {
+    public static async registerNewUser(email: string, username: string, password: string, turnstileToken: string | undefined): Promise<AxiosResponse<string>> {
         return axiosInstance.post(
             "/users/register",
             {
@@ -86,7 +86,7 @@ export class ApiCalls {
         )
     }
 
-    public static async fetchNewestUsers(): Promise<AxiosResponse> {
+    public static async fetchNewestUsers(): Promise<AxiosResponse<OnlyfinProfileSubInfo[]>> {
         return axiosInstance.get(
             "/users/search/newest",
             {
@@ -96,7 +96,7 @@ export class ApiCalls {
         )
     }
 
-    public static async searchByUsername(username: string): Promise<AxiosResponse> {
+    public static async searchByUsername(username: string): Promise<AxiosResponse<OnlyfinProfileSubInfo[]>> {
         return axiosInstance.get(
             `/users/search/username?username=${username}`,
             {
@@ -106,7 +106,7 @@ export class ApiCalls {
         )
     }
 
-    public static async updateAboutMe(newAboutMe: string): Promise<AxiosResponse> {
+    public static async updateAboutMe(newAboutMe: string): Promise<AxiosResponse<{ newAboutMe: string }>> {
         return axiosInstance.put(
             "/users/update-about-me",
             {newAboutMe: newAboutMe},
@@ -114,7 +114,7 @@ export class ApiCalls {
         )
     }
 
-    public static async updateProfilePicture(profilePictureId: number): Promise<AxiosResponse> {
+    public static async updateProfilePicture(profilePictureId: number): Promise<AxiosResponse<void>> {
         return axiosInstance.put(
             "/users/update-profile-picture",
             {profilePictureId: profilePictureId},
@@ -122,7 +122,7 @@ export class ApiCalls {
         )
     }
 
-    public static async getUser(username: string): Promise<AxiosResponse> {
+    public static async getUser(username: string): Promise<AxiosResponse<OnlyfinProfileExtended>> {
         return axiosInstance.get(
             `/users/username?username=${username}`,
             {
@@ -132,7 +132,7 @@ export class ApiCalls {
         )
     }
 
-    public static async whoAmI(): Promise<AxiosResponse> {
+    public static async whoAmI(): Promise<AxiosResponse<string>> {
         return axiosInstance.get(
             "/users/whoami",
             {
@@ -150,7 +150,7 @@ export class ApiCalls {
      ********************************
      */
 
-    public static async addCustomStock(name: string, ticker: string | undefined): Promise<AxiosResponse> {
+    public static async addCustomStock(name: string, ticker: string | undefined): Promise<AxiosResponse<void>> {
         return axiosInstance.post(
             "/stocks/add-custom-stock",
             {
@@ -161,21 +161,21 @@ export class ApiCalls {
         )
     }
 
-    public static async getAllStocks(): Promise<AxiosResponse> {
+    public static async getAllStocks(): Promise<AxiosResponse<OnlyfinStock[]>> {
         return axiosInstance.get(
             "/stocks/all",
             {}
         )
     }
 
-    public static async deleteCustomStock(customStockId: number): Promise<AxiosResponse> {
+    public static async deleteCustomStock(customStockId: number): Promise<AxiosResponse<void>> {
         return axiosInstance.delete(
             `/stocks/delete-custom-stock?customStockId=${customStockId}`,
             {withCredentials: true},
         )
     }
 
-    public static async findStocksByName(name: string): Promise<AxiosResponse> {
+    public static async findStocksByName(name: string): Promise<AxiosResponse<OnlyfinStock[]>> {
         return axiosInstance.get(
             `/stocks/search?name=${name}`,
             {}
@@ -190,7 +190,7 @@ export class ApiCalls {
      ********************************
      */
 
-    public static async subscribe(username: string): Promise<AxiosResponse> {
+    public static async subscribe(username: string): Promise<AxiosResponse<void>> {
         return axiosInstance.put(
             `/subscriptions/add?targetUsername=${username}`,
             {},
@@ -198,28 +198,28 @@ export class ApiCalls {
         )
     }
 
-    public static async checkSubscription(targetUsername: string): Promise<AxiosResponse> {
+    public static async checkSubscription(targetUsername: string): Promise<AxiosResponse<boolean>> {
         return axiosInstance.get(
             `/subscriptions/check?targetUsername=${targetUsername}`,
             {withCredentials: true}
         )
     }
 
-    public static async getUserSubscriptionCount(targetUsername: string): Promise<AxiosResponse> {
+    public static async getUserSubscriptionCount(targetUsername: string): Promise<AxiosResponse<number>> {
         return axiosInstance.get(
             `/subscriptions/count?targetUsername=${targetUsername}`,
             {}
         )
     }
 
-    public static async getSubscriptionList(): Promise<AxiosResponse> {
+    public static async getSubscriptionList(): Promise<AxiosResponse<OnlyfinProfile[]>> {
         return axiosInstance.get(
             "/subscriptions/list",
             {withCredentials: true}
         )
     }
 
-    public static async unsubscribe(username: string): Promise<AxiosResponse> {
+    public static async unsubscribe(username: string): Promise<AxiosResponse<void>> {
         return axiosInstance.delete(
             `/subscriptions/remove?targetUsername=${username}`,
             {withCredentials: true}
@@ -233,9 +233,7 @@ export class ApiCalls {
      *                              *
      ********************************
      */
-    //TODO: Test all /dash endpoints
-
-    public static async addCategory(userStockId: number, categoryName: string): Promise<AxiosResponse> {
+    public static async addCategory(userStockId: number, categoryName: string): Promise<AxiosResponse<string>> {
         return axiosInstance.post(
             "/dash/add-category",
             {
@@ -246,7 +244,7 @@ export class ApiCalls {
         )
     }
 
-    public static async addModule(targetCategoryId: number, height: number, width: number, xAxis: number, yAxis: number, type: string, content: any): Promise<AxiosResponse> {
+    public static async addModule(targetCategoryId: number, height: number, width: number, xAxis: number, yAxis: number, type: string, content: any): Promise<AxiosResponse<void>> {
         return axiosInstance.post(
             "/dash/add-module",
             {
@@ -262,7 +260,7 @@ export class ApiCalls {
         )
     }
 
-    public static async addStock(targetStockId: number): Promise<AxiosResponse> {
+    public static async addStock(targetStockId: number): Promise<AxiosResponse<string>> {
         return axiosInstance.post(
             `/dash/add-stock?targetStockId=${targetStockId}`,
             {},
@@ -270,28 +268,28 @@ export class ApiCalls {
         )
     }
 
-    public static async deleteCategory(targetCategoryId: number): Promise<AxiosResponse> {
+    public static async deleteCategory(targetCategoryId: number): Promise<AxiosResponse<void>> {
         return axiosInstance.delete(
             `/dash/delete-category?targetCategoryId=${targetCategoryId}`,
             {withCredentials: true}
         )
     }
 
-    public static async deleteModule(moduleId: number): Promise<AxiosResponse> {
+    public static async deleteModule(moduleId: number): Promise<AxiosResponse<void>> {
         return axiosInstance.delete(
             `/dash/delete-module?moduleId=${moduleId}`,
             {withCredentials: true}
         )
     }
 
-    public static async deleteStock(targetUserStockId: number): Promise<AxiosResponse> {
+    public static async deleteStock(targetUserStockId: number): Promise<AxiosResponse<void>> {
         return axiosInstance.delete(
             `/dash/delete-stock?targetUserStockId=${targetUserStockId}`,
             {withCredentials: true}
         )
     }
 
-    public static async fetchCategoriesAndModulesUnderUserStock(userStockId: number): Promise<AxiosResponse> {
+    public static async fetchCategoriesAndModulesUnderUserStock(userStockId: number): Promise<AxiosResponse<OnlyfinUserStockTab>> {
         return axiosInstance.get(
             `/dash/fetch-categories-and-modules-under-user-stock?userStockId=${userStockId}`,
             {}
@@ -305,21 +303,21 @@ export class ApiCalls {
         )
     }
 
-    public static async fetchTargetUsersStocks(targetUsername: string): Promise<AxiosResponse> {
+    public static async fetchTargetUsersStocks(targetUsername: string): Promise<AxiosResponse<OnlyfinUserStock[]>> {
         return axiosInstance.get(
             `/dash/fetch-user-stocks?targetUsername=${targetUsername}`,
             {}
         )
     }
 
-    public static async fetchDashboardMetadata(): Promise<AxiosResponse> {
+    public static async fetchDashboardMetadata(): Promise<AxiosResponse<OnlyfinDashboardMetadata>> {
         return axiosInstance.get(
             "/dash/metadata",
             {withCredentials: true}
         )
     }
 
-    public static async updateCategoryName(targetCategoryId: number, newCategoryName: string): Promise<AxiosResponse> {
+    public static async updateCategoryName(targetCategoryId: number, newCategoryName: string): Promise<AxiosResponse<string>> {
         return axiosInstance.put(
             "/dash/update-category",
             {
@@ -330,7 +328,7 @@ export class ApiCalls {
         )
     }
 
-    public static async updateModuleContent(moduleId: number, type: string, content: any): Promise<AxiosResponse> {
+    public static async updateModuleContent(moduleId: number, type: string, content: any): Promise<AxiosResponse<void>> {
         return axiosInstance.put(
             `/dash/update-module?moduleId=${moduleId}`,
             {
@@ -341,7 +339,7 @@ export class ApiCalls {
         )
     }
 
-    public static async updateModuleLayout(moduleId: number, height: number, width: number, xAxis: number, yAxis: number) {
+    public static async updateModuleLayout(moduleId: number, height: number, width: number, xAxis: number, yAxis: number): Promise<AxiosResponse<void>> {
         return axiosInstance.put(
             `/dash/update-module-layout?moduleId=${moduleId}`,
             {
@@ -354,7 +352,7 @@ export class ApiCalls {
         )
     }
 
-    public static async updateModuleLayoutBatch(categoryId: number, moduleLayouts: ModuleLayoutUpdateBatchDTO[]): Promise<AxiosResponse> {
+    public static async updateModuleLayoutBatch(categoryId: number, moduleLayouts: ModuleLayoutUpdateBatchDTO[]): Promise<AxiosResponse<void>> {
         return axiosInstance.put(
             `/dash/update-module-layout-batch?categoryId=${categoryId}`,
             {moduleLayouts: moduleLayouts},
@@ -373,7 +371,7 @@ export class ApiCalls {
      ********************************
      */
 
-    public static async findAnalystsThatCoverStock(targetStockId: number): Promise<AxiosResponse> {
+    public static async findAnalystsThatCoverStock(targetStockId: number): Promise<AxiosResponse<OnlyfinProfile[]>> {
         return axiosInstance.get(
             `/search/covers-stock?targetStockId=${targetStockId}`,
             {}
@@ -388,7 +386,7 @@ export class ApiCalls {
      ********************************
      */
 
-    public static async pushReview(targetUsername: string, reviewText: string): Promise<AxiosResponse> {
+    public static async pushReview(targetUsername: string, reviewText: string): Promise<AxiosResponse<string>> {
         return axiosInstance.put(
             "/reviews/push",
             {targetUsername, reviewText},
@@ -396,21 +394,21 @@ export class ApiCalls {
         )
     }
 
-    public static async deleteReview(targetUsername: string): Promise<AxiosResponse> {
+    public static async deleteReview(targetUsername: string): Promise<AxiosResponse<void>> {
         return axiosInstance.delete(
             `/reviews/delete?targetUsername=${targetUsername}`,
             {withCredentials: true}
         )
     }
 
-    public static async getReviews(targetUsername: string): Promise<AxiosResponse> {
+    public static async getReviews(targetUsername: string): Promise<AxiosResponse<OnlyfinReview[]>> {
         return axiosInstance.get(
             `/reviews/get?targetUsername=${targetUsername}`,
             {withCredentials: true},
         )
     }
 
-    public static async getMyReview(targetUsername: string): Promise<AxiosResponse> {
+    public static async getMyReview(targetUsername: string): Promise<AxiosResponse<OnlyfinReview>> {
         return axiosInstance.get(
             `/reviews/my-review?targetUsername=${targetUsername}`,
             {withCredentials: true}

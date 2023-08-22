@@ -68,6 +68,10 @@ type ModuleLayoutUpdateBatchDTO = {
     yAxis: number
 }
 
+type OnlyfinDashboardMetadata = {
+    userStockTabs: OnlyfinUserStockTab[]
+}
+
 type TableCell = { value: string }[][];
 
 type DataElement = { value: any };
