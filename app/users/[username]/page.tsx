@@ -1,8 +1,17 @@
 import UserProfileCard from "@/app/users/components/UserProfileCard";
 import UserReviews from "@/app/users/components/UserReviews";
 import EditableUserReview from "@/app/users/components/EditableUserReview";
+import { Metadata } from "next";
 
-export default function Page({params}: { params: { username: string } }) {
+type Props = { params: { username: string } }
+
+export async function generateMetadata({params}: Props): Promise<Metadata> {
+    return {
+        title: `Onlyfin: ${params.username}'s page`
+    }
+}
+
+export default function Page({params}: Props) {
     return (
         <>
             <div className={`justify-center 

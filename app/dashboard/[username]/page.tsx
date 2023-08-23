@@ -8,7 +8,6 @@ import DashboardModules from "@/app/dashboard/modulesContainer/DashbordModules";
 import { ApiCalls } from "@/app/utilities/ApiCalls";
 
 export default function Page({params}: { params: { username: string } }) {
-
     const noTabSelectedStatusId: number = -1
     const switchingTabStatusId: number = -69
 

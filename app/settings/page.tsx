@@ -1,6 +1,11 @@
 import UserInformation from "@/app/settings/components/UserInformation";
 import ImageChanger from "@/app/settings/components/ImageChanger";
 import PasswordChangeForm from "@/app/settings/components/PasswordChangeForm";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'Onlyfin: settings'
+}
 
 export default function Page() {
     return (

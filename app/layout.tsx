@@ -4,22 +4,19 @@ import Header from "@/app/components/header/Header";
 import BgBlurLower from "@/app/components/BgBlurLower";
 import BgBlurUpper from "@/app/components/BgBlurUpper";
 import React from "react";
+import { Metadata } from "next";
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
+export const metadata: Metadata = {
     title: 'Onlyfin',
-    description: 'Onlyfin',
+    description: 'Onlyfin - The OnlyFans of stock market analysis',
     other: {
         viewport: "width=device-width, initial-scale=1, maximum-scale=1"
     }
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({children}: { children: React.ReactNode }) {
 
     return (
         <html lang="en">
