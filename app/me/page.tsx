@@ -29,10 +29,14 @@ export default function Page() {
     }, [])
 
     return (
-        <div className={""}>
+        <>
             {username ?
                 <>
-                    <div className={"m-7"}>
+                    <div className={`mt-10 mx-1 mb-7
+                                    sm:m-10
+                                    md:mx-20 md:mt-10
+                                    lg:mx-20 lg:mt-15
+                                    `}>
                         <MyProfile
                             username={username}
                         />
@@ -47,6 +51,6 @@ export default function Page() {
                 :
                 <></>
             }
-        </div>
+        </>
     )
 }

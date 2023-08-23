@@ -55,7 +55,7 @@ export default function MyProfile(props: Props) {
         >
             {/*flex items-center flex-wrap justify-center bg-blue-950*/}
 
-            <div className="w-24 h-24 mb-4">
+            <div className="w-24 h-24 mb-2">
                 <Avatar
                     username={props.username}
                 />
@@ -76,7 +76,7 @@ export default function MyProfile(props: Props) {
                     justify-between
                     w-full
                     ">
-                        <h1 className="text-xl font-bold my-1 break-words text-center">{props.username}</h1>
+                        <h1 className="text-xl font-bold my-1 mb-2 break-words text-center">{props.username}</h1>
 
                         <p className="my-1 break-words ">{aboutMeText}</p>
 
@@ -107,7 +107,7 @@ export default function MyProfile(props: Props) {
                     :
                     // Edit mode
                     <>
-                        <h1 className="text-xl font-bold my-1 break-words text-center">{props.username}</h1>
+                        <h1 className="text-xl font-bold my-1 mb-2 break-words text-center">{props.username}</h1>
 
                         <div
                             className="border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 w-full">
