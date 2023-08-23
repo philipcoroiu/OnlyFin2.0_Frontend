@@ -21,7 +21,6 @@ export default function UserReviewCard(review: OnlyfinReview) {
                         rounded-lg 
                         p-7 
                         mb-4
-                        md:mx-3
                         w-full 
                         dark:bg-gray-700`}
             >
@@ -73,7 +72,6 @@ export default function UserReviewCard(review: OnlyfinReview) {
                         rounded-lg 
                         p-7 
                         mb-4
-                        md:mx-3
                         w-full 
                         dark:bg-gray-700`}
             >

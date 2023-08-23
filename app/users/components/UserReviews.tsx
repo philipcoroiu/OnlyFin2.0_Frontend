@@ -45,7 +45,7 @@ export default function UserReviews(props: Props) {
 
     function renderNoReviewsFound() {
         return (
-            <p className={"text-center"}>NO REVIEWS BY OTHER USERS FOUND...</p>
+            <p className={"text-center mb-5"}>NO REVIEWS BY OTHER USERS FOUND...</p>
         )
     }
 

@@ -43,7 +43,7 @@ export default function MyProfile(props: Props) {
     }
 
     return (
-        <div className={`lg:w-3/4
+        <div className={`
                         mx-auto
                         bg-gray-50 
                         rounded-lg 
@@ -78,7 +78,7 @@ export default function MyProfile(props: Props) {
                     ">
                         <h1 className="text-xl font-bold my-1 mb-2 break-words text-center">{props.username}</h1>
 
-                        <p className="my-1 break-words ">{aboutMeText}</p>
+                        <p className="my-1 break-words pb-2 ">{aboutMeText}</p>
 
                         <button
                             className="

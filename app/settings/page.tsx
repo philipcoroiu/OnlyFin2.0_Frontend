@@ -8,10 +8,13 @@ export default function Page() {
         flex-wrap 
         justify-center 
         mt-10
-        mx-1
-        sm:mx-5
-        md:mx-10
-        lg:mx-20
+        
+        mx-auto
+        px-1
+        xsm:px-2
+        sm:px-10
+        md:w-5/6
+        lg:w-2/3
         `}>
             <div className="flex-1
                 bg-gray-50

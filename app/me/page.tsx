@@ -32,17 +32,31 @@ export default function Page() {
         <>
             {username ?
                 <>
-                    <div className={`mt-10 mx-1 mb-7
-                                    sm:m-10
-                                    md:mx-20 md:mt-10
-                                    lg:mx-20 lg:mt-15
+                    <div className={`mt-10 mb-7
+                                    md:mt-10
+                                    lg:mt-15
+                                    
+                                    mx-auto
+                                    px-1
+                                    xsm:px-2
+                                    sm:px-10
+                                    md:w-5/6
+                                    lg:w-2/3
                                     `}>
                         <MyProfile
                             username={username}
                         />
                     </div>
 
-                    <div className={"flex-wrap justify-center lg:w-3/4 flex mx-auto"}>
+                    <div className={`flex flex-wrap justify-center
+                                    
+                                    mx-auto
+                                    px-1
+                                    xsm:px-2
+                                    sm:px-10
+                                    md:w-5/6
+                                    lg:w-2/3
+                                    `}>
                         <UserReviews
                             targetUsername={username}
                         />
