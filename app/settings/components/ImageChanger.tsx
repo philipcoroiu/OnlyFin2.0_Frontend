@@ -34,7 +34,7 @@ export default function ImageChanger() {
                 Change Avatar
             </button>
             {showImages &&
-                <div className={"bg-gray-400 dark:bg-gray-700 rounded-2xl mb-4 py-2 flex flex-wrap justify-start"}>
+                <div className={"bg-gray-200 dark:bg-gray-700 rounded-2xl mb-4 py-2 flex flex-wrap justify-start"}>
                     <AvailableAvatars/>
                 </div>
             }
