@@ -197,7 +197,7 @@ export default function PasswordChangeForm() {
                     <button
                         onClick={handleSubmit}
                         className="
-                                h-10
+                                h-12
                                 px-3
                                 w-full
                                 text-white

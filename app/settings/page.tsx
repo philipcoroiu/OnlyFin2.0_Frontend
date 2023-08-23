@@ -4,9 +4,16 @@ import PasswordChangeForm from "@/app/settings/components/PasswordChangeForm";
 
 export default function Page() {
     return (
-        <div className={"flex flex-wrap justify-center mt-10 mx-10"}>
+        <div className={`flex 
+        flex-wrap 
+        justify-center 
+        mt-10
+        mx-1
+        sm:mx-5
+        md:mx-10
+        lg:mx-20
+        `}>
             <div className="flex-1
-                mx-2
                 bg-gray-50
                 dark:bg-gray-700
                 rounded
