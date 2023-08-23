@@ -120,10 +120,10 @@ export default function Page() {
         <div className="
         mx-auto
         max-w-2xl
-        py-32
-        sm:py-48
-        lg:py-56
-        p-12
+        py-20
+        px-1
+        md:px-10
+        lg:px-20
         ">
                 <div className="
                     rounded-[calc(1.5rem-1px)]
