@@ -32,7 +32,7 @@ export default function Page() {
         <>
             {username ?
                 <>
-                    <div className={`mt-10 mb-7
+                    <div className={`my-10 mb-7
                                     md:mt-10
                                     lg:mt-15
                                     

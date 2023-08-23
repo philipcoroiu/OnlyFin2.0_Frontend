@@ -119,7 +119,7 @@ export default function Page() {
     return (
         <div className="
         max-w-2xl
-        py-20
+        my-10
 
         mx-auto
         px-1

@@ -7,7 +7,7 @@ export default function Page({params}: { params: { username: string } }) {
         <>
             <div className={`justify-center 
             flex
-            py-7
+            my-10
             
             mx-auto
             px-1

@@ -7,7 +7,7 @@ export default function Page() {
         <div className={`flex 
         flex-wrap 
         justify-center 
-        mt-10
+        my-10
         
         mx-auto
         px-1
@@ -19,7 +19,7 @@ export default function Page() {
             <div className="flex-1
                 bg-gray-50
                 dark:bg-gray-700
-                rounded
+                rounded-lg
                 shadow-lg
                 p-4
                 h-full
